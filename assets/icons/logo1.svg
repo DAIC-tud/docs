@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="37mm"
+   height="38mm"
+   viewBox="0 0 37 38"
+   version="1.1"
+   id="svg290"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview292"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.69664703"
+     inkscape:cx="371.06309"
+     inkscape:cy="216.75252"
+     inkscape:window-width="1920"
+     inkscape:window-height="995"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g524" />
+  <defs
+     id="defs287">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : -110.5001 : 1"
+       inkscape:vp_y="0 : 999.99995 : 0"
+       inkscape:vp_z="210.00014 : -110.5001 : 1"
+       inkscape:persp3d-origin="105.00004 : -160.00001 : 1"
+       id="perspective350" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter622"
+       x="0.036405949"
+       y="0.12559543"
+       width="0.90077846"
+       height="0.61387559">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.40734439"
+         id="feGaussianBlur624" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter622-7"
+       x="-0.021210256"
+       y="-0.026101043"
+       width="1.0424205"
+       height="1.0522021">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.40734439"
+         id="feGaussianBlur624-5" />
+    </filter>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1462">
+      <rect
+         style="display:inline;mix-blend-mode:normal;fill:#ff0000;stroke-width:0.264583;filter:url(#filter622-7)"
+         id="rect1464"
+         width="46.092163"
+         height="37.45546"
+         x="61.409241"
+         y="17.20763"
+         transform="matrix(3.9656916,0,0,-2.4846625,-193.68646,147.32254)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1466">
+      <rect
+         style="display:inline;mix-blend-mode:normal;fill:#ff0000;stroke-width:0.264583;filter:url(#filter622-7)"
+         id="rect1468"
+         width="46.092163"
+         height="37.45546"
+         x="61.409241"
+         y="17.20763"
+         transform="matrix(2.4082435,0,0,-1.2301712,-76.676265,252.47841)" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline;mix-blend-mode:normal;filter:url(#filter622)">
+    <g
+       id="g524"
+       transform="matrix(1.9007632,0,0,2.1646381,-136.28598,-397.32313)"
+       clip-path="url(#clipPath1466)">
+	<rect
+   x="66.169998"
+   y="175.17"
+   class="st0"
+   width="124.37"
+   height="76.529999"
+   id="rect506" />
+
+	
+	
+	<path
+   class="st1"
+   d="m 86.376151,192.92225 c -1.29,0.41 -2.63,0.08 -2.62,-1.65 0,-2.64 6.19,-4.85 7.05,-7.15 0.21,-0.57 0.23,-1.05 -0.05,-1.03 -0.2,0.01 -0.04,0.3 -0.48,0.73 -2.56,2.57 -6.86,2.56 -10.16,4.04 -2.16,0.97 -8.5,3.95 -7.04,10.6 0.07,0.32 0.26,1.37 0.45,1.37 0.22,0 0.22,-0.63 0.22,-1.39 -0.05,-3.96 4.64,-5.06 6.17,-7.65 0.18,-0.31 0.5,-0.74 0.57,-0.54 0.04,0.1 0.01,0.24 -0.05,0.52 -0.48,2.13 -2.7,3.49 -2.07,5.01 0.82,1.97 3.17,0.5 3.9,-0.77 0.19,-0.35 0.3,-0.57 0.43,-0.53 0.1,0.03 0.09,0.43 0.03,0.79 -0.39,2.29 -0.91,3.57 -2.59,4.88 -0.54,0.42 -1.38,0.5 -1.27,0.82 0.03,0.08 0.39,0.07 0.68,0.04 4.46,-0.29 8.19,-5.54 9.18,-8.98 0.1,-0.24 0.13,-0.47 0.03,-0.55 -0.13,-0.1 -0.33,0.13 -0.53,0.31 -0.51,0.46 -1.21,0.93 -1.85,1.13 z"
+   id="path512" />
+
+	
+	
+	
+	
+	
+</g>
+  </g>
+  <style
+     type="text/css"
+     id="style504">
+	.st0{fill:none;}
+	.st1{fill:#FFFFFF;}
+</style>
+</svg>

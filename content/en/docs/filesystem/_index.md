@@ -1,0 +1,19 @@
+---
+title: "File systems and storage"
+linkTitle: "File systems and storage"
+weight: 5
+description: >
+  How/Where to store data
+---
+
+{{% pageinfo %}}
+This aspect is different from DHPC. Comment on the difference too!
+{{% /pageinfo %}}
+
+
+* File System Overview
+  * Home Directory
+  * Project Directory: `umbrella` and `bulk`
+* File Management Guidelines	(such as best practices for organizing data and managing quotas.)
+* Data Transfer Methods
+* Collaboration Options such as shared project spaces or job distribution techniques.

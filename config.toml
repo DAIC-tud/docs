@@ -1,5 +1,5 @@
 baseURL = "https://aeaahmed.gitlab.io/daicdocumentation"
-title = "HPC documentation"
+title = "DAIC documentation"
 
 # Language settings
 contentDir = "content/en"
@@ -60,7 +60,7 @@ id = "UA-00000000-0"
 
 [languages]
 [languages.en]
-title = "HPC documentation"
+title = "DAIC documentation"
 description = "Documentation of compute environments accessible to CS departments in TU Delft"
 languageName ="English"
 # Weight used for sorting.
@@ -170,15 +170,15 @@ enable = false
   icon = "fa fa-envelope"
   desc = "Discussion and help from your fellow users"
 [[params.links.user]]
-  name ="Twitter"
-  url = "https://example.org/twitter"
-  icon = "fab fa-twitter"
-  desc = "Follow us on Twitter to get the latest news!"
+ # name ="Twitter"
+ # url = "https://example.org/twitter"
+ # icon = "fab fa-twitter"
+ # desc = "Follow us on Twitter to get the latest news!"
 [[params.links.user]]
-  name = "Stack Overflow"
-  url = "https://example.org/stack"
-  icon = "fab fa-stack-overflow"
-  desc = "Practical questions and curated answers"
+ # name = "Stack Overflow"
+ # url = "https://example.org/stack"
+ # icon = "fab fa-stack-overflow"
+ # desc = "Practical questions and curated answers"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
   name = "GitHub"
@@ -186,10 +186,10 @@ enable = false
   icon = "fab fa-github"
   desc = "Development takes place here!"
 [[params.links.developer]]
-  name = "Slack"
-  url = "https://example.org/slack"
-  icon = "fab fa-slack"
-  desc = "Chat with other project developers"
+ # name = "Slack"
+ # url = "https://example.org/slack"
+ # icon = "fab fa-slack"
+ # desc = "Chat with other project developers"
 [[params.links.developer]]
   name = "Developer mailing list"
   url = "https://example.org/mail"

@@ -7,16 +7,28 @@ menu:
     weight: 10
 ---
 
+
+
 {{% pageinfo %}}
-This page describes different compute infrastructure accessible to TU Delft researchers 
+Available compute infrastructure accessible to TU Delft researchers and educators:
 {{% /pageinfo %}}
 
 
-Possible content:
+|                   | DAIC                                                               | DelftBlue                                                    |  DAS                         | Cloud4Research                                            | 
+| ----------------- | ------------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------- | --------------------------------------------------------- |
+| Type              | AI HPC                                                             | HPC                                                          | HPC                          | Experimental                                              |
+| Primary use cases | Research, especially in AI                                         | Research & Education                                         | Parallel applications        | Research & Education                                      |
+| Owner             | INSY + ST (EWI), TNW, TPM, CiTG                                    | All TU Delft faculties                                       | Multiple universities & SURF |
+| Eligible users    | Researchers (PhD students & postdocs) from contributing faculties  | All TU Delft                                                 |                              |                                                           |
+| Website           | http://localhost:1313/                                             | https://doc.dhpc.tudelft.nl/delftblue/                       | https://www.cs.vu.nl/das/    | https://tu-delft-ict-innovation.github.io/Cloud4Research/ |
+| Request account   |                                                                    | https://doc.dhpc.tudelft.nl/delftblue/Accounting-and-shares/ |                              |
+| Getting started   | http://localhost:1313/daicdocumentation/quickstart/                | https://doc.dhpc.tudelft.nl/delftblue/crash-course/          |                              |
+| Hardware          | http://localhost:1313/daicdocumentation/docs/system_architecutre/  | https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/         |                              |
+| Software packages | http://localhost:1313/daicdocumentation/docs/software_environment/ | https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/          |                              |
+| Data storage      | http://localhost:1313/daicdocumentation/docs/filesystem/           |                                                              |                              |
+| Cost & Billing    | Ininitial hardware cost                                            |
+| Has GPUs?         | ✓                                                                  | ✓
 
-* example: https://engrit.illinois.edu/services/research-services/campus-research-computing-options-matrix 
-* Guide/diagram on selecting the appropriate computing environment (HPC, cloud, standalone) for different types of tasks or projects based on workload characteristics, such as GPU or CPU requirements, memory, and parallelization
-* Advantages and disadvantages of each environment, including factors such as cost, scalability, and availability of specific software or libraries.
-* the role of virtualization in facilitating flexible and efficient computing environments.
-* Use case examples to help users understand which environment is most suitable for their specific needs.
+
+
 

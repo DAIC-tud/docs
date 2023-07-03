@@ -6,7 +6,9 @@ description: >
   How to submit jobs to slurm?
 ---
 
-## Batch Queuing System Overview
+
+## What is Slurm?/ Batch Queuing System Overview
+
 
 ## Job Submission Process
 
@@ -16,6 +18,11 @@ description: >
 
 ## Job Monitoring and Status Checking
 
+### Handy commands:
+
+`squeue`
+`scancel`
+`slurmtop` (specific to DAIC)
 
 ## Job prioritization and waiting times
 
@@ -33,22 +40,30 @@ A nice thing about Slurm is that you can specify multiple partitions for your jo
 
 ### Where to submit jobs?
 
->  1. Yes, he is able to submit identical jobs to both `st` and `general` partition
-
-Why submit to the one or the other instead of to both? (The idea behind the tiering is to submit to all partitions, i.e. '--partition=st,general', and let the scheduler figure out were the job can start the soonest...)
-
->  2. For the same requested resources, jobs submitted to the `st` partition wait longer than jobs submitted to the `general` partition
-
-Of course, the 'general' partition has much more resources, and the bigger the resource pool, the more chances a job has to be scheduled or back-filled... (The 'st' resources are also part of the 'general' partition, so by using the 'general' partition jobs get to use both the 'st' resources nodes and all the other nodes.)
-
-Why then specify the 'st' partition? That is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the 'st' partition.
-
->  3. Additionally, to view all his jobs, he needs to grep for his name- ie, `squeue -u yanivoren` only shows jobs in the `general` partition. Screenshot below
-
-He should use 'squeue --all --me'. You should use 'squeue --all --user=<username>'.
-
-All partitions except the general partition are hidden, to simplify the idea for starting users. (This is a choice, so we can decide to make them visible by default.)
+The idea behind the tiering is to submit to all partitions, e.g. `--partition=st,general`, and let the scheduler figure out were the job can start the soonest. 
 
 
+Resources of all partitions (eg, `st`) are also part of the `general` partition. Thus:
+1. submitting to the  `general` partition allows jobs to use all nodes
+2. submitting to those partitions alone, results in longer waiting times, since the `general` partition has much more resources, and the bigger the resource pool, the more chances a job has to be scheduled or back-filled
+3. The optimal way is to submit to both `general` and specific partitions. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+
+
+
+
+
+## Parllelizing jobs- 
+
+### Job Arrays
+
+https://blog.ronin.cloud/slurm-job-arrays/
+
+
+### Working with dependencies
+
+sbatch --dependency=type:job_id jobfile
+
+
+https://bioinformaticsworkbook.org/Appendix/HPC/SLURM/submitting-dependency-jobs-using-slurm.html#gsc.tab=0
 
 ## Troubleshooting Common Issues - _Likely contains links to the Support area_

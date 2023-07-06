@@ -17,3 +17,9 @@ This aspect is different from DHPC. Comment on the difference too!
 * File Management Guidelines	(such as best practices for organizing data and managing quotas.)
 * Data Transfer Methods
 * Collaboration Options such as shared project spaces or job distribution techniques.
+
+
+
+Note:
+Umbrella (project storage), for everybody and everything, always!
+Bulk needs to be cleaned up, migrated and phased out

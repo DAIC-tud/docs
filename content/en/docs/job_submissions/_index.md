@@ -7,22 +7,124 @@ description: >
 ---
 
 
-## What is Slurm?/ Batch Queuing System Overview
+## Batch Queuing System Overview
+
+DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity. 
+
+Users typically access slurm-based systems via _login nodes_, and submit their jobs. A _central manager_ then orchestrates these computational demands across a set of _compute nodes_.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across these resources (multiple nodes).
 
 
-## Job Submission Process
-
-
-## Example Job Scripts
-
-
-## Job Monitoring and Status Checking
+{{< figure src="slurm_architecture.gif" caption=">Fig 1: Slurm components- adapted from [Slurm documentation](https://slurm.schedmd.com/overview.html)" >}}
 
 ### Handy commands:
 
-`squeue`
-`scancel`
-`slurmtop` (specific to DAIC)
+For a general introduction to working with Slurm, [DelftBlue documentation](https://doc.dhpc.tudelft.nl/delftblue/Slurm-scheduler/#submit-jobs) is a good starting point. 
+
+
+| Command                            | Purpose | Example |
+| ---------------------------------- | ------- | ------- |
+| `sinteractive` | For requesting an interactive node, typically, during testing phases.  Needed compute resources are specified as part of the command, including `mem`, `time`, and `gres`, analogously to `sbatch` directives. | Request a GPU node for 10 minutes: `sinteractive --time=00:10:00 --gres=gpu` |
+| `sbatch`       | For submitting a script to slurm for queuing (in batch mode). Requested resources are specified as directives on top of the script | Submit a job in script.sh file `sbatch script.sh`
+| `squeue`       | Check the status of jobs in the queue. | Check the user's jobs: `squeue -u $USER`
+| `scancel`      | Cancel a job or all jobs of a user. | `scancel -u $USER` or `scancel <jobid>` |
+| `slurmtop`     | DAIC-specific command to view top jobs in the queues and their resource use |
+
+
+## Partitions and Quality of Service
+
+When you submit a job in a slurm-based system, it enters a queue waiting for resources.
+The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
+* The _partition_  determines access to groups of different compute nodes. 
+* The _Quality of Service_ determines the priority as well as the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated.
+
+All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)). Table 1 shows the QoS limits on the `general` partition
+<add table>
+
+
+{{% alert title="Note" color="info" %}}
+
+The priority of a job is a function of *both* QoS *and* previous usage (less is better). 
+
+{{% /alert %}} 
+
+
+<add figure showing available partitions/ Overall hardware architecture of DAIC system, see Kindratenko et al 2020>
+
+
+## Slurm job's terminology: job, job step, task and CPUs
+
+A slurm _job_ (submitted via `sbatch`) can consists of multiple _steps_ in series. Each _step_ (specified via `srun`) can run multiple _tasks (ie programs)_ in parallel. Each task gets its own set of CPUs. As an example, consider the workflow on the left, and corresponding breakdown in the right shown in fig 1
+
+{{< figure src="slurm_job_terminology.png" caption=">Fig 1: Slurm job's terminology" >}}
+
+In this example, note:
+* When you explicitly request 1 CPU per task (`--cpus-per-task=1`), you should also explicitly specify the number of tasks (`--ntasks`). Otherwise, `srun` may start the task twice in parallel (because CPUs are allocated in multiples of 2)
+* The default slurm allocation is a single task and single CPU (ie `--ntasks=1 --cpus-per-task=1`). Thus, it is not necessary to explicitly request these to run a single task on a single CPU.
+* When using multiple tasks, specify `--mem-per-cpu`.
+
+
+{{% alert title="Note" color="info" %}}
+
+DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.
+{{% /alert %}} 
+
+
+## Creating Job Scripts
+
+Job scripts are text files. The top of such files is a set of directives that specify the job resources request. The remainder is the code that needs to run. It could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
+
+
+Fig 1 provides an example slurm job that can be used in DAIC, with explanations of the directives used. If not specified the job is submitted to the `general` partition with `short` QoS for 1 minute run time, 1 task 
+partition=general , qos=short, 1 minute run time, 1 task, 2 cpus, 1 Gb of memory, no usage statistics, current directory
+
+
+{{< figure src="slurm_script.png" caption=">Fig 1: Example slurm job on DAIC" >}}
+
+
+```bash
+#!/bin/sh
+
+# You can control the resources and scheduling with '#SBATCH' settings
+# (see 'man sbatch' for more information on setting these parameters)
+
+# The default partition is the 'general' partition
+#SBATCH --partition=general
+
+# The default Quality of Service is the 'short' QoS (maximum run time: 4 hours)
+#SBATCH --qos=short
+
+# The default run (wall-clock) time is 1 minute
+#SBATCH --time=0:01:00
+
+# The default number of parallel tasks per job is 1
+#SBATCH --ntasks=1
+
+# The default number of CPUs per task is 1 (note: CPUs are always allocated to jobs per 2)
+# Request 1 CPU per active thread of your program (assume 1 unless you specifically set this)
+#SBATCH --cpus-per-task=2
+
+# The default memory per node is 1024 megabytes (1GB) (for multiple tasks, specify --mem-per-cpu instead)
+#SBATCH --mem=1024
+
+# Set mail type to 'END' to receive a mail when the job finishes
+# Do not enable mails when submitting large numbers (>20) of jobs at once
+#SBATCH --mail-type=END
+
+# Use this simple command to check that your sbatch settings are working
+/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
+
+# Your job commands go below here
+
+# Uncomment these lines and adapt them to load the software that your job requires
+#module use /opt/insy/modulefiles
+#module load matlab/R2020b
+
+# Computations should be started with 'srun'. For example:
+#srun python my_program.py
+
+```
+
+
 
 ## Job prioritization and waiting times
 
@@ -49,10 +151,7 @@ Resources of all partitions (eg, `st`) are also part of the `general` partition.
 3. The optimal way is to submit to both `general` and specific partitions. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
 
 
-
-
-
-## Parllelizing jobs- 
+## Parallelizing jobs-  
 
 ### Job Arrays
 

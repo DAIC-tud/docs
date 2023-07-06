@@ -15,3 +15,7 @@ Again, this page is linked to from the Quick Start guide
   * Remote Desktop Protocols
 * Setting Up SSH Keys, if applicable
 * VPN Requirements (if applicable)
+
+
+{{< figure src="connecting_to_hpc.png" caption=">Fig 1: Connecting to DAIC"  >}}
+

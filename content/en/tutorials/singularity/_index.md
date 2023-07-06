@@ -254,6 +254,12 @@ $ apptainer shell --nv -C cuda_based_image.sif
 ```
 {{% /alert %}}
 
+
+{{% alert title="Note" color="info"%}}
+Building container images from a recipe file is recommended to ensure the reproducibility of the resulting container image. However, there can be cases of complex dependencies where it is not clear upfront how the software installations and dependencies should be set up. In such cases, it is possible to interactively develop the image by building it in `writable sandbox` mode first. In such cases, take note of all installation commands used in the sandbox, so you can include them in a recipe file. See [Apptainer Sandbox Directories](https://apptainer.org/docs/user/main/quick_start.html#sandbox-directories) for more details.
+{{% /alert %}}
+
+
 ### Deploying conda in a container 
 
 There might be situations where you have a certain conda environment in your local machine that you need to set up in *HPC* to commence your analysis. In such cases, deploying your conda environment in a container and sending this container to *HPC* does the job for you. 

@@ -25,3 +25,7 @@ Known HPC/DAIC documentation links:
 * https://qiweb.tudelft.nl/sysman/awi2insy.html; https://qiweb.tudelft.nl/sysman/hpc_servers.html; https://qiweb.tudelft.nl/sysman/hpc/hpc.html (from Ronald)
 * https://github.com/oliehoek-research/organization/tree/master/howto (from Frans O)
 
+
+Support & contact:
+* [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/)  (reference: HPC cluster)
+

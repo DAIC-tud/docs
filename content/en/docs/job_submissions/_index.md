@@ -24,13 +24,100 @@ The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm u
 * The _partition_  determines access to groups of different compute nodes. 
 * The _Quality of Service_ determines the priority as well as the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated.
 
-All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)). Table 1 shows the QoS limits on the `general` partition
-<add table>
+All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)). Table 1 shows the QoS limits on the `general` partition.
 
+
+<table>
+<caption> Table 1: General partitions and QoS; specific groups use other partitions and QoS
+</caption>
+<thead>
+  <tr>
+    <th rowspan="2">Partition</th>
+    <th rowspan="2">QoS</th>
+    <th rowspan="2">Priority</th>
+    <th rowspan="2">Max run time</th>
+    <th rowspan="2">Jobs per user</th>
+    <th colspan="2">CPU limits</th>
+    <th colspan="2">GPU limits</th>
+    <th colspan="2">Memory limits</th>
+  </tr>
+  <tr>
+    <th>Per QoS</th>
+    <th>Per user</th>
+    <th>Per QoS</th>
+    <th>Per user</th>
+    <th>Per QoS</th>
+    <th>Per User</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="5">general</td>
+    <td>interactive</td>
+    <td>high</td>
+    <td>1 hour</td>
+    <td>1 running</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>16G</td>
+  </tr>
+  <tr>
+    <td>short</td>
+    <td>normal</td>
+    <td>4 hours</td>
+    <td>10000</td>
+    <td>3672 (85%)</td>
+    <td>2160 (50%)</td>
+    <td>109 (85%)</td>
+    <td>64 (50%)</td>
+    <td>23159G (85%)</td>
+    <td>13623G (50%)</td>
+  </tr>
+  <tr>
+    <td>medium</td>
+    <td>medium</td>
+    <td>1 ½ day</td>
+    <td>2000</td>
+    <td>3456 (80%)</td>
+    <td>1512 (35%)</td>
+    <td>103 (80%)</td>
+    <td>45 (35%)</td>
+    <td>21796G (80%)</td>
+    <td>9536G (35%)</td>
+  </tr>
+  <tr>
+    <td>long</td>
+    <td>low</td>
+    <td>7 days</td>
+    <td>1000</td>
+    <td>3240 (75%)</td>
+    <td>864 (20%)</td>
+    <td>96 (75%)</td>
+    <td>25 (20%)</td>
+    <td>20434G (75%)</td>
+    <td>5449G (20%)</td>
+  </tr>
+  <tr>
+    <td>infinite</td>
+    <td>none</td>
+    <td>infinite</td>
+    <td>1 running</td>
+    <td>32</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>250G</td>
+    <td>-</td>
+  </tr>
+</tbody>
+</table>
 
 {{% alert title="Note" color="info" %}}
 
-The priority of a job is a function of *both* QoS *and* previous usage (less is better). 
+The priority of a job is a function of *both* QoS *and* previous usage (less is better). See [Job prioritization and waiting times ](#job-prioritization-and-waiting-times)
 
 {{% /alert %}} 
 
@@ -40,9 +127,9 @@ The priority of a job is a function of *both* QoS *and* previous usage (less is 
 
 ## Slurm job's terminology: job, job step, task and CPUs
 
-A slurm _job_ (submitted via `sbatch`) can consists of multiple _steps_ in series. Each _step_ (specified via `srun`) can run multiple _tasks (ie programs)_ in parallel. Each task gets its own set of CPUs. As an example, consider the workflow on the left, and corresponding breakdown in the right shown in fig 1
+A slurm _job_ (submitted via `sbatch`) can consists of multiple _steps_ in series. Each _step_ (specified via `srun`) can run multiple _tasks (ie programs)_ in parallel. Each task gets its own set of CPUs. As an example, consider the workflow and corresponding breakdown shown in fig 2.
 
-{{< figure src="slurm_job_terminology.png" caption=">Fig 1: Slurm job's terminology" >}}
+{{< figure src="slurm_job_terminology.png" caption=">Fig 2: Slurm job's terminology" >}}
 
 In this example, note:
 * When you explicitly request 1 CPU per task (`--cpus-per-task=1`), you should also explicitly specify the number of tasks (`--ntasks`). Otherwise, `srun` may start the task twice in parallel (because CPUs are allocated in multiples of 2)
@@ -51,69 +138,449 @@ In this example, note:
 
 
 {{% alert title="Note" color="info" %}}
-
 DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.
 {{% /alert %}} 
 
 
-## Creating Job Scripts
+## Job Scripts
 
-Job scripts are text files. The top of such files is a set of directives that specify the job resources request. The remainder is the code that needs to run. It could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
+Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
 
-
-Fig 1 provides an example slurm job that can be used in DAIC, with explanations of the directives used. If not specified the job is submitted to the `general` partition with `short` QoS for 1 minute run time, 1 task 
-partition=general , qos=short, 1 minute run time, 1 task, 2 cpus, 1 Gb of memory, no usage statistics, current directory
-
-
-{{< figure src="slurm_script.png" caption=">Fig 1: Example slurm job on DAIC" >}}
+The conde snippet below is a template script that can be customized to run jobs on DAIC. 
+A useful tool that can be used to streamline the debugging of such scripts is [ShellCheck](https://www.shellcheck.net/).
 
 
 ```bash
 #!/bin/sh
+#SBATCH --partition=general # Request partition. Default is 'general' 
+#SBATCH --qos=short         # Request Quality of Service. Default is 'short' (maximum run time: 4 hours)
+#SBATCH --time=0:01:00      # Request run time (wall-clock). Default is 1 minute
+#SBATCH --ntasks=1          # Request number of parallel tasks per job. Default is 1
+#SBATCH --cpus-per-task=2   # Request number of CPUs (threads) per task. Default is 1 (note: CPUs are always allocated to jobs per 2).
+#SBATCH --mem=1024          # Request memory (MB) per node. Default is 1024MB (1GB). For multiple tasks, specify --mem-per-cpu instead
+#SBATCH --mail-type=END     # Set mail type to 'END' to receive a mail when the job finishes. 
+#SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId
+#SBATCH --error=slurm_%j.err # Set name of error log. %j is the Slurm jobId
 
-# You can control the resources and scheduling with '#SBATCH' settings
-# (see 'man sbatch' for more information on setting these parameters)
+/usr/bin/scontrol show job -d "$SLURM_JOB_ID"  # check sbatch directives are working
 
-# The default partition is the 'general' partition
-#SBATCH --partition=general
-
-# The default Quality of Service is the 'short' QoS (maximum run time: 4 hours)
-#SBATCH --qos=short
-
-# The default run (wall-clock) time is 1 minute
-#SBATCH --time=0:01:00
-
-# The default number of parallel tasks per job is 1
-#SBATCH --ntasks=1
-
-# The default number of CPUs per task is 1 (note: CPUs are always allocated to jobs per 2)
-# Request 1 CPU per active thread of your program (assume 1 unless you specifically set this)
-#SBATCH --cpus-per-task=2
-
-# The default memory per node is 1024 megabytes (1GB) (for multiple tasks, specify --mem-per-cpu instead)
-#SBATCH --mem=1024
-
-# Set mail type to 'END' to receive a mail when the job finishes
-# Do not enable mails when submitting large numbers (>20) of jobs at once
-#SBATCH --mail-type=END
-
-# Use this simple command to check that your sbatch settings are working
-/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
-
-# Your job commands go below here
-
-# Uncomment these lines and adapt them to load the software that your job requires
-#module use /opt/insy/modulefiles
-#module load matlab/R2020b
-
-# Computations should be started with 'srun'. For example:
-#srun python my_program.py
+# Remaining job commands go below here. For example, to run a Matlab script named "matlab_script.m", uncomment:
+#module use /opt/insy/modulefiles # Use DAIC INSY software collection
+#module load matlab/R2020b        # Load Matlab 2020b version
+#srun matlab < matlab_script.m # Computations should be started with 'srun'.
 
 ```
 
 
+{{% alert title="Note" color="info" %}}
+* DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.
+* Do not enable mails when submitting large numbers (>20) of jobs at once
+{{% /alert %}} 
+
+
+
+### Job submission
+
+Once a script is ready, it is time to send it to the cluster and start computing. 
+
+To submit a job script `jobscript.sbatch`, login to DAIC, and:
+
+* To only test:
+
+```bash
+$ sbatch --test-only jobscript.sbatch
+Job 1 to start at 2015-06-30T14:00:00 using 2 processors on nodes insy15 in partition general
+```
+
+* To actually submit the job and do the computations:
+
+```bash
+$ sbatch jobscript.sbatch
+Submitted batch job 2
+```
+
+* To check your job has actually been submitted:
+```bash
+$ squeue -u SomeNetID  # Replace SomeNetId with your NetID 
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+                 2   general  jobscip SomeNetI  R       0:01      1 insy15
+```
+
+* And to check the log of your job, use an editor or viewer of choice (eg, `vi`, `nano` or simply `cat`) to view the log:
+
+```bash
+$ cat slurm-2.out
+JobId=2 JobName=jobscript.sbatch
+   UserId=SomeNetId(123) GroupId=domain users(100513) MCS_label=N/A
+   Priority=23909774 Nice=0 Account=ewi-insy QOS=short
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:00 TimeLimit=00:01:00 TimeMin=N/A
+   SubmitTime=2015-06-30T14:00:00 EligibleTime=2015-06-30T14:00:00
+   AccrueTime=2015-06-30T14:00:00
+   StartTime=2015-06-30T14:00:01 EndTime=2015-06-30T14:01:01 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2015-06-30T14:01:01  Scheduler=Main
+   Partition=general AllocNode:Sid=login1:2220
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=insy15
+   BatchHost=insy15
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=2,mem=1G,node=1,billing=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   JOB_GRES=(null)
+     Nodes=insy15 CPU_IDs=26-27 Mem=1024 GRES=
+   MinCPUsNode=2 MinMemoryNode=1G MinTmpDiskNode=50M
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/nfs/SomeNetId/jobscript.sbatch
+   WorkDir=/home/nfs/SomeNetId
+   StdErr=/home/nfs/SomeNetId/slurm_2.err
+   StdIn=/dev/null
+   StdOut=/home/nfs/SomeNetId/slurm_2.out
+   Power=
+   MailUser=SomeNetId@tudelft.nl MailType=END
+```
+
+* And finally, to cancel a given job:
+
+```bash
+$ scancel <jobID>
+```
+
+{{% alert title="Note" color="warning"%}}
+It is possible to specify the `sbatch` directives, like `--mem`, `--ntasks`, ... etc in the command line as in:
+```bash
+$ sbatch --time=00:02:00 jobscript.sbatch
+```
+This specification is generally not recommended for production, as it is less reproducible than specifying within the job script itself.
+{{% /alert %}}
+
+
+### Jobs with GPU resources
+
+Some DAIC nodes have GPUs of different types, as shown in this table
+
+| Type   | GPU                        | Architecture | Capability | Memory   | Cores |
+| ------ | -------------------------- | ------------ | ---------- | -------- | ----- |
+| p100   | NVIDIA Tesla P100          | Pascal       | 6.0        | 16 GB    | 3584  |
+| pascal | NVIDIA GeForce GTX 1080 Ti | Pascal       | 6.1        | 11 GB    | 3584  |
+| turing | NVIDIA GeForce RTX 2080 Ti | Turing       | 7.5        | 11 GB    | 4352  |
+| v100   | NVIDIA Tesla V100          | Volta        | 7.0        | 16-32 GB | 5120  |
+| a40    | NVIDIA A40                 | Ampere       | 8.6        | 48 GB    | 10752 |
+
+
+To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of GPUs requested, as in the examples below:
+{{< figure src="slurm_request_gpus.png" caption=">Fig 1: Slurm directives to request gpus for a job" >}}
+
+
+
+{{% alert title="Note" color="warning"%}}
+For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/#environment-modules)
+{{% /alert %}}
+
+
+{{% alert title="Stop!" color="warning"%}}
+It’s forbidden to use the GPUs for anything other than research!
+{{% /alert %}}
+
+An example batch script with GPU resources
+
+```bash
+#!/bin/sh
+#SBATCH --partition=general # Request partition. Default is 'general' 
+#SBATCH --qos=short         # Request Quality of Service. Default is 'short' (maximum run time: 4 hours)
+#SBATCH --time=0:01:00      # Request run time (wall-clock). Default is 1 minute
+#SBATCH --ntasks=1          # Request number of parallel tasks per job. Default is 1
+#SBATCH --cpus-per-task=2   # Request number of CPUs (threads) per task. Default is 1 (note: CPUs are always allocated to jobs per 2).
+#SBATCH --mem=1024          # Request memory (MB) per node. Default is 1024MB (1GB). For multiple tasks, specify --mem-per-cpu instead
+#SBATCH --mail-type=END     # Set mail type to 'END' to receive a mail when the job finishes. 
+#SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId
+#SBATCH --error=slurm_%j.err # Set name of error log. %j is the Slurm jobId
+
+#SBATCH --gres=gpu:1 # Request 1 GPU
+
+# Measure GPU usage of your job (initialization)
+previous=$(/usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utilization,max_memory_usage,time' --format='csv' | /usr/bin/tail -n '+2') 
+
+/usr/bin/nvidia-smi # Check sbatch settings are working (it should show the GPU that you requested)
+
+# Remaining job commands go below here. For example, to run python code that makes use of GPU resources:
+
+# Uncomment these lines and adapt them to load the software that your job requires
+#module use /opt/insy/modulefiles          # Use DAIC INSY software collection
+#module load cuda/11.2 cudnn/11.2-8.1.1.33 # Load certain versions of cuda and cudnn 
+#srun python my_program.py # Computations should be started with 'srun'. For example:
+
+# Measure GPU usage of your job (result)
+/usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utilization,max_memory_usage,time' --format='csv' | /usr/bin/grep -v -F "$previous"
+
+```
+
+
+### Deploying dependent jobs (job chains)
+
+In certain scenarios, it might be desirable to condition the execution of a certain job on the status of another job. In such cases, the sbatch directive `--depenency=<condition>:<jobID>` can be used, where `<condition>` specifies the type of dependency (See table 2), and `<jobID>` is the slurm jobID upon which dependency is based. To specify more than one depenency, the `,` separator is used to indicate that all dependencies must be specified, and, `?` is used denotes that any dependency may be satistifed.
+
+For example, assume the slurm job scripts, `job_1.sbatch`, ... `job_3.sbatch` need to run sequentially one after the other. To start this chain, submit the first job and obtain its jobID:
+
+```bash
+$ sbatch job_1.sbatch
+Submitted batch job 8580135
+```
+
+Next, submit the second job to run only if the first job is successful:
+
+```bash
+$ sbatch --dependency=afterok:8580135 job_2.sbatch
+Submitted batch job 8580136
+```
+{{% alert title="Note" color="warning"%}}
+Note that if the first job (with jobID `8580135` in the example) fails, the second job (with jobID `8580136`) will not run, but it will remain in the queue. You have to use `scancel 8580136` to cancel this job
+{{% /alert %}}
+
+
+And, now, to run the third job only after the first two jobs have both run successfully:
+
+```bash
+$ sbatch --dependency=afterok:8580135,8580136 job_3.sbatch
+Submitted batch job 8580140
+```
+
+Alternatively, if the third job is dependent on either job running successfully:
+```bash
+$ sbatch --dependency=afterok:8580135?8580136 job_3.sbatch
+Submitted batch job 8580141
+```
+
+
+
+{{% alert title="Warning" color="warning"%}}
+* If the jobs within a chain involve copying data files to a local disk (`/tmp`) on a node, you need to make sure all jobs use the same node (`--nodelist=<node>`, for example `--nodelist=insy15`)
+{{% /alert %}}
+
+
+<table>
+<caption> Table 2: Possible sbatch dependency conditions
+</caption>
+<thead>
+  <tr>
+    <th>Argument</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>after</td>
+    <td>This job can begin execution after the specified jobs have begun execution</td>
+  </tr>
+  <tr>
+    <td>afterany</td>
+    <td>This job can begin execution after the specified jobs have terminated.</td>
+  </tr>
+  <tr>
+    <td>aftercorr</td>
+    <td>A task of this job array can begin execution after the corresponding task ID in the specified job has completed successfully</td>
+  </tr>
+  <tr>
+    <td>afternotok</td>
+    <td>This job can begin execution after the specified jobs have terminated in some failed state</td>
+  </tr>
+  <tr>
+    <td>afterok</td>
+    <td>This job can begin execution after the specified jobs have successfully executed</td>
+  </tr>
+  <tr>
+    <td>singleton</td>
+    <td>This job can begin execution after any previously launched jobs sharing the same job name and user have terminated</td>
+  </tr>
+</tbody>
+</table>
+
+
+### Interactive jobs on compute nodes
+
+To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Creating job scripts](#creating-job-scripts)), as in the examples below:
+
+```bash
+$ hostname # check you are in one of the login nodes
+login1.hpc.tudelft.nl
+$ sinteractive 
+ 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
+$ hostname # check you are in a compute node
+insy15
+$ squeue -u SomeNetID  # Replace SomeNetId with your NetID 
+JOBID PARTITION  NAME     USER ST  TIME  NODES NODELIST(REASON)
+    2   general  bash SomeNetI  R  1:23      1 insy15  
+$ logout # exit the interactive job
+```
+
+To request a node with certain compute requirements:
+```bash
+$ sinteractive --ntasks=1 --cpus-per-task=2 --mem=4096
+ 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
+```
+
+{{% alert title="Warning" color="warning"%}}
+When you logout from an interactive session, all running processes will be terminated
+{{% /alert %}}
+
+
+{{% alert title="Note" color="warning"%}}
+Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbtach script. It means you may need to wait until resources are available as you would when you submit an sbatch script
+{{% /alert %}}
+
+
+## Checking slurm jobs
+
+Sometimes, it may be desirable to inspect slurm jobs beyond their status in the queue. For example, to check which script was submitted, or how the resources were requested and allocated. Below are a few useful commands for this purpose:
+
+* See job definition
+```bash
+$  scontrol show job 8580148
+JobId=8580148 JobName=jobscript.sbatch
+   UserId=SomeNetID(123) GroupId=domain users(100513) MCS_label=N/A
+   Priority=23721804 Nice=0 Account=ewi-insy QOS=short
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:12 TimeLimit=00:01:00 TimeMin=N/A
+   SubmitTime=2023-07-10T06:41:57 EligibleTime=2023-07-10T06:41:57
+   AccrueTime=2023-07-10T06:41:57
+   StartTime=2023-07-10T06:41:58 EndTime=2023-07-10T06:42:58 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2023-07-10T06:41:58 Scheduler=Main
+   Partition=general AllocNode:Sid=login1:19162
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=awi18
+   BatchHost=awi18
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=2,mem=1G,node=1,billing=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=1G MinTmpDiskNode=50M
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/nfs/SomeNetID/jobscript.sbatch
+   WorkDir=/home/nfs/SomeNetID
+   StdErr=/home/nfs/SomeNetID/slurm_8580148.err
+   StdIn=/dev/null
+   StdOut=/home/nfs/SomeNetID/slurm_8580148.out
+   Power=
+   MailUser=SomeNetId@tudelft.nl MailType=END
+   
+
+
+```
+
+* See statistics of a running job
+```bash
+$ sstat 1
+  JobID  AveRSS  AveCPU  NTasks  AveDiskRead AveDiskWrite
+------- ------- ------- ------- ------------ ------------
+1.0        426K 00:00.0       1        0.52M        0.01M
+```
+
+* See accounting information of a finished job (also see --long option)
+```bash
+$ $ sacct -j 8580148
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+8580148      jobscript+    general   ewi-insy          2  COMPLETED      0:0 
+8580148.bat+      batch              ewi-insy          2  COMPLETED      0:0 
+```
+See overall job efficiency of a finished job
+
+```bash
+$ seff 8580148
+Job ID: 8580148
+Cluster: insy
+User/Group: aeaahmed/domain users
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 2
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:01:00 core-walltime
+Job Wall-clock time: 00:00:30
+Memory Utilized: 340.00 KB
+Memory Efficiency: 0.03% of 1.00 GB
+```
+
+* See partition definitions
+```bash
+$ scontrol show partition
+PartitionName=general
+   AllowGroups=ALL AllowAccounts=ALL DenyQos=influence
+   AllocNodes=login[1-3],oodtest Default=YES QoS=N/A
+   DefaultTime=00:01:00 DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
+   Nodes=3dgi[1-2],100plus,awi[01-26],cor1,gpu[01-11],grs[1-4],influ[1-6],insy[11-16],tbm5,wis1
+   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=4064 TotalNodes=59 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=1024 MaxMemPerNode=UNLIMITED
+   TRESBillingWeights=CPU=0.5,Mem=0.083333333G,GRES/gpu=16.0
+
+```
+* See Quality of Service definitions
+
+```bash
+$ sacctmgr list qos
+      Name   Priority  GraceTime    Preempt   PreemptExemptTime PreemptMode                                    Flags UsageThres UsageFactor       GrpTRES   GrpTRESMins GrpTRESRunMin GrpJobs GrpSubmit     GrpWall       MaxTRES MaxTRESPerNode   MaxTRESMins     MaxWall     MaxTRESPU MaxJobsPU MaxSubmitPU     MaxTRESPA MaxJobsPA MaxSubmitPA       MinTRES 
+---------- ---------- ---------- ---------- ------------------- ----------- ---------------------------------------- ---------- ----------- ------------- ------------- ------------- ------- --------- ----------- ------------- -------------- ------------- ----------- ------------- --------- ----------- ------------- --------- ----------- ------------- 
+    normal          0   00:00:00                                    cluster                              DenyOnLimit               1.000000                                                                                                                                                                                                                cpu=1 
+     short         50   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3562,gre+                                         65536                                                           04:00:00 cpu=2096,gre+                 10000                                      cpu=1,mem=1M 
+      long         25   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3144,gre+                                         65536                                                         7-00:00:00 cpu=838,gres+                  1000                                      cpu=1,mem=1M 
+  infinite          0   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=32,gres/+                                         65536                                                                                          1         100                                      cpu=1,mem=1M 
+interacti+        100   00:00:00                                    cluster                              DenyOnLimit               2.000000                                                       65536                                                           01:00:00 cpu=2,gres/g+         1           1                                      cpu=1,mem=1M 
+   student         10   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=192,gres+                                         65536                                                           04:00:00 cpu=2,gres/g+         1         100                                      cpu=1,mem=1M 
+reservati+        100   00:00:00                                    cluster          DenyOnLimit,RequiresReservation               1.000000                                                       65536                                                                                                  10000                                      cpu=1,mem=1M 
+ influence        100   00:00:00                                    cluster                              DenyOnLimit               1.000000                                                       65536                                                                                                  10000                                      cpu=1,mem=1M 
+guest-sho+         10   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=200,gres+                                         65536                                                           04:00:00 cpu=128,gres+                   100                                      cpu=1,mem=1M 
+guest-long          0   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=200,gres+                                         65536                                                         7-00:00:00 cpu=128,gres+         1          10                                      cpu=1,mem=1M 
+    medium         35   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3352,gre+                                         65536                                                         1-12:00:00 cpu=1466,gre+                  2000                                      cpu=1,mem=1M 
+
+
+```
 
 ## Job prioritization and waiting times
+
+
+Priority = 40,000,000 * QoS + 20,000,000 * FairShare
+
+| QoS         | Priority   |
+| ----------- | ---------- |
+| Interactive | 40,000,000 |
+| Short       | 20,000,000 |
+| Long        | 10,000,000 |
+| Infinite    | 0          |
+
+| FairShare     | Priority       |
+| ------------- | -------------- |
+| Usage < Share | 20,000,000     |
+| Usage > Share | 20,000,000 - 0 |
+| No Share      | 0              |
+
+
+
+Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
+(Interactive QoS has usage factor 2.0; usage is doubled)
+
+(  2 CPUs / 2 + 12 GB Mem / 12             ) * 4 hours =   28800
+(  2 CPUs / 2 + 12 GB Mem / 12 + 1 GPU * 10) * 4 hours =  172800
+(160 CPUs / 2 + 48 GB Mem / 12             ) * 4 hours = 1209600
+(  2 CPUs / 2 + 12 GB Mem / 12             ) * 7 days  = 1209600
+
+
+
+|                            | QoS Priority | FairShare Priority | Job Priority |
+| -------------------------- | ------------ | ------------------ | ------------ |
+| Interactive, low usage     | 40,000,000   | 20,000,000         | 60,000,000   |
+| Interactive, extreme usage | 40,000,000   | \>0                | \>40,000,000 |
+| Short, low usage           | 20,000,000   | 20,000,000         | 40,000,000   |
+| Long, low usage            | 10,000,000   | 20,000,000         | 30,000,000   |
+| Short, extreme usage       | 20,000,000   | \>0                | \>20,000,000 |
+| Infinite, low usage        | 0            | 20,000,000         | 20,000,000   |
+| Long, extreme usage        | 10,000,000   | \>0                | \>10,000,000 |
+| Infinite, extreme usage    | 0            | \>0                | \>0          |
 
 ### Fair tree fairshare
 
@@ -138,18 +605,144 @@ Resources of all partitions (eg, `st`) are also part of the `general` partition.
 3. The optimal way is to submit to both `general` and specific partitions. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
 
 
-## Parallelizing jobs-  
+## Parallelizing jobs with Job Arrays
 
-### Job Arrays
+There can be scenarios, eg in simulations or benchmarking, where a job script needs to run many times with only different parameter set each time. If done manually, keeping track of the parameter values and corresponding jobIds is cumbersome. _Job Arrays_ are a convenient mechanism for submitting and managing such jobs. 
 
-https://blog.ronin.cloud/slurm-job-arrays/
+A job array is created by adding the `--array=<indexes>` directive to an sbatch script (or in the command line), where `<indexes>` can be either a comma separated list of integers, or a range with optional step size, eg, `1-10:2`. The minimum index value is 0, and the maximum is a Slurm configuration parameter (`MaxArraySize - 1`).
 
-
-### Working with dependencies
-
-sbatch --dependency=type:job_id jobfile
+All jobs in the array inherit the same compute resources requirements and the same jobId, but they differ in the index obtained, as in the following examples creating arrays of size 2:
 
 
-https://bioinformaticsworkbook.org/Appendix/HPC/SLURM/submitting-dependency-jobs-using-slurm.html#gsc.tab=0
+```bash
+$ sbatch --array=1,4 jobscript.sbatch # Indexes specified as a list
+Submitted batch job 8580151
+$ squeue -u aeaahmed
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+         8580151_1   general jobscrip aeaahmed  R       0:01      1 grs4
+         8580151_4   general jobscrip aeaahmed  R       0:01      1 awi18
+```
 
-## Troubleshooting Common Issues - _Likely contains links to the Support area_
+
+```bash
+$ sbatch --array=1-2 jobscript.sbatch  # Range specified with default step size = 1
+Submitted batch job 8580149
+$ squeue -u aeaahmed
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+         8580149_1   general jobscrip aeaahmed  R       0:21      1 grs4
+         8580149_2   general jobscrip aeaahmed  R       0:21      1 awi18
+
+```
+
+{{% alert title="Note" color="info" %}}
+To limit the maximum number of simulatenously running jobs in an array use the `%` separator, eg`--array=1-15%3`. 
+{{% /alert %}}
+
+### JobId and enviroment variables
+
+Jobs within an array are assigned special slurm variables explained in the following table:
+
+|Slurm Environment Variable |	Description |
+| ------------------------- | ----------- |
+| SLURM_ARRAY_JOB_ID | The first job ID of the array. |
+| SLURM_ARRAY_TASK_ID | The job array index value. |
+| SLURM_ARRAY_TASK_COUNT | The number of tasks in the job array.|
+| SLURM_ARRAY_TASK_MAX | The highest job array index value.|
+| SLURM_ARRAY_TASK_MIN | The lowest job array index value|
+
+In the simplest case, you can use the `${SLURM_ARRAY_TASK_ID}` directly in a script to assing parameter values. For example, to run a workflow across a set of images `image1.png` ... `image5.png`, you can simply set an array using the sbatch directive `--array=1-5`, and then, within you sbatch script, use `image_${SLURM_ARRAY_TASK_ID}.png` to indicate the corresponding image.
+
+In more complex scenarios, eg, when the parameters of interest  not mappable to indexes (of a job array), one can use a config file to map the parameters to the job array indexes. For example, let's assume the following parameters:
+
+```bash
+$ cat jobarray.config
+ArrayTaskId     Flower  Color   Origin
+1       Rose    Red     Worldwide
+2       Sunflower       Yellow  NorthAmerica
+3       Tulip   Various Persia&Turkey
+4       Orchid  Various Worldwide
+5       Lily    Various Worldwide
+```
+Now, one can use these parameters inside a job script as follow
+
+```bash
+$ cat jobarray.sbatch
+#!/bin/bash
+#SBATCH --job-name=JobArrayExample
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1-5
+
+config=jobarray.config # Path to config file
+
+# Extract parameters:
+flower=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
+color=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $3}' $config)
+origin=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $4}' $config)
+
+# Print to a file a message that includes the current $SLURM_ARRAY_TASK_ID, the same name, and the sex of the sample
+echo "Array task: ${SLURM_ARRAY_TASK_ID},  Flower: ${flower}, color: ${color}, origin: ${origin}" >> output.txt
+$
+$ sbatch jobArray.sbatch
+Submitted batch job 8580317
+$ squeue --me --all
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     8580317_[1-5]   general JobArray aeaahmed PD       0:00      1 (Priority)
+```
+
+In this example, slurm created 5 job arrays, each requesting 1 CPU, and using the default settings (the `general` partition, `short` QoS, `00:01:00` time, `1` with `1` CPU, and `1G` memory). 
+`awk` was used to look up the match between jobid and parameters of the script.
+For more on the `awk` utitilty, See this [Awk tutorial](https://blog.jpalardy.com/posts/awk-tutorial-part-1/)
+
+
+{{% alert title="Note" color="info" %}}
+Note that all jobs in the array are listed concisely as a single entry when they are in the Pending state (PD). 
+{{% /alert %}}
+
+Jobs within a task array are run in parallel, and hence, there's no gaurantee about their order of exectuion. This is evident looking at the output file from this example:
+
+
+```bash
+$ cat output.txt
+Array task: 2,  Flower: Sunflower, color: Yellow, origin: NorthAmerica
+Array task: 3,  Flower: Tulip, color: Various, origin: Persia&Turkey
+Array task: 1,  Flower: Rose, color: Red, origin: Worldwide
+Array task: 5,  Flower: Lily, color: Various, origin: Worldwide
+Array task: 4,  Flower: Orchid, color: Various, origin: Worldwide
+```
+
+
+
+### 
+
+
+
+## Troubleshooting Common Issues - 
+
+_Likely contains links to the Support area_
+
+
+see this example: https://www.nhr.kit.edu/userdocs/horeka/batch/
+
+
+
+## Kerberos Authentication
+
+* Slurm caches your Kerberos ticket, and uses it to execute your job
+* The ticket is renewed automatically until it expires (after at most 7 days)
+* Regularly renew the ticket in Slurm’s cache while your jobs are queued or running:
+
+```bash
+$ auks -a
+Auks API request succeed
+```
+
+* To automatically renew your ticket in Slurm’s cache until you change your NetID password, run the following on the login1 server:
+
+```bash
+$ install_keytab
+Password for somebody@TUDELFT.NET:
+Installed keytab.
+```
+
+You need to rerun this command whenever you change your NetID password (at least every 6 months). Otherwise, the automatic renewal will not work and you will receive a warning e-mail.

@@ -11,23 +11,10 @@ description: >
 
 DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity. 
 
-Users typically access slurm-based systems via _login nodes_, and submit their jobs. A _central manager_ then orchestrates these computational demands across a set of _compute nodes_.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across these resources (multiple nodes).
+A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
 
 {{< figure src="slurm_architecture.gif" caption=">Fig 1: Slurm components- adapted from [Slurm documentation](https://slurm.schedmd.com/overview.html)" >}}
-
-### Handy commands:
-
-For a general introduction to working with Slurm, [DelftBlue documentation](https://doc.dhpc.tudelft.nl/delftblue/Slurm-scheduler/#submit-jobs) is a good starting point. 
-
-
-| Command                            | Purpose | Example |
-| ---------------------------------- | ------- | ------- |
-| `sinteractive` | For requesting an interactive node, typically, during testing phases.  Needed compute resources are specified as part of the command, including `mem`, `time`, and `gres`, analogously to `sbatch` directives. | Request a GPU node for 10 minutes: `sinteractive --time=00:10:00 --gres=gpu` |
-| `sbatch`       | For submitting a script to slurm for queuing (in batch mode). Requested resources are specified as directives on top of the script | Submit a job in script.sh file `sbatch script.sh`
-| `squeue`       | Check the status of jobs in the queue. | Check the user's jobs: `squeue -u $USER`
-| `scancel`      | Cancel a job or all jobs of a user. | `scancel -u $USER` or `scancel <jobid>` |
-| `slurmtop`     | DAIC-specific command to view top jobs in the queues and their resource use |
 
 
 ## Partitions and Quality of Service

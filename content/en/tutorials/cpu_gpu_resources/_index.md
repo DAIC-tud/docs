@@ -1,7 +1,7 @@
 ---
 title: "CPU and GPU resources"
 linkTitle: "CPU and GPU resources"
-weight: 1
+weight: 2
 description: >
   When to use each?
 ---

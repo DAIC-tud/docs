@@ -1,7 +1,7 @@
 ---
 title: "High-Performance Deep Learning"
 linkTitle: "High-Performance Deep Learning"
-weight: 2
+weight: 3
 description: >
   What does your user need to know to try your project?
 ---

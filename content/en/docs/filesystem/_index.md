@@ -23,3 +23,8 @@ This aspect is different from DHPC. Comment on the difference too!
 Note:
 Umbrella (project storage), for everybody and everything, always!
 Bulk needs to be cleaned up, migrated and phased out
+
+
+see this example: 
+* https://www.nhr.kit.edu/userdocs/horeka/filesystems/
+* https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp

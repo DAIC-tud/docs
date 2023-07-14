@@ -21,3 +21,5 @@ References:
 * https://enccs.github.io/gpu-programming/
 * https://enccs.github.io/cuda/
 * https://enccs.github.io/OpenACC-CUDA-beginners/
+
+* https://www.nhr.kit.edu/userdocs/horeka/programming_offload/

@@ -640,19 +640,11 @@ To limit the maximum number of simulatenously running jobs in an array use the `
 
 ### JobId and enviroment variables
 
-Jobs within an array are assigned special slurm variables explained in the following table:
+Jobs within an array are assigned special slurm variables that can be exploited for various computational objectives.
 
-|Slurm Environment Variable |	Description |
-| ------------------------- | ----------- |
-| SLURM_ARRAY_JOB_ID | The first job ID of the array. |
-| SLURM_ARRAY_TASK_ID | The job array index value. |
-| SLURM_ARRAY_TASK_COUNT | The number of tasks in the job array.|
-| SLURM_ARRAY_TASK_MAX | The highest job array index value.|
-| SLURM_ARRAY_TASK_MIN | The lowest job array index value|
+In the simplest case, you can use the `${SLURM_ARRAY_TASK_ID}` directly in a script to assign parameter values. For example, to run a workflow across a set of images `image1.png` ... `image5.png`, you can simply create an array using the sbatch directive `--array=1-5`, and then, within your sbatch script, use `image_${SLURM_ARRAY_TASK_ID}.png` to indicate the corresponding image.
 
-In the simplest case, you can use the `${SLURM_ARRAY_TASK_ID}` directly in a script to assing parameter values. For example, to run a workflow across a set of images `image1.png` ... `image5.png`, you can simply set an array using the sbatch directive `--array=1-5`, and then, within you sbatch script, use `image_${SLURM_ARRAY_TASK_ID}.png` to indicate the corresponding image.
-
-In more complex scenarios, eg, when the parameters of interest  not mappable to indexes (of a job array), one can use a config file to map the parameters to the job array indexes. For example, let's assume the following parameters:
+In more complex scenarios, eg, when the parameters of interest are not mappable to indexes (of a job array), one can use a config file to map the parameters to the job array indexes. For example, let's assume the following parameters:
 
 ```bash
 $ cat jobarray.config
@@ -663,7 +655,7 @@ ArrayTaskId     Flower  Color   Origin
 4       Orchid  Various Worldwide
 5       Lily    Various Worldwide
 ```
-Now, one can use these parameters inside a job script as follow
+Now, one can use these parameters inside a job script as follows:
 
 ```bash
 $ cat jobarray.sbatch
@@ -690,8 +682,8 @@ $ squeue --me --all
      8580317_[1-5]   general JobArray aeaahmed PD       0:00      1 (Priority)
 ```
 
-In this example, slurm created 5 job arrays, each requesting 1 CPU, and using the default settings (the `general` partition, `short` QoS, `00:01:00` time, `1` with `1` CPU, and `1G` memory). 
-`awk` was used to look up the match between jobid and parameters of the script.
+In this example, slurm created 5 job arrays, each using the default settings (the `general` partition, `short` QoS, `00:01:00` time, `1` task with `1` CPU, and `1G` memory). 
+`awk` was used to look up the match between the jobId and parameters of the script.
 For more on the `awk` utitilty, See this [Awk tutorial](https://blog.jpalardy.com/posts/awk-tutorial-part-1/)
 
 
@@ -711,9 +703,17 @@ Array task: 5,  Flower: Lily, color: Various, origin: Worldwide
 Array task: 4,  Flower: Orchid, color: Various, origin: Worldwide
 ```
 
+Other slurm variables that are set inside a job array are shown in the following table, with values based on the preceeding example:
 
+|Slurm Environment Variable |	Description | Value in example |
+| ------------------------- | ----------- | ---------------- |
+| `SLURM_ARRAY_JOB_ID` | The first job ID of the array. | 8580317 |
+| `SLURM_ARRAY_TASK_ID` | The job array index value. | A value in range 1-5 |
+| `SLURM_ARRAY_TASK_COUNT` | The number of tasks in the job array.| 5 |
+| `SLURM_ARRAY_TASK_MAX` | The highest job array index value.| 5 |
+| `SLURM_ARRAY_TASK_MIN` | The lowest job array index value| 1 |
 
-### 
+### Slurm commands and job arrays
 
 
 

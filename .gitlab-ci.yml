@@ -5,7 +5,7 @@ variables:
   HUGO_ENV: production
 pages:
   script:
-  - hugo
+  - cd themes/docsy && git submodule update -f --init && cd ../.. && hugo 
   artifacts:
     paths:
     - public

@@ -2,7 +2,7 @@ image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-
+  HUGO_ENV: production
 pages:
   script:
   - hugo

@@ -1,13 +1,48 @@
+# https://gitlab.com/pages/hugo/-/blob/main/.gitlab-ci.yml
 image: registry.gitlab.com/pages/hugo/hugo_extended:latest
+###image: registry.gitlab.com/pages/hugo/hugo_extended:0.100.2
+# Esta imagen no tiene npm/yarn instalado, pero si apk
 
 variables:
-  GIT_SUBMODULE_STRATEGY: recursive
   HUGO_ENV: production
+  THEME_URL: "github.com/google/docsy@v0.7.1"
+
+default:
+  before_script:
+    #- apk update && apk upgrade
+    - apk add --no-cache git go npm brotli
+    #- apk add --no-cache --update optipng jpegoptim
+    #-hugo mod init gitlab.com/Marzal/mundolibre.gitlab.io # Falla con los modulos de hugo en la config 
+    - hugo mod get $THEME_URL
+    #- hugo mod graph # Comprobar modulos
+    #- yarn add postcss postcss-cli autoprefixer --dev 
+    - npm install postcss postcss-cli autoprefixer #--save-dev
+    # https://www.npmjs.com/package/hugo-extended
+
+test:
+  script:
+    - hugo
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+
 pages:
   script:
-  - cd themes/docsy && git submodule update -f --init && cd ../.. && hugo 
+    - hugo --minify
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\|json\)$' -exec brotli -f -k {} \;
+    - find public -type f -regex '.*\.\(xml\|ttf\|svg\)$' -exec brotli -f -k {} \;
+    #- find public/ -type f -name "*.jpg" -exec jpegoptim -q -m90 --strip-all --all-progressive {} \;
+    #- find public/ -type f -name "*.png" -exec optipng -o5 -strip all -quiet {} \;
+
   artifacts:
     paths:
-    - public
+      - public
   rules:
-  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
+# Hudo docsy module
+  # https://www.docsy.dev/docs/updating/convert-site-to-module/
+# Gitlab
+  # https://gohugo.io/hosting-and-deployment/hosting-on-gitlab/
+# Compress
+  # https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets
+  # https://blog.ideotec.es/support-compression-gitlab-pages/

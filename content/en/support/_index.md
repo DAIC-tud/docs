@@ -29,3 +29,6 @@ Known HPC/DAIC documentation links:
 Support & contact:
 * [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/)  (reference: HPC cluster)
 
+
+Style guide:
+https://www.kubeflow.org/docs/about/style-guide/

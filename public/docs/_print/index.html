@@ -1,0 +1,1839 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="canonical" type="text/html" href="https://aeaahmed.gitlab.io/daicdocumentation/docs/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://aeaahmed.gitlab.io/daicdocumentation/docs/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/daicdocumentation/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/daicdocumentation/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/daicdocumentation/favicons/android-192x192.png" sizes="192x192">
+
+<title>HPC Documentation | DAIC documentation</title>
+<meta name="description" content="Documentation of compute environments accessible to CS departments in TU Delft">
+<meta property="og:title" content="HPC Documentation" />
+<meta property="og:description" content="Documentation of compute environments accessible to CS departments in TU Delft" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://aeaahmed.gitlab.io/daicdocumentation/docs/" /><meta property="og:site_name" content="DAIC documentation" />
+
+<meta itemprop="name" content="HPC Documentation">
+<meta itemprop="description" content="Documentation of compute environments accessible to CS departments in TU Delft"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HPC Documentation"/>
+<meta name="twitter:description" content="Documentation of compute environments accessible to CS departments in TU Delft"/>
+
+
+
+
+<link rel="preload" href="/daicdocumentation/scss/main.scss" as="style">
+<link href="/daicdocumentation/scss/main.scss" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/daicdocumentation/css/prism.css"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-00000000-0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-00000000-0');
+}
+</script>
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+  <a class="navbar-brand" href="/daicdocumentation/"><span class="navbar-brand__logo navbar-logo"><svg id="logo" viewBox="0 0 27.000001 23.999998" sodipodi:docname="logo.svg" width="27" height="24" inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs27"/><sodipodi:namedview id="namedview25" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" inkscape:pageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" showgrid="false" width="102.89001" height="60.280029" inkscape:zoom="5.25467" inkscape:cx="29.021803" inkscape:cy="24.359284" inkscape:window-width="1920" inkscape:window-height="995" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="g22"/><style id="style2">.st0{fill:none}</style><g id="g22" transform="translate(-72.964861,-182.16415)"><rect x="66.169998" y="175.17" class="st0" width="124.37" height="76.529999" id="rect4"/><path d="m89.093695 193.41093c-1.473161.44928-3.003421.0877-2.992001-1.80805.0-2.89288 7.068887-5.31458 8.050993-7.8349.239818-.62459.262657-1.15057-.0571-1.12866-.228397.011-.04568.32874-.548153.79993-2.923481 2.81618-7.834016 2.80522-11.602566 4.42698-2.466687 1.06292-9.706871 4.32837-8.039574 11.61538.07994.35065.296916 1.50122.513893 1.50122.251237.0.251237-.69034.251237-1.52314-.0571-4.33933 5.29881-5.5447 7.046047-8.38279.205557-.33969.570992-.81089.650931-.59172.04568.10957.01142.26298-.0571.56981-.548153 2.33402-3.083359 3.8243-2.363909 5.4899.936428 2.15871 3.620092.54789 4.453742-.84376.216976-.38353.342594-.6246.491053-.58077.114199.0329.102779.47119.03426.86568-.445374 2.50935-1.039206 3.91196-2.957741 5.34744-.616671.46024-1.575939.5479-1.450321.89856.03426.0877.445375.0767.77655.0439 5.093253-.31778 9.352856-6.07067 10.483422-9.84018.114198-.263.148457-.51502.03426-.60269-.148459-.10957-.376855.14246-.605252.33969-.582413.50407-1.381802 1.01909-2.112672 1.23825z" id="path10" style="stroke-width:1.11865"/></g></svg></span><span class="navbar-brand__name">DAIC documentation</span></a>
+  <div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/daicdocumentation/hpc_users/"><span>Can I use HPC?</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/daicdocumentation/quickstart/"><span>QuickStart</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/daicdocumentation/tutorials/"><span>Tutorials</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link active" href="/daicdocumentation/docs/"><span class="active">Detailed Documentation</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/daicdocumentation/support/"><span>Support</span></a>
+      </li>
+      <li class="nav-item mr-4 mb-2 mb-lg-0">
+        <a class="nav-link" href="/daicdocumentation/monitoring/"><span>Monitoring</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="navbar-nav d-none d-lg-block">
+    <div class="td-search">
+  <div class="td-search__icon"></div>
+  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+</div>
+
+  </div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/daicdocumentation/docs/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">HPC Documentation</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-3101c8276a2790f643bb357328182f54">Why HPC</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-3c8b53e0b46ef75982b6911a687d89ed">Access and Accounts</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-171aa65ae3d84f82c8081993b504f644">System architecture</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-3a6cf5844a811cc0d94444804be76298">Connecting to HPC</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-17f366c14bb7f7e9197b725cb55b155e">File systems and storage</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-800433cf2bb07b8834a205e44e53caa5">Job submission and management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-405052735b090132fbb89a27d6a200dc">Software Environment</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-f0a22a813c843322c0d360d952e434ce">Performance profiling and Optimization</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-92db10bb5058100463dcb4991b228a3e">Policies and Usage guidelines</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>10: <a href="#pg-266fc006caf70aa6f262a2ac87460ffa">Contributors</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>11: <a href="#pg-cb0ae8239084a8bc61922a0442e54304">Getting Started</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>These pages contain basic concepts and details to make optimal use of TU Delft&rsquo;s HPC. Alternatively, you might with to jump to the <a href="quickstart">QuickStart guide</a> or <a href="tuorials">Tutorials</a> for more thematic content.</p>
+<ol>
+<li>hardware overview</li>
+<li>file systems</li>
+<li>software</li>
+<li>batch system</li>
+</ol>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-3101c8276a2790f643bb357328182f54">1 - Why HPC</h1>
+    <div class="lead">Why was this HPC set up?</div>
+	<h2 id="purpose-and-benefits-of-hpc-systems">Purpose and Benefits of HPC Systems</h2>
+<p>A High Performance Computing (HPC) cluster, is a collection of (large) computing resources, like Processors (CPUs), Graphics processors (GPUs), Memory and Storage, that are shared among a group of users.</p>
+<p>Using multiple computers as such makes it possible to perform lengthy and resource-intense computations beyond the capabilities of a single computer, and is especially handy for modern scientific computing applications where datasets are typically large in size, models are big in parameters' size and complexity, and computations need specialized hardware (like GPUs and FPGAs).</p>
+<h2 id="purpose-of-_this_-hpc-daic">Purpose of <em>this</em> HPC, DAIC</h2>
+<h2 id="overview-of-the-hardware-and-software-infrastructure">Overview of the hardware and software infrastructure.</h2>
+<h3 id="other-available-compute-environments">Other available Compute environments:</h3>
+<h4 id="hpc-systems">HPC systems:</h4>
+<pre><code>  * Hardware Specifications
+  * Software Environments
+  * Unique Features of Each HPC System
+</code></pre>
+<h4 id="cloud-resources">Cloud Resources</h4>
+<pre><code>  * cloud resources available to CS users, including any partnerships or platforms provided by TU Delft.
+  * the process for accessing and provisioning cloud resources, including virtual machines with GPU or CPU capabilities.
+  * Guidelines for Managing and optimizing Costs
+  * Virtual Machines with GPU and CPU Capabilities
+</code></pre>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3c8b53e0b46ef75982b6911a687d89ed">2 - Access and Accounts</h1>
+    <div class="lead">How can users access HPC?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Remember to Link to this page from the quick start guide pages!</p>
+
+</div>
+
+<ul>
+<li>Accessing the HPC System</li>
+<li>User Account Creation and Password Management</li>
+<li>User Responsibilities and Acceptable Usage</li>
+</ul>
+<p>Current workflow:</p>
+<ol>
+<li>PIs/PhDs send email to the contact person and/or Robbert</li>
+<li>contact person grants access; sometimes provides documentation links</li>
+</ol>
+<p>Agreed upon:</p>
+<ol>
+<li>Part of the documentation gives users a form:</li>
+</ol>
+<ul>
+<li>form sends info to the correct contact person</li>
+<li>form asks for: department, section, research group, intended duration of usage-
+<ul>
+<li>a reminder about account expiration is sent to user (4 weeks, 2 weeks, 1 week, and 1 day reminder).</li>
+<li>account is deactivated after this period, unless user (and PI) request extension</li>
+<li>email is sent, asking user to add any publication from using cluster was published</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>Once user is added, the user recieves onboarding instructions:</li>
+</ol>
+<ul>
+<li>links to documentaiton, highlihgting the quick start part</li>
+<li>links to support channels (mattermost)</li>
+<li>reminder about citing the cluster</li>
+</ul>
+<ol start="3">
+<li></li>
+</ol>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-171aa65ae3d84f82c8081993b504f644">3 - System architecture</h1>
+    <div class="lead">What are the components of the HPC system?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Can be split into 2 pages</p>
+
+</div>
+
+<ul>
+<li>Hardware Infrastructure
+<ul>
+<li>Compute Nodes: CPUs and GPUs</li>
+<li>Storage Systems</li>
+<li>Networking</li>
+</ul>
+</li>
+<li>Software Stack
+<ul>
+<li>
+<p>Operating System</p>
+</li>
+<li>
+<p>Job Scheduling Software (Slurm)</p>
+</li>
+<li>
+<p>Programming Languages and Libraries</p>
+</li>
+<li>
+<p>Specialized Hardware or Accelerators - libraries for these</p>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-3a6cf5844a811cc0d94444804be76298">4 - Connecting to HPC</h1>
+    <div class="lead">How to connect to HPC?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Again, this page is linked to from the Quick Start guide</p>
+
+</div>
+
+<ul>
+<li>Remote Access Methods
+<ul>
+<li>SSH (Secure Shell)</li>
+<li>Remote Desktop Protocols</li>
+</ul>
+</li>
+<li>Setting Up SSH Keys, if applicable</li>
+<li>VPN Requirements (if applicable)</li>
+</ul>
+
+<figure>
+    <img src="/daicdocumentation/docs/connecting/connecting_to_hpc.png"
+         alt=" Fig 1: Connecting to DAIC
+ "/> <figcaption>
+            <p><blockquote>
+<p>Fig 1: Connecting to DAIC</p>
+</blockquote>
+</p>
+        </figcaption>
+</figure>
+
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-17f366c14bb7f7e9197b725cb55b155e">5 - File systems and storage</h1>
+    <div class="lead">How/Where to store data</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>This aspect is different from DHPC. Comment on the difference too!</p>
+
+</div>
+
+<ul>
+<li>File System Overview
+<ul>
+<li>Home Directory</li>
+<li>Project Directory: <code>umbrella</code> and <code>bulk</code></li>
+</ul>
+</li>
+<li>File Management Guidelines	(such as best practices for organizing data and managing quotas.)</li>
+<li>Data Transfer Methods</li>
+<li>Collaboration Options such as shared project spaces or job distribution techniques.</li>
+</ul>
+<p>Note:
+Umbrella (project storage), for everybody and everything, always!
+Bulk needs to be cleaned up, migrated and phased out</p>
+<p>see this example:</p>
+<ul>
+<li><a href="https://www.nhr.kit.edu/userdocs/horeka/filesystems/">https://www.nhr.kit.edu/userdocs/horeka/filesystems/</a></li>
+<li><a href="https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp">https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp</a></li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-800433cf2bb07b8834a205e44e53caa5">6 - Job submission and management</h1>
+    <div class="lead">How to submit jobs to slurm?</div>
+	<h2 id="batch-queuing-system-overview">Batch Queuing System Overview</h2>
+<p>DAIC uses <a href="https://slurm.schedmd.com/">Slurm</a> as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity.</p>
+<p>A slurm-based cluster is composed of a set of <em>login nodes</em> that are used to access the cluster and submit computational jobs. A <em>central manager</em> orchestrates computational demands across a set of <em>compute nodes</em>.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).</p>
+
+<figure>
+    <img src="/daicdocumentation/docs/job_submissions/slurm_architecture.gif"
+         alt=" Fig 1: Slurm components- adapted from Slurm documentation
+ "/> <figcaption>
+            <p><blockquote>
+<p>Fig 1: Slurm components- adapted from <a href="https://slurm.schedmd.com/overview.html">Slurm documentation</a></p>
+</blockquote>
+</p>
+        </figcaption>
+</figure>
+
+<h2 id="partitions-and-quality-of-service">Partitions and Quality of Service</h2>
+<p>When you submit a job in a slurm-based system, it enters a queue waiting for resources.
+The <em>partition</em> and <em>Quality of Service(QoS)</em> are the two job parameters slurm uses to assign resources for a job:</p>
+<ul>
+<li>The <em>partition</em>  determines access to groups of different compute nodes.</li>
+<li>The <em>Quality of Service</em> determines the priority as well as the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated.</li>
+</ul>
+<p>All nodes in DAIC are part of the <code>general</code> partition, but other partitions exist for prioritization purposes on select nodes (see <a href="#priority-tiers">Priority tiers</a>). Table 1 shows the QoS limits on the <code>general</code> partition.</p>
+<table>
+<caption> Table 1: General partitions and QoS; specific groups use other partitions and QoS
+</caption>
+<thead>
+  <tr>
+    <th rowspan="2">Partition</th>
+    <th rowspan="2">QoS</th>
+    <th rowspan="2">Priority</th>
+    <th rowspan="2">Max run time</th>
+    <th rowspan="2">Jobs per user</th>
+    <th colspan="2">CPU limits</th>
+    <th colspan="2">GPU limits</th>
+    <th colspan="2">Memory limits</th>
+  </tr>
+  <tr>
+    <th>Per QoS</th>
+    <th>Per user</th>
+    <th>Per QoS</th>
+    <th>Per user</th>
+    <th>Per QoS</th>
+    <th>Per User</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="5">general</td>
+    <td>interactive</td>
+    <td>high</td>
+    <td>1 hour</td>
+    <td>1 running</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>16G</td>
+  </tr>
+  <tr>
+    <td>short</td>
+    <td>normal</td>
+    <td>4 hours</td>
+    <td>10000</td>
+    <td>3672 (85%)</td>
+    <td>2160 (50%)</td>
+    <td>109 (85%)</td>
+    <td>64 (50%)</td>
+    <td>23159G (85%)</td>
+    <td>13623G (50%)</td>
+  </tr>
+  <tr>
+    <td>medium</td>
+    <td>medium</td>
+    <td>1 ½ day</td>
+    <td>2000</td>
+    <td>3456 (80%)</td>
+    <td>1512 (35%)</td>
+    <td>103 (80%)</td>
+    <td>45 (35%)</td>
+    <td>21796G (80%)</td>
+    <td>9536G (35%)</td>
+  </tr>
+  <tr>
+    <td>long</td>
+    <td>low</td>
+    <td>7 days</td>
+    <td>1000</td>
+    <td>3240 (75%)</td>
+    <td>864 (20%)</td>
+    <td>96 (75%)</td>
+    <td>25 (20%)</td>
+    <td>20434G (75%)</td>
+    <td>5449G (20%)</td>
+  </tr>
+  <tr>
+    <td>infinite</td>
+    <td>none</td>
+    <td>infinite</td>
+    <td>1 running</td>
+    <td>32</td>
+    <td>-</td>
+    <td>2</td>
+    <td>-</td>
+    <td>250G</td>
+    <td>-</td>
+  </tr>
+</tbody>
+</table>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    The priority of a job is a function of <em>both</em> QoS <em>and</em> previous usage (less is better). See <a href="#job-prioritization-and-waiting-times">Job prioritization and waiting times </a>
+
+</div>
+
+<p>&lt;add figure showing available partitions/ Overall hardware architecture of DAIC system, see Kindratenko et al 2020&gt;</p>
+<h2 id="slurm-jobs-terminology-job-job-step-task-and-cpus">Slurm job&rsquo;s terminology: job, job step, task and CPUs</h2>
+<p>A slurm <em>job</em> (submitted via <code>sbatch</code>) can consists of multiple <em>steps</em> in series. Each <em>step</em> (specified via <code>srun</code>) can run multiple <em>tasks (ie programs)</em> in parallel. Each task gets its own set of CPUs. As an example, consider the workflow and corresponding breakdown shown in fig 2.</p>
+
+<figure>
+    <img src="/daicdocumentation/docs/job_submissions/slurm_job_terminology.png"
+         alt=" Fig 2: Slurm job&amp;rsquo;s terminology
+ "/> <figcaption>
+            <p><blockquote>
+<p>Fig 2: Slurm job&rsquo;s terminology</p>
+</blockquote>
+</p>
+        </figcaption>
+</figure>
+
+<p>In this example, note:</p>
+<ul>
+<li>When you explicitly request 1 CPU per task (<code>--cpus-per-task=1</code>), you should also explicitly specify the number of tasks (<code>--ntasks</code>). Otherwise, <code>srun</code> may start the task twice in parallel (because CPUs are allocated in multiples of 2)</li>
+<li>The default slurm allocation is a single task and single CPU (ie <code>--ntasks=1 --cpus-per-task=1</code>). Thus, it is not necessary to explicitly request these to run a single task on a single CPU.</li>
+<li>When using multiple tasks, specify <code>--mem-per-cpu</code>.</li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.
+
+</div>
+
+<h2 id="job-scripts">Job Scripts</h2>
+<p>Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as <code>#SBATCH</code> directives (see <code>man sbatch</code> for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see <a href="#slurm-jobs-terminology-job-job-step-task-and-cpus">Slurm job&rsquo;s terminology</a>).</p>
+<p>The conde snippet below is a template script that can be customized to run jobs on DAIC.
+A useful tool that can be used to streamline the debugging of such scripts is <a href="https://www.shellcheck.net/">ShellCheck</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">#!/bin/sh
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#8f5902;font-style:italic">#SBATCH --partition=general # Request partition. Default is &#39;general&#39; </span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --qos=short         # Request Quality of Service. Default is &#39;short&#39; (maximum run time: 4 hours)</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --time=0:01:00      # Request run time (wall-clock). Default is 1 minute</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --ntasks=1          # Request number of parallel tasks per job. Default is 1</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --cpus-per-task=2   # Request number of CPUs (threads) per task. Default is 1 (note: CPUs are always allocated to jobs per 2).</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --mem=1024          # Request memory (MB) per node. Default is 1024MB (1GB). For multiple tasks, specify --mem-per-cpu instead</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --mail-type=END     # Set mail type to &#39;END&#39; to receive a mail when the job finishes. </span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --error=slurm_%j.err # Set name of error log. %j is the Slurm jobId</span>
+
+/usr/bin/scontrol show job -d <span style="color:#4e9a06">&#34;</span><span style="color:#000">$SLURM_JOB_ID</span><span style="color:#4e9a06">&#34;</span>  <span style="color:#8f5902;font-style:italic"># check sbatch directives are working</span>
+
+<span style="color:#8f5902;font-style:italic"># Remaining job commands go below here. For example, to run a Matlab script named &#34;matlab_script.m&#34;, uncomment:</span>
+<span style="color:#8f5902;font-style:italic">#module use /opt/insy/modulefiles # Use DAIC INSY software collection</span>
+<span style="color:#8f5902;font-style:italic">#module load matlab/R2020b        # Load Matlab 2020b version</span>
+<span style="color:#8f5902;font-style:italic">#srun matlab &lt; matlab_script.m # Computations should be started with &#39;srun&#39;.</span>
+
+</code></pre></div>
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    <ul>
+<li>DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.</li>
+<li>Do not enable mails when submitting large numbers (&gt;20) of jobs at once</li>
+</ul>
+
+
+</div>
+
+<h3 id="job-submission">Job submission</h3>
+<p>Once a script is ready, it is time to send it to the cluster and start computing.</p>
+<p>To submit a job script <code>jobscript.sbatch</code>, login to DAIC, and:</p>
+<ul>
+<li>To only test:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --test-only jobscript.sbatch
+Job <span style="color:#0000cf;font-weight:bold">1</span> to start at 2015-06-30T14:00:00 using <span style="color:#0000cf;font-weight:bold">2</span> processors on nodes insy15 in partition general
+</code></pre></div><ul>
+<li>To actually submit the job and do the computations:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch jobscript.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">2</span>
+</code></pre></div><ul>
+<li>To check your job has actually been submitted:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ squeue -u SomeNetID  <span style="color:#8f5902;font-style:italic"># Replace SomeNetId with your NetID </span>
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span style="color:#ce5c00;font-weight:bold">(</span>REASON<span style="color:#ce5c00;font-weight:bold">)</span>
+                 <span style="color:#0000cf;font-weight:bold">2</span>   general  jobscip SomeNetI  R       0:01      <span style="color:#0000cf;font-weight:bold">1</span> insy15
+</code></pre></div><ul>
+<li>And to check the log of your job, use an editor or viewer of choice (eg, <code>vi</code>, <code>nano</code> or simply <code>cat</code>) to view the log:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat slurm-2.out
+<span style="color:#000">JobId</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> <span style="color:#000">JobName</span><span style="color:#ce5c00;font-weight:bold">=</span>jobscript.sbatch
+   <span style="color:#000">UserId</span><span style="color:#ce5c00;font-weight:bold">=</span>SomeNetId<span style="color:#ce5c00;font-weight:bold">(</span>123<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">GroupId</span><span style="color:#ce5c00;font-weight:bold">=</span>domain users<span style="color:#ce5c00;font-weight:bold">(</span>100513<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">MCS_label</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">Priority</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">23909774</span> <span style="color:#000">Nice</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Account</span><span style="color:#ce5c00;font-weight:bold">=</span>ewi-insy <span style="color:#000">QOS</span><span style="color:#ce5c00;font-weight:bold">=</span>short
+   <span style="color:#000">JobState</span><span style="color:#ce5c00;font-weight:bold">=</span>RUNNING <span style="color:#000">Reason</span><span style="color:#ce5c00;font-weight:bold">=</span>None <span style="color:#000">Dependency</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">Requeue</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Restarts</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">BatchFlag</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">Reboot</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">ExitCode</span><span style="color:#ce5c00;font-weight:bold">=</span>0:0
+   <span style="color:#000">DerivedExitCode</span><span style="color:#ce5c00;font-weight:bold">=</span>0:0
+   <span style="color:#000">RunTime</span><span style="color:#ce5c00;font-weight:bold">=</span>00:00:00 <span style="color:#000">TimeLimit</span><span style="color:#ce5c00;font-weight:bold">=</span>00:01:00 <span style="color:#000">TimeMin</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">SubmitTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:00:00 <span style="color:#000">EligibleTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:00:00
+   <span style="color:#000">AccrueTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:00:00
+   <span style="color:#000">StartTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:00:01 <span style="color:#000">EndTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:01:01 <span style="color:#000">Deadline</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">SuspendTime</span><span style="color:#ce5c00;font-weight:bold">=</span>None <span style="color:#000">SecsPreSuspend</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">LastSchedEval</span><span style="color:#ce5c00;font-weight:bold">=</span>2015-06-30T14:01:01  <span style="color:#000">Scheduler</span><span style="color:#ce5c00;font-weight:bold">=</span>Main
+   <span style="color:#000">Partition</span><span style="color:#ce5c00;font-weight:bold">=</span>general AllocNode:Sid<span style="color:#ce5c00;font-weight:bold">=</span>login1:2220
+   <span style="color:#000">ReqNodeList</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">ExcNodeList</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">NodeList</span><span style="color:#ce5c00;font-weight:bold">=</span>insy15
+   <span style="color:#000">BatchHost</span><span style="color:#ce5c00;font-weight:bold">=</span>insy15
+   <span style="color:#000">NumNodes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">NumCPUs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> <span style="color:#000">NumTasks</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> CPUs/Task<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> ReqB:S:C:T<span style="color:#ce5c00;font-weight:bold">=</span>0:0:*:*
+   <span style="color:#000">TRES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>2,mem<span style="color:#ce5c00;font-weight:bold">=</span>1G,node<span style="color:#ce5c00;font-weight:bold">=</span>1,billing<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+   Socks/Node<span style="color:#ce5c00;font-weight:bold">=</span>* NtasksPerN:B:S:C<span style="color:#ce5c00;font-weight:bold">=</span>0:0:*:* <span style="color:#000">CoreSpec</span><span style="color:#ce5c00;font-weight:bold">=</span>*
+   <span style="color:#000">JOB_GRES</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+     <span style="color:#000">Nodes</span><span style="color:#ce5c00;font-weight:bold">=</span>insy15 <span style="color:#000">CPU_IDs</span><span style="color:#ce5c00;font-weight:bold">=</span>26-27 <span style="color:#000">Mem</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1024</span> <span style="color:#000">GRES</span><span style="color:#ce5c00;font-weight:bold">=</span>
+   <span style="color:#000">MinCPUsNode</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> <span style="color:#000">MinMemoryNode</span><span style="color:#ce5c00;font-weight:bold">=</span>1G <span style="color:#000">MinTmpDiskNode</span><span style="color:#ce5c00;font-weight:bold">=</span>50M
+   <span style="color:#000">Features</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">DelayBoot</span><span style="color:#ce5c00;font-weight:bold">=</span>00:00:00
+   <span style="color:#000">OverSubscribe</span><span style="color:#ce5c00;font-weight:bold">=</span>OK <span style="color:#000">Contiguous</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Licenses</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">Network</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">Command</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetId/jobscript.sbatch
+   <span style="color:#000">WorkDir</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetId
+   <span style="color:#000">StdErr</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetId/slurm_2.err
+   <span style="color:#000">StdIn</span><span style="color:#ce5c00;font-weight:bold">=</span>/dev/null
+   <span style="color:#000">StdOut</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetId/slurm_2.out
+   <span style="color:#000">Power</span><span style="color:#ce5c00;font-weight:bold">=</span>
+   <span style="color:#000">MailUser</span><span style="color:#ce5c00;font-weight:bold">=</span>SomeNetId@tudelft.nl <span style="color:#000">MailType</span><span style="color:#ce5c00;font-weight:bold">=</span>END
+</code></pre></div><ul>
+<li>And finally, to cancel a given job:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ scancel &lt;jobID&gt;
+</code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    <p>It is possible to specify the <code>sbatch</code> directives, like <code>--mem</code>, <code>--ntasks</code>, &hellip; etc in the command line as in:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --time<span style="color:#ce5c00;font-weight:bold">=</span>00:02:00 jobscript.sbatch
+</code></pre></div><p>This specification is generally not recommended for production, as it is less reproducible than specifying within the job script itself.</p>
+
+
+</div>
+
+<h3 id="jobs-with-gpu-resources">Jobs with GPU resources</h3>
+<p>Some DAIC nodes have GPUs of different types, as shown in this table</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>GPU</th>
+<th>Architecture</th>
+<th>Capability</th>
+<th>Memory</th>
+<th>Cores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p100</td>
+<td>NVIDIA Tesla P100</td>
+<td>Pascal</td>
+<td>6.0</td>
+<td>16 GB</td>
+<td>3584</td>
+</tr>
+<tr>
+<td>pascal</td>
+<td>NVIDIA GeForce GTX 1080 Ti</td>
+<td>Pascal</td>
+<td>6.1</td>
+<td>11 GB</td>
+<td>3584</td>
+</tr>
+<tr>
+<td>turing</td>
+<td>NVIDIA GeForce RTX 2080 Ti</td>
+<td>Turing</td>
+<td>7.5</td>
+<td>11 GB</td>
+<td>4352</td>
+</tr>
+<tr>
+<td>v100</td>
+<td>NVIDIA Tesla V100</td>
+<td>Volta</td>
+<td>7.0</td>
+<td>16-32 GB</td>
+<td>5120</td>
+</tr>
+<tr>
+<td>a40</td>
+<td>NVIDIA A40</td>
+<td>Ampere</td>
+<td>8.6</td>
+<td>48 GB</td>
+<td>10752</td>
+</tr>
+</tbody>
+</table>
+<p>To request a gpu for a job, use the sbatch directive <code>--gres=gpu[:type][:number]</code>, where the optional <code>[:type]</code> and <code>[:number]</code> specify the type and number of GPUs requested, as in the examples below:
+
+<figure>
+    <img src="/daicdocumentation/docs/job_submissions/slurm_request_gpus.png"
+         alt=" Fig 1: Slurm directives to request gpus for a job
+ "/> <figcaption>
+            <p><blockquote>
+<p>Fig 1: Slurm directives to request gpus for a job</p>
+</blockquote>
+</p>
+        </figcaption>
+</figure>
+</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See <a href="../software_environment/#environment-modules">Environment modules</a>
+
+</div>
+
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Stop!</h4>
+
+    It’s forbidden to use the GPUs for anything other than research!
+
+</div>
+
+<p>An example batch script with GPU resources</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">#!/bin/sh
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#8f5902;font-style:italic">#SBATCH --partition=general # Request partition. Default is &#39;general&#39; </span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --qos=short         # Request Quality of Service. Default is &#39;short&#39; (maximum run time: 4 hours)</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --time=0:01:00      # Request run time (wall-clock). Default is 1 minute</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --ntasks=1          # Request number of parallel tasks per job. Default is 1</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --cpus-per-task=2   # Request number of CPUs (threads) per task. Default is 1 (note: CPUs are always allocated to jobs per 2).</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --mem=1024          # Request memory (MB) per node. Default is 1024MB (1GB). For multiple tasks, specify --mem-per-cpu instead</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --mail-type=END     # Set mail type to &#39;END&#39; to receive a mail when the job finishes. </span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --error=slurm_%j.err # Set name of error log. %j is the Slurm jobId</span>
+
+<span style="color:#8f5902;font-style:italic">#SBATCH --gres=gpu:1 # Request 1 GPU</span>
+
+<span style="color:#8f5902;font-style:italic"># Measure GPU usage of your job (initialization)</span>
+<span style="color:#000">previous</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>/usr/bin/nvidia-smi --query-accounted-apps<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;gpu_utilization,mem_utilization,max_memory_usage,time&#39;</span> --format<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;csv&#39;</span> <span style="color:#000;font-weight:bold">|</span> /usr/bin/tail -n <span style="color:#4e9a06">&#39;+2&#39;</span><span style="color:#204a87;font-weight:bold">)</span> 
+
+/usr/bin/nvidia-smi <span style="color:#8f5902;font-style:italic"># Check sbatch settings are working (it should show the GPU that you requested)</span>
+
+<span style="color:#8f5902;font-style:italic"># Remaining job commands go below here. For example, to run python code that makes use of GPU resources:</span>
+
+<span style="color:#8f5902;font-style:italic"># Uncomment these lines and adapt them to load the software that your job requires</span>
+<span style="color:#8f5902;font-style:italic">#module use /opt/insy/modulefiles          # Use DAIC INSY software collection</span>
+<span style="color:#8f5902;font-style:italic">#module load cuda/11.2 cudnn/11.2-8.1.1.33 # Load certain versions of cuda and cudnn </span>
+<span style="color:#8f5902;font-style:italic">#srun python my_program.py # Computations should be started with &#39;srun&#39;. For example:</span>
+
+<span style="color:#8f5902;font-style:italic"># Measure GPU usage of your job (result)</span>
+/usr/bin/nvidia-smi --query-accounted-apps<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;gpu_utilization,mem_utilization,max_memory_usage,time&#39;</span> --format<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;csv&#39;</span> <span style="color:#000;font-weight:bold">|</span> /usr/bin/grep -v -F <span style="color:#4e9a06">&#34;</span><span style="color:#000">$previous</span><span style="color:#4e9a06">&#34;</span>
+
+</code></pre></div><h3 id="deploying-dependent-jobs-job-chains">Deploying dependent jobs (job chains)</h3>
+<p>In certain scenarios, it might be desirable to condition the execution of a certain job on the status of another job. In such cases, the sbatch directive <code>--depenency=&lt;condition&gt;:&lt;jobID&gt;</code> can be used, where <code>&lt;condition&gt;</code> specifies the type of dependency (See table 2), and <code>&lt;jobID&gt;</code> is the slurm jobID upon which dependency is based. To specify more than one depenency, the <code>,</code> separator is used to indicate that all dependencies must be specified, and, <code>?</code> is used denotes that any dependency may be satistifed.</p>
+<p>For example, assume the slurm job scripts, <code>job_1.sbatch</code>, &hellip; <code>job_3.sbatch</code> need to run sequentially one after the other. To start this chain, submit the first job and obtain its jobID:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch job_1.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580135</span>
+</code></pre></div><p>Next, submit the second job to run only if the first job is successful:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --dependency<span style="color:#ce5c00;font-weight:bold">=</span>afterok:8580135 job_2.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580136</span>
+</code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Note that if the first job (with jobID <code>8580135</code> in the example) fails, the second job (with jobID <code>8580136</code>) will not run, but it will remain in the queue. You have to use <code>scancel 8580136</code> to cancel this job
+
+</div>
+
+<p>And, now, to run the third job only after the first two jobs have both run successfully:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --dependency<span style="color:#ce5c00;font-weight:bold">=</span>afterok:8580135,8580136 job_3.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580140</span>
+</code></pre></div><p>Alternatively, if the third job is dependent on either job running successfully:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --dependency<span style="color:#ce5c00;font-weight:bold">=</span>afterok:8580135?8580136 job_3.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580141</span>
+</code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <ul>
+<li>If the jobs within a chain involve copying data files to a local disk (<code>/tmp</code>) on a node, you need to make sure all jobs use the same node (<code>--nodelist=&lt;node&gt;</code>, for example <code>--nodelist=insy15</code>)</li>
+</ul>
+
+
+</div>
+
+<table>
+<caption> Table 2: Possible sbatch dependency conditions
+</caption>
+<thead>
+  <tr>
+    <th>Argument</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>after</td>
+    <td>This job can begin execution after the specified jobs have begun execution</td>
+  </tr>
+  <tr>
+    <td>afterany</td>
+    <td>This job can begin execution after the specified jobs have terminated.</td>
+  </tr>
+  <tr>
+    <td>aftercorr</td>
+    <td>A task of this job array can begin execution after the corresponding task ID in the specified job has completed successfully</td>
+  </tr>
+  <tr>
+    <td>afternotok</td>
+    <td>This job can begin execution after the specified jobs have terminated in some failed state</td>
+  </tr>
+  <tr>
+    <td>afterok</td>
+    <td>This job can begin execution after the specified jobs have successfully executed</td>
+  </tr>
+  <tr>
+    <td>singleton</td>
+    <td>This job can begin execution after any previously launched jobs sharing the same job name and user have terminated</td>
+  </tr>
+</tbody>
+</table>
+<h3 id="interactive-jobs-on-compute-nodes">Interactive jobs on compute nodes</h3>
+<p>To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using <code>sinteractve &lt;compute requirements&gt;</code>. If no parameters were provided, the default are applied. <code>&lt;compute requirement&gt;</code> can be specified the same way as sbatch directives within an sbatch script (see <a href="#creating-job-scripts">Creating job scripts</a>), as in the examples below:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hostname <span style="color:#8f5902;font-style:italic"># check you are in one of the login nodes</span>
+login1.hpc.tudelft.nl
+$ sinteractive 
+ 16:07:20 up <span style="color:#0000cf;font-weight:bold">12</span> days, 4:09, <span style="color:#0000cf;font-weight:bold">2</span> users, load average: 7.06, 7.04, 7.12
+$ hostname <span style="color:#8f5902;font-style:italic"># check you are in a compute node</span>
+insy15
+$ squeue -u SomeNetID  <span style="color:#8f5902;font-style:italic"># Replace SomeNetId with your NetID </span>
+JOBID PARTITION  NAME     USER ST  TIME  NODES NODELIST<span style="color:#ce5c00;font-weight:bold">(</span>REASON<span style="color:#ce5c00;font-weight:bold">)</span>
+    <span style="color:#0000cf;font-weight:bold">2</span>   general  bash SomeNetI  R  1:23      <span style="color:#0000cf;font-weight:bold">1</span> insy15  
+$ <span style="color:#204a87">logout</span> <span style="color:#8f5902;font-style:italic"># exit the interactive job</span>
+</code></pre></div><p>To request a node with certain compute requirements:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sinteractive --ntasks<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> --cpus-per-task<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> --mem<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">4096</span>
+ 16:07:20 up <span style="color:#0000cf;font-weight:bold">12</span> days, 4:09, <span style="color:#0000cf;font-weight:bold">2</span> users, load average: 7.06, 7.04, 7.12
+</code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    When you logout from an interactive session, all running processes will be terminated
+
+</div>
+
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbtach script. It means you may need to wait until resources are available as you would when you submit an sbatch script
+
+</div>
+
+<h2 id="checking-slurm-jobs">Checking slurm jobs</h2>
+<p>Sometimes, it may be desirable to inspect slurm jobs beyond their status in the queue. For example, to check which script was submitted, or how the resources were requested and allocated. Below are a few useful commands for this purpose:</p>
+<ul>
+<li>See job definition</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$  scontrol show job <span style="color:#0000cf;font-weight:bold">8580148</span>
+<span style="color:#000">JobId</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8580148</span> <span style="color:#000">JobName</span><span style="color:#ce5c00;font-weight:bold">=</span>jobscript.sbatch
+   <span style="color:#000">UserId</span><span style="color:#ce5c00;font-weight:bold">=</span>SomeNetID<span style="color:#ce5c00;font-weight:bold">(</span>123<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">GroupId</span><span style="color:#ce5c00;font-weight:bold">=</span>domain users<span style="color:#ce5c00;font-weight:bold">(</span>100513<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">MCS_label</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">Priority</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">23721804</span> <span style="color:#000">Nice</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Account</span><span style="color:#ce5c00;font-weight:bold">=</span>ewi-insy <span style="color:#000">QOS</span><span style="color:#ce5c00;font-weight:bold">=</span>short
+   <span style="color:#000">JobState</span><span style="color:#ce5c00;font-weight:bold">=</span>RUNNING <span style="color:#000">Reason</span><span style="color:#ce5c00;font-weight:bold">=</span>None <span style="color:#000">Dependency</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">Requeue</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Restarts</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">BatchFlag</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">Reboot</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">ExitCode</span><span style="color:#ce5c00;font-weight:bold">=</span>0:0
+   <span style="color:#000">RunTime</span><span style="color:#ce5c00;font-weight:bold">=</span>00:00:12 <span style="color:#000">TimeLimit</span><span style="color:#ce5c00;font-weight:bold">=</span>00:01:00 <span style="color:#000">TimeMin</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">SubmitTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:41:57 <span style="color:#000">EligibleTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:41:57
+   <span style="color:#000">AccrueTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:41:57
+   <span style="color:#000">StartTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:41:58 <span style="color:#000">EndTime</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:42:58 <span style="color:#000">Deadline</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">SuspendTime</span><span style="color:#ce5c00;font-weight:bold">=</span>None <span style="color:#000">SecsPreSuspend</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">LastSchedEval</span><span style="color:#ce5c00;font-weight:bold">=</span>2023-07-10T06:41:58 <span style="color:#000">Scheduler</span><span style="color:#ce5c00;font-weight:bold">=</span>Main
+   <span style="color:#000">Partition</span><span style="color:#ce5c00;font-weight:bold">=</span>general AllocNode:Sid<span style="color:#ce5c00;font-weight:bold">=</span>login1:19162
+   <span style="color:#000">ReqNodeList</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">ExcNodeList</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">NodeList</span><span style="color:#ce5c00;font-weight:bold">=</span>awi18
+   <span style="color:#000">BatchHost</span><span style="color:#ce5c00;font-weight:bold">=</span>awi18
+   <span style="color:#000">NumNodes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">NumCPUs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> <span style="color:#000">NumTasks</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> CPUs/Task<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> ReqB:S:C:T<span style="color:#ce5c00;font-weight:bold">=</span>0:0:*:*
+   <span style="color:#000">TRES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>2,mem<span style="color:#ce5c00;font-weight:bold">=</span>1G,node<span style="color:#ce5c00;font-weight:bold">=</span>1,billing<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+   Socks/Node<span style="color:#ce5c00;font-weight:bold">=</span>* NtasksPerN:B:S:C<span style="color:#ce5c00;font-weight:bold">=</span>0:0:*:* <span style="color:#000">CoreSpec</span><span style="color:#ce5c00;font-weight:bold">=</span>*
+   <span style="color:#000">MinCPUsNode</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> <span style="color:#000">MinMemoryNode</span><span style="color:#ce5c00;font-weight:bold">=</span>1G <span style="color:#000">MinTmpDiskNode</span><span style="color:#ce5c00;font-weight:bold">=</span>50M
+   <span style="color:#000">Features</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">DelayBoot</span><span style="color:#ce5c00;font-weight:bold">=</span>00:00:00
+   <span style="color:#000">OverSubscribe</span><span style="color:#ce5c00;font-weight:bold">=</span>OK <span style="color:#000">Contiguous</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Licenses</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">Network</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">Command</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetID/jobscript.sbatch
+   <span style="color:#000">WorkDir</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetID
+   <span style="color:#000">StdErr</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetID/slurm_8580148.err
+   <span style="color:#000">StdIn</span><span style="color:#ce5c00;font-weight:bold">=</span>/dev/null
+   <span style="color:#000">StdOut</span><span style="color:#ce5c00;font-weight:bold">=</span>/home/nfs/SomeNetID/slurm_8580148.out
+   <span style="color:#000">Power</span><span style="color:#ce5c00;font-weight:bold">=</span>
+   <span style="color:#000">MailUser</span><span style="color:#ce5c00;font-weight:bold">=</span>SomeNetId@tudelft.nl <span style="color:#000">MailType</span><span style="color:#ce5c00;font-weight:bold">=</span>END
+   
+
+
+</code></pre></div><ul>
+<li>See statistics of a running job</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sstat <span style="color:#0000cf;font-weight:bold">1</span>
+  JobID  AveRSS  AveCPU  NTasks  AveDiskRead AveDiskWrite
+------- ------- ------- ------- ------------ ------------
+1.0        426K 00:00.0       <span style="color:#0000cf;font-weight:bold">1</span>        0.52M        0.01M
+</code></pre></div><ul>
+<li>See accounting information of a finished job (also see &ndash;long option)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ $ sacct -j <span style="color:#0000cf;font-weight:bold">8580148</span>
+JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- -------- 
+<span style="color:#0000cf;font-weight:bold">8580148</span>      jobscript+    general   ewi-insy          <span style="color:#0000cf;font-weight:bold">2</span>  COMPLETED      0:0 
+8580148.bat+      batch              ewi-insy          <span style="color:#0000cf;font-weight:bold">2</span>  COMPLETED      0:0 
+</code></pre></div><p>See overall job efficiency of a finished job</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ seff <span style="color:#0000cf;font-weight:bold">8580148</span>
+Job ID: <span style="color:#0000cf;font-weight:bold">8580148</span>
+Cluster: insy
+User/Group: aeaahmed/domain users
+State: COMPLETED <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87">exit</span> code 0<span style="color:#ce5c00;font-weight:bold">)</span>
+Nodes: <span style="color:#0000cf;font-weight:bold">1</span>
+Cores per node: <span style="color:#0000cf;font-weight:bold">2</span>
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:01:00 core-walltime
+Job Wall-clock time: 00:00:30
+Memory Utilized: 340.00 KB
+Memory Efficiency: 0.03% of 1.00 GB
+</code></pre></div><ul>
+<li>See partition definitions</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ scontrol show partition
+<span style="color:#000">PartitionName</span><span style="color:#ce5c00;font-weight:bold">=</span>general
+   <span style="color:#000">AllowGroups</span><span style="color:#ce5c00;font-weight:bold">=</span>ALL <span style="color:#000">AllowAccounts</span><span style="color:#ce5c00;font-weight:bold">=</span>ALL <span style="color:#000">DenyQos</span><span style="color:#ce5c00;font-weight:bold">=</span>influence
+   <span style="color:#000">AllocNodes</span><span style="color:#ce5c00;font-weight:bold">=</span>login<span style="color:#ce5c00;font-weight:bold">[</span>1-3<span style="color:#ce5c00;font-weight:bold">]</span>,oodtest <span style="color:#000">Default</span><span style="color:#ce5c00;font-weight:bold">=</span>YES <span style="color:#000">QoS</span><span style="color:#ce5c00;font-weight:bold">=</span>N/A
+   <span style="color:#000">DefaultTime</span><span style="color:#ce5c00;font-weight:bold">=</span>00:01:00 <span style="color:#000">DisableRootJobs</span><span style="color:#ce5c00;font-weight:bold">=</span>NO <span style="color:#000">ExclusiveUser</span><span style="color:#ce5c00;font-weight:bold">=</span>NO <span style="color:#000">GraceTime</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">Hidden</span><span style="color:#ce5c00;font-weight:bold">=</span>NO
+   <span style="color:#000">MaxNodes</span><span style="color:#ce5c00;font-weight:bold">=</span>UNLIMITED <span style="color:#000">MaxTime</span><span style="color:#ce5c00;font-weight:bold">=</span>UNLIMITED <span style="color:#000">MinNodes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> <span style="color:#000">LLN</span><span style="color:#ce5c00;font-weight:bold">=</span>NO <span style="color:#000">MaxCPUsPerNode</span><span style="color:#ce5c00;font-weight:bold">=</span>UNLIMITED
+   <span style="color:#000">Nodes</span><span style="color:#ce5c00;font-weight:bold">=</span>3dgi<span style="color:#ce5c00;font-weight:bold">[</span>1-2<span style="color:#ce5c00;font-weight:bold">]</span>,100plus,awi<span style="color:#ce5c00;font-weight:bold">[</span>01-26<span style="color:#ce5c00;font-weight:bold">]</span>,cor1,gpu<span style="color:#ce5c00;font-weight:bold">[</span>01-11<span style="color:#ce5c00;font-weight:bold">]</span>,grs<span style="color:#ce5c00;font-weight:bold">[</span>1-4<span style="color:#ce5c00;font-weight:bold">]</span>,influ<span style="color:#ce5c00;font-weight:bold">[</span>1-6<span style="color:#ce5c00;font-weight:bold">]</span>,insy<span style="color:#ce5c00;font-weight:bold">[</span>11-16<span style="color:#ce5c00;font-weight:bold">]</span>,tbm5,wis1
+   <span style="color:#000">PriorityJobFactor</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">PriorityTier</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#000">RootOnly</span><span style="color:#ce5c00;font-weight:bold">=</span>NO <span style="color:#000">ReqResv</span><span style="color:#ce5c00;font-weight:bold">=</span>NO <span style="color:#000">OverSubscribe</span><span style="color:#ce5c00;font-weight:bold">=</span>NO
+   <span style="color:#000">OverTimeLimit</span><span style="color:#ce5c00;font-weight:bold">=</span>NONE <span style="color:#000">PreemptMode</span><span style="color:#ce5c00;font-weight:bold">=</span>OFF
+   <span style="color:#000">State</span><span style="color:#ce5c00;font-weight:bold">=</span>UP <span style="color:#000">TotalCPUs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">4064</span> <span style="color:#000">TotalNodes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">59</span> <span style="color:#000">SelectTypeParameters</span><span style="color:#ce5c00;font-weight:bold">=</span>NONE
+   <span style="color:#000">JobDefaults</span><span style="color:#ce5c00;font-weight:bold">=(</span>null<span style="color:#ce5c00;font-weight:bold">)</span>
+   <span style="color:#000">DefMemPerNode</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1024</span> <span style="color:#000">MaxMemPerNode</span><span style="color:#ce5c00;font-weight:bold">=</span>UNLIMITED
+   <span style="color:#000">TRESBillingWeights</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">CPU</span><span style="color:#ce5c00;font-weight:bold">=</span>0.5,Mem<span style="color:#ce5c00;font-weight:bold">=</span>0.083333333G,GRES/gpu<span style="color:#ce5c00;font-weight:bold">=</span>16.0
+
+</code></pre></div><ul>
+<li>See Quality of Service definitions</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sacctmgr list qos
+      Name   Priority  GraceTime    Preempt   PreemptExemptTime PreemptMode                                    Flags UsageThres UsageFactor       GrpTRES   GrpTRESMins GrpTRESRunMin GrpJobs GrpSubmit     GrpWall       MaxTRES MaxTRESPerNode   MaxTRESMins     MaxWall     MaxTRESPU MaxJobsPU MaxSubmitPU     MaxTRESPA MaxJobsPA MaxSubmitPA       MinTRES 
+---------- ---------- ---------- ---------- ------------------- ----------- ---------------------------------------- ---------- ----------- ------------- ------------- ------------- ------- --------- ----------- ------------- -------------- ------------- ----------- ------------- --------- ----------- ------------- --------- ----------- ------------- 
+    normal          <span style="color:#0000cf;font-weight:bold">0</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000                                                                                                                                                                                                                <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> 
+     short         <span style="color:#0000cf;font-weight:bold">50</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>3562,gre+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                           04:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>2096,gre+                 <span style="color:#0000cf;font-weight:bold">10000</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+      long         <span style="color:#0000cf;font-weight:bold">25</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>3144,gre+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                         7-00:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>838,gres+                  <span style="color:#0000cf;font-weight:bold">1000</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+  infinite          <span style="color:#0000cf;font-weight:bold">0</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>32,gres/+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                                                          <span style="color:#0000cf;font-weight:bold">1</span>         <span style="color:#0000cf;font-weight:bold">100</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+interacti+        <span style="color:#0000cf;font-weight:bold">100</span>   00:00:00                                    cluster                              DenyOnLimit               2.000000                                                       <span style="color:#0000cf;font-weight:bold">65536</span>                                                           01:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>2,gres/g+         <span style="color:#0000cf;font-weight:bold">1</span>           <span style="color:#0000cf;font-weight:bold">1</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+   student         <span style="color:#0000cf;font-weight:bold">10</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>192,gres+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                           04:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>2,gres/g+         <span style="color:#0000cf;font-weight:bold">1</span>         <span style="color:#0000cf;font-weight:bold">100</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+reservati+        <span style="color:#0000cf;font-weight:bold">100</span>   00:00:00                                    cluster          DenyOnLimit,RequiresReservation               1.000000                                                       <span style="color:#0000cf;font-weight:bold">65536</span>                                                                                                  <span style="color:#0000cf;font-weight:bold">10000</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+ influence        <span style="color:#0000cf;font-weight:bold">100</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000                                                       <span style="color:#0000cf;font-weight:bold">65536</span>                                                                                                  <span style="color:#0000cf;font-weight:bold">10000</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+guest-sho+         <span style="color:#0000cf;font-weight:bold">10</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>200,gres+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                           04:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>128,gres+                   <span style="color:#0000cf;font-weight:bold">100</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+guest-long          <span style="color:#0000cf;font-weight:bold">0</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>200,gres+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                         7-00:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>128,gres+         <span style="color:#0000cf;font-weight:bold">1</span>          <span style="color:#0000cf;font-weight:bold">10</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+    medium         <span style="color:#0000cf;font-weight:bold">35</span>   00:00:00                                    cluster                              DenyOnLimit               1.000000 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>3352,gre+                                         <span style="color:#0000cf;font-weight:bold">65536</span>                                                         1-12:00:00 <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1466,gre+                  <span style="color:#0000cf;font-weight:bold">2000</span>                                      <span style="color:#000">cpu</span><span style="color:#ce5c00;font-weight:bold">=</span>1,mem<span style="color:#ce5c00;font-weight:bold">=</span>1M 
+
+
+</code></pre></div><h2 id="job-prioritization-and-waiting-times">Job prioritization and waiting times</h2>
+<p>Priority = 40,000,000 * QoS + 20,000,000 * FairShare</p>
+<table>
+<thead>
+<tr>
+<th>QoS</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interactive</td>
+<td>40,000,000</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>20,000,000</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>10,000,000</td>
+</tr>
+<tr>
+<td>Infinite</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>FairShare</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usage &lt; Share</td>
+<td>20,000,000</td>
+</tr>
+<tr>
+<td>Usage &gt; Share</td>
+<td>20,000,000 - 0</td>
+</tr>
+<tr>
+<td>No Share</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
+(Interactive QoS has usage factor 2.0; usage is doubled)</p>
+<p>(  2 CPUs / 2 + 12 GB Mem / 12             ) * 4 hours =   28800
+(  2 CPUs / 2 + 12 GB Mem / 12 + 1 GPU * 10) * 4 hours =  172800
+(160 CPUs / 2 + 48 GB Mem / 12             ) * 4 hours = 1209600
+(  2 CPUs / 2 + 12 GB Mem / 12             ) * 7 days  = 1209600</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>QoS Priority</th>
+<th>FairShare Priority</th>
+<th>Job Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interactive, low usage</td>
+<td>40,000,000</td>
+<td>20,000,000</td>
+<td>60,000,000</td>
+</tr>
+<tr>
+<td>Interactive, extreme usage</td>
+<td>40,000,000</td>
+<td>&gt;0</td>
+<td>&gt;40,000,000</td>
+</tr>
+<tr>
+<td>Short, low usage</td>
+<td>20,000,000</td>
+<td>20,000,000</td>
+<td>40,000,000</td>
+</tr>
+<tr>
+<td>Long, low usage</td>
+<td>10,000,000</td>
+<td>20,000,000</td>
+<td>30,000,000</td>
+</tr>
+<tr>
+<td>Short, extreme usage</td>
+<td>20,000,000</td>
+<td>&gt;0</td>
+<td>&gt;20,000,000</td>
+</tr>
+<tr>
+<td>Infinite, low usage</td>
+<td>0</td>
+<td>20,000,000</td>
+<td>20,000,000</td>
+</tr>
+<tr>
+<td>Long, extreme usage</td>
+<td>10,000,000</td>
+<td>&gt;0</td>
+<td>&gt;10,000,000</td>
+</tr>
+<tr>
+<td>Infinite, extreme usage</td>
+<td>0</td>
+<td>&gt;0</td>
+<td>&gt;0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fair-tree-fairshare">Fair tree fairshare</h3>
+<h3 id="priority-tiers">Priority tiers</h3>
+<p>The partitions are tiered: the general partition is in the lowest priority tier, department partitions (insy, st) are in the middle priority tier, and partitions for specific groups (visionlab, wis) are in the highest priority tier.</p>
+<p>When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user)priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user)priority jobs that fit (if any).</p>
+<p>The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.</p>
+<p>A nice thing about Slurm is that you can specify multiple partitions for your job (&ndash;partition=wis,st,general) which should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.</p>
+<h3 id="where-to-submit-jobs">Where to submit jobs?</h3>
+<p>The idea behind the tiering is to submit to all partitions, e.g. <code>--partition=st,general</code>, and let the scheduler figure out were the job can start the soonest.</p>
+<p>Resources of all partitions (eg, <code>st</code>) are also part of the <code>general</code> partition. Thus:</p>
+<ol>
+<li>submitting to the  <code>general</code> partition allows jobs to use all nodes</li>
+<li>submitting to those partitions alone, results in longer waiting times, since the <code>general</code> partition has much more resources, and the bigger the resource pool, the more chances a job has to be scheduled or back-filled</li>
+<li>The optimal way is to submit to both <code>general</code> and specific partitions. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.</li>
+</ol>
+<h2 id="parallelizing-jobs-with-job-arrays">Parallelizing jobs with Job Arrays</h2>
+<p>There can be scenarios, eg in simulations or benchmarking, where a job script needs to run many times with only different parameter set each time. If done manually, keeping track of the parameter values and corresponding jobIds is cumbersome. <em>Job Arrays</em> are a convenient mechanism for submitting and managing such jobs.</p>
+<p>A job array is created by adding the <code>--array=&lt;indexes&gt;</code> directive to an sbatch script (or in the command line), where <code>&lt;indexes&gt;</code> can be either a comma separated list of integers, or a range with optional step size, eg, <code>1-10:2</code>. The minimum index value is 0, and the maximum is a Slurm configuration parameter (<code>MaxArraySize - 1</code>).</p>
+<p>All jobs in the array inherit the same compute resources requirements and the same jobId, but they differ in the index obtained, as in the following examples creating arrays of size 2:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --array<span style="color:#ce5c00;font-weight:bold">=</span>1,4 jobscript.sbatch <span style="color:#8f5902;font-style:italic"># Indexes specified as a list</span>
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580151</span>
+$ squeue -u aeaahmed
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span style="color:#ce5c00;font-weight:bold">(</span>REASON<span style="color:#ce5c00;font-weight:bold">)</span>
+         8580151_1   general jobscrip aeaahmed  R       0:01      <span style="color:#0000cf;font-weight:bold">1</span> grs4
+         8580151_4   general jobscrip aeaahmed  R       0:01      <span style="color:#0000cf;font-weight:bold">1</span> awi18
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sbatch --array<span style="color:#ce5c00;font-weight:bold">=</span>1-2 jobscript.sbatch  <span style="color:#8f5902;font-style:italic"># Range specified with default step size = 1</span>
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580149</span>
+$ squeue -u aeaahmed
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span style="color:#ce5c00;font-weight:bold">(</span>REASON<span style="color:#ce5c00;font-weight:bold">)</span>
+         8580149_1   general jobscrip aeaahmed  R       0:21      <span style="color:#0000cf;font-weight:bold">1</span> grs4
+         8580149_2   general jobscrip aeaahmed  R       0:21      <span style="color:#0000cf;font-weight:bold">1</span> awi18
+
+</code></pre></div>
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    To limit the maximum number of simulatenously running jobs in an array use the <code>%</code> separator, eg<code>--array=1-15%3</code>.
+
+</div>
+
+<h3 id="jobid-and-enviroment-variables">JobId and enviroment variables</h3>
+<p>Jobs within an array are assigned special slurm variables that can be exploited for various computational objectives.</p>
+<p>In the simplest case, you can use the <code>${SLURM_ARRAY_TASK_ID}</code> directly in a script to assign parameter values. For example, to run a workflow across a set of images <code>image1.png</code> &hellip; <code>image5.png</code>, you can simply create an array using the sbatch directive <code>--array=1-5</code>, and then, within your sbatch script, use <code>image_${SLURM_ARRAY_TASK_ID}.png</code> to indicate the corresponding image.</p>
+<p>In more complex scenarios, eg, when the parameters of interest are not mappable to indexes (of a job array), one can use a config file to map the parameters to the job array indexes. For example, let&rsquo;s assume the following parameters:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat jobarray.config
+ArrayTaskId     Flower  Color   Origin
+<span style="color:#0000cf;font-weight:bold">1</span>       Rose    Red     Worldwide
+<span style="color:#0000cf;font-weight:bold">2</span>       Sunflower       Yellow  NorthAmerica
+<span style="color:#0000cf;font-weight:bold">3</span>       Tulip   Various Persia<span style="color:#000;font-weight:bold">&amp;</span>Turkey
+<span style="color:#0000cf;font-weight:bold">4</span>       Orchid  Various Worldwide
+<span style="color:#0000cf;font-weight:bold">5</span>       Lily    Various Worldwide
+</code></pre></div><p>Now, one can use these parameters inside a job script as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat jobarray.sbatch
+<span style="color:#8f5902;font-style:italic">#!/bin/bash</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --job-name=JobArrayExample</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --ntasks=1</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --cpus-per-task=1</span>
+<span style="color:#8f5902;font-style:italic">#SBATCH --array=1-5</span>
+
+<span style="color:#000">config</span><span style="color:#ce5c00;font-weight:bold">=</span>jobarray.config <span style="color:#8f5902;font-style:italic"># Path to config file</span>
+
+<span style="color:#8f5902;font-style:italic"># Extract parameters:</span>
+<span style="color:#000">flower</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>awk -v <span style="color:#000">ArrayTaskID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$SLURM_ARRAY_TASK_ID</span> <span style="color:#4e9a06">&#39;$1==ArrayTaskID {print $2}&#39;</span> <span style="color:#000">$config</span><span style="color:#204a87;font-weight:bold">)</span>
+<span style="color:#000">color</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>awk -v <span style="color:#000">ArrayTaskID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$SLURM_ARRAY_TASK_ID</span> <span style="color:#4e9a06">&#39;$1==ArrayTaskID {print $3}&#39;</span> <span style="color:#000">$config</span><span style="color:#204a87;font-weight:bold">)</span>
+<span style="color:#000">origin</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>awk -v <span style="color:#000">ArrayTaskID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$SLURM_ARRAY_TASK_ID</span> <span style="color:#4e9a06">&#39;$1==ArrayTaskID {print $4}&#39;</span> <span style="color:#000">$config</span><span style="color:#204a87;font-weight:bold">)</span>
+
+<span style="color:#8f5902;font-style:italic"># Print to a file a message that includes the current $SLURM_ARRAY_TASK_ID, the same name, and the sex of the sample</span>
+<span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;Array task: </span><span style="color:#4e9a06">${</span><span style="color:#000">SLURM_ARRAY_TASK_ID</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">,  Flower: </span><span style="color:#4e9a06">${</span><span style="color:#000">flower</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">, color: </span><span style="color:#4e9a06">${</span><span style="color:#000">color</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">, origin: </span><span style="color:#4e9a06">${</span><span style="color:#000">origin</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> &gt;&gt; output.txt
+$
+$ sbatch jobArray.sbatch
+Submitted batch job <span style="color:#0000cf;font-weight:bold">8580317</span>
+$ squeue --me --all
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span style="color:#ce5c00;font-weight:bold">(</span>REASON<span style="color:#ce5c00;font-weight:bold">)</span>
+     8580317_<span style="color:#ce5c00;font-weight:bold">[</span>1-5<span style="color:#ce5c00;font-weight:bold">]</span>   general JobArray aeaahmed PD       0:00      <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#ce5c00;font-weight:bold">(</span>Priority<span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>In this example, slurm created 5 job arrays, each using the default settings (the <code>general</code> partition, <code>short</code> QoS, <code>00:01:00</code> time, <code>1</code> task with <code>1</code> CPU, and <code>1G</code> memory).
+<code>awk</code> was used to look up the match between the jobId and parameters of the script.
+For more on the <code>awk</code> utitilty, See this <a href="https://blog.jpalardy.com/posts/awk-tutorial-part-1/">Awk tutorial</a></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+
+    Note that all jobs in the array are listed concisely as a single entry when they are in the Pending state (PD).
+
+</div>
+
+<p>Jobs within a task array are run in parallel, and hence, there&rsquo;s no gaurantee about their order of exectuion. This is evident looking at the output file from this example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat output.txt
+Array task: 2,  Flower: Sunflower, color: Yellow, origin: NorthAmerica
+Array task: 3,  Flower: Tulip, color: Various, origin: Persia<span style="color:#000;font-weight:bold">&amp;</span>Turkey
+Array task: 1,  Flower: Rose, color: Red, origin: Worldwide
+Array task: 5,  Flower: Lily, color: Various, origin: Worldwide
+Array task: 4,  Flower: Orchid, color: Various, origin: Worldwide
+</code></pre></div><p>Other slurm variables that are set inside a job array are shown in the following table, with values based on the preceeding example:</p>
+<table>
+<thead>
+<tr>
+<th>Slurm Environment Variable</th>
+<th>Description</th>
+<th>Value in example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SLURM_ARRAY_JOB_ID</code></td>
+<td>The first job ID of the array.</td>
+<td>8580317</td>
+</tr>
+<tr>
+<td><code>SLURM_ARRAY_TASK_ID</code></td>
+<td>The job array index value.</td>
+<td>A value in range 1-5</td>
+</tr>
+<tr>
+<td><code>SLURM_ARRAY_TASK_COUNT</code></td>
+<td>The number of tasks in the job array.</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>SLURM_ARRAY_TASK_MAX</code></td>
+<td>The highest job array index value.</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>SLURM_ARRAY_TASK_MIN</code></td>
+<td>The lowest job array index value</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slurm-commands-and-job-arrays">Slurm commands and job arrays</h3>
+<h2 id="troubleshooting-common-issues--">Troubleshooting Common Issues -</h2>
+<p><em>Likely contains links to the Support area</em></p>
+<p>see this example: <a href="https://www.nhr.kit.edu/userdocs/horeka/batch/">https://www.nhr.kit.edu/userdocs/horeka/batch/</a></p>
+<h2 id="kerberos-authentication">Kerberos Authentication</h2>
+<ul>
+<li>Slurm caches your Kerberos ticket, and uses it to execute your job</li>
+<li>The ticket is renewed automatically until it expires (after at most 7 days)</li>
+<li>Regularly renew the ticket in Slurm’s cache while your jobs are queued or running:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ auks -a
+Auks API request succeed
+</code></pre></div><ul>
+<li>To automatically renew your ticket in Slurm’s cache until you change your NetID password, run the following on the login1 server:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ install_keytab
+Password <span style="color:#204a87;font-weight:bold">for</span> somebody@TUDELFT.NET:
+Installed keytab.
+</code></pre></div><p>You need to rerun this command whenever you change your NetID password (at least every 6 months). Otherwise, the automatic renewal will not work and you will receive a warning e-mail.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-405052735b090132fbb89a27d6a200dc">7 - Software Environment</h1>
+    <div class="lead">How to set up your tools and/or run certain libraries</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<ol>
+<li>This will be split into multiple pages. Perhaps the title changed too!</li>
+<li>Warn that this info only applies to HPC; and DHPC has a different software stack</li>
+</ol>
+
+</div>
+
+<ul>
+<li>Available Software and Libraries/ Loading and Using Software Modules</li>
+<li>Unavailable/Uninstalled software:
+<ul>
+<li>Installing binaries when possible</li>
+<li>Compiling and Running Code</li>
+<li>Virtualization: conda, virtualenv, mamba,</li>
+<li>Containerization: docker, udocker, singularity, Apptainer</li>
+</ul>
+</li>
+<li>Software Licensing and Restrictions</li>
+<li>Examples and Tutorials demonstrating the usage of specific software or libraries (eg, AI frameworks like TensorFlow or PyTorrch, R scripts, .. etc) on different computing resources</li>
+</ul>
+<h2 id="environment-modules">Environment modules</h2>
+<p>Third-party software (CUDA, cuDNN, Matlab) is available through the module system; to use them, enable the HPC software collection:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ module use /opt/insy/modulefiles
+</code></pre></div><p>To see all available packages and versions:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ module avail
+---------------------- /opt/insy/modulefiles -----------------------
+  cuda/11.0    cudnn/11.0-8.0.3.33    devtoolset/8    matlab/R2020a
+  cuda/11.2    cudnn/11.2-8.1.1.33    devtoolset/10   matlab/R2020b
+  ...
+$ module whatis cudnn
+cudnn/11.2-8.1.1.33 : cuDNN 8.1.1.33 <span style="color:#204a87;font-weight:bold">for</span> CUDA 11.2
+cudnn/11.2-8.1.1.33 : NVIDIA CUDA Deep Neural Network library <span style="color:#ce5c00;font-weight:bold">(</span>cuDNN<span style="color:#ce5c00;font-weight:bold">)</span> is a GPU-accelerated library of primitives <span style="color:#204a87;font-weight:bold">for</span> deep neural networks.
+</code></pre></div><p>To use a package, load it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ module load cuda/11.2 cudnn/11.2-8.1.1.33
+$ module list
+Currently Loaded Modules:
+   1<span style="color:#ce5c00;font-weight:bold">)</span> cuda/11.2   2<span style="color:#ce5c00;font-weight:bold">)</span> cudnn/11.2-8.1.1.33
+</code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f0a22a813c843322c0d360d952e434ce">8 - Performance profiling and Optimization</h1>
+    <div class="lead">How to profile your compute usage</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>This page gives basic principles/concepts/tips only!</p>
+
+</div>
+
+<ul>
+<li>Handy Code Optimization Techniques: <a href="https://www.nhr.kit.edu/userdocs/horeka/filesystems_performance/">https://www.nhr.kit.edu/userdocs/horeka/filesystems_performance/</a></li>
+<li>Parallel Computing Concepts</li>
+<li>Scalability and Resource Utilization</li>
+<li>Profiling and Debugging Tools/ Performance bottlenecks identification: <a href="https://www.nhr.kit.edu/userdocs/horeka/debugging_gdb/;">https://www.nhr.kit.edu/userdocs/horeka/debugging_gdb/;</a> <a href="https://www.nhr.kit.edu/userdocs/horeka/profiling_gprof/;">https://www.nhr.kit.edu/userdocs/horeka/profiling_gprof/;</a> <a href="https://www.nhr.kit.edu/userdocs/horeka/profiling_intel/">https://www.nhr.kit.edu/userdocs/horeka/profiling_intel/</a></li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-92db10bb5058100463dcb4991b228a3e">9 - Policies and Usage guidelines</h1>
+    <div class="lead">What is acceptable usage of HPC?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>Perhaps this can be a subpage within the access_accounts area?</p>
+
+</div>
+
+<ul>
+<li>EU Delft acceptable usage policy from IT- not allowed to do illegal stuff &ndash;&gt; <em>There should be a link to such a document!</em></li>
+<li>Resource Allocation, Priority Access and Fair usage</li>
+<li>Data Management Policies, including backup and retention practices.</li>
+<li>Security Measures and Guidelines  for handling sensitive data</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-266fc006caf70aa6f262a2ac87460ffa">10 - Contributors</h1>
+    <div class="lead">Who contributed to this documentation?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>give it a try- find the names on</p>
+
+</div>
+
+<p>Acknowledge different contributors:</p>
+<ul>
+<li>Sys admins?</li>
+<li>Funders?</li>
+<li>Content Writers:</li>
+<li>Reviewers and Editors:</li>
+<li>Input and Suggestions:</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cb0ae8239084a8bc61922a0442e54304">11 - Getting Started</h1>
+    <div class="lead">What does your user need to know to try your project?</div>
+	
+
+<div class="pageinfo pageinfo-primary">
+<p>This is a placeholder page that shows you how to use this template site.</p>
+
+</div>
+
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+    <a class="text-white" target="_blank" rel="noopener" href="https://example.org/mail" aria-label="User mailing list">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
+    <a class="text-white" target="_blank" rel="noopener" href="" aria-label="">
+      <i class=""></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
+    <a class="text-white" target="_blank" rel="noopener" href="" aria-label="">
+      <i class=""></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener" href="https://github.com/google/docsy" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="" aria-label="">
+    <a class="text-white" target="_blank" rel="noopener" href="" aria-label="">
+      <i class=""></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" rel="noopener" href="https://example.org/mail" aria-label="Developer mailing list">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2023 The Docsy Authors All Rights Reserved</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    <script src="/daicdocumentation/js/main.min.7f4bcb49bdbe0fca22211dd75286bcda06ea254edfe4f32d08ff008cb8fa76ed.js" integrity="sha256-f0vLSb2&#43;D8oiIR3XUoa82gbqJU7f5PMtCP8AjLj6du0=" crossorigin="anonymous"></script>
+<script src='/daicdocumentation/js/prism.js'></script>
+<script src='/daicdocumentation/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

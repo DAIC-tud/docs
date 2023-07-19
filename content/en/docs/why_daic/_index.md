@@ -1,6 +1,6 @@
 ---
-title: "Why HPC"
-linkTitle: "Why HPC"
+title: "Why DAIC"
+linkTitle: "Why DAIC"
 weight: 1
 description: >
   Why was this HPC set up?

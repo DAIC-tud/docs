@@ -19,3 +19,5 @@ Again, this page is linked to from the Quick Start guide
 
 {{< figure src="connecting_to_hpc.png" caption=">Fig 1: Connecting to DAIC"  >}}
 
+
+https://www.nhr.kit.edu/userdocs/horeka/sshkeys/

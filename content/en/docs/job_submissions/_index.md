@@ -14,7 +14,7 @@ DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job sc
 A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
 
-{{< figure src="slurm_architecture.gif" caption=">Fig 1: Slurm components- adapted from [Slurm documentation](https://slurm.schedmd.com/overview.html)" >}}
+{{< figure src="DAIC_partitions.png" caption=">Fig 1: Slurm components- adapted from [Slurm documentation](https://slurm.schedmd.com/overview.html)" >}}
 
 
 ## Partitions and Quality of Service
@@ -28,7 +28,7 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 
 
 <table>
-<caption> Table 1: General partitions and QoS; specific groups use other partitions and QoS
+<caption> Table 1: General partition and QoS; specific groups use other partitions and QoS
 </caption>
 <thead>
   <tr>
@@ -585,24 +585,22 @@ Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
 ### Fair tree fairshare
 
 ### Priority tiers
-The partitions are tiered: the general partition is in the lowest priority tier, department partitions (insy, st) are in the middle priority tier, and partitions for specific groups (visionlab, wis) are in the highest priority tier.
+The partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments.
 
 When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user)priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user)priority jobs that fit (if any).
 
 The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
 
-A nice thing about Slurm is that you can specify multiple partitions for your job (--partition=wis,st,general) which should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.
-
 
 ### Where to submit jobs?
 
-The idea behind the tiering is to submit to all partitions, e.g. `--partition=st,general`, and let the scheduler figure out were the job can start the soonest. 
+The idea behind the tiering is to submit to all partitions, e.g. `--partition=wis,st,general`, and let the scheduler figure out were the job can start the soonest.  This should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.
 
 
 Resources of all partitions (eg, `st`) are also part of the `general` partition. Thus:
-1. submitting to the  `general` partition allows jobs to use all nodes
-2. submitting to those partitions alone, results in longer waiting times, since the `general` partition has much more resources, and the bigger the resource pool, the more chances a job has to be scheduled or back-filled
-3. The optimal way is to submit to both `general` and specific partitions. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+* submitting to the  `general` partition allows jobs to use all nodes
+* submitting to group-specific partitions alone results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
+* The optimal way is to submit to both `general` and group-specific partitions when acessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
 
 
 ## Parallelizing jobs with Job Arrays

@@ -480,7 +480,7 @@ $ sstat 1
 
 * See accounting information of a finished job (also see --long option)
 ```bash
-$ $ sacct -j 8580148
+$ sacct -j 8580148
 JobID           JobName  Partition    Account  AllocCPUS      State ExitCode 
 ------------ ---------- ---------- ---------- ---------- ---------- -------- 
 8580148      jobscript+    general   ewi-insy          2  COMPLETED      0:0 
@@ -492,7 +492,7 @@ See overall job efficiency of a finished job
 $ seff 8580148
 Job ID: 8580148
 Cluster: insy
-User/Group: aeaahmed/domain users
+User/Group: SomeNetID/domain users
 State: COMPLETED (exit code 0)
 Nodes: 1
 Cores per node: 2
@@ -537,8 +537,6 @@ reservati+        100   00:00:00                                    cluster     
 guest-sho+         10   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=200,gres+                                         65536                                                           04:00:00 cpu=128,gres+                   100                                      cpu=1,mem=1M 
 guest-long          0   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=200,gres+                                         65536                                                         7-00:00:00 cpu=128,gres+         1          10                                      cpu=1,mem=1M 
     medium         35   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3352,gre+                                         65536                                                         1-12:00:00 cpu=1466,gre+                  2000                                      cpu=1,mem=1M 
-
-
 ```
 
 ## Job prioritization and waiting times

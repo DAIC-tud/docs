@@ -6,6 +6,7 @@ description: >
   What is acceptable usage of DAIC?
 ---
 
+The available processing power and memory in DAIC is large, but still limited. You should use the available resources efficiently and fairly. This page lays out a few general principles, guidelines ~~and policies~~ for considerate use of DAIC.
 
 ## Using shared resources
 

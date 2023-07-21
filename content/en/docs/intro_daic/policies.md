@@ -75,7 +75,7 @@ Most multi-threaded applications (such as `Java` and `Matlab`) will automaticall
   * If your `screen`'s [Kerberos ticket]() has expired, renew it so your job can successfully save it's results.
   * Use the `top` program to monitor the cpu (`%CPU`) and memory (`%MEM`) usage of your code. If either is too high, kill your code so it doesn't cause problems for other users.
   * Don't leave `top` running unless your are continuously watching it; press q to quit.
-  * Watch the current resource usage ~~or the `servers`` command~~, and if the server is running close to it's limits (higher than 90% server load or memory, swap or disk usage), consider moving your job to a less busy server. ~~If more than half of the servers are at their limits, consider killing one or more jobs to make some space for others. ~~
+  * Watch the current resource usage (see [Current resource usage page](https://login.daic.tudelft.nl/)) ~~or the `servers`` command~~, and if the server is running close to it's limits (higher than 90% server load or memory, swap or disk usage), consider moving your job to a less busy server. ~~If more than half of the servers are at their limits, consider killing one or more jobs to make some space for others. ~~
 
 
 

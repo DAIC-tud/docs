@@ -18,7 +18,7 @@ This aspect is different from DHPC. Comment on the difference too!
 * Data Transfer Methods
 * Collaboration Options such as shared project spaces or job distribution techniques.
 
-
+# Filesystem and storage
 
 Note:
 Umbrella (project storage), for everybody and everything, always!

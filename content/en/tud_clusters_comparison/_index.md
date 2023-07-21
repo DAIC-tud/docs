@@ -1,13 +1,15 @@
 
 ---
-title: "Can I use HPC?"
+title: "TU Delft clusters comparison"
 weight: 10
 menu:
   main:
     weight: 10
 ---
 
+## TU Delft clusters
 
+DAIC is one of several clusters accessible to TU Delft researchers (and their collaborators). The table below gives a comparison between these in terms of use case, eligible users, and other characteristics.
 
 {{% pageinfo %}}
 Available compute infrastructure accessible to TU Delft researchers and educators:
@@ -30,5 +32,5 @@ Available compute infrastructure accessible to TU Delft researchers and educator
 | Has GPUs?         | ✓                                                                  | ✓
 
 
-
+## TU Delft cloud resources
 

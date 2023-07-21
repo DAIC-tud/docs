@@ -18,6 +18,10 @@ Using multiple computers as such makes it possible to perform lengthy and resour
 
 ## Purpose of _this_ HPC, DAIC
 
+TU Delft has a number of clusters that were set up to serve various groups across campus. For CS@Delft staff, 3 clusters are relevant: DAS, DelftBlue and DAIC. DAS is a cluster shared between multiple universities and SURF, and is accessible to CS@Delft community. However, it is not intended to do compute, but rather test settings like distributed algorithms and edge computing. DelftBlue, now entering its second expansion phase, curates to users needing CPU power. Despite more GPUs being part of the expansion phase, DelftBlue is intended for use in both research and education activities, which limits its utility for AI researchers needing powerful GPU nodes with ample memory and fast storage system access for extended experimental times. DAIC, on the other hand, has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase. 
+
+See (Can I use DAIC)[]
+
 ## Overview of the hardware and software infrastructure.
 ### Other available Compute environments:
 #### HPC systems:

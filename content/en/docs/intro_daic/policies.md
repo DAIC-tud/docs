@@ -56,7 +56,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 - Small-scale interactive work may  be acceptable on login nodes if your resource requirements are minimal.
 
 {{% alert title="Note" color="info" %}}
-Login nodes have per-user CPU and memory quotas. If you run processes on a login node that push the total usage beyond a certain amount, the limiter will begin killing the largest processes until the total  satisfies the limit. 
+~~Login nodes have per-user CPU and memory quotas. If you run processes on a login node that push the total usage beyond a certain amount, the limiter will begin killing the largest processes until the total  satisfies the limit. ~~
 {{% /alert %}}
 
 

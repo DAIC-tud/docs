@@ -18,7 +18,7 @@ Using multiple computers as such makes it possible to perform lengthy and resour
 
 The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is an HPC cluster that was initiated within the INSY department in 2015. Later, resources were joined with ST, collectively called _CS@Delft_, and with other departments across faculties in subsequent expansion cycles. Today, DAIC servers are organized as partitions (see [Batch Queuing System Overview ](../job_submissions/_index.md#batch-queuing-system-overview)) that corresponds to the groups contributing these resources, as can be seen in Table 1 (see also [Batch Queuing System Overview](../job_submissions/_index.md#batch-queuing-system-overview)).
 
- DAIC has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase (See [TU Delft clusters comparison](../../tud_clusters_comparison/_index.md)).
+ DAIC has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase (See [TU Delft clusters comparison](../../tud_clusters/_index.md)).
 
 
 

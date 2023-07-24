@@ -358,5 +358,5 @@ SomeNetID@influ1:~$ exit
 
 ## DAIC compared with other TU Delft clusters
 
-For an overview of other compute environments accessible to TU Delft affiliates and their collaborators, see [TU Delft clusters comparison](../../HPC_users/_index.md#tu-delft-clusters)
+For an overview of other compute environments accessible to TU Delft affiliates and their collaborators, see [TU Delft clusters comparison](../../tud_clusters/_index.md)
 

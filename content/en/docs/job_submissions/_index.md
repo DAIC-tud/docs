@@ -144,7 +144,7 @@ DAIC is dual-threaded. It means that CPUs are automatically allocated in multipl
 
 Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
 
-The conde snippet below is a template script that can be customized to run jobs on DAIC. 
+The code snippet below is a template script that can be customized to run jobs on DAIC. 
 A useful tool that can be used to streamline the debugging of such scripts is [ShellCheck](https://www.shellcheck.net/).
 
 
@@ -257,7 +257,7 @@ This specification is generally not recommended for production, as it is less re
 
 ### Interactive jobs on compute nodes
 
-To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Creating job scripts](#creating-job-scripts)), as in the examples below:
+To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Job scripts](#job-scripts)), as in the examples below:
 
 ```bash
 $ hostname # check you are in one of the login nodes
@@ -284,13 +284,13 @@ When you logout from an interactive session, all running processes will be termi
 
 
 {{% alert title="Note" color="warning"%}}
-Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbtach script. It means you may need to wait until resources are available as you would when you submit an sbatch script
+Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbatch script. It means you may need to wait until resources are available as you would when you submit an sbatch script
 {{% /alert %}}
 
 
 ### Jobs on GPU resources
 
-Some DAIC nodes have GPUs of different types, that can be used for various compute puposes (see [DAIC GPUs](../intro_daic/daic_architecture.md#gpus)).
+Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [DAIC GPUs](../intro_daic/daic_architecture.md#gpus)).
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
@@ -378,7 +378,7 @@ SomeNetID@insy11:~$ exit # exit the interactive session
 
 ### Deploying dependent jobs (job chains)
 
-In certain scenarios, it might be desirable to condition the execution of a certain job on the status of another job. In such cases, the sbatch directive `--depenency=<condition>:<jobID>` can be used, where `<condition>` specifies the type of dependency (See table 2), and `<jobID>` is the slurm jobID upon which dependency is based. To specify more than one depenency, the `,` separator is used to indicate that all dependencies must be specified, and, `?` is used denotes that any dependency may be satistifed.
+In certain scenarios, it might be desirable to condition the execution of a certain job on the status of another job. In such cases, the sbatch directive `--dependency=<condition>:<jobID>` can be used, where `<condition>` specifies the type of dependency (See table 2), and `<jobID>` is the slurm jobID upon which dependency is based. To specify more than one dependency, the `,` separator is used to indicate that all dependencies must be specified, and, `?` is used denotes that any dependency may be satisfied.
 
 For example, assume the slurm job scripts, `job_1.sbatch`, ... `job_3.sbatch` need to run sequentially one after the other. To start this chain, submit the first job and obtain its jobID:
 
@@ -583,7 +583,7 @@ Priority = 40,000,000 * QoS + 20,000,000 * FairShare
 | Usage > Share | 20,000,000 - 0 |
 | No Share      | 0              |
 
-
+```bash 
 
 Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
 (Interactive QoS has usage factor 2.0; usage is doubled)
@@ -592,7 +592,7 @@ Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
 (  2 CPUs / 2 + 12 GB Mem / 12 + 1 GPU * 10) * 4 hours =  172800
 (160 CPUs / 2 + 48 GB Mem / 12             ) * 4 hours = 1209600
 (  2 CPUs / 2 + 12 GB Mem / 12             ) * 7 days  = 1209600
-
+```
 
 
 |                            | QoS Priority | FairShare Priority | Job Priority |
@@ -624,7 +624,7 @@ The idea behind the tiering is to submit to all partitions, e.g. `--partition=wi
 Resources of all partitions (eg, `st`) are also part of the `general` partition. Thus:
 * submitting to the  `general` partition allows jobs to use all nodes
 * submitting to group-specific partitions alone results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
-* The optimal way is to submit to both `general` and group-specific partitions when acessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+* The optimal way is to submit to both `general` and group-specific partitions when accessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
 
 
 ## Parallelizing jobs with Job Arrays
@@ -648,7 +648,7 @@ $ squeue -u SomeNetID  # Replace SomeNetId with your NetID
 
 
 ```bash
-$ sbatch --array=1-2 jobscript.sbatch  # Range specified with default step size = 1. Indexex have values 1 and 2
+$ sbatch --array=1-2 jobscript.sbatch  # Range specified with default step size = 1. Index have values 1 and 2
 Submitted batch job 8580149
 $
 $ squeue -u SomeNetID  # Replace SomeNetId with your NetID 
@@ -658,10 +658,10 @@ $ squeue -u SomeNetID  # Replace SomeNetId with your NetID
 ```
 
 {{% alert title="Note" color="info" %}}
-To limit the maximum number of simulatenously running jobs in an array use the `%` separator, eg`--array=1-15%3` to run only 3 tasks at a time. 
+To limit the maximum number of simultaneously running jobs in an array use the `%` separator, eg`--array=1-15%3` to run only 3 tasks at a time. 
 {{% /alert %}}
 
-### JobId and enviroment variables
+### JobId and environment variables
 
 As shown in the previous section, [Parallelizing jobs with job arrays](#parallelizing-jobs-with-job-arrays), jobs within an array are assigned special slurm variables. These variables can be exploited for various computational objectives. Among these, `SLURM_ARRAY_TASK_ID` is the index of an individual task within the array, and  `SLURM_ARRAY_JOB_ID` is the slurm jobId of the entire array job.
 
@@ -674,7 +674,7 @@ In more complex scenarios, eg, when the parameters of interest are not mappable 
 $ cat jobarray.config
 i       Flower  Color   Origin  
 1       Rose    Red     Worldwide
-2       Jasmin  White   Asia
+2       Jasmine  White   Asia
 3       Tulip   Various Persia&Turkey
 4       Orchid  Various Worldwide
 5       Lily    Various Worldwide
@@ -709,7 +709,7 @@ $ squeue -u SomeNetID  # Replace SomeNetId with your NetID
      8580317_[1-5]   general JobArray SomeNetID PD       0:00      1 (Priority)     
 ```
 
-In this example, slurm created 5 jobs in a job array, each using the same settings (the name `JobArrayExample`, the `general` partition, `short` QoS, `00:01:00` time, `1` task with `1` CPU and `1G` memory, and an output and error file with both array job Id and task id). Each task looks up certain parameter values from a config file laveraging its index via the `awk` command. 
+In this example, slurm created 5 jobs in a job array, each using the same settings (the name `JobArrayExample`, the `general` partition, `short` QoS, `00:01:00` time, `1` task with `1` CPU and `1G` memory, and an output and error file with both array job Id and task id). Each task looks up certain parameter values from a config file leveraging its index via the `awk` command. 
 
 
 {{% alert title="Note" color="info" %}}
@@ -718,21 +718,21 @@ The command:
 flower=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
 ```
 assigns a value to the variable `flower` by reading a configuration file (`$config`), and printing the value in the second column (`{print $2}`) where the first column matches the value of the `ArrayTaskID` variable (`$1==ArrayTaskID`). The `ArrayTaskID` is an awk variable set to the value of the SLURM environment variable `SLURM_ARRAY_TASK_ID`. 
-For more on the `awk` utitilty, see this [awk tutorial](https://blog.jpalardy.com/posts/awk-tutorial-part-1/).
+For more on the `awk` utility, see this [awk tutorial](https://blog.jpalardy.com/posts/awk-tutorial-part-1/).
 {{% /alert %}}
 
-Jobs within a task array are run in parallel, and hence, there's no gaurantee about their order of exectuion. This is evident looking at the output file from this example:
+Jobs within a task array are run in parallel, and hence, there's no guarantee about their order of execution. This is evident looking at the output file from this example:
 
 ```bash
 $ cat output.txt
-Array task: 2,  Flower: Jasmin, color: White, origin: Asia
+Array task: 2,  Flower: Jasmine, color: White, origin: Asia
 Array task: 3,  Flower: Tulip, color: Various, origin: Persia&Turkey
 Array task: 1,  Flower: Rose, color: Red, origin: Worldwide
 Array task: 5,  Flower: Lily, color: Various, origin: Worldwide
 Array task: 4,  Flower: Orchid, color: Various, origin: Worldwide
 ```
 
-Other slurm variables that are set inside a job array are shown in the following table, with values based on the preceeding example:
+Other slurm variables that are set inside a job array are shown in the following table, with values based on the preceding example:
 
 |Slurm Environment Variable |	Description | Value in example |
 | ------------------------- | ----------- | ---------------- |
@@ -744,7 +744,7 @@ Other slurm variables that are set inside a job array are shown in the following
 
 ### Slurm commands and job arrays
 
-The `squeue` command reports all submitted jobs. By default, `squeue` reports all of the tasks associated with a job array in one line and uses a regular expression to indicate the `SLURM_ARRAY_TASK_ID` values. To explicitly print one job array element per line, use the `--array` or `-r` flag. The following examples highlight the difference, using the same `jobarray.sbatch` file from the [JobId and environment variables](#jobid-and-enviroment-variables) section:
+The `squeue` command reports all submitted jobs. By default, `squeue` reports all of the tasks associated with a job array in one line and uses a regular expression to indicate the `SLURM_ARRAY_TASK_ID` values. To explicitly print one job array element per line, use the `--array` or `-r` flag. The following examples highlight the difference, using the same `jobarray.sbatch` file from the [JobId and environment variables](#jobid-and-environment-variables) section:
 
 ```bash
 $ sbatch jobarray.sbatch 
@@ -764,7 +764,7 @@ $ squeue -r -u SomeNetID  # Replace SomeNetId with your NetID
 ```
 
 
-`scancel`, on the other hand, can be used to cancel an entire job array by specifiying its  `SLURM_ARRAY_JOB_ID`. Alternatively, to cancel a specific task (or tasks), both its `SLURM_ARRAY_JOB_ID` and `SLURM_ARRAY_TASK_ID` must be specified, possibly with a regular experssion, as shown in the following examples:
+`scancel`, on the other hand, can be used to cancel an entire job array by specifying its  `SLURM_ARRAY_JOB_ID`. Alternatively, to cancel a specific task (or tasks), both its `SLURM_ARRAY_JOB_ID` and `SLURM_ARRAY_TASK_ID` must be specified, possibly with a regular expression, as shown in the following examples:
 
 ```bash
 $ sbatch jobarray.sbatch

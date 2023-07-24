@@ -1,7 +1,7 @@
 ---
 title: "Policies and Usage guidelines"
 linkTitle: "Policies and Usage guidelines"
-weight: 2
+weight: 4
 description: >
   What is acceptable usage of DAIC?
 ---

@@ -11,6 +11,13 @@ description: >
 2. Warn that this info only applies to HPC; and DHPC has a different software stack
 {{% /pageinfo %}}
 
+## Software environment
+    * Operating System
+    * Job Scheduling Software (Slurm)
+    * Programming Languages and Libraries
+
+    * Specialized Hardware or Accelerators - libraries for these
+
 * Available Software and Libraries/ Loading and Using Software Modules
 * Unavailable/Uninstalled software:
     * Installing binaries when possible

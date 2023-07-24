@@ -3,10 +3,8 @@ title: "Introducing DAIC"
 linkTitle: "Introducing DAIC"
 weight: 1
 description: >
-  Why was this HPC set up?
+  Why and What is DAIC?
 ---
-
-
 
 ## Purpose and Benefits of HPC Systems
 
@@ -16,23 +14,87 @@ Using multiple computers as such makes it possible to perform lengthy and resour
 
 
 
-## Purpose of _this_ HPC, DAIC
+## Brief history of DAIC
 
-TU Delft has a number of clusters that were set up to serve various groups across campus. For CS@Delft staff, 3 clusters are relevant: DAS, DelftBlue and DAIC. DAS is a cluster shared between multiple universities and SURF, and is accessible to CS@Delft community. However, it is not intended to do compute, but rather test settings like distributed algorithms and edge computing. DelftBlue, now entering its second expansion phase, curates to users needing CPU power. Despite more GPUs being part of the expansion phase, DelftBlue is intended for use in both research and education activities, which limits its utility for AI researchers needing powerful GPU nodes with ample memory and fast storage system access for extended experimental times. DAIC, on the other hand, has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase. 
+The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is an HPC cluster that was initiated within the INSY department in 2015. Later, resources were joined with ST, collectively called _CS@Delft_, and with other departments across faculties in subsequent expansion cycles. Today, DAIC servers are organized as partitions (see [Batch Queuing System Overview ](../job_submissions/_index.md#batch-queuing-system-overview)) that corresponds to the groups contributing these resources, as can be seen in Table 1 (see also [Batch Queuing System Overview](../job_submissions/_index.md#batch-queuing-system-overview)).
 
-See (Can I use DAIC)[]
-
-## Overview of the hardware and software infrastructure.
-### Other available Compute environments:
-#### HPC systems:
-      * Hardware Specifications
-      * Software Environments
-      * Unique Features of Each HPC System
-#### Cloud Resources
-      * cloud resources available to CS users, including any partnerships or platforms provided by TU Delft.
-      * the process for accessing and provisioning cloud resources, including virtual machines with GPU or CPU capabilities.
-      * Guidelines for Managing and optimizing Costs
-      * Virtual Machines with GPU and CPU Capabilities
+ DAIC has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase (See [TU Delft clusters comparison](../../tud_clusters_comparison/_index.md)).
 
 
+
+<table>
+<caption> Table 1: Current partitions within DAIC and contributing TU Delft departments/faculties.
+</caption>
+<thead>
+  <tr>
+    <th>I</th>
+    <th>DAIC partition</th>
+    <th>Contributor</th>
+    <th>Faculty</th>
+    <th>Faculty abbreviation (Dutch/English)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>1</td>
+    <td>3dgi</td>
+    <td><a href="https://3d.bk.tudelft.nl/">3D Geoinformation Research Group</a></td>
+    <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">Faculty of Architecture and the Built Environment</a></td>
+    <td>BK/ABE</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>imphys</td>
+    <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences/about-faculty/departments/imphys">Imaging Physics</a></td>
+    <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences">Faculty of Applied Sciences</a></td>
+    <td>TNW/AS</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>cor</td>
+    <td><a href="https://www.tudelft.nl/3me/over/afdelingen/cognitive-robotics-cor">Cognitive Robotics</a></td>
+    <td><a href="https://www.tudelft.nl/en/3me?%25252520L=0&cHash=a3739bc6939ece6b5c917f85a67226fa">Faculty of Mechanical, Maritime and Materials Engineering</a></td>
+    <td>3mE</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>tbm</td>
+    <td>Faculty of Technology, Policy and Management </td>
+    <td><a href="https://www.tudelft.nl/en/tpm">Faculty of Technology, Policy and Management</a></td>
+    <td>TBM/TPM</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>grs</td>
+    <td><a href="https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing">Geoscience &amp; Remote Sensing</a></td>
+    <td><a href="https://www.tudelft.nl/en/ceg">Faculty Of Civil Engineering and Geosciences</a></td>
+    <td>CiTG/CEG</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>influence</td>
+    <td rowspan="3"><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems">Intelligent Systems</a></td>
+    <td rowspan="5"><a href="https://www.tudelft.nl/en/eemcs">Faculty of Electrical Engineering, Mathematics &amp; Computer Science</a></td>
+    <td rowspan="5">EWI/EEMCS</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>visionlab</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>insy</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>wis</td>
+    <td>Web Information Systems, Software Technology</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>st</td>
+    <td><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
+  </tr>
+</tbody>
+</table>
 

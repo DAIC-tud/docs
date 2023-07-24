@@ -11,17 +11,17 @@ description: >
 
 DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity. 
 
-A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_.  This central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
+A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
 
-{{< figure src="DAIC_partitions.png" caption=">Fig 1: Slurm components- adapted from [Slurm documentation](https://slurm.schedmd.com/overview.html)" >}}
+{{< figure src="DAIC_partitions.png" caption=">Fig 1: DAIC partitions and access/usage nest practices" >}}
 
 
 ## Partitions and Quality of Service
 
 When you submit a job in a slurm-based system, it enters a queue waiting for resources.
 The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
-* The _partition_  determines access to groups of different compute nodes. 
+* The _partition_  determines access to groups of different compute nodes. In DAIC, these are typically the nodes contributed or funded by a certain group (Also see [Priority tiers](#priority-tiers)).
 * The _Quality of Service_ determines the priority as well as the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated.
 
 All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)). Table 1 shows the QoS limits on the `general` partition.
@@ -121,8 +121,6 @@ The priority of a job is a function of *both* QoS *and* previous usage (less is 
 
 {{% /alert %}} 
 
-
-<add figure showing available partitions/ Overall hardware architecture of DAIC system, see Kindratenko et al 2020>
 
 
 ## Slurm job's terminology: job, job step, task and CPUs
@@ -257,20 +255,45 @@ This specification is generally not recommended for production, as it is less re
 {{% /alert %}}
 
 
-### Jobs with GPU resources
+### Interactive jobs on compute nodes
 
-Some DAIC nodes have GPUs of different types, as shown in this table
+To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Creating job scripts](#creating-job-scripts)), as in the examples below:
 
-| Type   | GPU                        | Architecture | Capability | Memory   | Cores |
-| ------ | -------------------------- | ------------ | ---------- | -------- | ----- |
-| p100   | NVIDIA Tesla P100          | Pascal       | 6.0        | 16 GB    | 3584  |
-| pascal | NVIDIA GeForce GTX 1080 Ti | Pascal       | 6.1        | 11 GB    | 3584  |
-| turing | NVIDIA GeForce RTX 2080 Ti | Turing       | 7.5        | 11 GB    | 4352  |
-| v100   | NVIDIA Tesla V100          | Volta        | 7.0        | 16-32 GB | 5120  |
-| a40    | NVIDIA A40                 | Ampere       | 8.6        | 48 GB    | 10752 |
+```bash
+$ hostname # check you are in one of the login nodes
+login1.hpc.tudelft.nl
+$ sinteractive 
+ 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
+$ hostname # check you are in a compute node
+insy15
+$ squeue -u SomeNetID  # Replace SomeNetId with your NetID 
+JOBID PARTITION  NAME     USER ST  TIME  NODES NODELIST(REASON)
+    2   general  bash SomeNetI  R  1:23      1 insy15  
+$ logout # exit the interactive job
+```
+
+To request a node with certain compute requirements:
+```bash
+$ sinteractive --ntasks=1 --cpus-per-task=2 --mem=4096
+ 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
+```
+
+{{% alert title="Warning" color="warning"%}}
+When you logout from an interactive session, all running processes will be terminated
+{{% /alert %}}
 
 
-To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of GPUs requested, as in the examples below:
+{{% alert title="Note" color="warning"%}}
+Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbtach script. It means you may need to wait until resources are available as you would when you submit an sbatch script
+{{% /alert %}}
+
+
+### Jobs on GPU resources
+
+Some DAIC nodes have GPUs of different types, that can be used for various compute puposes (see [DAIC GPUs](../intro_daic/daic_architecture.md#gpus)).
+
+
+To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
 {{< figure src="slurm_request_gpus.png" caption=">Fig 1: Slurm directives to request gpus for a job" >}}
 
 
@@ -279,10 +302,6 @@ To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]
 For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/#environment-modules)
 {{% /alert %}}
 
-
-{{% alert title="Stop!" color="warning"%}}
-It’s forbidden to use the GPUs for anything other than research!
-{{% /alert %}}
 
 An example batch script with GPU resources
 
@@ -315,6 +334,45 @@ previous=$(/usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utili
 # Measure GPU usage of your job (result)
 /usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utilization,max_memory_usage,time' --format='csv' | /usr/bin/grep -v -F "$previous"
 
+```
+
+Similarly, to interactively work in a GPU node:
+```bash
+$ hostname # check you are in one of the login nodes
+login1.hpc.tudelft.nl
+$
+$ sinteractive --cpus-per-task=1 --mem=500 --time=00:01:00 --gres=gpu:v100:1
+Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
+srun: job 8607665 queued and waiting for resources
+srun: job 8607665 has been allocated resources
+ 15:27:18 up 51 days,  3:04,  0 users,  load average: 62,09, 59,43, 44,04
+SomeNetID@insy11:~$
+SomeNetID@insy11:~$ hostname # check you are in one of the compute nodes
+insy11.hpc.tudelft.nl
+SomeNetID@insy11:~$
+SomeNetID@insy11:~$ nvidia-smi # check characteristics of GPU
+Mon Jul 24 15:37:01 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                  Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf            Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla V100-SXM2-32GB            On | 00000000:88:00.0 Off |                    0 |
+| N/A   32C    P0               40W / 300W|      0MiB / 32768MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+SomeNetID@insy11:~$
+SomeNetID@insy11:~$ exit # exit the interactive session
 ```
 
 
@@ -397,38 +455,6 @@ Submitted batch job 8580141
 </tbody>
 </table>
 
-
-### Interactive jobs on compute nodes
-
-To work interactively on a node, eg, to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Creating job scripts](#creating-job-scripts)), as in the examples below:
-
-```bash
-$ hostname # check you are in one of the login nodes
-login1.hpc.tudelft.nl
-$ sinteractive 
- 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
-$ hostname # check you are in a compute node
-insy15
-$ squeue -u SomeNetID  # Replace SomeNetId with your NetID 
-JOBID PARTITION  NAME     USER ST  TIME  NODES NODELIST(REASON)
-    2   general  bash SomeNetI  R  1:23      1 insy15  
-$ logout # exit the interactive job
-```
-
-To request a node with certain compute requirements:
-```bash
-$ sinteractive --ntasks=1 --cpus-per-task=2 --mem=4096
- 16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
-```
-
-{{% alert title="Warning" color="warning"%}}
-When you logout from an interactive session, all running processes will be terminated
-{{% /alert %}}
-
-
-{{% alert title="Note" color="warning"%}}
-Requesting interactive sessions is subject to the same resource availability constraints as submitting an sbtach script. It means you may need to wait until resources are available as you would when you submit an sbatch script
-{{% /alert %}}
 
 
 ## Checking slurm jobs

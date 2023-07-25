@@ -175,7 +175,7 @@ YourNetID@srv227:~$
 YourNetID@srv227:~$ hostname # check you are on the bastion server
 srv227.tudelft.net                      
 YourNetID@srv227:~$                                                      
-eaahmed@srv227:~$ ssh login.daic 
+YourNetID@srv227:~$ ssh login.daic 
 The authenticity of host 'login.daic (131.180.183.244)' can't be established.
 ECDSA key fingerprint is SHA256:2iPjH/j/Tf5JZU4OJyLpASA/GZ40eCqvcQnSSa++3nQ.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes

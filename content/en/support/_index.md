@@ -24,7 +24,7 @@ Known HPC/DAIC documentation links:
 * https://gitlab.tudelft.nl/delft-bioinformatics-lab/wiki/-/wikis/Cluster (from Yasin)
 * https://qiweb.tudelft.nl/sysman/awi2insy.html; https://qiweb.tudelft.nl/sysman/hpc_servers.html; https://qiweb.tudelft.nl/sysman/hpc/hpc.html (from Ronald)
 * https://github.com/oliehoek-research/organization/tree/master/howto (from Frans O)
-
+* https://docs.google.com/document/d/1FnUzmHchHdZi4Iw3UDE-2sPrG_RF-qqIilKLDRXMHyo/edit#heading=h.jjiiwty148c2 (from Ziyu, WIS)
 
 Support & contact:
 * [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/)  (reference: HPC cluster)

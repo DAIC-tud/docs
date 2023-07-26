@@ -25,7 +25,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <th>Other features</th>
   </tr>
 </thead>
-<tfoot><tr><td colspan="5"> <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), <code>ib</code> InfiniBand connection, <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), <code>`bigmem`</code>, <code>imphysexclusive</code>, <code>`avx512`</code>, <code>gpumem32</code>, <code>nvme</code>
+<tfoot><tr><td colspan="7"> <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), <code>ib</code> InfiniBand connection, <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), <code>`bigmem`</code>, <code>imphysexclusive</code>, <code>`avx512`</code>, <code>gpumem32</code>, <code>nvme</code>
 </td></tr></tfoot>
 <tbody>
   <tr>

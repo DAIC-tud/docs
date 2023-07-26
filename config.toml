@@ -61,7 +61,7 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "DAIC documentation"
-description = "Documentation of compute environments accessible to CS departments in TU Delft"
+description = "Documentation of the Delft AI cluster (DAIC)"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
@@ -83,7 +83,7 @@ weight = 1
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "The Docsy Authors"
+copyright = "The DAIC team"
 privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
@@ -101,27 +101,14 @@ archived_version = true
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the 
 # current doc set.
-version = "0.1.0"
+version = "0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
 url_latest_version = "https://aeaahmed.pages.ewi.tudelft.nl/DAICdocumentation/"
 
-##################################
-# Add your release versions here
-[[params.versions]]
-  version = "latest"
-  github_branch = "main"
-  url = "https://aeaahmed.pages.ewi.tudelft.nl/DAICdocumentation/"
 
-[[params.versions]]
-  version = "v0.1.0"
-  github_branch = "v0.1.0"
-  url = "https://aeaahmed.pages.ewi.tudelft.nl/DAICdocumentation"
 
-version_menu_pagelinks = true
-
-###################################
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://gitlab.ewi.tudelft.nl/aeaahmed/DAICdocumentation"

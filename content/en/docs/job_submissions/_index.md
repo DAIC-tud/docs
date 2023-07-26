@@ -30,6 +30,8 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 <table>
 <caption> Table 1: General partition and QoS; specific groups use other partitions and QoS
 </caption>
+<tfoot><tr><td colspan="11"> *infinite QoS jobs will be killed when servers go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
+</td></tr></tfoot>
 <thead>
   <tr>
     <th rowspan="2">Partition</th>
@@ -101,7 +103,7 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
     <td>5449G (20%)</td>
   </tr>
   <tr>
-    <td>infinite</td>
+    <td>infinite*</td>
     <td>none</td>
     <td>infinite</td>
     <td>1 running</td>

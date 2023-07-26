@@ -68,7 +68,7 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
     <td>Request account</td>
     <td></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/Accounting-and-shares/">Get an account</a></td>
-    <td><a href="mailto:das-account@cs.vu.nl">Email DAS admin</a> with details like their affiliation and the planned purpose of the account.</td>
+    <td><a href="mailto:das-account@cs.vu.nl">Email DAS admin</a> with details like user's affiliation and the planned purpose of the account.</td>
   </tr>
   <tr>
     <td>Getting started</td>
@@ -96,7 +96,7 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   <tr>
     <td>Data storage</td>
     <td><a href="http://localhost:1313/DAICdocumentation/docs/filesystem/_index.md#filesystem-and-storage">Filesystem &amp; storage</a></td>
-    <td><a href="https://doc.dhpc.tudelft.nl/delftblue/Data-transfer-to-DelftBlue/">Transfer data</a></td>
+    <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#storage">Storage</a></td>
     <td>Storage: 128 TB (RAID6) </td>
   </tr>
   <tr>

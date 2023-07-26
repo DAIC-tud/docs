@@ -31,7 +31,7 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
     <th>DAIC partition</th>
     <th>Contributor</th>
     <th>Faculty</th>
-    <th>Faculty abbreviation (Dutch/English)</th>
+    <th>Faculty abbreviation (English/Dutch)</th>
   </tr>
 </thead>
 <tbody>
@@ -40,14 +40,14 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
     <td>3dgi</td>
     <td><a href="https://3d.bk.tudelft.nl/">3D Geoinformation Research Group</a></td>
     <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">Faculty of Architecture and the Built Environment</a></td>
-    <td>BK/ABE</td>
+    <td>ABE/BK</td>
   </tr>
   <tr>
     <td>2</td>
     <td>imphys</td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences/about-faculty/departments/imphys">Imaging Physics</a></td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences">Faculty of Applied Sciences</a></td>
-    <td>TNW/AS</td>
+    <td>AS/TNW</td>
   </tr>
   <tr>
     <td>3</td>
@@ -61,21 +61,21 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
     <td>tbm</td>
     <td>Faculty of Technology, Policy and Management </td>
     <td><a href="https://www.tudelft.nl/en/tpm">Faculty of Technology, Policy and Management</a></td>
-    <td>TBM/TPM</td>
+    <td>TPM/TBM</td>
   </tr>
   <tr>
     <td>5</td>
     <td>grs</td>
     <td><a href="https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing">Geoscience &amp; Remote Sensing</a></td>
     <td><a href="https://www.tudelft.nl/en/ceg">Faculty Of Civil Engineering and Geosciences</a></td>
-    <td>CiTG/CEG</td>
+    <td>CEG/CiTG</td>
   </tr>
   <tr>
     <td>6</td>
     <td>influence</td>
     <td rowspan="3"><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems">Intelligent Systems</a></td>
     <td rowspan="5"><a href="https://www.tudelft.nl/en/eemcs">Faculty of Electrical Engineering, Mathematics &amp; Computer Science</a></td>
-    <td rowspan="5">EWI/EEMCS</td>
+    <td rowspan="5">EEMCS/EWI</td>
   </tr>
   <tr>
     <td>7</td>
@@ -88,12 +88,11 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
   <tr>
     <td>9</td>
     <td>wis</td>
-    <td>Web Information Systems, Software Technology</td>
+    <td rowspan="2"><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
   </tr>
   <tr>
     <td>10</td>
     <td>st</td>
-    <td><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
   </tr>
 </tbody>
 </table>

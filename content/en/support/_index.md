@@ -9,7 +9,7 @@ menu:
 
 Contacting support:
 * Email
-* Mattermost/ Teams
+* For specific questions, you can consult with other cluster users on: [Mattermost]() / [Teams](https://teams.microsoft.com/l/channel/19%3ad5501f1d3a6e4b7394d7cee89d5b2d1c%40thread.tacv2/General?groupId=f73478dd-163d-4e49-8f75-cdfe56e20bbc&tenantId=096e524d-6929-4030-8cd3-8ab42de0887b)
 * Walk-in sessions
 
 Additional resources:

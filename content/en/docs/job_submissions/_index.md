@@ -14,21 +14,22 @@ DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job sc
 A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
 
-{{< figure src="DAIC_partitions.png" caption=">Fig 1: DAIC partitions and access/usage nest practices" >}}
+{{< figure src="DAIC_partitions.png" caption=">Fig 1: DAIC partitions and access/usage best practices" ref="fig:daic_partitions">}}
 
 
 ## Partitions and Quality of Service
 
 When you submit a job in a slurm-based system, it enters a queue waiting for resources.
 The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
-* The _partition_  determines access to groups of different compute nodes. In DAIC, these are typically the nodes contributed or funded by a certain group (Also see [Priority tiers](#priority-tiers)).
-* The _Quality of Service_ determines the priority as well as the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated.
+* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)). 
+All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)).
+* The _Quality of Service_ is a set of limits that controls what resources a job can use and, therefore, determines the priority level of a job. This includes the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated (see [QoS priority](#qos-priority)).
 
-All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)). Table 1 shows the QoS limits on the `general` partition.
+ For DAIC, Table 1 shows the QoS limits on the `general` partition.
 
-
+<div id=daicPartitionsQoS>
 <table>
-<caption> Table 1: General partition and QoS; specific groups use other partitions and QoS
+<caption> Table 1: The general partition and its operational and per-QoS per-user limits; specific groups use other partitions and QoS
 </caption>
 <tfoot><tr><td colspan="11"> *infinite QoS jobs will be killed when servers go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
 </td></tr></tfoot>
@@ -116,6 +117,7 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
   </tr>
 </tbody>
 </table>
+</div>
 
 {{% alert title="Note" color="info" %}}
 
@@ -611,22 +613,45 @@ Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
 ### Fair tree fairshare
 
 ### Priority tiers
-The partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments.
+DAIC partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)).
 
-When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user)priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user)priority jobs that fit (if any).
+When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user) priority jobs that fit (if any).
 
 The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
 
 
-### Where to submit jobs?
+#### Where to submit jobs?
 
-The idea behind the tiering is to submit to all partitions, e.g. `--partition=wis,st,general`, and let the scheduler figure out were the job can start the soonest.  This should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.
+The idea behind the tiering is that you submit to all partitions, e.g. `--partition=wis,st,general`, and let the scheduler figure out where the job can start the soonest.  This should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.
 
 
-Resources of all partitions (eg, `st`) are also part of the `general` partition. Thus:
+Resources of all partitions (eg, `st`) are also part of the `general` partition (see [Fig 1]({{< ref "fig:daic_partitions" >}})). Thus:
 * submitting to the  `general` partition allows jobs to use all nodes
 * submitting to group-specific partitions alone results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
 * The optimal way is to submit to both `general` and group-specific partitions when accessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+
+### QoS priority 
+
+The purpose of the (multiple) QoSs in DAIC is to optimize the throughput of the cluster and to reduce the waiting times for jobs:
+* Long jobs block resources for a long time, thus leading to long waiting times and fragmentation of resources.
+* Short jobs block resources only for short times, and can more easily fill in the gaps in the scheduling of resources (thus start sooner), and are therefore better for throughput and waiting times.
+
+
+Thus, DAIC has the following policy:
+* To stimulate short jobs, the `short` QoS has a higher priority, and allows you to use a larger part of all resources, than the `medium` and `long` QoS.
+* To prevent long jobs from blocking all resources in the cluster for long times (thus causing long waiting times), only a certain part of all cluster resources is available to all running `long` QoS jobs (of all users) combined. 
+* All running `medium` QoS jobs together can use a somewhat larger part of all resources in the cluster, and all running `short` QoS jobs combined are allowed to fill the biggest part of the cluster. 
+  * These limits are called the _QoS group limits_.
+  * When this limit is reached, no new jobs with this QoS can be started, until some of the running jobs with this QoS finish and release some resources. 
+  * The scheduler will indicate this with the reason `QoS Group CPU/memory/GRES limit`.
+
+* To prevent one user from single-handedly using all available resources in a certain QoS, there are also limits for the total resources that all running jobs of one user in a specific QoS can use. 
+  * These are called the _QoS per-user limits_. 
+  * When this limit is reached, no new jobs of this user with this QoS can be started, until some of the running jobs of this user and with this QoS finish and release some resources.
+  * The scheduler will indicate this with the reason `QoS User CPU/memory/GRES limit`.
+
+
+These per-group and per-user limits (see [Table 1](#daicPartitionsQoS)) are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. Any (perceived) imbalance in the use of resources by a certain QoS or user should not be held against a user or the scheduler, but should be discussed in the user board.
 
 
 ## Parallelizing jobs with Job Arrays

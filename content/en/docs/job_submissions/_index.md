@@ -294,7 +294,7 @@ Requesting interactive sessions is subject to the same resource availability con
 
 ### Jobs on GPU resources
 
-Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [DAIC GPUs](../intro_daic/daic_architecture.md#gpus)).
+Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [DAIC GPUs](../intro_daic/hardware_infra.md#gpus)).
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:

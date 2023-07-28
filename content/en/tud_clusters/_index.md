@@ -133,6 +133,9 @@ In this website of [Snellius](https://www.surf.nl/en/dutch-national-supercompute
 
 More details information can be found [here](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware+and+file+systems), where they state the A100 GPU exists from Q3 2021. The details is in section "Phase 1 (Q3 2021)", the "Accelerator" column, there are 36 nodes, and each node has 4 A100 GPU = 144 GPUs. Note the type of A100 they have is the 40 GB memory version, not the 80 GB memory version.
 
+## SURF
+https://servicedesk.surf.nl/wiki/
+
 ## TU Delft cloud resources
 
 For both education and research activities, TU Delft has established the [Cloud4Research program](https://tu-delft-ict-innovation.github.io/Cloud4Research/). Cloud4Research aims to facilite the use of public cloud resources, primarily Amazon AWS. At the administrative level, Cloud4Research provides AWS accounts with an initial budget. Subsequent billing can be incurred via a project code, instead of a personal credit card. At the technical level, the ICT innovation teams provides intake meetings to facilitate getting started. Please refer to the [Policies](https://tu-delft-ict-innovation.github.io/Cloud4Research/policy/) and [FAQ](https://tu-delft-ict-innovation.github.io/Cloud4Research/faq/) pages for more details.

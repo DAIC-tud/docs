@@ -14,7 +14,8 @@ DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job sc
 A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
 
-{{< figure src="DAIC_partitions.png" caption=">Fig 1: DAIC partitions and access/usage best practices" ref="fig:daic_partitions">}}
+{{< figure src="DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions">}}
+
 
 
 ## Partitions and Quality of Service
@@ -131,7 +132,7 @@ The priority of a job is a function of *both* QoS *and* previous usage (less is 
 
 A slurm _job_ (submitted via `sbatch`) can consists of multiple _steps_ in series. Each _step_ (specified via `srun`) can run multiple _tasks (ie programs)_ in parallel. Each task gets its own set of CPUs. As an example, consider the workflow and corresponding breakdown shown in fig 2.
 
-{{< figure src="slurm_job_terminology.png" caption=">Fig 2: Slurm job's terminology" >}}
+{{< figure src="slurm_job_terminology.png" caption="Slurm job's terminology" >}}
 
 In this example, note:
 * When you explicitly request 1 CPU per task (`--cpus-per-task=1`), you should also explicitly specify the number of tasks (`--ntasks`). Otherwise, `srun` may start the task twice in parallel (because CPUs are allocated in multiples of 2)
@@ -298,7 +299,7 @@ Some DAIC nodes have GPUs of different types, that can be used for various compu
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
-{{< figure src="slurm_request_gpus.png" caption=">Fig 1: Slurm directives to request gpus for a job" >}}
+{{< figure src="slurm_request_gpus.png" caption="Slurm directives to request gpus for a job" >}}
 
 
 

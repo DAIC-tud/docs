@@ -7,7 +7,7 @@ weight: 1
 
 _Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
 
-*HPC* supports [Apptainer (previously Singularity)](https://apptainer.org/docs/user/main/introduction.html), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. (see [Pulling images](#pulling-images))
+DAIC supports [Apptainer (previously Singularity)](https://apptainer.org/docs/user/main/introduction.html), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. (see [Pulling images](#pulling-images))
 
 
 Generally, to launch a container image, your commands look as follows:
@@ -31,7 +31,7 @@ The question is now: where to get the `<container>` file? You can either 1) use 
 {{% alert title="Note" color="info" %}}
 If you intend to extensively work/test your image interactively, it is best to first submit an interactive SLURM job with the needed resources, eg, memory, gpus, ... etc:
 ```bash
-$ hostname  # To check this is HPC. login[1-3] are the login nodes
+$ hostname  # To check this is DAIC. login[1-3] are the login nodes
 login1.hpc.tudelft.nl 
 $ sinteractive # Default resources: --time=01:00:00 --cpus-per-task = 2 --mem=1024 
 Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
@@ -55,7 +55,7 @@ For example, to obtain the latest Ubuntu image from DockerHub:
 
 
 ```bash
-$ hostname # check this is HPC
+$ hostname # check this is DAIC
 login1.hpc.tudelft.nl
 $ cd && mkdir containers && cd containers # as convenience, use this directory
 $ apptainer pull docker://ubuntu:latest # actually pull the image
@@ -105,11 +105,11 @@ Apptainer> exit
 
 In the above snippet, note:
 * The command prompt changes within the container to `Apptainer>`
-* The container seamlessly interacts with the host system. For example, it inherits its `hostname` (the HPC login node in this case). The container also inherits the `$HOME` variable, and is able to edit/delete files from there.
+* The container seamlessly interacts with the host system. For example, it inherits its `hostname` (the DAIC login node in this case). The container also inherits the `$HOME` variable, and is able to edit/delete files from there.
 * The container has its own file system, which is distinct from the host. The presence of a directory like `/.singularity.d` is another feature of the specific to the container.
 
 {{% alert title="Warning" color="warning"%}}
-To isolate files in your system (ie, your local machine or *HPC*) from the files inside the container (and thus, avoid possible erroneous deletes/edits), it is recommended to add a `-c` or `-C` flags to your apptainer commands
+To isolate files in your system (ie, your local machine or DAIC) from the files inside the container (and thus, avoid possible erroneous deletes/edits), it is recommended to add a `-c` or `-C` flags to your apptainer commands
 ```bash
 $ apptainer shell -C ubuntu_latest.sif
 ```
@@ -117,11 +117,11 @@ $ apptainer shell -C ubuntu_latest.sif
 
 ### Pulling from NVIDIA GPU cloud (NGC)
 
-This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally, and only send the downloaded image to *HPC*. For this, Apptainer needs to be installed on your machine first, as per the official [Installing Apptainer pages](https://apptainer.org/docs/admin/main/installation.html).
+This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally, and only send the downloaded image to DAIC. For this, Apptainer needs to be installed on your machine first, as per the official [Installing Apptainer pages](https://apptainer.org/docs/admin/main/installation.html).
 
 
 {{% alert title="Warning" color="warning" %}}
- By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `SINGULARITY_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to *HPC*.
+ By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `SINGULARITY_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
 {{% /alert %}} 
 
 ```bash
@@ -130,10 +130,10 @@ $ apptainer pull docker://nvcr.io/nvidia/pytorch:23.05-py3
 $ scp pytorch_23.05-py3.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer
 ```
 
-Now, to check this particular image on *HPC*:
+Now, to check this particular image on DAIC:
 
 ```bash
-$ hostname # check this is HPC not your own PC/laptop
+$ hostname # check this is DAIC not your own PC/laptop
 login1.hpc.tudelft.nl
 $ cd /tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # path where you put images
 $ apptainer shell -C --nv pytorch_23.05-py3.sif  #--nv to use NVIDIA GPU and have CUDA support
@@ -146,13 +146,13 @@ Singularity  actions  env  labels.json  libs  runscript  startscript
 
 ## Building images
 
-If you prefer (or need) to have a custom container image, then you can build your own container image from a _recipe_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on *HPC* directly: First, you must build the image locally, and then send it to *HPC* to run there.__
+If you prefer (or need) to have a custom container image, then you can build your own container image from a _recipe_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on DAIC directly: First, you must build the image locally, and then send it to DAIC to run there.__
 
 {{% alert title="Reminder" color="info" %}}
-Always build the image first in your local machine. To send the built image, `YourImage.sif` to *HPC*, do the following:
+Always build the image first in your local machine. To send the built image, `YourImage.sif` to DAIC, do the following:
 ```bash
 $ hostname # check this is your machine
-$ scp YourImage.sif <YourNetID>@login.hpc.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to *HPC*
+$ scp YourImage.sif <YourNetID>@login.hpc.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to DAIC
 ```
 {{% /alert %}}
 
@@ -191,7 +191,7 @@ where:
 
 
 
-And now, build this image and send it over to *HPC*:
+And now, build this image and send it over to DAIC:
 
 ```bash
 $ hostname #check this is your machine
@@ -204,13 +204,13 @@ INFO:    Adding runscript
 INFO:    Creating SIF file...
 INFO:    Build complete: cuda_based_image.sif  
 $
-$ scp cuda_based_image.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # send to HPC
+$ scp cuda_based_image.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # send to DAIC
 ```
 
-On *HPC*, check the image:
+On DAIC, check the image:
 
 ```bash
-$ hostname # check you are on HPC
+$ hostname # check you are on DAIC
 login1.hpc.tudelft.nl 
 $ sinteractive --cpus-per-task=2 --mem=1024 --gres=gpu --time=00:05:00
 $ hostname # check you are on a compute node
@@ -346,7 +346,7 @@ As can be seen in this example, the new def file not only preserves the dependen
 
 ### Deploying conda in a container 
 
-There might be situations where you have a certain conda environment in your local machine that you need to set up in *HPC* to commence your analysis. In such cases, deploying your conda environment in a container and sending this container to *HPC* does the job for you. 
+There might be situations where you have a certain conda environment in your local machine that you need to set up in DAIC to commence your analysis. In such cases, deploying your conda environment in a container and sending this container to DAIC does the job for you. 
 
 As an example, let's create a simple demo environment, `demo-env` in our local machine, 
 

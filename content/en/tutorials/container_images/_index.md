@@ -146,7 +146,15 @@ Singularity  actions  env  labels.json  libs  runscript  startscript
 
 ## Building images
 
-If you prefer (or need) to have a custom container image, then you can build your own container image from a _recipe_ file, typically `*.def` file, that sets up the image with your custom dependencies. The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on *HPC* directly: First, you must build the image locally, and then send it to *HPC* to run there.
+If you prefer (or need) to have a custom container image, then you can build your own container image from a _recipe_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on *HPC* directly: First, you must build the image locally, and then send it to *HPC* to run there.__
+
+{{% alert title="Reminder" color="info" %}}
+Always build the image first in your local machine. To send the built image, `YourImage.sif` to *HPC*, do the following:
+```bash
+$ hostname # check this is your machine
+$ scp YourImage.sif <YourNetID>@login.hpc.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to *HPC*
+```
+{{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
 If Apptainer is not already installed in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html)

@@ -127,7 +127,7 @@ This is a specialized registry provided by NVIDIA for GPU accelerated applicatio
 ```bash
 $ hostname #check this is your own PC/laptop
 $ apptainer pull docker://nvcr.io/nvidia/pytorch:23.05-py3
-$ scp pytorch_23.05-py3.sif  hpc-login:/tudelft.net/staff-bulk/...<username>/apptainer
+$ scp pytorch_23.05-py3.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer
 ```
 
 Now, to check this particular image on *HPC*:
@@ -135,7 +135,7 @@ Now, to check this particular image on *HPC*:
 ```bash
 $ hostname # check this is HPC not your own PC/laptop
 login1.hpc.tudelft.nl
-$ cd /tudelft.net/staff-bulk/...<username>/apptainer # path where you put images
+$ cd /tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # path where you put images
 $ apptainer shell -C --nv pytorch_23.05-py3.sif  #--nv to use NVIDIA GPU and have CUDA support
 Apptainer>
 Apptainer> hostname
@@ -204,7 +204,7 @@ INFO:    Adding runscript
 INFO:    Creating SIF file...
 INFO:    Build complete: cuda_based_image.sif  
 $
-$ scp cuda_based_image.sif  hpc-login:/tudelft.net/staff-bulk/...<username>/apptainer # send to HPC
+$ scp cuda_based_image.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # send to HPC
 ```
 
 On *HPC*, check the image:
@@ -407,7 +407,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> import matplotlib
 >>> exit()
 Apptainer> exit
-$ scp demo-env-image.sif hpc-login:/tudelft.net/staff-bulk/...<username>/apptainer
+$ scp demo-env-image.sif hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer
 ```
 
 Now, to use the environment in this image to run code in a file, `analysis.py`, which uses some data to generate a plot:

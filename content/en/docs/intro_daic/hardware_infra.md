@@ -12,146 +12,265 @@ description: >
 DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Job scripts](../job_submissions/_index.md#job-scripts)). The following table gives an overview of current nodes and their characteristics:
 
 
+
+
 <table>
-<caption> Table 1: Overview of DAIC compute nodes
-</caption>
-<tfoot><tr><td colspan="7"> <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), <code>ib</code> InfiniBand connection, <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), <code>`bigmem`</code>, <code>imphysexclusive</code>, <code>`avx512`</code>, <code>gpumem32</code>, <code>nvme</code>
-</td></tr></tfoot>
+<caption> Table 1: Overview of DAIC compute nodes </caption>
+<tfoot><tr><td colspan="6"> 
+<ul>
+ <li> All nodes are also parts of the <code>general</code> partition. </li>
+ <li> Abbreviations: <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), <code>ib</code> InfiniBand connection, <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), <code>`bigmem`</code>, <code>imphysexclusive</code>, <code>`avx512`</code>, <code>gpumem32</code>, <code>nvme</code> </li>
+</ul>
+<thead>
   <tr>
+    <th>PARTITION</th>
     <th>NODELIST</th>
     <th>CPUS</th>
-    <th>MEMORY (GB)</th>
+    <th>MEMORY (MB)</th>
     <th>GRES</th>
-    <th>AVAIL_FEATURES</th>
+    <th>ACTIVE_FEATURES</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td>3dgi[1-2],influ4</td>
-    <td>64+</td>
-    <td>250</td>
-    <td>-</td>
-    <td>avx,avx2,ht,10gbe,ssd</td>
-  </tr>
-  <tr>
+    <td>100plus</td>
     <td>100plus</td>
     <td>64</td>
-    <td>750</td>
+    <td>768000</td>
     <td>-</td>
     <td>avx,avx2,ht,10gbe,bigmem</td>
   </tr>
   <tr>
+    <td rowspan="2">3dgi</td>
+    <td>3dgi[1-2]</td>
+    <td>64</td>
+    <td>256000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,ssd</td>
+  </tr>
+  <tr>
+    <td>gpu11</td>
+    <td>96</td>
+    <td>512000</td>
+    <td>gpu:a40:3</td>
+    <td>avx,avx2,ht,10gbe,bigmem,gpumem32,ssd</td>
+  </tr>
+  <tr>
+    <td>cor</td>
+    <td>cor1</td>
+    <td>64</td>
+    <td>1536000</td>
+    <td>gpu:v100:8</td>
+    <td>avx,avx2,ht,10gbe,avx512,gpumem32,ssd</td>
+  </tr>
+  <tr>
+    <td>grs</td>
+    <td>grs[1-4]</td>
+    <td>32</td>
+    <td>256000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,ib,ssd</td>
+  </tr>
+  <tr>
+    <td rowspan="5">imphys</td>
     <td>awi01</td>
     <td>72</td>
-    <td>375</td>
+    <td>384000</td>
     <td>gpu:v100:1</td>
     <td>avx,avx2,ht,10gbe,avx512,gpumem32,nvme,ssd</td>
   </tr>
   <tr>
     <td>awi02</td>
     <td>56</td>
-    <td>500</td>
+    <td>512000</td>
     <td>gpu:v100:2</td>
     <td>avx,avx2,ht,10gbe,bigmem,ssd</td>
   </tr>
   <tr>
     <td>awi[03-14]</td>
     <td>56</td>
-    <td>500</td>
+    <td>512000</td>
     <td>-</td>
     <td>avx,avx2,ht,ib,imphysexclusive</td>
   </tr>
   <tr>
-    <td>awi[15-26],grs[1-4]</td>
-    <td>32+</td>
-    <td>250</td>
+    <td>awi[15-26]</td>
+    <td>56+</td>
+    <td>256000+</td>
     <td>-</td>
     <td>avx,avx2,ht,ib,ssd</td>
   </tr>
   <tr>
-    <td>cor1</td>
-    <td>64</td>
-    <td>1500</td>
-    <td>gpu:v100:8</td>
-    <td>avx,avx2,ht,10gbe,avx512,gpumem32,ssd</td>
-  </tr>
-  <tr>
-    <td>gpu[01-11]</td>
+    <td>gpu[09-10]</td>
     <td>96</td>
-    <td>500</td>
+    <td>512000</td>
     <td>gpu:a40:3</td>
     <td>avx,avx2,ht,10gbe,bigmem,gpumem32,ssd</td>
   </tr>
   <tr>
+    <td rowspan="4">influence</td>
     <td>influ1</td>
     <td>64</td>
-    <td>375</td>
+    <td>384000</td>
     <td>gpu:turing:8</td>
     <td>avx,avx2,ht,10gbe,avx512,nvme,ssd</td>
   </tr>
   <tr>
     <td>influ[2-3]</td>
     <td>64</td>
-    <td>185.546875</td>
+    <td>190000</td>
     <td>gpu:turing:4</td>
     <td>avx,avx2,ht,10gbe,avx512,ssd</td>
   </tr>
   <tr>
+    <td>influ4</td>
+    <td>128</td>
+    <td>256000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,ssd</td>
+  </tr>
+  <tr>
     <td>influ[5-6]</td>
     <td>128</td>
-    <td>500</td>
+    <td>512000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,bigmem,ssd</td>
+  </tr>
+  <tr>
+    <td rowspan="10">insy</td>
+    <td>100plus</td>
+    <td>64</td>
+    <td>768000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,bigmem</td>
+  </tr>
+  <tr>
+    <td>gpu[01-04]</td>
+    <td>96</td>
+    <td>512000</td>
+    <td>gpu:a40:3</td>
+    <td>avx,avx2,ht,10gbe,bigmem,gpumem32,ssd</td>
+  </tr>
+  <tr>
+    <td>influ1</td>
+    <td>64</td>
+    <td>384000</td>
+    <td>gpu:turing:8</td>
+    <td>avx,avx2,ht,10gbe,avx512,nvme,ssd</td>
+  </tr>
+  <tr>
+    <td>influ[2-3]</td>
+    <td>64</td>
+    <td>190000</td>
+    <td>gpu:turing:4</td>
+    <td>avx,avx2,ht,10gbe,avx512,ssd</td>
+  </tr>
+  <tr>
+    <td>influ4</td>
+    <td>128</td>
+    <td>256000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,ssd</td>
+  </tr>
+  <tr>
+    <td>influ[5-6]</td>
+    <td>128</td>
+    <td>512000</td>
     <td>-</td>
     <td>avx,avx2,ht,10gbe,bigmem,ssd</td>
   </tr>
   <tr>
     <td>insy11</td>
     <td>64</td>
-    <td>250</td>
+    <td>256000</td>
     <td>gpu:pascal:5</td>
     <td>avx,avx2,ht,10gbe</td>
   </tr>
   <tr>
     <td>insy12</td>
     <td>64</td>
-    <td>250</td>
+    <td>256000</td>
     <td>gpu:pascal:7</td>
     <td>avx,avx2,ht,10gbe</td>
   </tr>
   <tr>
     <td>insy[13-14]</td>
     <td>64</td>
-    <td>250</td>
+    <td>256000</td>
     <td>gpu:pascal:8</td>
     <td>avx,avx2,ht,10gbe</td>
   </tr>
   <tr>
     <td>insy[15-16]</td>
     <td>64</td>
-    <td>750</td>
+    <td>768000</td>
     <td>gpu:turing:4</td>
     <td>avx,avx2,ht,10gbe,avx512,bigmem,ssd</td>
   </tr>
   <tr>
-    <td>tbm5</td>
-    <td>64</td>
-    <td>750</td>
-    <td>-</td>
-    <td>avx,avx2,ht,10gbe,avx512,bigmem,ssd</td>
+    <td rowspan="2">st</td>
+    <td>gpu[05-08]</td>
+    <td>96</td>
+    <td>512000</td>
+    <td>gpu:a40:3</td>
+    <td>avx,avx2,ht,10gbe,bigmem,gpumem32,ssd</td>
   </tr>
   <tr>
     <td>wis1</td>
     <td>64</td>
-    <td>750</td>
+    <td>768000</td>
+    <td>gpu:p100:2</td>
+    <td>avx,avx2,ht,10gbe,avx512,bigmem</td>
+  </tr>
+  <tr>
+    <td>tbm</td>
+    <td>tbm5</td>
+    <td>64</td>
+    <td>768000</td>
+    <td>-</td>
+    <td>avx,avx2,ht,10gbe,avx512,bigmem,ssd</td>
+  </tr>
+  <tr>
+    <td rowspan="3">visionlab</td>
+    <td>insy11</td>
+    <td>64</td>
+    <td>256000</td>
+    <td>gpu:pascal:5</td>
+    <td>avx,avx2,ht,10gbe</td>
+  </tr>
+  <tr>
+    <td>insy12</td>
+    <td>64</td>
+    <td>256000</td>
+    <td>gpu:pascal:7</td>
+    <td>avx,avx2,ht,10gbe</td>
+  </tr>
+  <tr>
+    <td>insy[13-14]</td>
+    <td>64</td>
+    <td>256000</td>
+    <td>gpu:pascal:8</td>
+    <td>avx,avx2,ht,10gbe</td>
+  </tr>
+  <tr>
+    <td>wis</td>
+    <td>wis1</td>
+    <td>64</td>
+    <td>768000</td>
     <td>gpu:p100:2</td>
     <td>avx,avx2,ht,10gbe,avx512,bigmem</td>
   </tr>
 </tbody>
 <tr>
-        <td><strong>Total</strong></td>
-        <td>100</td>
-        <td></td>
-    </tr>
+  <td><strong>Total</strong></td>
+  <td><strong> 59</strong></td>
+  <td><strong>4064</strong></td>
+  <td><strong>25620 GB</strong></td>
+  <td><strong>99</strong></td>
+</tr>
 </table>
+
+
 
 {{% alert title="Note" color="info" %}}
 All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading processors (two CPUs per core, always allocated in pairs) `ht`.
@@ -163,7 +282,7 @@ All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Adva
 You can use Slurm's `sinfo` command to get various information about cluster nodes. For example, to get an overview of compute nodes on DAIC, you can use the command:
 
 ```bash
-$ sinfo -o "%N %c %m %G %f" --sort="+N" | awk 'NR==1 {print; next} {match($4, /gpu:[^,]+:[0-9]+/); if (RSTART) print $1, $2, $3, substr($4, RSTART, RLENGTH), $5; else print $1, $2, $3, "-", $5  }'  
+$ sinfo --all --format="%P %N %c %m %G %b" --hide -S P,N -a | grep -v "general" | awk 'NR==1 {print; next} {match($5, /gpu:[^,]+:[0-9]+/); if (RSTART) print $1, $2, $3, $4, substr($5, RSTART, RLENGTH), $6; else print $1, $2, $3, $4, "-", $6  }'  
 ```
 Check out the [Slurm's sinfo page](https://slurm.schedmd.com/sinfo.html) and  [wikipedia's awk page](https://en.wikipedia.org/wiki/AWK) for more info on this command.
 

@@ -32,3 +32,6 @@ Support & contact:
 
 Style guide:
 https://www.kubeflow.org/docs/about/style-guide/
+
+Interesting documentations:
+https://support.ceci-hpc.be/doc/index.html

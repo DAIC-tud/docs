@@ -17,10 +17,22 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
 <table>
 <caption> Table 1: Overview of DAIC compute nodes </caption>
 <tfoot><tr><td colspan="6"> 
+<font color="gray">
 <ul>
  <li> All nodes are also parts of the <code>general</code> partition. </li>
- <li> Abbreviations: <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), <code>ib</code> InfiniBand connection, <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), <code>`bigmem`</code>, <code>imphysexclusive</code>, <code>`avx512`</code>, <code>gpumem32</code>, <code>nvme</code> </li>
+ <li> Abbreviations: 
+   <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), 
+   <code>ib</code> InfiniBand connection, 
+   <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), 
+   <code>`bigmem`: For jobs that needs a lot of memory, so remaining resources are available to others </code>, 
+   <code>imphysexclusive</code>: imphys nodes use infiband for jobs that run across a large number of nodes, and it is handy that those nodes are somewhat reserved, 
+   <code>`avx512`</code>: extra instructions on cpu, like avx1 and 2 only on the newer CPUs, if you have code that need them, 
+   <code>gpumem32</code>: gpu memory for newer GPUs: do not use gpu types, but use this feature instead if you have a need for gpu with more memory, 
+   <code>nvme</code>: NVME disk for tmp storage- faster than ssd- I doubt people use it. I don’t think there is big difference
+ </li>
 </ul>
+</font>
+</td></tr></tfoot>
 <thead>
   <tr>
     <th>PARTITION</th>

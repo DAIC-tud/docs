@@ -32,8 +32,9 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 <table>
 <caption> Table 1: The general partition and its operational and per-QoS per-user limits; specific groups use other partitions and QoS
 </caption>
-<tfoot><tr><td colspan="11"> *infinite QoS jobs will be killed when servers go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
-</td></tr></tfoot>
+<tfoot><tr><td colspan="11"><font color="gray">
+ *infinite QoS jobs will be killed when servers go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
+</font></td></tr></tfoot>
 <thead>
   <tr>
     <th rowspan="2">Partition</th>
@@ -122,7 +123,7 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 
 {{% alert title="Note" color="info" %}}
 
-The priority of a job is a function of *both* QoS *and* previous usage (less is better). See [Job prioritization and waiting times ](#job-prioritization-and-waiting-times)
+The priority of a job is a function of *both* QoS *and* previous usage (less is better). See [Job prioritization and waiting times ](#slurms-job-scheduling-and-waiting-times)
 
 {{% /alert %}} 
 
@@ -570,48 +571,17 @@ guest-long          0   00:00:00                                    cluster     
     medium         35   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3352,gre+                                         65536                                                         1-12:00:00 cpu=1466,gre+                  2000                                      cpu=1,mem=1M 
 ```
 
-## Job prioritization and waiting times
+## Slurm's job scheduling and waiting times
 
+When slurm is not configured for FIFO scheduling, jobs are prioritized in the following order:
 
-Priority = 40,000,000 * QoS + 20,000,000 * FairShare
+1. Jobs that can preempt: _Not enabled in DAIC_
+2. Jobs with an advanced reservation: _See [Slurm's Advanced Resource Reservation Guide](https://slurm.schedmd.com/reservations.html)_
+3. Partition PriorityTier: _See [Priority tiers](#priority-tiers)_
+4. Job priority: _See [Priority calculations](#job-priority) and [QoS priority](#qos-priority)_
+5. Job submit time
+6. Job ID
 
-| QoS         | Priority   |
-| ----------- | ---------- |
-| Interactive | 40,000,000 |
-| Short       | 20,000,000 |
-| Long        | 10,000,000 |
-| Infinite    | 0          |
-
-| FairShare     | Priority       |
-| ------------- | -------------- |
-| Usage < Share | 20,000,000     |
-| Usage > Share | 20,000,000 - 0 |
-| No Share      | 0              |
-
-```bash 
-
-Usage = (CPUs / 2 + Mem[GB] / 12 + GPUs * 10) * walltime[sec]
-(Interactive QoS has usage factor 2.0; usage is doubled)
-
-(  2 CPUs / 2 + 12 GB Mem / 12             ) * 4 hours =   28800
-(  2 CPUs / 2 + 12 GB Mem / 12 + 1 GPU * 10) * 4 hours =  172800
-(160 CPUs / 2 + 48 GB Mem / 12             ) * 4 hours = 1209600
-(  2 CPUs / 2 + 12 GB Mem / 12             ) * 7 days  = 1209600
-```
-
-
-|                            | QoS Priority | FairShare Priority | Job Priority |
-| -------------------------- | ------------ | ------------------ | ------------ |
-| Interactive, low usage     | 40,000,000   | 20,000,000         | 60,000,000   |
-| Interactive, extreme usage | 40,000,000   | \>0                | \>40,000,000 |
-| Short, low usage           | 20,000,000   | 20,000,000         | 40,000,000   |
-| Long, low usage            | 10,000,000   | 20,000,000         | 30,000,000   |
-| Short, extreme usage       | 20,000,000   | \>0                | \>20,000,000 |
-| Infinite, low usage        | 0            | 20,000,000         | 20,000,000   |
-| Long, extreme usage        | 10,000,000   | \>0                | \>10,000,000 |
-| Infinite, extreme usage    | 0            | \>0                | \>0          |
-
-### Fair tree fairshare
 
 ### Priority tiers
 DAIC partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)).
@@ -630,6 +600,84 @@ Resources of all partitions (eg, `st`) are also part of the `general` partition 
 * submitting to the  `general` partition allows jobs to use all nodes
 * submitting to group-specific partitions alone results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
 * The optimal way is to submit to both `general` and group-specific partitions when accessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+
+
+### Priority calculations
+
+Slurm continually calculates job priorities and schedules the execution of jobs based on its configurations. A few configuration parameters affect priority computations:
+
+- `SchedulerType`: The type of scheduling used based on available resources, requested resources, and job priorities. On DAIC, slurm is used with `backfill` scheduling mechanism. This mechanism allows low priority jobs to _backfill_ idle resources if doing so does not delay the expected start time of any high priority job (based on resource availability).
+
+
+
+{{% alert title="Tip" color="info" %}}
+With `sched/backfil`, jobs can only be started when the resources that they request fit within the available idle resources. Thus:
+- The fewer resources a job request, the higher the chance that it will fit within the available idle resources. 
+- The more resources a job request, the long it will have to wait before enough resources become available to start.
+To check how the cluster is configured, you may run:
+```bash
+$ scontrol show config | grep SchedulerType
+SchedulerType           = sched/backfil
+```  
+More details is available in [Slurm's SchedulerType](https://slurm.schedmd.com/slurm.conf.html#OPT_SchedulerType)
+
+{{% /alert %}}
+
+
+- `PriorityType`: The way priority is computed. On DAIC, a `multifactor` computation is applied, where job priority _at any given time_ is a weighted sum of the following factors:
+  - Fairshare: a measure of the amount of resources that a group (ie `account` in slurm terminology) has contributed, and the historical usage of the group and the user.
+  - QOS: the quality of service associated with the job, which is specified with the slurm `--qos` directive  (see [QoS priority](#qos-priority)).
+
+{{% alert title="Info" color="info" %}}
+The whole idea behind the FairShare scheduling in DAIC is to share all the available resources fairly and efficiently with all users (instead of having strict limitations in the amount of resource use or in which hardware users can compute). The resources in the cluster are contributed in different amounts by different groups (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)), and the scheduler makes sure that each group can use a _share_ of the resource relative to what the group contributed. 
+To check how the cluster is configured you may run:
+
+```bash
+$ scontrol show config | grep PriorityType
+PriorityType            = priority/multifactor
+$ sprio --weights
+          JOBID PARTITION   PRIORITY       SITE  FAIRSHARE        QOS
+        Weights                               1   20000000   40000000
+```
+{{% /alert %}}
+
+
+
+The following commands are useful for checking priortization of your own jobs:
+
+| Command | Purpose |
+| ------- | ------- |
+| `sprio -j <YourJobID>` | Determine the priority of your job |
+| `squeue -j <YourJobID> --start` | Request your job’s estimated start time|
+| `sshare -u <YourNetID>` | Determine your current fairshare value |
+
+
+{{% alert title="Info" color="info" %}}
+To get more complete priority configurations of a cluster, run the command:
+```bash
+$ scontrol show config | grep ^Priority
+PriorityParameters      = (null)
+PrioritySiteFactorParameters = (null)
+PrioritySiteFactorPlugin = (null)
+PriorityDecayHalfLife   = 2-00:00:00
+PriorityCalcPeriod      = 00:05:00
+PriorityFavorSmall      = No
+PriorityFlags           = 
+PriorityMaxAge          = 7-00:00:00
+PriorityUsageResetPeriod = NONE
+PriorityType            = priority/multifactor
+PriorityWeightAge       = 0
+PriorityWeightAssoc     = 0
+PriorityWeightFairShare = 20000000
+PriorityWeightJobSize   = 0
+PriorityWeightPartition = 0
+PriorityWeightQOS       = 40000000
+PriorityWeightTRES      = (null)
+```
+{{% /alert %}}
+
+
+
 
 ### QoS priority 
 
@@ -820,7 +868,7 @@ $
 For more information on job arrays, refer to [Slurm Job Array Support](https://slurm.schedmd.com/job_array.html)
 {{% /alert %}}
 
-## Troubleshooting Common Issues - 
+## Troubleshooting Common Issues 
 
 _Likely contains links to the Support area_
 

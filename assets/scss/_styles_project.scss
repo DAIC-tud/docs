@@ -1,0 +1,31 @@
+/*
+
+Nothing defined here. The Hugo project that uses this theme can override Bootstrap by adding a file to:
+
+assets/scss/_styles_project.scss
+
+*/
+
+// Disable gitlab side buttons:
+//.td-page-meta--view { display: none !important; }
+//.td-page-meta--edit { display: none !important; }
+//.td-page-meta--child { display: none !important; }
+.td-page-meta--issue { display: none !important; }
+//.td-page-meta--project-issue { display: none !important; }
+
+/* Custom styles for automatic numbering of figure captions */
+
+figure {
+  counter-increment: figure-counter;
+}
+
+figure figcaption {
+  color: gray;
+  //display: flex;
+}  
+
+figcaption::before {
+  content: "Figure " counter(figure-counter) ": ";
+  color: gray; /* Set the color for the figure number part */
+  font-weight: bold; /* Optional: Make the figure number bold */
+}

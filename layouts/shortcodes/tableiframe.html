@@ -1,0 +1,23 @@
+{{ $url := .Get 0 }}
+{{ $iframeContentStyle := .Get 1 }}
+{{ $iframeContainerStyle := .Get 2 }}
+
+
+
+
+<div class="iframeContainer" style="{{ $iframeContainerStyle | safeCSS }}">
+    <iframe src="{{ $url }}" scrolling="yes" class="iframeContent" style="{{ $iframeContentStyle | safeCSS }}"></iframe>
+  </div>
+  
+<style>
+    .iframeContainer {
+        position: relative;
+        overflow: hidden;
+        {{ $iframeContainerStyle }}
+    }
+
+    .iframeContent {
+        position: absolute;
+        {{ $iframeContentStyle }}
+    }
+</style>

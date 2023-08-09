@@ -1,0 +1,7 @@
+<!-- layouts/shortcodes/external-link.html -->
+{{ $url := .Get 0 }}
+{{ $text := .Get 1 }}
+
+<a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+  {{ $text }} <i class="fas fa-external-link-alt"></i>
+</a>

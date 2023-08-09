@@ -183,7 +183,7 @@ A useful tool that can be used to streamline the debugging of such scripts is [S
 
 
 
-### Job submission
+### Job submission and monitoring
 
 Once a script is ready, it is time to send it to the cluster and start computing. 
 

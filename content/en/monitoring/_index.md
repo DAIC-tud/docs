@@ -9,10 +9,9 @@ menu:
 
 
 <ul>
-  <li>
-    <details>
-      <summary>{{< external-link "https://login.hpc.tudelft.nl/protected/slurmtop.txt" "slurmtop (login required)" >}}</summary>
-      <code>slurmtop</code> is available as both a cluster command, and as a webpage. Both the command and webpage  display the following tables:
+  <li> 
+    <summary>{{< external-link "https://login.hpc.tudelft.nl/protected/slurmtop.txt" "slurmtop (login required)" >}}</summary> 
+    <code>slurmtop</code> is available as both a cluster command, and as a webpage. Both the command and webpage  display the following tables:
       <ul>
         <li>Summary on resources allocations in the <code>general</code> partition in: <code>Allocated/</li>Idle/Other/Total</code> (in the command line version) or <code>Total/allocation</code> (in the webpage version) format
         <li>Per-node details on status and resources allocations in the <code>general</code> partition </li>
@@ -20,30 +19,23 @@ menu:
         <li>Resource usage and fairshare information for the top 10 cluster users (in terms of </li>Normalized usage)
         <li>Details of jobs in the cluster, sorted by priority and jobID </li>
       </ul>
-    </details>
-  </li>
-  <li>{{< external-link "https://login.hpc.tudelft.nl/protected/job_efficiency.cgi" "SlurmEff (login required)" >}}
+    
   </li>
   <li>
-    {{< external-link "https://login.hpc.tudelft.nl/cacti/graph_view.php" "Cluster Monitoring Graphs" >}}
+      <summary>{{< external-link "https://login.hpc.tudelft.nl/protected/job_efficiency.cgi" "SlurmEff (login required)" >}}</summary>
+      A summary of efficiency statistics of your own jobs. Statistics are calculated on the basis of requested vs consumed resources. 
+  </li>
+  <li>{{< external-link "https://login.hpc.tudelft.nl/cacti/graph_view.php" "Cluster Monitoring Graphs" >}}
   </li>
   <li>
-    <details>
-      <summary>Login nodes status </summary>
-      {{< tableiframe "https://login.hpc.tudelft.nl/" "top: -10px; left: -10px; width: 500px; height: 200px;" "width: 562px; height: 161px;" >}}
-    </details>
+      <summary>{{< external-link "https://login.hpc.tudelft.nl/" "DAIC status check (Access from TUD network)" >}} </summary>
+      A brief overview of:
+      <ul>
+        <li>Login nodes status</li>
+        <li>Compute nodes status </li>
+        <li>Summary graphs</li>
+      </ul>
   </li>
-  <li>
-    <details>
-      <summary>Compute nodes status</summary>
-      {{< tableiframe "https://login.hpc.tudelft.nl/" "top: -10px; left: -10px; width: 500px; height: 200px;" "width: 576px; height: 1785px;" >}}
-  </details>
-  </li>
-  <li>
-    <details>
-      <summary>Summary graphs</summary>
-      {{< tableiframe "https://login.hpc.tudelft.nl/" "top: -10px; left: -10px; width: 500px; height: 200px;" "width: 1240px; height: 1816px;" >}}
-  </details>
   </li>
 </ul>
 

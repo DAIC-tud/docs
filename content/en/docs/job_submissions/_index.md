@@ -578,8 +578,7 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 1. Jobs that can preempt: _Not enabled in DAIC_
 2. Jobs with an advanced reservation: _See [Slurm's Advanced Resource Reservation Guide](https://slurm.schedmd.com/reservations.html)_
 3. Partition PriorityTier: _See [Priority tiers](#priority-tiers)_
-4. Job priority: _See [Priority calculations](#job-priority) and [QoS priority](#qos-priority)_
-5. Job submit time
+4. Job priority: _See [Priority calculations](#priority-calculations) and [QoS priority](#qos-priority)_
 6. Job ID
 
 
@@ -643,7 +642,7 @@ $ sprio --weights
 
 
 
-The following commands are useful for checking priortization of your own jobs:
+The following commands are useful for checking prioritization of your own jobs:
 
 | Command | Purpose |
 | ------- | ------- |

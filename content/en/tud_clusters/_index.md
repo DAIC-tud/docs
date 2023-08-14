@@ -60,7 +60,7 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   </tr>
   <tr>
     <td>Contact info</td>
-    <td></td>
+    <td><a href="https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su"> DAIC community</a></td>
     <td><a href="https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=b7e2b7b46ac94cf688c21761aa324fc1">DHPC team</a></td>
     <td><a href="mailto:das-account@cs.vu.nl">DAS admin</a></td>
   </tr>

@@ -21,7 +21,7 @@ In line with the steps in [What to do in case of problems](../docs/intro_daic/us
 
 ## Support & contact:
 If the answer to your question is not found in any of the [Group-specific resources](#group-specific-resources), consult with:
-* DAIC community on:  [Mattermost]() / [Teams](https://teams.microsoft.com/l/channel/19%3ad5501f1d3a6e4b7394d7cee89d5b2d1c%40thread.tacv2/General?groupId=f73478dd-163d-4e49-8f75-cdfe56e20bbc&tenantId=096e524d-6929-4030-8cd3-8ab42de0887b)
+* DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 
 * HPC support via the [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/) via the `I have a different question` form under the `Research support` tile. Please give a relevant _Brief Description_, and in your question include the line _This question is for operator group ICT-SYSTEMS-HPC_.
 
 {{% alert title="Note" color="info" %}}

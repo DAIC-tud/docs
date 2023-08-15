@@ -24,18 +24,6 @@ A list of such outputs is found in [Scientific outputs](scientific_outputs.md#sc
 <iframe width="640px" height="480px" src="https://forms.office.com/e/tSAckyHevL?embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
 
 
-Agreed upon:
-1. Part of the documentation gives users a form:
-  * form sends info to the correct contact person
-  * form asks for: department, section, research group, intended duration of usage- 
-    - a reminder about account expiration is sent to user (4 weeks, 2 weeks, 1 week, and 1 day reminder). 
-    - account is deactivated after this period, unless user (and PI) request extension
-    - email is sent, asking user to add any publication from using cluster was published
-2. Once user is added, the user recieves onboarding instructions:
-  * links to documentaiton, highlihgting the quick start part
-  * links to support channels (mattermost)
-  * reminder about citing the cluster
-
 
 
 

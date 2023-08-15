@@ -101,6 +101,9 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
 ## DAIC advisory board
 
 {{< cardpane >}}
+  {{< card header="Thomas Abeel" title="Department of Intelligent Systems" subtitle="Delft Bioinformatics Lab"  >}}
+  <img src="thomas.abeel-413px.png" alt="Thomas Abeel">
+  {{< /card >}}
   {{< card header="Frans Oliehoek" title="Department of Intelligent Systems" subtitle="Interactive Intelligence group"  >}}
   <img src="frans.oliehoek02.jpg" alt="Frans Oliehoek">
   {{< /card >}}

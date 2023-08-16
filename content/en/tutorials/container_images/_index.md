@@ -22,7 +22,7 @@ where:
 * `<container>` is the path to a container image, typically, a `*.sif` file
 * `<command>` is the command you like to run from inside the container, eg, `hostname`
 *  Both `shell` and `exec` can be used to launch container images. The difference is that `shell` allows you to work inside the container image interactively; while `exec` executes the `<command>` inside the image and exits. Of course, by using something like `/bin/bash` as the `<command>`, `exec` behaves exactly like `shell`. 
-* `run` also launches a container image, but runs the default action defined in the container image. See an example use case in [Building images ](/tutorials/singularity/#building-images)
+* `run` also launches a container image, but runs the default action defined in the container image. See an example use case in [Building images ](#building-images)
 
 
 The question is now: where to get the `<container>` file from? You can either: 
@@ -398,7 +398,7 @@ From: condaforge/mambaforge
     exec /opt/conda/envs/demo-env/bin/pip install matplotlib # install PyPI libraries
 ```
 
-This file is similar to the file in the [Building images](/tutorials/singularity/#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `demo-env.yml` file will be available in `/opt/` in the container.
+This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `demo-env.yml` file will be available in `/opt/` in the container.
 
 Now, time to build and check the image:
 
@@ -445,7 +445,7 @@ sine_wave.png
 ```
 
 {{% alert title="Warning" color="warning" %}}
-In the last example, the container read and wrote a file to the host system directly. This behavior is risky. You are strongly recommended to expose only the desired host directories to the container. See [Exposing host directories](daicdocumentation/tutorials/singularity/#exposing-host-directories)
+In the last example, the container read and wrote a file to the host system directly. This behavior is risky. You are strongly recommended to expose only the desired host directories to the container. See [Exposing host directories](#exposing-host-directories)
 {{% /alert %}}
 
 

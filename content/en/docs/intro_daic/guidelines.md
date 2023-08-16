@@ -1,12 +1,12 @@
 ---
-title: "Policies and Usage guidelines"
-linkTitle: "Policies and Usage guidelines"
+title: "Usage guidelines"
+linkTitle: "Usage guidelines"
 weight: 4
 description: >
   What is acceptable usage of DAIC?
 ---
 
-The available processing power and memory in DAIC is large, but still limited. You should use the available resources efficiently and fairly. This page lays out a few general principles, guidelines ~~and policies~~ for considerate use of DAIC.
+The available processing power and memory in DAIC is large, but still limited. You should use the available resources efficiently and fairly. This page lays out a few general principles and guidelines  for considerate use of DAIC.
 
 ## Using shared resources
 
@@ -25,8 +25,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 
 * Connect only directly from the bastion server to the login servers (See [Connecting to DAIC](../connecting/_index.md))
 
-  * ~~Connecting from one server to another creates unwanted load on the server in the middle and it's network connection. And if one of these fails you loose the connection to your job.~~
-
+ 
 * Always choose the login server with the lowest use (most importantly system load and memory usage), by checking the [Current resource usage page](https://login.daic.tudelft.nl/) ~~or the `servers`` command for information.~~
   * ~~Follow the specific instructions for that server:~~ Each server displays a message at login. Make sure you understand it before proceeding. ~~This message includes the current load of the server, so look at it at every login.~~
 

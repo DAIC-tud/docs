@@ -127,14 +127,14 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
 </table>
 
 
-## Other clusters
+## SURF clusters
 
-In this website of [Snellius](https://www.surf.nl/en/dutch-national-supercomputer-snellius), there is a tab called "technical specifications", where you can find the number GPU they have is 144 A100 GPU.
+[SURF](https://www.surf.nl/en), the collaborative organization for IT in Dutch education and research, has installed and is currently operating the Dutch National supercomputer, [Snellius](https://www.surf.nl/en/dutch-national-supercomputer-snellius), which houses 144 40GB A100 GPUs as of Q3 2021 (36 gcn nodes x 4 A100 GPUs/node = 144 A100 GPUs total) with other specs detailed in the [Snellius hardware and file systems wiki](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware+and+file+systems). 
 
-More details information can be found [here](https://servicedesk.surf.nl/wiki/display/WIKI/Snellius+hardware+and+file+systems), where they state the A100 GPU exists from Q3 2021. The details is in section "Phase 1 (Q3 2021)", the "Accelerator" column, there are 36 nodes, and each node has 4 A100 GPU = 144 GPUs. Note the type of A100 they have is the 40 GB memory version, not the 80 GB memory version.
+SURF also operates other clusters like [Spider](https://servicedesk.surf.nl/wiki/display/WIKI/Spider+-+Description) for processing large structured data sets, and [ODISSEI Secure Supercomputer (OSSC)](https://servicedesk.surf.nl/wiki/display/WIKI/ODISSEI+Secure+Supercomputer) for large-scale analyses of highly-sensitive data. For an overview of SURF clusters, see the [SURF wiki](https://servicedesk.surf.nl/wiki/).
 
-## SURF
-https://servicedesk.surf.nl/wiki/
+TU Delft researchers in TBM and CITG already have direct and easy access to the compute power and data services of SURF, while members of other faculties need to apply for access as detailed in [SURF's guide to Apply for access to compute services](https://www.surf.nl/en/research-it/apply-for-access-to-compute-services).
+
 
 ## TU Delft cloud resources
 

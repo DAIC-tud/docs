@@ -25,8 +25,17 @@ where:
 * `run` also launches a container image, but runs the default action defined in the container image. See an example use case in [Building images ](/tutorials/singularity/#building-images)
 
 
-The question is now: where to get the `<container>` file? You can either 1) use a pre-built image by pulling from a repository, or, 2) build your own container image and use it accordingly. The following sections give examples to both options.
+The question is now: where to get the `<container>` file from? You can either: 
+1) use a pre-built image by pulling from a repository (see [Pulling images](#pulling-images)), or, 
+2) build your own container image and use it accordingly (see [Building images](#building-images)). 
+The following sections give examples to both options.
 
+<!-- 
+Add workflow for how to work with containers:
+- pull image
+- dependent
+- building
+-->
 
 {{% alert title="Note" color="info" %}}
 If you intend to extensively work/test your image interactively, it is best to first submit an interactive SLURM job with the needed resources, eg, memory, gpus, ... etc:
@@ -117,7 +126,11 @@ $ apptainer shell -C ubuntu_latest.sif
 
 ### Pulling from NVIDIA GPU cloud (NGC)
 
-This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally, and only send the downloaded image to DAIC. For this, Apptainer needs to be installed on your machine first, as per the official [Installing Apptainer pages](https://apptainer.org/docs/admin/main/installation.html).
+This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally, and only send the downloaded image to DAIC. For this, Apptainer needs to be installed on your machine first.
+
+{{% alert title="Tip" color="info" %}}
+- To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). If you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a Linux virtual machine and Apptainer.
+{{% /alert %}}
 
 
 {{% alert title="Warning" color="warning" %}}
@@ -156,8 +169,8 @@ $ scp YourImage.sif <YourNetID>@login.hpc.tudelft.nl:/tudelft.net/staff-umbrella
 ```
 {{% /alert %}}
 
-{{% alert title="Note" color="info" %}}
-If Apptainer is not already installed in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html)
+{{% alert title="Tip" color="info" %}}
+- To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). If you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a  Linux virtual machine and Apptainer.
 {{% /alert %}}
 
 An example _recipe_ file, `cuda_based_recipe.def`, for a cuda-enabled container may look as follows:
@@ -463,3 +476,12 @@ Apptainer> echo "Date: $(date)" >> /mnt/raw_data.txt # attempt to edit fails
 bash: tst: Read-only file system
 ```
 
+<!-- 
+
+## Containers and VScode
+
+- (bonus) attach vscode (or other ide) and apptainer
+- how to connect via vscode
+
+See this link https://stackoverflow.com/questions/63604427/launching-a-singularity-container-remotely-using-visual-studio-code
+-->

@@ -26,7 +26,7 @@ This user agreement is intended to establish the expectations between all users 
 
 - **Cluster workflow:** 
   * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quick start](../../quickstart/_index.md#quick-start)
-  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs. See [Computing on login nodes](policies.md#computing-on-login-nodes)
+  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs. See [Computing on login nodes](guidelines.md#computing-on-login-nodes)
   * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job. See [Interactive jobs on compute nodes](../job_submissions/_index.md#interactive-jobs-on-compute-nodes).
   * For determining resources of larger jobs, you can submit a single (short) test job. See [Job submission](../job_submissions/_index.md#job-submission-and-monitoring)
 

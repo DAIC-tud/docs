@@ -28,7 +28,7 @@ where:
 The question is now: where to get the `<container>` file from? You can either: 
 1) use a pre-built image by pulling from a repository (see [Pulling images](#pulling-images)), or, 
 2) build your own container image and use it accordingly (see [Building images](#building-images)). 
-The following sections give examples to both options.
+
 
 <!-- 
 Add workflow for how to work with containers:
@@ -225,7 +225,7 @@ On DAIC, check the image:
 ```bash
 $ hostname # check you are on DAIC
 login1.hpc.tudelft.nl 
-$ sinteractive --cpus-per-task=2 --mem=1024 --gres=gpu --time=00:05:00
+$ sinteractive --cpus-per-task=2 --mem=1024 --gres=gpu --time=00:05:00 # request a gpu node
 $ hostname # check you are on a compute node
 insy13.hpc.tudelft.nl
 

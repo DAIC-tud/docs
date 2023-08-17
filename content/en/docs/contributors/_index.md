@@ -13,6 +13,6 @@ give it a try- find the names on
 Acknowledge different contributors:
 * Sys admins?
 * Funders?
-* Content Writers:
-* Reviewers and Editors:
-* Input and Suggestions:
+* Content Writers?
+* Reviewers and Editors?
+* Input and Suggestions?

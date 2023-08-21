@@ -7,10 +7,9 @@ description: >
 ---
 
 {{% pageinfo %}}
-This aspect is different from DHPC. Comment on the difference too!
+U DAIC servers have direct access to the TU Delft home, group and bulk storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others, as is demonstrated throughout this page.
 {{% /pageinfo %}}
 
- DAIC servers have direct access to the TU Delft home, group and bulk storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others, as is demonstrated throughout this page.
 
 ## File System Overview
 
@@ -43,7 +42,7 @@ Unlike TU Delft's [DelftBlue](https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardwar
   <tr>
     <td></td>
     <td>Windows </td>
-    <td>only accessible using an scp/sftp client (see <a href="https://www.tablesgenerator.com/connecting/_index.md#ssh-access">SSH access</a></td>
+    <td>only accessible using an scp/sftp client (see <a href="https://daic.pages.ewi.tudelft.nl/docs/docs/connecting/">SSH access</a>)</td>
   </tr>
   <tr>
     <td></td>
@@ -289,7 +288,8 @@ For files that you want to transfer to or from local storage, first transfer the
 
 
 
-
+<!--
 ## see this example: 
 * https://www.nhr.kit.edu/userdocs/horeka/filesystems/
 * https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp
+-->

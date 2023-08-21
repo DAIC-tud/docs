@@ -22,7 +22,7 @@ A slurm-based cluster is composed of a set of _login nodes_ that are used to acc
 
 When you submit a job in a slurm-based system, it enters a queue waiting for resources.
 The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
-* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)). 
+* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Brief history of DAIC](../intro_daic/#brief-history-of-daic)). 
 All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](#priority-tiers)).
 * The _Quality of Service_ is a set of limits that controls what resources a job can use and, therefore, determines the priority level of a job. This includes the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated (see [QoS priority](#qos-priority)).
 
@@ -296,7 +296,7 @@ Requesting interactive sessions is subject to the same resource availability con
 
 ### Jobs on GPU resources
 
-Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [DAIC GPUs](../intro_daic/hardware_infra.md#gpus)).
+Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [DAIC GPUs](../intro_daic/hardware_infra#gpus)).
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
@@ -305,7 +305,7 @@ To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]
 
 
 {{% alert title="Note" color="warning"%}}
-For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/#environment-modules)
+For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/#available_software/#environment-modules)
 {{% /alert %}}
 
 
@@ -583,7 +583,7 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 
 ### Priority tiers
-DAIC partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)).
+DAIC partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments (see [Brief history of DAIC](../intro_daic/#brief-history-of-daic)).
 
 When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user) priority jobs that fit (if any).
 
@@ -628,7 +628,7 @@ More details is available in [Slurm's SchedulerType](https://slurm.schedmd.com/s
   - QOS: the quality of service associated with the job, which is specified with the slurm `--qos` directive  (see [QoS priority](#qos-priority)).
 
 {{% alert title="Info" color="info" %}}
-The whole idea behind the FairShare scheduling in DAIC is to share all the available resources fairly and efficiently with all users (instead of having strict limitations in the amount of resource use or in which hardware users can compute). The resources in the cluster are contributed in different amounts by different groups (see [Brief history of DAIC](../intro_daic/_index.md#brief-history-of-daic)), and the scheduler makes sure that each group can use a _share_ of the resource relative to what the group contributed. 
+The whole idea behind the FairShare scheduling in DAIC is to share all the available resources fairly and efficiently with all users (instead of having strict limitations in the amount of resource use or in which hardware users can compute). The resources in the cluster are contributed in different amounts by different groups (see [Brief history of DAIC](../intro_daic/#brief-history-of-daic)), and the scheduler makes sure that each group can use a _share_ of the resource relative to what the group contributed. 
 To check how the cluster is configured you may run:
 
 ```bash
@@ -869,11 +869,11 @@ For more information on job arrays, refer to [Slurm Job Array Support](https://s
 
 ## Troubleshooting Common Issues 
 
-_Likely contains links to the Support area_
+Please see the Frequently asked questions on [Scheduler problems ](../../support/faqs/software/#scheduler-problems) and [Job resources](../../support/faqs/job_resources/)
 
-
+<!--
 see this example: https://www.nhr.kit.edu/userdocs/horeka/batch/
-
+-->
 
 
 ## Kerberos Authentication

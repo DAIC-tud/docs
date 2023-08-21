@@ -15,7 +15,7 @@ This user agreement is intended to establish the expectations between all users 
 
 - **Basic principles:** Regardless of the specific details, cluster use is always based on basic principles of fair-use and fair-share (through priority) of resources, and all users are expected to take care at all times that their cluster use is not hindering other users.
 
-- **Policies:** Cluster policies are decided by the user board and enforced by various automated and non-automated actions, for example by the job scheduler based on [QoS limits](../job_submissions/_index.md#partitions-and-quality-of-service) and the administrators for ensuring the stability and performance of the cluster.
+- **Policies:** Cluster policies are decided by the user board and enforced by various automated and non-automated actions, for example by the job scheduler based on [QoS limits](../../job_submissions/#partitions-and-quality-of-service) and the administrators for ensuring the stability and performance of the cluster.
 
 - **Support:** 
   * _Cluster administrators_ offer, __during office hours__, different levels of support, which include (in order of priority): ensuring the stability and performance of the cluster, providing generic software, helping with cluster-specific questions and problems, and providing information (via e-mails and during the board meeting) about cluster updates.
@@ -25,21 +25,21 @@ This user agreement is intended to establish the expectations between all users 
 - **More information:** Please see the [General cluster usage](#general-cluster-usage) and [What to do in case of problems](#what-to-do-in-case-of-problems) sections on where to find more information about cluster use.
 
 - **Cluster workflow:** 
-  * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quick start](../../quickstart/_index.md#quick-start)
-  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs. See [Computing on login nodes](guidelines.md#computing-on-login-nodes)
-  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job. See [Interactive jobs on compute nodes](../job_submissions/_index.md#interactive-jobs-on-compute-nodes).
-  * For determining resources of larger jobs, you can submit a single (short) test job. See [Job submission](../job_submissions/_index.md#job-submission-and-monitoring)
+  * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quick start](../../../quickstart/)
+  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs. See [Computing on login nodes](../guidelines#computing-on-login-nodes)
+  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job. See [Interactive jobs on compute nodes](../../job_submissions/#interactive-jobs-on-compute-nodes).
+  * For determining resources of larger jobs, you can submit a single (short) test job. See [Job submission](../../job_submissions/#job-submission-and-monitoring)
 
 - **QoS:** 
   * A Quality of Service (QoS) is a set of limits that controls what resources a job can use and determines the priority level of a job. DAIC adopts multiple QoSs 
-   to optimize the throughput of job scheduling and to reduce the waiting times in the cluster (see [QoS priority](../job_submissions/_index.md#qos-priority)).
+   to optimize the throughput of job scheduling and to reduce the waiting times in the cluster (see [QoS priority](../../job_submissions/#qos-priority)).
   * The DAIC QoS limits are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. 
    * Any (perceived) imbalance in the use of resources by a certain QoS or user should not be hold against a user or the scheduler, but should be discussed in the user board.
 
 ## General cluster usage
 
 1. You may use cluster resources for your research within the QoS restrictions of your domain user and user group.
-    1. Depending on your user group, you might be eligible to use specific partitions, giving higher priorities on certain nodes. See [Priority tiers](../job_submissions/_index.md#priority-tiers), and please check this with your lab.
+    1. Depending on your user group, you might be eligible to use specific partitions, giving higher priorities on certain nodes. See [Priority tiers](../../job_submissions/#priority-tiers), and please check this with your lab.
 
 2. Depending on your user group, you might be eligible to get priorities on certain nodes. For example, you might have access to a specialized partition or limited-time node reservation for your group or department (for example before a conference deadline). Please check this with your lab and try to use these in your `.sbatch` file, your jobs should then start faster!
 
@@ -87,7 +87,7 @@ When you encounter problems, please follow the subsequent steps, in the indicate
   2. You can also ask questions to fellow users on the [MatterMost channel](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su). 
   3. For prolonged problems, your initial contact point is your supervisor/PI.
   4. As a final step, you can contact the cluster administrators for technical sysadmin problems or persistent efficiency problems, or for more information if you are not sure why you are banned from the cluster. You can do this by reporting your question, through the [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/), to the Service Desk. In your question, refer to the ‘DAIC cluster’.
-  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](_index.md#daic-advisory-board) to bring it up as an agenda point in the next user board meeting.
+  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](../#daic-advisory-board) to bring it up as an agenda point in the next user board meeting.
 
 ## Responsible cluster usage
 

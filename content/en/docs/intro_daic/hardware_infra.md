@@ -9,7 +9,7 @@ description: >
 
 ## Compute Nodes: CPUs and GPUs
 
-DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Job scripts](../job_submissions/_index.md#job-scripts)). The following table gives an overview of current nodes and their characteristics:
+DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Job scripts](../../job_submissions/#job-scripts)). The following table gives an overview of current nodes and their characteristics:
 
 
 
@@ -318,7 +318,7 @@ All machines have large main memories for performing computations on big data se
 
 ### GPUs
 
-A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [Jobs on GPU resources](../job_submissions/_index.md#jobs-on-gpu-resources) for requesting a certain GPU for a computational job.
+A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [Jobs on GPU resources](../../job_submissions/#jobs-on-gpu-resources) for requesting a certain GPU for a computational job.
 
 
 {{% alert title="Stop!" color="warning"%}}
@@ -407,7 +407,7 @@ In table 2: the headers denote:
 </ul>
 
 {{% alert title="Note" color="info" %}}
-To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](../job_submissions/_index.md#jobs-on-gpu-resources)). The apptainer image used in this code snippet was built as demonstrated in the [Building images tutorial](../../tutorials/container_images/_index.md#building-images).
+To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](../../job_submissions/#jobs-on-gpu-resources)). The apptainer image used in this code snippet was built as demonstrated in the [Building images tutorial](../../../tutorials/container_images/#building-images).
 
 ```bash
 $ sinteractive --cpus-per-task=2 --mem=500 --time=00:02:00 --gres=gpu
@@ -452,5 +452,5 @@ SomeNetID@influ1:~$ exit
 
 ## DAIC compared with other TU Delft clusters
 
-For an overview of other compute environments accessible to TU Delft affiliates and their collaborators, see [TU Delft clusters comparison](../../tud_clusters/_index.md)
+For an overview of other compute environments accessible to TU Delft affiliates and their collaborators, see [TU Delft clusters comparison](../../tud_clusters/)
 

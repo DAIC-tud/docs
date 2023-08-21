@@ -306,7 +306,7 @@ All nodes have multiple Central Processing Units (CPUs) that perform the operati
 
 
 {{% alert title="Note" color="info" %}}
-Most programs use a fixed number of threads. Requesting more CPUs for a program than its number of threads will not make it any faster because it won't know how to use the extra CPUs. When a program has less CPUs available than its number of threads, the threads will have to time-share the available CPUs (i.e. each thread only gets part-time use of a CPU), and, as a result, the program will run slower (And even slower because of the added overhead of the switching of the threads). So it's always necessary to match the number of CPUs to the number of threads, or the other way around. See [Job scripts](http://localhost:1313/DAICdocumentation/docs/job_submissions/#job-scripts) for setting resources for batch jobs.
+Most programs use a fixed number of threads. Requesting more CPUs for a program than its number of threads will not make it any faster because it won't know how to use the extra CPUs. When a program has less CPUs available than its number of threads, the threads will have to time-share the available CPUs (i.e. each thread only gets part-time use of a CPU), and, as a result, the program will run slower (And even slower because of the added overhead of the switching of the threads). So it's always necessary to match the number of CPUs to the number of threads, or the other way around. See [Job scripts](../../job_submissions/#job-scripts) for setting resources for batch jobs.
 {{% /alert %}}
 
 The number of threads running simultaneously determines the load of a server. If the number of running threads is equal to the number of available CPUs, the server is loaded 100% (or 1.00). When the number of threads that want to run exceed the number of available CPUs, the load rises above 100%.
@@ -314,7 +314,7 @@ The number of threads running simultaneously determines the load of a server. If
 The CPU functionality is provided by the hardware cores in the processor chips in the machines. Traditionally, one physical core contained one logical CPU, thus the CPUs operated completely independent. Most current chips feature hyper-threading: one core contains two (or more) logical CPUs. These CPUs share parts of the core and the cache, so one CPU may have to wait when a shared resource is in use by the other CPU. Therefore these CPUs are always allocated in pairs by the job scheduler. 
 
 ### Memory
-All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [Job scripts](http://localhost:1313/DAICdocumentation/docs/job_submissions/#job-scripts) for setting resources for batch jobs.
+All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [Job scripts](/docs/docs/job_submissions/#job-scripts) for setting resources for batch jobs.
 
 ### GPUs
 

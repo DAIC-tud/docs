@@ -8,7 +8,7 @@ description: >
 
 ## SSH access
 
-If you have a valid DAIC account (see [Access and Accounts page](../intro_daic/access_accounts.md)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see [wikipedia's ssh page](https://en.wikipedia.org/wiki/Secure_Shell)).
+If you have a valid DAIC account (see [Access and Accounts page](../intro_daic/access_accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see [wikipedia's ssh page](https://en.wikipedia.org/wiki/Secure_Shell)).
 
 
 
@@ -139,13 +139,13 @@ In Linux, you can use your default file manager (`Konqueror` or `Nautilus`) for 
 
 Machines with a TUD-configured Mac OS X installation come with Fetch (SFTP) installed in the Application folder. FileZilla (SFTP) is available, but has to be installed. For SSH, it's probably easiest to just run SSH from a terminal. 
 
-
+<!--
 #### ~~PuTTY settings~~
 
  ~~The following screen-shots show the most important settings for using PuTTY with the TU Delft linux servers. Unless otherwise specified, just use the default values.~~
 
 #### ~~FileZilla settings~~
-
+-->
 
 ## Access from outside university network 
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:

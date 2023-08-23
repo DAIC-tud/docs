@@ -1,4 +1,4 @@
-baseURL = "https://daic.pages.ewi.tudelft.nl/docs"
+baseURL = "https://doc.daic.tudelft.nl/"
 title = "DAIC documentation"
 
 # Language settings
@@ -106,7 +106,7 @@ version = "0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://daic.pages.ewi.tudelft.nl/docs/"
+url_latest_version = "https://doc.daic.tudelft.nl/"
 
 
 

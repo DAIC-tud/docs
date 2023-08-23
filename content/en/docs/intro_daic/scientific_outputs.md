@@ -5,7 +5,14 @@ weight: 3
 description: >
   How has DAIC contributed to TU Delft research?
 ---
-
+<!--
+<body>
+  <script src="https://unpkg.com/vue@^2/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+  <script src="https://unpkg.com/data-metrics-badge/dist/data-metrics-badge.min.js"></script>
+  <data-metrics-badge doi="10.7272/q6g15xs4" display="small"></data-metrics-badge>
+</body>
+-->
 
 ## Aggregate numbers
 
@@ -17,6 +24,16 @@ From only TU Delft Computer Science researchers ([INSY](https://www.tudelft.nl/e
 
 ## Scientific outputs
 
+
+Please acknowledge DAIC in any published or presented work when its  resources were used, using language such as:
+
+{{< card header="Acknowledgement" >}}
+Research reported in this work was supported by the computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft. URL:https://doc.daic.tudelft.nl/
+{{< /card >}}
+
+
 {{% alert title="Note" color="info" %}}
-The compilation of this list began in August 2023, and as a result, some older papers are not included. It is also based on self-reporting by individual researchers, so it may not be exhaustive. If you wish to include your paper(s) in this list, please post to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
+The compilation of the following list began in September 2023, and is based on self-reporting by individual researchers. As a result, it may not be exhaustive. If your paper is not in this list, then please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
 {{% /alert %}}
+
+

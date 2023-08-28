@@ -29,3 +29,5 @@ figcaption::before {
   color: gray; /* Set the color for the figure number part */
   font-weight: bold; /* Optional: Make the figure number bold */
 }
+
+@import "tocbot";

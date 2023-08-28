@@ -126,10 +126,10 @@ $ apptainer shell -C ubuntu_latest.sif
 
 ### Pulling from NVIDIA GPU cloud (NGC)
 
-This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally, and only send the downloaded image to DAIC. For this, Apptainer needs to be installed on your machine first.
+This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_.
 
 {{% alert title="Tip" color="info" %}}
-- To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). If you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a Linux virtual machine and Apptainer.
+To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run. Thus, if you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a Linux virtual machine and Apptainer. 
 {{% /alert %}}
 
 

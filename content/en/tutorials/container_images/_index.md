@@ -476,6 +476,96 @@ Apptainer> echo "Date: $(date)" >> /mnt/raw_data.txt # attempt to edit fails
 bash: tst: Read-only file system
 ```
 
+## _[Advanced:]()_ containers and (fake) native installation 
+
+It's possible to use Apptainer to install and then use software as if it were installed natively in the host system. For example, if you are a bioinformatician, you may be using software like  [`samtools`](http://www.htslib.org/) or [`bcftools`](https://samtools.github.io/bcftools/bcftools.html) for many of your analyses, and it may be advantageous to call it directly. Let's take this as an illustrative example:
+
+
+1. For hygiene, create the following file hierarchy: below a `software` directory an `exec` directory to put the container images and other executables, and a `bin` directory to contain softlinks:
+
+```bash
+$ mkdir -p software/bin/ software/exec
+```
+
+
+2. Create the image definition file (or pull from a repository, as appropriate) and build:
+
+```bash
+$ cd software/exec
+$
+$ cat bio-recipe.def
+Bootstrap: docker
+From: ubuntu:latest
+%post
+    apt-get update                       # update system
+    apt-get install -y samtools bcftools # install software
+    apt-get clean                        # clean up
+```
+
+```bash
+$ sudo apptainer build bio-container.sif bio-recipe.def
+```
+
+3. Now, create the following wrapper script:
+```bash
+$ cat wrapper_bio-container.sh
+#!/bin/bash
+containerdir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
+cmd="$(basename $0)"
+apptainer exec "${containerdir}/bio-container.sif" "$cmd" "$@"
+$
+$ chmod +x wrapper_bio-container.sh # make it executable
+```
+
+4. Create the softlinks:
+
+```bash
+$ cd ../bin
+$ ln -s ../exec/wrapper_bio-container.sh  samtools
+$ ln -s ../exec/wrapper_bio-container.sh  bcftools
+```
+
+5. Add the installation directory to your `$PATH` variable, and you will be able to call these tools 
+
+```bash
+$ export PATH=$PATH:$PWD
+$
+$ bcftools -v
+INFO:    gocryptfs not found, will not be able to use gocryptfs
+bcftools 1.13
+Using htslib 1.13+ds
+Copyright (C) 2021 Genome Research Ltd.
+License Expat: The MIT/Expat license
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+$
+$ samtools version                                  
+INFO:    gocryptfs not found, will not be able to use gocryptfs                             
+samtools 1.13                                                                               
+Using htslib 1.13+ds                                                                        
+Copyright (C) 2021 Genome Research Ltd.     
+```
+
+{{% alert title="Note" color="info" %}}
+* At the end of the previous steps, you will get the following tree structure. Please be mindful of when and where commands were executed.
+```bash
+$ tree software/
+software/
+├── bin
+│   ├── bcftools -> ../exec/wrapper.sh
+│   └── samtools -> ../exec/wrapper.sh
+└── exec
+    ├── bio-container.sif
+    └── wrapper.sh
+```
+
+* To permanently reflect changes to your `$PATH` variable, you may wish to add the step:
+```bash
+echo export PATH=$PATH:$PWD >> ~/.bash_profile
+``` 
+{{% /alert %}}
+
+
 <!-- 
 
 ## Containers and VScode

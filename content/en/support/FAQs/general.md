@@ -1,6 +1,6 @@
 ---
-title: "General problems"
-linkTitle: "General problems"
+title: "General questions"
+linkTitle: "General questions"
 weight: 1
 
 ---

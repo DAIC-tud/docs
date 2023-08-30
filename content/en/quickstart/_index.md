@@ -9,17 +9,27 @@ menu:
 ---
 
 
+## Pre-requisits
+
+1. Access credentials (see [Access and Accounts](../../docs/intro_daic/access_accounts#access-and-accounts)).
+2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
+
 
 ## Cluster workflow
-When working with HPCs in general, or DAIC in particular, the workflow of [_Fig 1_]({{< ref "fig:daic_partitions" >}}) needs to be followed, where code is developed locally (eg, in a laptop or PC), then ported to the cluster for further testing (eg, in an interactive node). If successful, jobs scripts are created and submitted to slurm, and progress is monitored. Finally, once all is done, intermediate files are ideally deleted, and final results downloaded for subsequent downstream analysis.
+When working with HPCs in general, or DAIC in particular, the workflow of [_Fig 1_]({{< ref "fig:daic_partitions" >}}) needs to be followed, where:
+1. code is developed locally (eg, in a laptop or PC), 
+2. then ported to the cluster (see [Connecting to DAIC](../../docs/connecting/) and [Data transfer methods](../../docs/filesystem/#data-transfer-methods)). 
+    - Possibly, software and dependencies are set up (see [Software environment](../../docs/software_environment/)).
+3. Typically, code is tested in the cluster, eg in an interactive session (see [Interactive jobs on compute nodes](../../docs/job_submissions/#interactive-jobs-on-compute-nodes)), following  [Best practices](../docs/intro_daic/guidelines#best-practices), and consulting with [Support resources](../../support/).
+4. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](../../docs/job_submissions/#job-submission-and-monitoring)), and 
+5. progress is monitored (see [Checking slurm jobs](../../docs/job_submissions/#checking-slurm-jobs)).
+6. Finally, once all is done, intermediate files are deleted (see [How do I clean up tmp?](../../support/faqs/job_resources#how-do-i-clean-up-tmp-when-a-job-fails)), and final results are downloaded for subsequent downstream analysis.
 
 {{< figure src="clusterWorkflow.png" caption="Cluster workflow, with key Unix* based commands for each step. Text within angle brackets `<`, `>` denote names that are chosen by the user" ref="fig:cluster_workflow">}}
 
 
 
-
-
-### Handy commands:
+## Handy commands
 
 
 

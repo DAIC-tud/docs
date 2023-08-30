@@ -185,7 +185,21 @@ A useful tool that can be used to streamline the debugging of such scripts is [S
 
 ### Job submission and monitoring
 
-Once a script is ready, it is time to send it to the cluster and start computing. 
+Once a job script (see [Job script](#job-scripts)) is ready, it is time to send it to the cluster and start computing (see [Data transfer methods](../filesystem/#data-transfer-methods)). 
+
+{{% alert title="Hint" color="info"%}}
+To check whether you are working on your machine or the cluster, observe the output of the `hostname` command. The following examples show various outputs depending on where the command was ran from:
+```bash
+$ hostname 
+login1.hpc.tudelft.nl # You are in a DAIC login1 node
+$
+$ hostname 
+grs1.hpc.tudelft.nl   # You are in the DAIC compute node named grs1
+$
+$ hostname 
+<YourNetID>           # You are in your TU Delft laptop/PC
+```
+{{% /alert %}}
 
 To submit a job script `jobscript.sbatch`, login to DAIC, and:
 

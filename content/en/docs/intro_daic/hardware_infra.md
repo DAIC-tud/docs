@@ -24,11 +24,11 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
    <code>10gbe</code>: 10 Gigabit Ethernet network connection (upgrade from the default 1 Gigabit Ethernet connection), 
    <code>ib</code> InfiniBand connection, 
    <code>ssd</code>Solid-State Disk for <code>/tmp</code> storage (instead of the default spinning disk), 
-   <code>`bigmem`: For jobs that needs a lot of memory, so remaining resources are available to others </code>, 
+   <code>bigmem</code>: For jobs that needs a lot of memory, so remaining resources are available to others, 
    <code>imphysexclusive</code>: imphys nodes use infiband for jobs that run across a large number of nodes, and it is handy that those nodes are somewhat reserved, 
-   <code>`avx512`</code>: extra instructions on cpu, like avx1 and 2 only on the newer CPUs, if you have code that need them, 
+   <code>avx512</code>: extra instructions on cpu, like avx1 and avx2 only on the newer CPUs, if you have code that need them, 
    <code>gpumem32</code>: gpu memory for newer GPUs: do not use gpu types, but use this feature instead if you have a need for gpu with more memory, 
-   <code>nvme</code>: NVME disk for tmp storage- faster than ssd- I doubt people use it. I don’t think there is big difference
+   <code>nvme</code>: Non-Volatile Memory Express for tmp storage
  </li>
 </ul>
 </font>
@@ -275,17 +275,18 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
 </tbody>
 <tr>
   <td><strong>Total</strong></td>
-  <td><strong> 59</strong></td>
-  <td><strong>4064</strong></td>
+  
+  <td><strong> 59 compute nodes </strong></td>
+  <td><strong>4064 cores</strong></td>
   <td><strong>25620 GB</strong></td>
-  <td><strong>99</strong></td>
+  <td><strong>99 GPUs</strong></td>
 </tr>
 </table>
 
 
 
 {{% alert title="Note" color="info" %}}
-All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading processors (two CPUs per core, always allocated in pairs) `ht`.
+All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading (`ht`) processors (two CPUs per core, always allocated in pairs).
 {{% /alert %}}
 
 
@@ -296,13 +297,13 @@ You can use Slurm's `sinfo` command to get various information about cluster nod
 ```bash
 $ sinfo --all --format="%P %N %c %m %G %b" --hide -S P,N -a | grep -v "general" | awk 'NR==1 {print; next} {match($5, /gpu:[^,]+:[0-9]+/); if (RSTART) print $1, $2, $3, $4, substr($5, RSTART, RLENGTH), $6; else print $1, $2, $3, $4, "-", $6  }'  
 ```
-Check out the [Slurm's sinfo page](https://slurm.schedmd.com/sinfo.html) and  [wikipedia's awk page](https://en.wikipedia.org/wiki/AWK) for more info on this command.
+Check out the [Slurm's sinfo page](https://slurm.schedmd.com/sinfo.html) and  [wikipedia's awk page](https://en.wikipedia.org/wiki/AWK) for more info on these commands.
 
 {{% /alert %}}
 
 ### CPUs
 
-All nodes have multiple Central Processing Units (CPUs) that perform the operations. Each CPU can process one thread (i.e. a separate string of computer code) at a time. A computer program consists of one or multiple threads, and thus needs one or multiple CPUs simultaneously to do its computations(see [wikipedia's CPU page](https://en.wikipedia.org/wiki/Central_processing_unit)).
+All nodes have multiple Central Processing Units (CPUs) that perform the operations. Each CPU can process one thread (i.e. a separate string of computer code) at a time. A computer program consists of one or multiple threads, and thus needs one or multiple CPUs simultaneously to do its computations (see {{< external-link "https://en.wikipedia.org/wiki/Central_processing_unit" "wikipedia's CPU page" >}} ).
 
 
 {{% alert title="Note" color="info" %}}

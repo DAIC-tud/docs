@@ -16,7 +16,7 @@ description: >
 
 ## Aggregate numbers
 
-From only TU Delft Computer Science researchers ([INSY](https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems) and [ST](https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology)) using DAIC, and in the 2015-2023 period, DAIC has facilitated more than 1000 scientific output as per the following table: 
+From only TU Delft Computer Science researchers ({{< external-link "https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems" "INSY" >}} and {{< external-link "https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology" "ST" >}}) using DAIC, and in the 2015-2023 period, DAIC has facilitated more than 1000 scientific output as per the following table: 
 
 |                 | Conference papers | Refereed article | Non-refereed article | Book chapter | Books | PhD theses | Professional publications | Other research output | **Grand Total** |
 | --------------- | --------------------- | -------------------- | ------------------------ | ---------------- | --------- | -------------- | ----------------------------- | ------------------------- | --------------- |
@@ -28,15 +28,14 @@ From only TU Delft Computer Science researchers ([INSY](https://www.tudelft.nl/e
 Please acknowledge DAIC in any published or presented work when its  resources were used, using language such as:
 
 {{< card header="Acknowledgement" >}}
-Research reported in this work was supported by the computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft. URL:https://doc.daic.tudelft.nl/
+> Research reported in this work was partially or completely facilitated by computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft (URL:https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.
 {{< /card >}}
 
 
 {{% alert title="Note" color="info" %}}
 * The compilation of the following list began in September 2023, and is based on self-reporting by individual researchers. As a result, it may not be exhaustive. 
   * If your paper is not in this list, then please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
-* Please acknowledge DAIC in your scientific outputs! You may use this sentence:
-> This work has been partially or completely carried out on the Delft AI Cluster (DAIC) resources (https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.
+
 {{% /alert %}}
 
 

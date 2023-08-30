@@ -8,13 +8,13 @@ description: >
 
 ## SSH access
 
-If you have a valid DAIC account (see [Access and Accounts page](../intro_daic/access_accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see [wikipedia's ssh page](https://en.wikipedia.org/wiki/Secure_Shell)).
+If you have a valid DAIC account (see [Access and Accounts page](../../intro_daic/access_accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
 
 
 
 ### Command line access
 
-Most modern operating systems, including Linux, macOS and Windows 10, come by default with SSH, SCP and SFTP clients from OpenSSH pre-installed (but you can also use a third-party SSH or SFTP program). To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see [Wikipedia's CLI page](https://en.wikipedia.org/wiki/Command-line_interface)), and run the following command: 
+Most modern operating systems, including Linux, macOS and Windows 10, come by default with SSH, SCP and SFTP clients from OpenSSH pre-installed (but you can also use a third-party SSH or SFTP program). To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}, and run the following command: 
 
 ```bash
 $ ssh [<YourNetID>@]login.daic.tudelft.nl

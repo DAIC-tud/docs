@@ -96,6 +96,10 @@ When you encounter problems, please follow the subsequent steps, in the indicate
 	  2. Sometimes many jobs from the same user, or from student groups, will be running on many nodes at the same time. While this may seem like one user, or user group, is blocking the cluster for everyone else, please keep in mind that the scheduler operates on a set of predetermined rules based on the QoS and priority settings. We do not want idle resources. Therefore, at the time that those jobs were started, the resources were idle, no higher priority jobs were in the queue and the jobs did not exceed the QoS limits. If you repeatedly observe pending jobs, please bring it up in the user board meeting.
 	  3. Short job efficiency: If you are running many (hundreds or thousands of) very short jobs (duration of a few minutes), you may want to consider that starting and individually loading the same modules for each job may create overheads. When reasonably possible, it might save computation time to instead group some jobs together. The jobs can still be submitted to the `short` queue if the runtime is less than 4 hours.
 	  4. GPU job efficiency: If you are running multi-GPU jobs (for example due to GPU memory limitations), you may want to consider that the communications between the GPUs and other CPU processes (for example data loaders) may create overheads. It might be useful to consider running jobs on less GPUs with more GPU memory each, or taking advantage of specialized libraries optimized for multi-GPU computing in your code.
+2. If you published any work benefiting from DAIC resources, then:
+    1. Please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
+    2. Please acknowledge DAIC in your scientific outputs, using this sentence:
+      > This work has been partially or completely carried out on the Delft AI Cluster (DAIC) resources (https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.    
 
 
 ## Feedback and Suggestions

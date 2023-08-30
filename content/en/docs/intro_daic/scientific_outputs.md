@@ -33,7 +33,10 @@ Research reported in this work was supported by the computational resources and 
 
 
 {{% alert title="Note" color="info" %}}
-The compilation of the following list began in September 2023, and is based on self-reporting by individual researchers. As a result, it may not be exhaustive. If your paper is not in this list, then please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
+* The compilation of the following list began in September 2023, and is based on self-reporting by individual researchers. As a result, it may not be exhaustive. 
+  * If your paper is not in this list, then please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
+* Please acknowledge DAIC in your scientific outputs! You may use this sentence:
+> This work has been partially or completely carried out on the Delft AI Cluster (DAIC) resources (https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.
 {{% /alert %}}
 
 

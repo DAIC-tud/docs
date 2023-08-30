@@ -8,9 +8,6 @@ description: >
 
 
 
-## Access and accounts
-
-
 DAIC is a cluster dedicated for TU Delft researchers (eg, PhD students, postdocs, .. etc) from participating groups (see [Brief history of DAIC](../#brief-history-of-daic)). 
 
 To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC access request form](https://forms.office.com/e/tSAckyHevL)- also found below.

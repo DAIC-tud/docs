@@ -82,7 +82,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 
 {{% alert title="Note" color="info" %}}
 
-Most multi-threaded applications (such as `Java` and `Matlab`) will automatically use all cpu cores of a server, and thus take away processing power from other jobs. If you can specify the number of threads, set it to at most 25% (¼) of the cores in that server (for a server with 16 cores, use at most 4; this leaves enough processing capacity for other users).
+Most multi-threaded applications (such as `Java` and `Matlab`) will automatically use all cpu cores of a server, and thus take away processing power from other jobs. If you can specify the number of threads, set it to at most 25% (¼) of the cores in that server (for a server with 16 cores, use at most 4; this leaves enough processing capacity for other users). Also see [How do I request CPUs for a multithreaded program? ](../../../support/faqs/job_resources/#how-do-i-request-cpus-for-a-multithreaded-program)
 {{% /alert %}}
 
 

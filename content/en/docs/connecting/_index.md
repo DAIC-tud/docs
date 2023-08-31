@@ -8,13 +8,13 @@ description: >
 
 ## SSH access
 
-If you have a valid DAIC account (see [Access and Accounts page](../../intro_daic/access_accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
+If you have a valid DAIC account (see [Access and Accounts page](../intro_daic/access_accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
 
 
 
 ### Command line access
 
-Most modern operating systems, including Linux, macOS and Windows 10, come by default with SSH, SCP and SFTP clients from OpenSSH pre-installed (but you can also use a third-party SSH or SFTP program). To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}, and run the following command: 
+Most modern operating systems, including Linux, macOS and Windows 10, come by default with SSH, SCP and SFTP clients from OpenSSH pre-installed (but you can also use a third-party SSH or SFTP program). To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}), and run the following command: 
 
 ```bash
 $ ssh [<YourNetID>@]login.daic.tudelft.nl
@@ -133,7 +133,7 @@ This method of access applies only when connecting from within TU Delft's networ
 
 ### Graphical clients
 
-For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official [PuTTY page](http://www.chiark.greenend.org.uk/~sgtatham/putty/) and [FileZilla page](http://filezilla-project.org/) ). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.
+For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "http://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "http://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.
 
 In Linux, you can use your default file manager (`Konqueror` or `Nautilus`) for SFTP, and just run SSH from a terminal. PuTTY (SSH) and FileZilla (SFTP) are available, but have to be installed by hand.
 
@@ -149,10 +149,10 @@ Machines with a TUD-configured Mac OS X installation come with Fetch (SFTP) inst
 
 ## Access from outside university network 
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:
-1. Use TU Delft's EduVPN or other recommended VPN. Once connected to a VPN, you can ssh to DAIC directly, as in [SSH access](#ssh-access). See TU Delft [Access via VPN](https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn) page, or
+1. Use TU Delft's EduVPN or other recommended VPN. Once connected to a VPN, you can ssh to DAIC directly, as in [SSH access](#ssh-access). See TU Delft {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN" >}} page, or
 2. Connect via Linux bastion server. In this case, first, you connect (using an SSH or SCP/SFTP client) to the bastion server, and then ssh into DAIC, as depicted in Fig 1. 
 
-{{< figure src="connecting_to_hpc.png" caption=">Fig 1: Connecting to DAIC from outside TU Delft network"  >}}
+{{< figure src="connecting_to_hpc.png" caption="Connecting to DAIC from outside TU Delft network"  >}}
 
 For the linux bastion, if you are an employee or guest, use `linux-bastion.tudelft.nl`. If you are a student (BSc or MSc), then use `student-linux.tudelft.nl` as per the following examples:
 

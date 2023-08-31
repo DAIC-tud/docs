@@ -9,7 +9,7 @@ description: >
 
 ## Batch Queuing System Overview
 
-DAIC uses [Slurm](https://slurm.schedmd.com/) as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity. 
+DAIC uses {{< external-link "https://slurm.schedmd.com/" "Slurm" >}} as a cluster management and job scheduling system to efficiently manage computational workloads across computing capacity. 
 
 A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
@@ -151,7 +151,7 @@ DAIC is dual-threaded. It means that CPUs are automatically allocated in multipl
 Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
 
 The code snippet below is a template script that can be customized to run jobs on DAIC. 
-A useful tool that can be used to streamline the debugging of such scripts is [ShellCheck](https://www.shellcheck.net/).
+A useful tool that can be used to streamline the debugging of such scripts is {{< external-link "https://www.shellcheck.net/" "ShellCheck" >}}.
 
 
 ```bash
@@ -319,7 +319,7 @@ To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]
 
 
 {{% alert title="Note" color="warning"%}}
-For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/#available_software/#environment-modules)
+For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code. See [Environment modules](../software_environment/available_software/#environment-modules)
 {{% /alert %}}
 
 
@@ -590,7 +590,7 @@ guest-long          0   00:00:00                                    cluster     
 When slurm is not configured for FIFO scheduling, jobs are prioritized in the following order:
 
 1. Jobs that can preempt: _Not enabled in DAIC_
-2. Jobs with an advanced reservation: _See [Slurm's Advanced Resource Reservation Guide](https://slurm.schedmd.com/reservations.html)_
+2. Jobs with an advanced reservation: _See {{< external-link "https://slurm.schedmd.com/reservations.html" "Slurm's Advanced Resource Reservation Guide" >}}_
 3. Partition PriorityTier: _See [Priority tiers](#priority-tiers)_
 4. Job priority: _See [Priority calculations](#priority-calculations) and [QoS priority](#qos-priority)_
 6. Job ID
@@ -883,7 +883,7 @@ For more information on job arrays, refer to [Slurm Job Array Support](https://s
 
 ## Troubleshooting Common Issues 
 
-Please see the Frequently asked questions on [Scheduler problems ](../../support/faqs/software/#scheduler-problems) and [Job resources](../../support/faqs/job_resources/)
+Please see the Frequently asked questions on [Scheduler problems ](../../support/faqs/scheduler/) and [Job resources](../../support/faqs/job_resources/)
 
 <!--
 see this example: https://www.nhr.kit.edu/userdocs/horeka/batch/

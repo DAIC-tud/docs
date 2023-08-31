@@ -9,7 +9,7 @@ description: >
 
 ## Basic principles
 
-- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Batch queuing system](../job_submissions/_index.md#batch-queuing-system-overview)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [File system overview](../filesystem/_index.md#file-system-overview)).
+- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Batch queuing system](../../job_submissions/#batch-queuing-system-overview)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [File system overview](../../filesystem/#file-system-overview)).
 
 
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
@@ -47,7 +47,7 @@ When a pre-made binary of your software is not available, you'll have to install
 
 When you are installing software for the very first time, you need to set up your environment. If you have already done this before , you can skip this section and go directly to the [Installation recipe](#installation-recipe) section.
 
-To set up your environment, first, add the following lines to your `~/.bash_profile` or, alternatively, download this ([bash_profile.txt](bash_profile.txt)) as shown in the subsequent commands:
+To set up your environment, first, add the following lines to your `~/.bash_profile` or, alternatively, download this ([bash_profile.txt](https://gitlab.ewi.tudelft.nl/daic/docs/-/blob/main/content/en/docs/software_environment/bash_profile.txt?ref_type=heads)) as shown in the subsequent commands:
 
 {{< card header="bash_profile.txt" >}}
 ```bash
@@ -191,6 +191,13 @@ When you only have the source code for the module, follow the installation instr
 $ python setup.py install --user
 ```
 
+<!-- 
 ## Virtualization: conda, virtualenv, mamba, 
+-->
 
-## Containerization: docker, udocker, singularity, Apptainer
+
+## Containerization
+
+See the [Containerization Technology tutorial](../../../tutorials/container_images/#containerization-technology)
+
+

@@ -30,7 +30,7 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   </tr>
   <tr>
     <td>Contributors</td>
-    <td>Certain groups within TU Delft (see <a href="https://daic.pages.ewi.tudelft.nl/docs/docs/intro_daic/#brief-history-of-daic">Brief history of DAIC</a>)</td>
+    <td>Certain groups within TU Delft (see <a href="https://doc.daic.tudelft.nl/docs/intro_daic/#brief-history-of-daic">Brief history of DAIC</a>)</td>
     <td>All TU Delft faculties</td>
     <td>Multiple universities &amp; SURF</td>
   </tr>
@@ -54,7 +54,7 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   </tr>
   <tr>
     <td>Website</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/">DAIC documentation</a></td>
+    <td><a href="https://doc.daic.tudelft.nl/">DAIC documentation</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/">DelftBlue Documentation</a></td>
     <td><a href="https://asci.tudelft.nl/project-das/">DAS Documentation</a></td>
   </tr>
@@ -66,19 +66,19 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   </tr>
   <tr>
     <td>Request account</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/docs/intro_daic/access_accounts/"> Access and Accounts </a></td>
+    <td><a href="https://doc.daic.tudelft.nl/docs/intro_daic/access_accounts/"> Access and Accounts </a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/Accounting-and-shares/">Get an account</a></td>
     <td><a href="mailto:das-account@cs.vu.nl">Email DAS admin</a> with details like user's affiliation and the planned purpose of the account.</td>
   </tr>
   <tr>
     <td>Getting started</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/quickstart/">Quick start</a></td>
+    <td><a href="https://doc.daic.tudelft.nl/docs/quickstart/">Quick start</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/crash-course/">Crash course</a></td>
     <td></td>
   </tr>
   <tr>
     <td>Hardware</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/docs/intro_daic/hardware_infra/">Hardware infrastructure</a></td>
+    <td><a href="https://doc.daic.tudelft.nl/docs/intro_daic/hardware_infra/">Hardware infrastructure</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/">DHPC hardware</a></td>
     <td> Head node +
     <ul>
@@ -89,13 +89,13 @@ DAIC is one of several clusters accessible to TU Delft researchers (and their co
   </tr>
   <tr>
     <td>Software stack</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/docs/software_environment/">Software environment</a></td>
+    <td><a href="https://doc.daic.tudelft.nl/docs/software_environment/">Software environment</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/">DHPC modules</a></td>
     <td>Base OS: Rocky Linux, OpenHPC, Slurm Workload Manager</td>
   </tr>
   <tr>
     <td>Data storage</td>
-    <td><a href="https://daic.pages.ewi.tudelft.nl/docs/docs/filesystem/">Filesystem &amp; storage</a></td>
+    <td><a href="https://doc.daic.tudelft.nl/docs/filesystem/">Filesystem &amp; storage</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#storage">Storage</a></td>
     <td>Storage: 128 TB (RAID6) </td>
   </tr>

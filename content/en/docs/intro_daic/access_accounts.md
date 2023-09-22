@@ -12,6 +12,8 @@ DAIC is a cluster dedicated for TU Delft researchers (eg, PhD students, postdocs
 
 To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC access request form](https://forms.office.com/e/tSAckyHevL)- also found below.
 
+Please note that limited reservation on resources contributed by a group can be accomodated as well.
+
 {{% alert title="Note" color="info" %}}
 Please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput). 
 A list of such outputs is found in [Scientific outputs](../scientific_outputs)

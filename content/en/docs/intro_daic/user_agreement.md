@@ -41,7 +41,7 @@ This user agreement is intended to establish the expectations between all users 
 1. You may use cluster resources for your research within the QoS restrictions of your domain user and user group.
     1. Depending on your user group, you might be eligible to use specific partitions, giving higher priorities on certain nodes. See [Priority tiers](../../job_submissions/#priority-tiers), and please check this with your lab.
 
-2. Depending on your user group, you might be eligible to get priorities on certain nodes. For example, you might have access to a specialized partition or limited-time node reservation for your group or department (for example before a conference deadline). Please check this with your lab and try to use these in your `.sbatch` file, your jobs should then start faster!
+2. Depending on your user group, you might be eligible to get priorities on certain nodes. For example, you might have access to a specialized partition or limited-time node reservation for your group or department (for example before a conference deadline). Please check this with your lab and try to use these in your `*.sbatch` file, your jobs should then start faster! See [Resources Reservations](../../job_submissions/#resources-reservations) for more information.
 
 3. In general, you will be informed about standard administrative actions on the cluster. All official DAIC cluster e-mails are sent to your official TU Delft mailbox, so it is advised to check it regularly.
 	  1. You will receive e-mails about downtimes relating to scheduled maintenance.
@@ -100,6 +100,7 @@ When you encounter problems, please follow the subsequent steps, in the indicate
     1. Please post its details to the {{< external-link "https://mattermost.tudelft.nl/daic/channels/scientificoutput" "ScientificOutput MatterMost channel" >}}.
     2. Please acknowledge DAIC in your scientific outputs, using this sentence:
       > Research reported in this work was partially or completely facilitated by computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft (URL: https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.   
+
 
 
 ## Feedback and Suggestions

@@ -756,6 +756,15 @@ Alternatively, it is possible to add the following lines to the `job.sbatch` fil
 It is possible to submit jobs to a reservation once it is created. Jobs will start immediately when the reservation is available, but already running jobs on resources will not be canceled for the reservation to start.
 {{% /alert %}}
 
+
+{{% alert title="Note" color="warning" %}}
+When a reservation is used to run your jobs, remember to also pass the reservation parameters to your srun steps:
+
+```bash
+$ srun --qos=reservation --reservation=<reservation_name> --partition=<partition_name> <some_script.sh>
+```
+{{% /alert%}}
+
 ### Viewing reservations
 
 To view all active and future reservations run the `scontrol` command as follows:

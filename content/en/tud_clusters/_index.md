@@ -82,8 +82,8 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/">DHPC hardware</a></td>
     <td> Head node +
     <ul>
-      <li> 6 FAT node Lenovo SR665, dual socket, 2x16core, 128 GB memory, + A4000 </li>
-      <li> 4 GPU node Lenovo SR665, dual socket, 2x16core, 128 GB memory + A5000 </li>
+      <li> 16 x FAT nodes (Lenovo SR665, dual socket, 2x16 core, 128 GB memory, 1xA4000) </li>
+      <li> 4 x GPU nodes (Lenovo SR665, dual socket, 2x16 core, 128 GB memory, 1xA5000) </li>
     </ul>
     </td>
   </tr>
@@ -103,7 +103,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
     <td>Access to TU Delft Network storage</td>
     <td>✓</td>
     <td>Only in login nodes</td>
-    <td></td>
+    <td> Not supported </td>
   </tr>
   <tr>
     <td>Sharing data in collaboration</td>

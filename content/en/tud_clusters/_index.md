@@ -9,7 +9,7 @@ menu:
 
 ## TU Delft clusters
 
-DAIC is one of several clusters accessible to TU Delft researchers (and their collaborators). The table below gives a comparison between these in terms of use case, eligible users, and other characteristics.
+DAIC is one of several clusters accessible to TU Delft CS researchers (and their collaborators). The table below gives a comparison between these in terms of use case, eligible users, and other characteristics.
 
 
 <table>

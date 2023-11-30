@@ -1,10 +1,10 @@
 ---
 title: "Frequently asked questions"
 linkTitle: "Frequently asked questions"
-weight: 1
-
+weight: 2
+description: >
+    Answers and workarounds addressing frequently asked questions (FAQs)
 ---
-
 
 
 <!-- 

@@ -1,8 +1,9 @@
 ---
 title: "Known issues"
 linkTitle: "Known issues"
-weight: 1
-
+weight: 3
+description: >
+    Issues the system administrators are aware of that are not yet resolved
 ---
 
 {{% pageinfo %}}

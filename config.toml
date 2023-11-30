@@ -137,6 +137,12 @@ offlineSearch = true
 # Enable syntax highlighting and copy buttons on code blocks with Prism
 prism_syntax_highlighting = true
 
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+
 # User interface configuration
 [params.ui]
 #  Set to true to disable breadcrumb navigation.

@@ -251,41 +251,41 @@ Your Windows Personal Storage and the Project and Group Storage are also accessi
 Both your Linux and Windows Personal Storage and the Project and Group Storage are also available world-wide via an SCP/SFTP client. This is the simplest transfer method via the `scp` command, which has the following basic syntax:
 
 ```bash
-$ scp -p <source_file> <target_destination>       # for files
-$ scp -p -r <source_folder> <target_destination>  # for folders
+$ scp <source_file> <target_destination>       # for files
+$ scp -r <source_folder> <target_destination>  # for folders
 ```
 
 For example, to transfer a file from your computer to DAIC:
 
 ```bash
-$ scp -p mylocalfile [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
+$ scp mylocalfile [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
 ```
 
 To transfer a folder (recursively) from your computer to DAIC:
 
 ```bash
-$ scp -pr mylocalfolder [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
+$ scp -r mylocalfolder [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
 ```
 
 To transfer a file from DAIC to your computer:
 
 ```bash
-$ scp -p [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefile ./
+$ scp [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefile ./
 ```
 
 To transfer a folder from DAIC to your computer:
 
 ```bash
-$ scp -pr [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefolder ./
+$ scp -r [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefolder ./
 ```
 
 The above commands will work from either the university network, or when using EduVPN. If a "jump" via `linux-bastion` is needed (see [Access from outside university network](../connecting/#access-from-outside-university-network)), modify the above commands by replacing scp with `scp -J <netid>@linux-bastion.tudelft.nl` and keep the rest of the command as before:
 
 ```bash
-$ scp -p <local_file> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
-$ scp -p -r <local_folder> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
-$ scp -p [<netid>@]linux-bastion.tudelft.nl:<remote_file> <local_destination> 
-$ scp -p -r [<netid>@]linux-bastion.tudelft.nl:<remote_folder> <local_destination>
+$ scp <local_file> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
+$ scp -r <local_folder> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
+$ scp [<netid>@]linux-bastion.tudelft.nl:<remote_file> <local_destination> 
+$ scp -r [<netid>@]linux-bastion.tudelft.nl:<remote_folder> <local_destination>
 
 $ sftp [<netid>@]linux-bastion.tudelft.nl
 ```

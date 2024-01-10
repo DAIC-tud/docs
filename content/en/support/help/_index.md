@@ -22,6 +22,12 @@ In line with the steps in [What to do in case of problems](../docs/intro_daic/us
 - [ ] {{< external-link "https://docs.google.com/document/d/1FnUzmHchHdZi4Iw3UDE-2sPrG_RF-qqIilKLDRXMHyo/edit#heading=h.jjiiwty148c2" "WIS Google doc" >}} <!-- from Ziyu, WIS -->
 
 
+## Linux support
+
+* Linux [Q&A Portal](https://linux.ewi.tudelft.nl/): This page aims to be a hub for sharing knowledge, seeking support and prioritizing community issues through upvoting.
+* Linux [Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting        with peers.
+        
+
 ## Support & contact:
 If the answer to your question is not found in any of the [Group-specific resources](#group-specific-resources), or the [Frequently Asked Questions](../faqs) consult with:
 * DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 

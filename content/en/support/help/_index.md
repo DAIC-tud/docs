@@ -28,10 +28,10 @@ In line with the steps in [What to do in case of problems](../docs/intro_daic/us
 * Linux [Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting        with peers.
         
 
-## Support & contact:
+## DAIC Support & contact:
 If the answer to your question is not found in any of the [Group-specific resources](#group-specific-resources), or the [Frequently Asked Questions](../faqs) consult with:
 * DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 
-* HPC support via the [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/) via the `I have a different question` form under the `Research support` tile. Please give a relevant _Brief Description_, and in your question include the line _This question is for operator group ICT-SYSTEMS-HPC_.
+* DAIC support via the [Self Service Portal](https://tudelft.topdesk.net/tas/public/ssp/) via the `I have a different question` form under the `Research support` tile. Please give a relevant _Brief Description_, and in your question include the line _This question is for operator group ICT-SYSTEMS-HPC_.
 
 {{% alert title="Note" color="info" %}}
 * The linux bastions and the central storage are general IT facilities, *not* dedicated parts of the DAIC cluster. Direct your questions about those to their respective support teams.

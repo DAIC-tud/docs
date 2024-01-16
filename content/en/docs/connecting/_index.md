@@ -79,73 +79,8 @@ Alternatively, if you like to run graphical applications on DAIC, you need to en
 $ ssh -X [<YourNetID>@]linux-bastion.tudelft.nl
 ```
 
-#### Configuration files
-
-For convenience, you can place certain information about your SSH connections to a configuration file _in your local machine_. The SSH configuration file can be found in `~/.ssh/config` on Linux systems, and in `C:\Users\<YourUserName>\.ssh` on Windows.
-
-For example, on a Linux system, you can place the following lines in the configuration file:
-
-```bash
-$ cat ~/.ssh/config
-Host daic
-  HostName login.daic.tudelft.nl
-  User <YourNetID>
-  Port 22
-```
-
-where:
-* The `Host` keyword starts the SSH configuration block and specifies the name (or pattern of names, like `daic` in this example) to which the configuration entries will apply. 
-* The `HostName` is the actual hostname to log into. Numeric IP addresses are also permitted (both on the command line and in HostName specifications).
-* The `User` is the login username. This is especially important when the username differs between your machine and the remote server/cluster.
-* The `Port` is the port number on the remote host. Port 22 is the default port for ssh.
 
 
-You can then connect to DAIC by just typing the following command:
-```bash
-$ ssh daic
-
-The HPC cluster is restricted to authorized users only.
-
-YourNetID@login.daic.tudelft.nl's password: 
-Last login: Tue Jul 25 02:24:49 2023 from srv228.tudelft.net
-#########################################################################
-#                                                                       #
-# Welcome to login1, login server of the HPC cluster.                   #
-#                                                                       #
-# By using this cluster you agree to the terms and conditions.          #
-#                                                                       #
-# For information about using the HPC cluster, see:                     #
-# https://login.hpc.tudelft.nl/                                         #
-#                                                                       #
-# The bulk, group and project shares are available under /tudelft.net/, #
-# your windows home share is available under /winhome/$USER/.           #
-#                                                                       #
-#########################################################################
- 02:24:59 up 51 days, 14:38,  1 user,  load average: 0,08, 0,10, 0,13
-YourNetID@login1:~$
-YourNetID@login1:~$ hostname # check you are in DAIC
-login1.hpc.tudelft.nl
-```
-
-{{% alert title="Warning" color="info" %}}
-This method of access applies only when connecting from within TU Delft's network. If connecting from outside the network, for example, from home, follow the instructions in [Access from outside university network](#access-from-outside-university-network)
-{{% /alert %}}
-
-### Graphical clients
-
-For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "http://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "http://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.
-
-In Linux, you can use your default file manager (`Konqueror` or `Nautilus`) for SFTP, and just run SSH from a terminal. PuTTY (SSH) and FileZilla (SFTP) are available, but have to be installed by hand.
-
-Machines with a TUD-configured Mac OS X installation come with Fetch (SFTP) installed in the Application folder. FileZilla (SFTP) is available, but has to be installed. For SSH, it's probably easiest to just run SSH from a terminal. 
-
-<!--
-#### ~~PuTTY settings~~
-
- ~~The following screen-shots show the most important settings for using PuTTY with the TU Delft linux servers. Unless otherwise specified, just use the default values.~~
-
-#### ~~FileZilla settings~~
--->
 
 ## Access from outside university network 
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:
@@ -207,11 +142,63 @@ YourNetID@login1:~$
 YourNetID@login1:~$ 
 ```
 
-As seen in the [Configuration files](#configuration-files) section, you can simplify access by using an ssh configuration file. Assuming you are an employee or guest, add the following to your ssh config file: 
+
+## Making OpenSSH more user-friendly 
+
+### Configuration files
+
+For convenience, you can place certain information about your SSH connections to a configuration file _in your local machine_. The SSH configuration file can be found in `~/.ssh/config` on Linux systems, and in `C:\Users\<YourUserName>\.ssh` on Windows.
+
+For example, on a Linux system, you can place the following lines in the configuration file:
+
+```bash
+$ cat ~/.ssh/config
+Host daic
+  HostName login.daic.tudelft.nl
+  User <YourNetID>
+  Port 22
+```
+
+where:
+* The `Host` keyword starts the SSH configuration block and specifies the name (or pattern of names, like `daic` in this example) to which the configuration entries will apply. 
+* The `HostName` is the actual hostname to log into. Numeric IP addresses are also permitted (both on the command line and in HostName specifications).
+* The `User` is the login username. This is especially important when the username differs between your machine and the remote server/cluster.
+* The `Port` is the port number on the remote host. Port 22 is the default port for ssh.
+
+
+You can then connect to DAIC by just typing the following command:
+```bash
+$ ssh daic
+
+The HPC cluster is restricted to authorized users only.
+
+YourNetID@login.daic.tudelft.nl's password: 
+Last login: Tue Jul 25 02:24:49 2023 from srv228.tudelft.net
+#########################################################################
+#                                                                       #
+# Welcome to login1, login server of the HPC cluster.                   #
+#                                                                       #
+# By using this cluster you agree to the terms and conditions.          #
+#                                                                       #
+# For information about using the HPC cluster, see:                     #
+# https://login.hpc.tudelft.nl/                                         #
+#                                                                       #
+# The bulk, group and project shares are available under /tudelft.net/, #
+# your windows home share is available under /winhome/$USER/.           #
+#                                                                       #
+#########################################################################
+ 02:24:59 up 51 days, 14:38,  1 user,  load average: 0,08, 0,10, 0,13
+YourNetID@login1:~$
+YourNetID@login1:~$ hostname # check you are in DAIC
+login1.hpc.tudelft.nl
+```
+
+{{% alert title="Warning" color="info" %}}
+This method of access applies only when connecting from within TU Delft's network. If connecting from outside the university network, it is also convenient to add `bastion` to your ssh configuration file as follows: 
 
 ```bash
 Host bastion
-  Hostname linux-bastion.tudelft.nl # If you are student, use: student-linux.tudelft.nl instead
+  Hostname linux-bastion.tudelft.nl # For employees and guests. If you are student, use: student-linux.tudelft.nl instead
   User <YourNetID>
   PreferredAuthentications password
 ```
@@ -242,12 +229,13 @@ Last login: Wed Jul 19 12:32:01 2023 from 145.90.39.240
 [YourNetID@srv228 ~]$ hostname # check you are on the bastion server
 srv228.tudelft.net
 ```
+{{% /alert %}}
 
 
 
 ### Single Sign-On with bastion server
 
-By default you have to enter your password for every connection (first to the bastion and then to `DAIC`, for all SSH and SCP/SFTP connections). It's much more convenient to only have to enter your password once. ~~This is possible with a combination of SSH and Kerberos authentication.~~ SSH multiplexing can be configured to reduce these logins by adding the following to the end of the configuration file:
+By default you have to enter your password for every connection (eg, first to the bastion and then to `DAIC`, for all SSH and SCP/SFTP connections from outside university network). It's much more convenient to only have to enter your password once. SSH multiplexing can be configured to reduce these logins by adding the following to the end of the configuration file:
 
 ```bash
 $ cat ~/.ssh/config
@@ -264,6 +252,11 @@ where:
 {{% alert title="Note" color="info" %}}
  Windows users may need to adapt the `ControlPath` location to match Windows. 
  {{% /alert %}}
+
+
+{{% alert title=Warning color="warning"%}}
+SSH public key logins *won't work* (reliably, (because Kerberos authentication is required to access your home directory)
+{{% /alert %}}
 
 
 ### ssh proxy support
@@ -305,3 +298,21 @@ YourNetID@login1:~$
 YourNetID@login1:~$ hostname
 login1.hpc.tudelft.nl
   ```
+
+
+
+### Graphical clients
+
+For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "http://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "http://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.
+
+In Linux, you can use your default file manager (`Konqueror` or `Nautilus`) for SFTP, and just run SSH from a terminal. PuTTY (SSH) and FileZilla (SFTP) are available, but have to be installed by hand.
+
+Machines with a TUD-configured Mac OS X installation come with Fetch (SFTP) installed in the Application folder. FileZilla (SFTP) is available, but has to be installed. For SSH, it's probably easiest to just run SSH from a terminal. 
+
+<!--
+#### ~~PuTTY settings~~
+
+ ~~The following screen-shots show the most important settings for using PuTTY with the TU Delft linux servers. Unless otherwise specified, just use the default values.~~
+
+#### ~~FileZilla settings~~
+-->  

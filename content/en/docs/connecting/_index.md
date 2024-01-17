@@ -255,7 +255,7 @@ where:
 
 
 {{% alert title=Warning color="warning"%}}
-SSH public key logins *won't work* (reliably, (because Kerberos authentication is required to access your home directory)
+SSH public key logins (passwordless login) *won't work* (reliably, (because Kerberos authentication is required to access your home directory)
 {{% /alert %}}
 
 

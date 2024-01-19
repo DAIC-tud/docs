@@ -143,6 +143,8 @@ YourNetID@login1:~$
 ```
 
 
+
+
 ## Making OpenSSH more user-friendly 
 
 ### Configuration files
@@ -251,29 +253,70 @@ where:
 
 {{% alert title="Note" color="info" %}}
  Windows users may need to adapt the `ControlPath` location to match Windows. 
- {{% /alert %}}
+{{% /alert %}}
 
 
 {{% alert title=Warning color="warning"%}}
-SSH public key logins (passwordless login) *won't work* (reliably, (because Kerberos authentication is required to access your home directory)
+SSH public key logins (passwordless login) *won't work* reliably, because Kerberos authentication is required to access your home directory
 {{% /alert %}}
 
 
 ### ssh proxy support
 
-  To connect directly from your machine to a DAIC login node (without connecting to the bastion server first), create a connection via a proxy by adding the following lines to the configuration file `~/.ssh/config` on your local computer: 
+To connect directly from your machine to a DAIC login node (when outside the university network), use the ssh _Jump Host_ option to jump the bastion server as follows:
+  <!-- explanation>
+  ```
+  ssh -J <user@jump_host> <user@target_host>
+  ```
+  where:
+    * `<user@jump_host>`: The user and hostname (or IP address) of the jump host, the intermediary server you can reach directly. 
+    * `<user@target_host>`: This is the user and hostname (or IP address) of the final target host, the server you want to connect to.
+  -->
+  
+```bash
+ssh -J YourNetID@linux-bastion.tudelft.nl YourNetID@login.daic.tudelft.nl # use `student-linux.tudelft.nl` instead if you are a student
+YourNetID@linux-bastion.tudelft.nl's password: 
+
+The HPC cluster is restricted to authorized users only.
+
+YourNetID@login.hpc.tudelft.nl's password: 
+Last login: Wed Jan 17 06:37:15 2024 from srv227.tudelft.net
+#########################################################################
+#									#
+# Welcome to login1, login server of the HPC cluster.			#
+# 									#
+# By using this cluster you agree to the terms and conditions.		#
+#									#
+# For information about using the HPC cluster, see:			#
+# https://login.hpc.tudelft.nl/						#
+#									#
+# The bulk, group and project shares are available under /tudelft.net/,	#
+# your windows home share is available under /winhome/$USER/.		#
+#									#
+#########################################################################
+ 06:39:25 up 25 days, 14:21,  4 users,  load average: 0,39, 0,26, 0,24
+YourNetID@login1:~$ 
+
+```
+
+For convenience, you can also add the following lines to the configuration file `~/.ssh/config` on your local computer: 
 
   ```bash
   Host daic-login
     Hostname login.daic.tudelft.nl
-    ProxyCommand ssh -W %h:%p bastion
     User <YourNetID>
+    ProxyCommand ssh -W %h:%p bastion
   ```
 
-  You can then simply use: `ssh daic-login` to login. You will be prompted for your password twice: once for the bastion server, and then for DAIC:
+ Where:
+    * `HostName`: Specifies the actual hostname or IP address of the target host (a DAIC login node in this case).
+    * `User`: Specifies the username to use when connecting to the target host. This is your TU Delft's NetID
+    *`ProxyCommand`: Specifies the command to use as a proxy. In this case, it's `ssh -W %h:%p bastion`. The `%h` is replaced with the target host's hostname, and `%p` is replaced with the target host's port.
+
+  You can then simply use: `ssh daic-login` to login. 
 
   ```bash
-  $ ssh hpc-login
+  $ ssh daic-login
 YourNetID@linux-bastion-ex.tudelft.nl's password: 
 
 The HPC cluster is restricted to authorized users only.
@@ -299,6 +342,11 @@ YourNetID@login1:~$ hostname
 login1.hpc.tudelft.nl
   ```
 
+
+{{%alert title="Note" color="info" %}}
+
+When using the _ProxyJump feature_, you will be prompted for your password twice: once for the bastion server, and then for DAIC
+{{%/alert%}}
 
 
 ### Graphical clients

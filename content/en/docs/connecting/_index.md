@@ -266,7 +266,7 @@ SSH public key logins (passwordless login) *won't work* reliably, because Kerber
 To connect directly from your machine to a DAIC login node (when outside the university network), use the ssh _Jump Host_ option to jump the bastion server as follows:
   <!-- explanation>
   ```
-  $ ssh -J <user@jump_host> <user@target_host>
+YourNetID@login1:~$ ssh -J <user@jump_host> <user@target_host>
   ```
   where:
     * `<user@jump_host>`: The user and hostname (or IP address) of the jump host, the intermediary server you can reach directly. 
@@ -296,7 +296,7 @@ Last login: Wed Jan 17 06:37:15 2024 from srv227.tudelft.net
 #########################################################################
  06:39:25 up 25 days, 14:21,  4 users,  load average: 0,39, 0,26, 0,24
 YourNetID@login1:~$ 
-
+YourNetID@login1:~$ 
 ```
 
 For convenience, you can also add the following lines to the configuration file `~/.ssh/config` on your local computer: 

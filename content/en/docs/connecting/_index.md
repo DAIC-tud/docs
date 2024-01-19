@@ -274,7 +274,7 @@ YourNetID@login1:~$ ssh -J <user@jump_host> <user@target_host>
   -->
   
 ```bash
-ssh -J YourNetID@linux-bastion.tudelft.nl YourNetID@login.daic.tudelft.nl # use `student-linux.tudelft.nl` instead if you are a student
+$ ssh -J YourNetID@linux-bastion.tudelft.nl YourNetID@login.daic.tudelft.nl # use `student-linux.tudelft.nl` instead if you are a student
 YourNetID@linux-bastion.tudelft.nl's password: 
 
 The HPC cluster is restricted to authorized users only.
@@ -301,22 +301,23 @@ YourNetID@login1:~$
 
 For convenience, you can also add the following lines to the configuration file `~/.ssh/config` on your local computer: 
 
-  ```bash
-  Host daic-login
-    Hostname login.daic.tudelft.nl
-    User <YourNetID>
-    ProxyCommand ssh -W %h:%p bastion
-  ```
+```bash
+Host daic-login
+  Hostname login.daic.tudelft.nl
+  User <YourNetID>
+  ProxyCommand ssh -W %h:%p bastion
+```
 
- Where:
-    * `HostName`: Specifies the actual hostname or IP address of the target host (a DAIC login node in this case).
-    * `User`: Specifies the username to use when connecting to the target host. This is your TU Delft's NetID
-    *`ProxyCommand`: Specifies the command to use as a proxy. In this case, it's `ssh -W %h:%p bastion`. The `%h` is replaced with the target host's hostname, and `%p` is replaced with the target host's port.
+Where:
+* `HostName`: Specifies the actual hostname or IP address of the target host (a DAIC login node in this case).
+* `User`: Specifies the username to use when connecting to the target host. This is your TU Delft's NetID
+*`ProxyCommand`: Specifies the command to use as a proxy. In this case, it's `ssh -W %h:%p bastion`. The `%h` is replaced with the target host's hostname, and `%p` is replaced with the target host's port.
 
-  You can then simply use: `ssh daic-login` to login. 
+You can then simply use: `ssh daic-login` to login. 
 
-  ```bash
-  $ ssh daic-login
+```bash
+$ hostname # check this is your local machine
+$ ssh daic-login
 YourNetID@linux-bastion-ex.tudelft.nl's password: 
 
 The HPC cluster is restricted to authorized users only.
@@ -340,11 +341,10 @@ Last login: Tue Jul 25 02:13:33 2023 from srv228.tudelft.net
 YourNetID@login1:~$ 
 YourNetID@login1:~$ hostname
 login1.hpc.tudelft.nl
-  ```
+```
 
 
 {{%alert title="Note" color="info" %}}
-
 When using the _ProxyJump feature_, you will be prompted for your password twice: once for the bastion server, and then for DAIC
 {{%/alert%}}
 

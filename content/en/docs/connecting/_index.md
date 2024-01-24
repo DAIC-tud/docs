@@ -55,18 +55,13 @@ Last login: Mon Jul 24 18:36:23 2023 from tud262823.ws.tudelft.net
 #                                                                       #
 #########################################################################
  18:40:16 up 51 days,  6:53,  9 users,  load average: 0,82, 0,36, 0,53
-YourNetID@login1:~$ hostname
+YourNetID@login1:~$ hostname  # show the current hostname
 login1.hpc.tudelft.nl
-YourNetID@login1:~$
-YourNetID@login1:~$
-YourNetID@login1:~$ echo $HOME
+YourNetID@login1:~$ echo $HOME  # show the path to your home directory
 /home/nfs/YourNetID
-YourNetID@login1:~$
-YourNetID@login1:~$ pwd
+YourNetID@login1:~$ pwd  # show current path
 /home/nfs/YourNetID
-YourNetID@login1:~$ 
-YourNetID@login1:~$ 
-YourNetID@login1:~$ exit
+YourNetID@login1:~$ exit  # exit current connection
 logout
 Connection to login.daic.tudelft.nl closed.
 ```
@@ -78,9 +73,6 @@ Alternatively, if you like to run graphical applications on DAIC, you need to en
 ```bash
 $ ssh -X [<YourNetID>@]linux-bastion.tudelft.nl
 ```
-
-
-
 
 ## Access from outside university network 
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:

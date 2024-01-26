@@ -14,6 +14,21 @@ menu:
 2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
 3. SSH client on your local computer
 
+## General workflow
+We recommend applying the following workflow when working with HPC clusters.
+
+{{< figure src="clusterWorkflow.png" caption="Cluster workflow, with key Unix* based commands for each step. Text within angle brackets `<`, `>` denote names that are chosen by the user" ref="fig:cluster_workflow">}}
+
+1. Code is developed locally (e.g., on personal laptop or workstation), 
+2. The code is ported to the cluster (see [Connecting to DAIC](../../docs/connecting/) and [Data transfer methods](../../docs/filesystem/#data-transfer-methods)). 
+3. Possibly, software and dependencies are set up (see [Software environment](../../docs/software_environment/)).
+4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](../../docs/job_submissions/#interactive-jobs-on-compute-nodes)), following  [Best practices](../docs/intro_daic/guidelines#best-practices), and consulting with [Support resources](../../support/).
+5. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](../../docs/job_submissions/#job-submission-and-monitoring)), and 
+6. Progress is monitored (see [Checking slurm jobs](../../docs/job_submissions/#checking-slurm-jobs)).
+7. Final results are downloaded for subsequent downstream analysis.
+8. Intermediate files are deleted (see [How do I clean up tmp?](../../support/faqs/job_resources#how-do-i-clean-up-tmp-when-a-job-fails))
+
+
 ### Login via SSH
 You can login to DAIC via SSH:
 
@@ -96,17 +111,3 @@ When your job finishes you will get a notification via email. Then you can see t
     Hello SLURM!
 
 You can see that the standard output of your script has been written to the file `slurm_9267834.out` and the standard error was written to `slurm_9267834.err`. For more useful commands at your disposal have a look [here](../docs/commands).
-
-## General workflow
-We recommend applying the following workflow when working with HPC clusters.
-
-{{< figure src="clusterWorkflow.png" caption="Cluster workflow, with key Unix* based commands for each step. Text within angle brackets `<`, `>` denote names that are chosen by the user" ref="fig:cluster_workflow">}}
-
-1. Code is developed locally (e.g., on personal laptop or workstation), 
-2. The code is ported to the cluster (see [Connecting to DAIC](../../docs/connecting/) and [Data transfer methods](../../docs/filesystem/#data-transfer-methods)). 
-3. Possibly, software and dependencies are set up (see [Software environment](../../docs/software_environment/)).
-4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](../../docs/job_submissions/#interactive-jobs-on-compute-nodes)), following  [Best practices](../docs/intro_daic/guidelines#best-practices), and consulting with [Support resources](../../support/).
-5. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](../../docs/job_submissions/#job-submission-and-monitoring)), and 
-6. Progress is monitored (see [Checking slurm jobs](../../docs/job_submissions/#checking-slurm-jobs)).
-7. Final results are downloaded for subsequent downstream analysis.
-8. Intermediate files are deleted (see [How do I clean up tmp?](../../support/faqs/job_resources#how-do-i-clean-up-tmp-when-a-job-fails))

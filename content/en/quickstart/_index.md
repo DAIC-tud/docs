@@ -8,11 +8,6 @@ menu:
     weight: 20
 ---
 
-### Prerequisites
-
-1. User account and credentials for DAIC (see [Access and Accounts](../../docs/intro_daic/access_accounts#access-and-accounts)).
-2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
-3. SSH client on your local computer
 
 ## General workflow
 We recommend applying the following workflow when working with HPC clusters.
@@ -28,6 +23,12 @@ We recommend applying the following workflow when working with HPC clusters.
 7. Final results are downloaded for subsequent downstream analysis.
 8. Intermediate files are deleted (see [How do I clean up tmp?](../../support/faqs/job_resources#how-do-i-clean-up-tmp-when-a-job-fails))
 
+## Quickstart
+### Prerequisites
+
+1. User account and credentials for DAIC (see [Access and Accounts](../../docs/intro_daic/access_accounts#access-and-accounts)).
+2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
+3. SSH client on your local computer
 
 ### Login via SSH
 You can login to DAIC via SSH:

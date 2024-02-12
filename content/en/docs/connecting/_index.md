@@ -260,7 +260,7 @@ SSH public key logins (passwordless login) *won't work* reliably, because Kerber
 {{% /alert %}}
 
 
-### ssh proxy support
+### ssh proxy jump support
 
 To connect directly from your machine to a DAIC login node (when outside the university network), use the ssh _Jump Host_ option to jump the bastion server as follows:
 
@@ -300,7 +300,7 @@ YourNetID@login1:~$
 YourNetID@login1:~$ 
 ```
 
-For convenience, you can also add the following lines to the configuration file `~/.ssh/config` on your local computer: 
+For convenience, you can also edit your ssh configuration file, `~/.ssh/config`, on your local computer as follows: 
 
 ```bash
 Host daic-login

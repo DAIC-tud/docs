@@ -158,7 +158,6 @@ $ cat ~/.ssh/config
 Host daic
   HostName login.daic.tudelft.nl
   User <YourNetID>
-  Port 22
 ```
 
 where:

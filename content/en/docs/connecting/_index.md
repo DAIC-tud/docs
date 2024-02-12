@@ -306,7 +306,7 @@ For convenience, you can also add the following lines to the configuration file 
 Host daic-login
   Hostname login.daic.tudelft.nl
   User <YourNetID>
-  ProxyCommand ssh -W %h:%p bastion
+  ProxyJump linux-bastion.tudelft.nl # For employees and guests. If you are a student, use: student-linux.tudelft.nl instead
 ```
 
 Where:

@@ -368,7 +368,23 @@ login1.hpc.tudelft.nl
 When using the _ProxyJump feature_, you will be prompted for your password twice: once for the bastion server, and then for DAIC
 {{%/alert%}}
 
+{{%alert title="Advanced: Conditional proxy jumps" color="info" %}}
 
+To flexibly switch between connecting to DAIC directly (when within university network) and connecting via bastion (when outside the network), the ssh `Match exec` directive can be used as follows:
+ 
+```bash 
+Host bastion
+  Hostname linux-bastion-ex.tudelft.nl
+  User <YourNetID>
+  PreferredAuthentications password
+Match host daic-login !exec "nc -z -w 1 login.daic.tudelft.nl %p"
+    ProxyJump bastion
+Host daic-login
+  Hostname login.daic.tudelft.nl
+  User <YourNetID>
+
+```
+{{% /alert%}}
 ### Graphical clients
 
 For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "http://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "http://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.

@@ -312,7 +312,26 @@ Host daic-login
 Where:
 * `HostName`: Specifies the actual hostname or IP address of the target host (a DAIC login node in this case).
 * `User`: Specifies the username to use when connecting to the target host. This is your TU Delft's NetID
-*`ProxyCommand`: Specifies the command to use as a proxy. In this case, it's `ssh -W %h:%p bastion`. The `%h` is replaced with the target host's hostname, and `%p` is replaced with the target host's port.
+*`ProxyJump`: Specifies the jump server, bastion in this case. 
+
+
+{{% alert title="Note" color="info" %}}
+Putting it all together, your `~/.ssh/config` file could simply be:
+
+```bash
+Host bastion
+  Hostname linux-bastion.tudelft.nl # For employees and guests. If you are student, use: student-linux.tudelft.nl instead
+  User <YourNetID>
+  PreferredAuthentications password
+Host daic-login
+  Hostname login.daic.tudelft.nl
+  User <YourNetID>
+  ProxyJump bastion
+```
+
+{{% /alert %}}
+
+
 
 You can then simply use: `ssh daic-login` to login. 
 

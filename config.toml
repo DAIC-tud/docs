@@ -225,3 +225,7 @@ custom_headings = "h2, h3"
   [[module.imports]]
     path = "github.com/google/docsy/dependencies"
     disable = false    
+
+  [[module.imports]]
+    path = "github.com/loup-brun/hugo-cite"
+    disable = false

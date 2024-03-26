@@ -45,7 +45,7 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
   <tr>
     <td>1</td>
     <td>asm</td>
-    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="asm_logo.png" height=10 width=70/> Aerospace Structures and Materials</a></td>
+    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
     <td><a href="https://www.tudelft.nl/en/ae">Faculty of Aerospace Engineering</a></td>
     <td>AE/LR</td>
   </tr>

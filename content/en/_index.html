@@ -11,6 +11,8 @@ toc_root = true
 +++
 
 
+<!----------------------------------------- Cover section ------------------------------->
+
 {{< blocks/cover title="Welcome to DAIC: The Delft AI Cluster" height="min" >}}
 <div class="mx-auto">
 	
@@ -37,18 +39,23 @@ toc_root = true
 {{< /blocks/cover >}}
 
 
+<!----------------------------------- Maintenance section ----------------------------------------->
+
 {{% blocks/lead color="primary" %}}
-<a href="https://meldingen-ict.tudelft.nl/en/">Campus-wide disruptions and maintenance</a>
+	<a href="https://meldingen-ict.tudelft.nl/en/">Campus-wide disruptions and maintenance</a>
 {{% /blocks/lead %}}
 
 
+<!---------------------------------- Funding title ----------------------------------------------->
 
-{{< blocks/section title="Funded by"  color="white" >}}
+{{< blocks/lead title="Funded by"  color="white" height="auto" >}}
+		Funded by
+{{< /blocks/lead >}}	
 
-<div class="col-12">
-	<h3 class="text-center">Funded by:</h3>
-	</div>
 
+<!---------------------------------- Funding logos ----------------------------------------------->
+
+{{< blocks/section color="white" height="mid" >}}
 {{% blocks/feature icon="fa fa-blank" title="" %}}
 <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
 	<img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=50 width=70/>
@@ -68,11 +75,9 @@ toc_root = true
 	<img src="https://lh5.googleusercontent.com/ZsNxsQsyARMx4hFHpd5aBuT_c8t1L1OXkCN3QI9x9bCjQI0alin9tLXz3jvsmautWKu5cvkDjsXDum2BPRZehOM=w16383" height=50 width=170 />
 </a>
 {{% /blocks/feature %}}
-
-
 {{< /blocks/section >}}
 
-
+<!---------------------- FAQs, contributions, and support ------------------------------------>
 {{% blocks/section color="dark" type="row" %}}
 
 {{% blocks/feature icon="fa-lightbulb" title="Frequently Asked Questions" url="support/faqs" %}}

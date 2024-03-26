@@ -59,7 +59,7 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
   <tr>
     <td>3</td>
     <td>cor</td>
-    <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="logo_cor.png" height=30 width=70/>Cognitive Robotics</a></td>
+    <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
     <td><a href="Mechanical Engineering">Faculty of Mechanical Engineering</a></td>
     <td>ME</td>
   </tr>

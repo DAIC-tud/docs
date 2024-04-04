@@ -98,21 +98,25 @@ It is important to run your script with the `srun` command. `srun` is a command 
 After creating both files `script.py` and `sbatch.slurm` you can submit the job to the queuing system with the `sbatch` command:
 
     sbatch submit.sh 
+    >>>
     Submitted batch job 9267828
 
 You can see your all your scheduled and running jobs in running with the `squeue` command:
 
     squeue -u $USER 
-                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              9267834   general script.s <netid>   R       0:18      1 grs1
+    >>>
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    9267834   general script.s <netid>   R       0:18      1 grs1
 
 When your job finishes you will get a notification via email. Then you can see that two files have been created in your home directory, or in the directory where you submitted the job: `slurm_9267834.out` and `slurm_9267834.err` where the number corresponds to the job-id that SLURM had assigned to your job. You can see the content of the files with the `cat` command:
 
     cat slurm_9267834.err
+    >>
     /usr/bin/python
     Python 2.7.5
 
     cat slurm_9267834.out
+    >>>
     Hello SLURM!
 
 You can see that the standard output of your script has been written to the file `slurm_9267834.out` and the standard error was written to `slurm_9267834.err`. For more useful commands at your disposal have a look [here](../docs/commands).

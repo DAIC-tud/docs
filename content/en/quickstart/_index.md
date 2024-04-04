@@ -63,15 +63,15 @@ Congratulations, you just logged in to the Delft AI Cluster.
 
 ### Submit a job to SLURM
 
-We start by creating a Python script with some "production code" named `script.py`:
+This section briefly describes how to submit a Python script to the queuing system SLURM. You can start by creating a Python script with some dummy-code named `script.py`:
 
 ```python
 import time
-time.sleep(10)
+time.sleep(60)  # Simulate some work.
 print("Hello SLURM!")
 ```
 
-Now, you can create a SLURM submission file `submit.sh` with the following content: 
+Then, you can create a SLURM submission file `submit.sh` with the following content: 
 
 ```bash
 #!/bin/sh
@@ -85,13 +85,17 @@ Now, you can create a SLURM submission file `submit.sh` with the following conte
 #SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId
 #SBATCH --error=slurm_%j.err  # Set name of error log. %j is the Slurm jobId
 
+# Some debugging logs
 which python 1>&2  # Write path to Python binary to standard error
 python --version   # Write Python version to standard error
 
+# Run your script with the `srun` command:
 srun python script.py
 ```
 
-And submit the job to the queuing system with the `sbatch` command:
+It is important to run your script with the `srun` command. `srun` is a command in SLURM used to submit and manage parallel or batch jobs on a cluster. It allocates resources, executes tasks, monitors job progress, and returns job output to users.
+
+After creating both files `script.py` and `sbatch.slurm` you can submit the job to the queuing system with the `sbatch` command:
 
     sbatch submit.sh 
     Submitted batch job 9267828

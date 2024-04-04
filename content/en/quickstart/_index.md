@@ -33,7 +33,7 @@ We recommend applying the following workflow when working with HPC clusters.
 ### Login via SSH
 You can login to DAIC via SSH:
 
-    ssh <netid>@daic.tudelft.nl
+    ssh <netid>@login.daic.tudelft.nl
 
 If you are outside the TUD network you should first login to the TUD network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](../docs/connecting). You will be prompted for your password:
 

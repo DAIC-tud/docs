@@ -33,7 +33,7 @@ We recommend applying the following workflow when working with HPC clusters.
 ### Login via SSH
 You can login to DAIC via SSH:
 
-    ssh <netid>@daic.tudelft.nl
+    ssh <netid>@login.daic.tudelft.nl
 
 If you are outside the TUD network you should first login to the TUD network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](../docs/connecting). You will be prompted for your password:
 
@@ -63,21 +63,21 @@ Congratulations, you just logged in to the Delft AI Cluster.
 
 ### Submit a job to SLURM
 
-We start by creating a Python script with some "production code" named `script.py`:
+This section briefly describes how to submit a Python script to the queuing system SLURM. You can start by creating a Python script with some dummy-code named `script.py`:
 
 ```python
 import time
-time.sleep(10)
+time.sleep(60)  # Simulate some work.
 print("Hello SLURM!")
 ```
 
-Now, you can create a SLURM submission file `submit.sh` with the following content: 
+Then, you can create a SLURM submission file `submit.sh` with the following content: 
 
 ```bash
 #!/bin/sh
 #SBATCH --partition=general   # Request partition. Default is 'general' 
 #SBATCH --qos=short           # Request Quality of Service. Default is 'short' (maximum run time: 4 hours)
-#SBATCH --time=0:01:00        # Request run time (wall-clock). Default is 1 minute
+#SBATCH --time=0:05:00        # Request run time (wall-clock). Default is 1 minute
 #SBATCH --ntasks=1            # Request number of parallel tasks per job. Default is 1
 #SBATCH --cpus-per-task=2     # Request number of CPUs (threads) per task. Default is 1 (note: CPUs are always allocated to jobs per 2).
 #SBATCH --mem=1GB             # Request memory (MB) per node. Default is 1024MB (1GB). For multiple tasks, specify --mem-per-cpu instead
@@ -85,30 +85,38 @@ Now, you can create a SLURM submission file `submit.sh` with the following conte
 #SBATCH --output=slurm_%j.out # Set name of output log. %j is the Slurm jobId
 #SBATCH --error=slurm_%j.err  # Set name of error log. %j is the Slurm jobId
 
+# Some debugging logs
 which python 1>&2  # Write path to Python binary to standard error
 python --version   # Write Python version to standard error
 
+# Run your script with the `srun` command:
 srun python script.py
 ```
 
-And submit the job to the queuing system with the `sbatch` command:
+It is important to run your script with the `srun` command. `srun` is a command in SLURM used to submit and manage parallel or batch jobs on a cluster. It allocates resources, executes tasks, monitors job progress, and returns job output to users.
+
+After creating both files `script.py` and `sbatch.slurm` you can submit the job to the queuing system with the `sbatch` command:
 
     sbatch submit.sh 
+    >>>
     Submitted batch job 9267828
 
 You can see your all your scheduled and running jobs in running with the `squeue` command:
 
     squeue -u $USER 
-                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              9267834   general script.s <netid>   R       0:18      1 grs1
+    >>>
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    9267834   general script.s <netid>   R       0:18      1 grs1
 
 When your job finishes you will get a notification via email. Then you can see that two files have been created in your home directory, or in the directory where you submitted the job: `slurm_9267834.out` and `slurm_9267834.err` where the number corresponds to the job-id that SLURM had assigned to your job. You can see the content of the files with the `cat` command:
 
     cat slurm_9267834.err
+    >>
     /usr/bin/python
     Python 2.7.5
 
     cat slurm_9267834.out
+    >>>
     Hello SLURM!
 
 You can see that the standard output of your script has been written to the file `slurm_9267834.out` and the standard error was written to `slurm_9267834.err`. For more useful commands at your disposal have a look [here](../docs/commands).

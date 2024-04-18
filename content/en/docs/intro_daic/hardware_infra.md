@@ -12,17 +12,7 @@ description: >
 DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Job scripts](../../job_submissions/#job-scripts)). The following table gives an overview of current nodes and their characteristics:
 
 
-<table style="undefined;table-layout: fixed; width: 1003px">
-<colgroup>
-<col style="width: 78px">
-<col style="width: 324px">
-<col style="width: 73px">
-<col style="width: 83px">
-<col style="width: 81px">
-<col style="width: 86px">
-<col style="width: 192px">
-<col style="width: 86px">
-</colgroup>
+<table>
 <thead>
   <tr>
     <th>Hostname</th>
@@ -41,36 +31,37 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2097.614</td>
+    <td>2097.488</td>
     <td>755.585 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td rowspan="2">3dgi1</td>
+    <td>3dgi1</td>
     <td>1 x AMD EPYC 7502P 32-Core Processor</td>
     <td>32</td>
     <td>32</td>
     <td>2500</td>
     <td>251.41 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>3dgi2</td>
     <td>1 x AMD EPYC 7502P 32-Core Processor</td>
     <td>32</td>
     <td>32</td>
     <td>2500</td>
     <td>251.41 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>awi01</td>
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>3644.006</td>
+    <td>2996.569</td>
     <td>376.384 GB</td>
     <td>Tesla V100 PCIe 32GB</td>
     <td>1</td>
@@ -80,187 +71,193 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3086.425</td>
+    <td>2900.683</td>
     <td>503.619 GB</td>
     <td>Tesla V100 SXM2 16GB</td>
     <td>2</td>
   </tr>
   <tr>
-    <td rowspan="5">awi03</td>
+    <td>awi03</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3178.71</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi04</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3188.671</td>
+    <td>3231.884</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi05</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3266.162</td>
+    <td>3258.984</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi07</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3260.888</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi08</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3266.601</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td rowspan="4">awi09</td>
+    <td>awi09</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3208.3</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi10</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3209.179</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi11</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3220.898</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi12</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>3300</td>
+    <td>2899.951</td>
     <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td rowspan="10">awi13</td>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
-    <td>14</td>
-    <td>28</td>
-    <td>3300</td>
-    <td>503.625 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
-    <td>14</td>
-    <td>28</td>
-    <td>3013.623</td>
-    <td>251.641 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
-    <td>14</td>
-    <td>28</td>
-    <td>3294.58</td>
-    <td>251.641 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
-    <td>14</td>
-    <td>28</td>
-    <td>2897.46</td>
-    <td>251.641 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
+    <td>awi19</td>
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
     <td>251.641 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi20</td>
+    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
+    <td>14</td>
+    <td>28</td>
+    <td>2899.951</td>
+    <td>251.641 GB</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>awi21</td>
+    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
+    <td>14</td>
+    <td>28</td>
+    <td>2899.951</td>
+    <td>251.641 GB</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>awi22</td>
+    <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
+    <td>14</td>
+    <td>28</td>
+    <td>2899.951</td>
+    <td>251.641 GB</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>awi23</td>
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2599.993</td>
+    <td>3221.038</td>
     <td>376.385 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi24</td>
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>3474.285</td>
+    <td>2580.2</td>
     <td>376.385 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi25</td>
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>3661.413</td>
+    <td>3399.884</td>
     <td>376.385 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td>awi26</td>
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2778.417</td>
+    <td>3442.7</td>
     <td>376.385 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>2 x Intel(R) Xeon(R) Gold 6242 CPU @ 2.80GHz</td>
+    <td>cor1</td>
+    <td></td>
     <td>16</td>
-    <td>32</td>
-    <td>3599.975</td>
-    <td>1510.33 GB</td>
-    <td>Tesla V100 SXM2 32GB</td>
+    <td>64</td>
+    <td></td>
+    <td>1500 GB</td>
+    <td>Tesla V100 SXM2 16GB</td>
     <td>8</td>
   </tr>
   <tr>
-    <td rowspan="2">gpu01</td>
+    <td>gpu01</td>
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
@@ -270,6 +267,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>3</td>
   </tr>
   <tr>
+    <td>gpu02</td>
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
@@ -289,7 +287,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>3</td>
   </tr>
   <tr>
-    <td rowspan="3">gpu04</td>
+    <td>gpu04</td>
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
@@ -299,6 +297,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>3</td>
   </tr>
   <tr>
+    <td>gpu05</td>
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
@@ -308,6 +307,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>3</td>
   </tr>
   <tr>
+    <td>gpu06</td>
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
@@ -371,7 +371,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.646</td>
+    <td>2794.613</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -381,7 +381,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.769</td>
+    <td>2794.938</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -391,7 +391,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.666</td>
+    <td>2794.604</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -401,7 +401,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.795</td>
+    <td>2794.878</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -411,7 +411,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.817</td>
+    <td>2794.57</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -421,7 +421,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.757</td>
+    <td>2794.682</td>
     <td>503.275 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -431,7 +431,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.727</td>
+    <td>2794.651</td>
     <td>1007.24 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -441,7 +441,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.919</td>
+    <td>2794.646</td>
     <td>1007.24 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -451,7 +451,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.592</td>
+    <td>2794.963</td>
     <td>1007.24 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -461,7 +461,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2794.698</td>
+    <td>2794.658</td>
     <td>1007.24 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -471,7 +471,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2795.029</td>
+    <td>2794.664</td>
     <td>1007.24 GB</td>
     <td>NVIDIA A40</td>
     <td>3</td>
@@ -481,10 +481,20 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>2 x Intel(R) Xeon(R) CPU E5-2667 v4 @ 3.20GHz</td>
     <td>8</td>
     <td>16</td>
-    <td>3500</td>
+    <td>3499.804</td>
     <td>251.633 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>grs2</td>
+    <td>2 x Intel(R) Xeon(R) CPU E5-2667 v4 @ 3.20GHz</td>
+    <td>8</td>
+    <td>16</td>
+    <td>3577.734</td>
+    <td>251.633 GB</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>grs3</td>
@@ -493,8 +503,8 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>16</td>
     <td>3499.804</td>
     <td>251.633 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>grs4</td>
@@ -503,15 +513,15 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>16</td>
     <td>3499.804</td>
     <td>251.633 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>influ1</td>
     <td>2 x Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>3099.884</td>
+    <td>2955.816</td>
     <td>376.391 GB</td>
     <td>GeForce RTX 2080 Ti</td>
     <td>8</td>
@@ -542,29 +552,29 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>32</td>
     <td>64</td>
     <td>1500</td>
-    <td>251.627 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
+    <td>251.626 GB</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>insy11</td>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz</td>
-    <td>16</td>
+    <td>influ5</td>
+    <td>2 x AMD EPYC 7452 32-Core Processor</td>
     <td>32</td>
-    <td>2600.518</td>
-    <td>251.631 GB</td>
-    <td>GeForce GTX 1080 Ti</td>
-    <td>5</td>
+    <td>64</td>
+    <td>2350</td>
+    <td>503.611 GB</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>insy14</td>
-    <td>2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz</td>
-    <td>16</td>
+    <td>influ6</td>
+    <td>2 x AMD EPYC 7452 32-Core Processor</td>
     <td>32</td>
-    <td>2600.518</td>
-    <td>251.631 GB</td>
-    <td>GeForce GTX 1080 Ti</td>
-    <td>8</td>
+    <td>64</td>
+    <td>1500</td>
+    <td>503.61 GB</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td>insy15</td>
@@ -587,34 +597,24 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
     <td>4</td>
   </tr>
   <tr>
-    <td>tbm5</td>
-    <td>2 x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz</td>
-    <td>16</td>
-    <td>32</td>
-    <td>2495.129</td>
-    <td>754.363 GB</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>wis1</td>
-    <td>2 x Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz</td>
-    <td>16</td>
-    <td>32</td>
-    <td>3491.711</td>
-    <td>755.396 GB</td>
-    <td>Tesla P100 PCIe 16GB</td>
-    <td>2</td>
+    <td><strong> Total</strong> </td>
+    <td></td>
+    <td><strong> 1206</strong> </td>
+    <td><strong> 2380</strong> </td>
+    <td></td>
+    <td><strong> 28 TB</strong> </td>
+    <td></td>
+    <td><strong> 101</strong> </td>
   </tr>
   <tr>
     <td></td>
-    <td>59 compte nodes<br></td>
-    <td></td>
-    <td>2360 cores/ 4720 threads</td>
     <td></td>
     <td></td>
     <td></td>
-    <td>116 GPUs</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </tbody>
 </table>
@@ -637,7 +637,7 @@ DAIC compute nodes are all multi CPU servers, with large memories, and some with
    <code>gpumem32</code>: gpu memory for newer GPUs: do not use gpu types, but use this feature instead if you have a need for gpu with more memory, 
    <code>nvme</code>: Non-Volatile Memory Express for tmp storage
  </li>
-</ul>
+</ul>:q
 </font>
 </td></tr></tfoot>
 <thead>
@@ -937,7 +937,7 @@ It’s forbidden to use DAIC GPUs for anything other than research!
 <table style="undefined;table-layout: fixed; width: 727px">
 <colgroup>
 <col style="width: 131px">
-<col style="width: 48px">
+<col style="width: 148px">
 <col style="width: 198px">
 <col style="width: 93px">
 <col style="width: 82px">
@@ -948,7 +948,7 @@ It’s forbidden to use DAIC GPUs for anything other than research!
 </caption>
 <thead>
   <tr>
-    <th>GPU type<br></th>
+    <th>GPU (slurm) type<br></th>
     <th>Count</th>
     <th>Model </th>
     <th>Architecture</th>
@@ -960,30 +960,12 @@ It’s forbidden to use DAIC GPUs for anything other than research!
 <tbody>
   <tr>
     <td>a40</td>
-    <td>33</td>
+    <td>66</td>
     <td>NVIDIA A40</td>
     <td>Ampere</td>
     <td>8.6</td>
     <td>10752</td>
     <td>46068 MiB</td>
-  </tr>
-  <tr>
-    <td>p100</td>
-    <td>2</td>
-    <td>Tesla P100-PCIE-16GB</td>
-    <td>Pascal</td>
-    <td>6.0</td>
-    <td>3584</td>
-    <td>16384 MiB</td>
-  </tr>
-  <tr>
-    <td>pascal</td>
-    <td>29</td>
-    <td>GeForce GTX 1080 Ti</td>
-    <td>Pascal</td>
-    <td>6.1</td>
-    <td>3584</td>
-    <td>11264 MiB</td>
   </tr>
   <tr>
     <td>turing</td>

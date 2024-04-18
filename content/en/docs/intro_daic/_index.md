@@ -36,39 +36,32 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
 </thead>
 <tbody>
   <tr>
-    <td>0</td>
+    <td>1</td>
     <td>3dgi</td>
     <td><a href="https://3d.bk.tudelft.nl/"><img src="logo_3dgi.png" height=20 width=60/>3D Geoinformation</a></td>
     <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">  Faculty of Architecture and the Built Environment</a></td>
     <td>ABE/BK</td>
   </tr>
   <tr>
-    <td>1</td>
+    <td>2</td>
     <td>asm</td>
     <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
     <td><a href="https://www.tudelft.nl/en/ae">Faculty of Aerospace Engineering</a></td>
     <td>AE/LR</td>
   </tr>
   <tr>
-    <td>2</td>
+    <td>3</td>
     <td>imphys</td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences/about-faculty/departments/imphys">Imaging Physics</a></td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences">Faculty of Applied Sciences</a></td>
     <td>AS/TNW</td>
   </tr>
   <tr>
-    <td>3</td>
+    <td>4</td>
     <td>cor</td>
     <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
     <td><a href="Mechanical Engineering">Faculty of Mechanical Engineering</a></td>
     <td>ME</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>tbm</td>
-    <td>Faculty of Technology, Policy and Management </td>
-    <td><a href="https://www.tudelft.nl/en/tpm">Faculty of Technology, Policy and Management</a></td>
-    <td>TPM/TBM</td>
   </tr>
   <tr>
     <td>5</td>
@@ -85,22 +78,18 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
     <td rowspan="5">EEMCS/EWI</td>
   </tr>
   <tr>
-    <td>7</td>
-    <td>visionlab</td>
+    
   </tr>
   <tr>
-    <td>8</td>
+    <td>7</td>
     <td>insy</td>
   </tr>
   <tr>
-    <td>9</td>
-    <td>wis</td>
+    <td>8</td>
+    <td>st</td>
     <td rowspan="2"><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
   </tr>
-  <tr>
-    <td>10</td>
-    <td>st</td>
-  </tr>
+
 </tbody>
 </table>
 

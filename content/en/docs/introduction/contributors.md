@@ -26,14 +26,14 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
   <tr>
     <td>1</td>
     <td>3dgi</td>
-    <td><a href="https://3d.bk.tudelft.nl/"><img src="images/logo_3dgi.png" height=20 width=60/>3D Geoinformation</a></td>
+    <td><a href="https://3d.bk.tudelft.nl/"><img src="/img/logo_3dgi.png" height=20 width=60/>3D Geoinformation</a></td>
     <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">  Faculty of Architecture and the Built Environment</a></td>
     <td>ABE/BK</td>
   </tr>
   <tr>
     <td>2</td>
     <td>asm</td>
-    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="images/logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
+    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="/img/logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
     <td><a href="https://www.tudelft.nl/en/ae">Faculty of Aerospace Engineering</a></td>
     <td>AE/LR</td>
   </tr>
@@ -47,7 +47,7 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
   <tr>
     <td>4</td>
     <td>cor</td>
-    <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="images/logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
+    <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="/img/logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
     <td><a href="Mechanical Engineering">Faculty of Mechanical Engineering</a></td>
     <td>ME</td>
   </tr>

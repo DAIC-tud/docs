@@ -21,7 +21,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
   {{< /card >}}
   {{< card header="" title="" subtitle=""  >}}
   <a href="https://www.epistemic-ai.eu/home">
-	  <img src="https://lh5.googleusercontent.com/ZsNxsQsyARMx4hFHpd5aBuT_c8t1L1OXkCN3QI9x9bCjQI0alin9tLXz3jvsmautWKu5cvkDjsXDum2BPRZehOM=w16383" height=50 width=170 />
+	  <img src="https://lh4.googleusercontent.com/MoGkhiYWHVUl1x4zlp5p-sdy6zyBmfKIOKjBoehBNi3vPQojsMlfF5RbBz9pr-Jb50QT3igrocXqSFkDRDZF45Y=w16383" height=50 width=170 />
   </a>
   {{< /card >}}
 {{< /cardpane >}}

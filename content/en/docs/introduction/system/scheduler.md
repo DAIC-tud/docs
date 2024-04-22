@@ -1,5 +1,5 @@
 ---
-title: "Scheduler"
+title: "Scheduler (Slurm)"
 weight: 5
 description: >
   Description of the job-scheduling system.

@@ -1,6 +1,5 @@
 ---
-title: "SLURM questions"
-linkTitle: "SLURM questions"
+title: "Slurm questions"
 weight: 4
 ---
 

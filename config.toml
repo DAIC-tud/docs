@@ -58,7 +58,6 @@ anchor = "smart"
 id = "G-EMV8573YCZ"
 
 # Language configuration
-
 [languages]
 [languages.en]
 title = "DAIC documentation"

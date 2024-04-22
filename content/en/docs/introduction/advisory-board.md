@@ -2,7 +2,7 @@
 title: "Advisory board"
 weight: 5
 description: >
-  What is DAIC, what are its components, and what are the policies surrounding its use?
+  The advisory board of DAIC.
 ---
 
 ## DAIC advisory board

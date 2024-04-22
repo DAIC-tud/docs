@@ -2,7 +2,7 @@
 title: "Contributors"
 weight: 3
 description: >
-  What is DAIC, what are its components, and what are the policies surrounding its use?
+  Overview over the contributing departements.
 ---
 
 ## Contributing departments

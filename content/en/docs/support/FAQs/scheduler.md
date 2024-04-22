@@ -3,21 +3,17 @@ title: "Slurm questions"
 weight: 4
 ---
 
-
 ### Interactive sessions hang when left for some time without input
 * This seems to be a bug. For now, use `sattach` or one of the login nodes.
 * Of course, if a session is really idle (i.e. nothing running), just close it so another job can run.
 
-
 ### Job pending with reason `QOSGrpCpuLimit`
 * Each QoS (Quality of Service) sets limits on the total number of CPUs in use for that QoS. If the total number of CPUs in use by running jobs (of the whole group of users combined) in a QoS hits the set limit, no new jobs in that QoS can be started, and jobs will stay pending with reason `QOSGrpCpuLimit`. This is not an error; when running jobs finish, the highest priority pending job will be started automatically (see [Priorities](/docs/manual/job-submission/priorities)).
-
 
 ### Job pending with reason `ReqNodeNotAvail`
 * Sometimes nodes are not available to start new jobs (for example when they are reserved for maintenance). When jobs can only run on those nodes, they will remain pending with the reason `ReqNodeNotAvail` until the node become available again.
 * The requested runtime of a job is an important factor here. When a reservation starts in 1 day, a job with a requested runtime of 7 days will not be able to start (since it would not be finished before the start of the reservation), but a job with a requested runtime of 4 hours can still be run normally. So, when possible, reduce the requested runtime.
 * The requested resources (number of CPUs, amount of memory, number or type of GPUs or specific constraints) limit the number of nodes that are suitable to run a job. So, when possible, reduce the requested resources and constraints, and do not request specific GPU types.
-
 
 ### Why does my job run on some nodes but fail on other nodes?
 * The nodes have different configurations (processor types, number of cores, memory size, GPU support, and so on- see [Hardware infrastructure](../../../docs/intro_daic/hardware_infra)). If you need a specific feature, make sure to request it in your sbatch script. Examples:
@@ -30,12 +26,10 @@ weight: 4
   - Either compile your program to use only standard instructions (be generic), or request nodes that have support. 
   - The login node `login3` has the least advanced CPUs so if you compile your programs there they should run on all other nodes.
 
-
 ### Why does my job fail and is there no slurm-XXXXX.out output (or error)?
 * When your job doesn't have a valid Kerberos ticket (see [Kerberos authentication](../../../docs/job_submissions/#kerberos-authentication)) it can't read or write files (such as the `slurm-XXXXX.out` output).
 * It's best to do a fresh login to a login node when you want to submit a new job. This way you're sure your job's Kerberos ticket is valid and will remain valid for the next 7 days. 
 * If needed, you can update the Kerberos ticket for a running job by executing `auks -a` (also from a fresh login).
-
 
 ### `sbatch: error: Batch job submission failed: Access/permission denied`
 * You can only submit jobs (using `sbatch`) from the login nodes (`login1, login2, login3`). When you try to submit a job from within another job (including an interactive job) you will receive this error.
@@ -51,8 +45,6 @@ weight: 4
     source script
     ```
 
-
-
 ### `sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified`
 Either:
 *  You are trying to use a (special) partition that you don’t have access to, Or
@@ -64,18 +56,14 @@ Either:
 
 You need to figure out the problem(s), fix them, and then send an email to the [cluster administrators](mailto:beheer-o-linux-ictfm@tudelft.nl) to explain the problem(s) and the way you fixed them.
 
-
 ### `srun: error: Unable to allocate resources: Invalid qos specification`
 * You can’t directly execute a jobscript, you need to submit the jobscript using `sbatch`:
     ```
     sbatch jobscript.sh
     ```
 
-
-
 ### `slurmstepd: error: Exceeded step memory limit at some point.`
 * Your program wants to use more memory than you requested. You’ll either need to limit the memory use of your program or request more memory. Also see [How much memory can I use?](../job_resources#how-much-memory-can-i-use) and [How can I see the CPU or RAM usage of a job?](../job_resources#how-can-i-see-the-cpu-or-ram-usage-of-a-job).
-
 
 ### `Auks API request failed : auks cred : credential lifetime is too short` / `Auks API request failed : krb5 cred : unable to renew credential`
 * Your authentication (Kerberos ticket) expired (see [Kerberos authentication](../../../docs/job_submissions/#kerberos-authentication)). You get a Kerberos ticket (using your password) when you log in to the bastion server or a login node. Jobs that run on a compute node also require authentication. Therefore, when you submit a job, your Kerberos ticket is stored in the Auks system so that your job can use it. However, the maximum lifetime of a Kerberos ticket is 7 days. So 7 days after you last logged in and submitted a job, the Kerberos ticket in the system expires and the job fails.
@@ -85,7 +73,6 @@ You need to figure out the problem(s), fix them, and then send an email to the [
 {{% alert title="Important" color="warning" %}}
 When you change your NetID password, your Kerberos keytab becomes invalid, so you will need to rerun the `install_keytab` command.
 {{% /alert %}}
-
 
 ### What can be done about some jobs using all CPUs or memory (making it impossible for me to use other unused resources like GPUs)?
 * Resources can be used by one job at a time only, so when some resources are completely used, other jobs will have to wait until their required resources become available. The waiting is unavoidable.

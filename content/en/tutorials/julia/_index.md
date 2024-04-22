@@ -1,6 +1,6 @@
 ---
 title: "Julia in Compute clusters"
-weight: 4
+weight: 20
 description: >
   How to work with Julia on High Performance Computing environments
 ---

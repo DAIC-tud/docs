@@ -57,7 +57,7 @@ previous=$(/usr/bin/nvidia-smi --query-accounted-apps='gpu_utilization,mem_utili
 Similarly, to interactively work in a GPU node:
 ```bash
 $ hostname # check you are in one of the login nodes
-login1.hpc.tudelft.nl
+login1.daic.tudelft.nl
 $
 $ sinteractive --cpus-per-task=1 --mem=500 --time=00:01:00 --gres=gpu:v100:1
 Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
@@ -66,7 +66,7 @@ srun: job 8607665 has been allocated resources
  15:27:18 up 51 days,  3:04,  0 users,  load average: 62,09, 59,43, 44,04
 SomeNetID@insy11:~$
 SomeNetID@insy11:~$ hostname # check you are in one of the compute nodes
-insy11.hpc.tudelft.nl
+insy11.daic.tudelft.nl
 SomeNetID@insy11:~$
 SomeNetID@insy11:~$ nvidia-smi # check characteristics of GPU
 Mon Jul 24 15:37:01 2023       

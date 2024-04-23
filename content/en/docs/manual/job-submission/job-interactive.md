@@ -13,7 +13,7 @@ To work interactively on a node, e.g., to debug a running code, or test on a GPU
 
 ```bash
 $ hostname # check you are in one of the login nodes
-login1.hpc.tudelft.nl
+login1.daic.tudelft.nl
 $ sinteractive 
  16:07:20 up 12 days, 4:09, 2 users, load average: 7.06, 7.04, 7.12
 $ hostname # check you are in a compute node

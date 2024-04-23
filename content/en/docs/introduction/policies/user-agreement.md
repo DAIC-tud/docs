@@ -86,7 +86,7 @@ When you encounter problems, please follow the subsequent steps, in the indicate
   2. You can also ask questions to fellow users on the [MatterMost channel](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su). 
   3. For prolonged problems, your initial contact point is your supervisor/PI.
   4. As a final step, you can contact the cluster administrators for technical sysadmin problems or persistent efficiency problems, or for more information if you are not sure why you are banned from the cluster. You can do this by reporting your question, through the {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/" "Self Service Portal" >}}, to the Service Desk. In your question, refer to the ‘DAIC cluster’.
-  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](../#daic-advisory-board) to bring it up as an agenda point in the next user board meeting.
+  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](/docs/introduction/advisory-board) to bring it up as an agenda point in the next user board meeting.
 
 ## Responsible cluster usage
 
@@ -98,6 +98,6 @@ When you encounter problems, please follow the subsequent steps, in the indicate
 2. If you published any work benefiting from DAIC resources, then:
     1. Please post its details to the {{< external-link "https://mattermost.tudelft.nl/daic/channels/scientificoutput" "ScientificOutput MatterMost channel" >}}.
     2. Please acknowledge DAIC in your scientific outputs, using this sentence:
-      > Research reported in this work was partially or completely facilitated by computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft (URL: https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.   
+      > Research reported in this work was partially or completely facilitated by computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft (URL: https://doc.daic.tudelft.nl), but remains the sole responsibility of the authors, not the DAIC team.   
 
 

@@ -35,8 +35,27 @@ python: /usr/bin/python3.4m-config /usr/bin/python3.6m-x86_64-config /usr/bin/py
  Or, you can check if the package is installed using the `rpm -qa` command as follows: 
 
  ```bash
- $ rpm -qa python
-python-2.7.5-92.el7_9.x86_64
+netid@login1:~$ rpm -q python
+python-2.7.5-94.el7_9.x86_64
+netid@login1:~$ rpm -q python4
+package python4 is not installed
+```
+
+You can also search with wildcards:
+
+```bash
+rpm -qa 'python*'
+python2-wheel-0.29.0-2.el7.noarch
+python2-cryptography-1.7.2-2.el7.x86_64
+python34-virtualenv-15.1.0-5.el7.noarch
+python-networkx-1.8.1-12.el7.noarch
+python-gobject-3.22.0-1.el7_4.1.x86_64
+python-gofer-2.12.5-3.el7.noarch
+python-iniparse-0.4-9.el7.noarch
+python-lxml-3.2.1-4.el7.x86_64
+python34-3.4.10-8.el7.x86_64
+python36-numpy-f2py-1.12.1-3.el7.x86_64
+...
 ```
 
 ## Environment modules

@@ -43,14 +43,14 @@ Add workflow for how to work with containers:
 If you intend to extensively work/test your image interactively, it is best to first submit an interactive SLURM job with the needed resources, eg, memory, gpus, ... etc:
 ```bash
 $ hostname  # To check this is DAIC. login[1-3] are the login nodes
-login1.hpc.tudelft.nl 
+login1.daic.tudelft.nl 
 $ sinteractive # Default resources: --time=01:00:00 --cpus-per-task = 2 --mem=1024 
 Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
 srun: job 8543393 queued and waiting for resources
 srun: job 8543393 has been allocated resources
  13:35:30 up 5 days,  3:41,  0 users,  load average: 8,79, 7,60, 7,11
 $ hostname # To check we are on a compute node
-grs3.hpc.tudelft.nl 
+grs3.daic.tudelft.nl 
 ```
 {{% /alert %}} 
 
@@ -67,7 +67,7 @@ For example, to obtain the latest Ubuntu image from DockerHub:
 
 ```bash
 $ hostname # check this is DAIC
-login1.hpc.tudelft.nl
+login1.daic.tudelft.nl
 $ cd && mkdir containers && cd containers # as convenience, use this directory
 $ apptainer pull docker://ubuntu:latest # actually pull the image
 INFO:    Converting OCI blobs to SIF format
@@ -106,7 +106,7 @@ ls: cannot access /.singularity.d/: No such file or directory
 $ apptainer shell ubuntu_latest.sif # launch container interactively
 Apptainer>
 Apptainer> hostname
-login1.hpc.tudelft.nl
+login1.daic.tudelft.nl
 Apptainer> ls
 ubuntu_latest.sif
 Apptainer> ls /.singularity.d/ 
@@ -149,12 +149,12 @@ Now, to check this particular image on DAIC:
 
 ```bash
 $ hostname # check this is DAIC not your own PC/laptop
-login1.hpc.tudelft.nl
+login1.daic.tudelft.nl
 $ cd /tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # path where you put images
 $ apptainer shell -C --nv pytorch_23.05-py3.sif  #--nv to use NVIDIA GPU and have CUDA support
 Apptainer>
 Apptainer> hostname
-login1.hpc.tudelft.nl # hostname inherited
+login1.daic.tudelft.nl # hostname inherited
 Apptainer> ls /.singularity.d/ # verify this is the image
 Singularity  actions  env  labels.json  libs  runscript  startscript
 ```
@@ -167,7 +167,7 @@ If you prefer (or need) to have a custom container image, then you can build you
 Always build the image first in your local machine. To send the built image, `YourImage.sif` to DAIC, do the following:
 ```bash
 $ hostname # check this is your machine
-$ scp YourImage.sif <YourNetID>@login.hpc.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to DAIC
+$ scp YourImage.sif <YourNetID>@login.daic.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to DAIC
 ```
 {{% /alert %}}
 
@@ -226,10 +226,10 @@ On DAIC, check the image:
 
 ```bash
 $ hostname # check you are on DAIC
-login1.hpc.tudelft.nl 
+login1.daic.tudelft.nl 
 $ sinteractive --cpus-per-task=2 --mem=1024 --gres=gpu --time=00:05:00 # request a gpu node
 $ hostname # check you are on a compute node
-insy13.hpc.tudelft.nl
+insy13.daic.tudelft.nl
 
 $ apptainer run --nv -C cuda_based_image.sif # --nv to use NVIDIA GPU and have CUDA support
 /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery Starting...

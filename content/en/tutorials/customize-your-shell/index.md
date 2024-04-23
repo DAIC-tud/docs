@@ -20,6 +20,7 @@ Now, your `.bashrc` will be loaded upon login.
 Aliases are custom shortcuts or abbreviations for longer commands in the shell. They allow you to define a shorter, user-friendly command that, when executed, will perform a longer or more complex command. For example, you might create an alias like `alias ll='ls -la'` in your .bashrc file to quickly list all files in a directory in long format. Aliases can help improve productivity by saving time and effort when working with the shell. You can set these configurations permanently by editing your `~/.bashrc` file.
 
 ```bash
+## Add these lines to your ~/.bashrc file to make use of these settings.
 
 # Alias
 alias ll='ls -alF'

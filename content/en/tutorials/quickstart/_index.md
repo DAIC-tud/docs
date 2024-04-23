@@ -1,13 +1,10 @@
 
 ---
-title: "QuickStart"
-linkTitle: "QuickStart"
+title: "Quickstart"
+linkTitle: "Quickstart"
 weight: 1
 description: >
   Login to DAIC and submit your first SLURM job.
-menu:
-  main:
-    weight: 20
 ---
 
 
@@ -27,7 +24,6 @@ We recommend applying the following workflow when working with HPC clusters.
 
 ## Quickstart
 ### Prerequisites
-
 1. User account and credentials for DAIC (see [Access and Accounts](../../docs/intro_daic/access_accounts#access-and-accounts)).
 2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
 3. SSH client on your local computer
@@ -64,7 +60,6 @@ YourNetID@login1:~$
 Congratulations, you just logged in to the Delft AI Cluster.
 
 ### Submit a job to SLURM
-
 This section briefly describes how to submit a Python script to the queuing system SLURM. You can start by creating a Python script with some dummy-code named `script.py`:
 
 ```python

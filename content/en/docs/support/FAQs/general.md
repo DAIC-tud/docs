@@ -4,9 +4,7 @@ linkTitle: "General questions"
 weight: 1
 ---
 
-
 ### SSH: <code>The authenticity of host 'login<em>X</em>' can't be established.</code>
-
 When connecting to a login node for the first time, you must **not continue** when the key fingerprint reported by your ssh connection does **not match** one of the fingerprints shown here:
   * For `login1.daic.tudelft.nl` and `login2.daic.tudelft.nl`:
       * `2iPjH/j/Tf5JZU4OJyLpASA/GZ40eCqvcQnSSa++3nQ (ECDSA)`
@@ -25,21 +23,15 @@ When connecting to a login node for the first time, you must **not continue** wh
 When the key fingerprint matches, you can safely continue.
 When in the future your ssh connection tells you that the key has changed, and it doesn’t match one of the fingerprints above, contact the [DAIC support team](../../#support--contact).
 
-
 ### SSH: `Permission denied, please try again.`
-
 * The DAIC cluster is not freely accessible. It is facilitated by several departments and groups within the university for their research/education.
 * If you have access, this message indicates that either your access expired (in case an end date was set), or your account was (temporarily) disabled due to problems with your use of the login nodes, or there is a problem with your NetID account/password.
 
-
 ### `-bash: cd: /home/nfs/<NetID>: Key has expired`
-
 * This means your Kerberos ticket has expired. Your need to renew it, either by running `kinit`, or by logging out then logging in again (using your password!). Also see [Kerberos authentication](/docs/manual/job-submission/kerberos).
 * Please log out when you’re not using the cluster (so you don’t hit this problem, and so you don’t block resources on the login node).
 
-
 ### `Disk quota exceeded`
-
 * The size of the data in this storage has reached the maximum allowed size (also known as _quota limit_). For `$HOME` folders (see [Personal storage](/docs/introduction/system/storage#personal-storage-aka-home-folder)) the maximum allowed amount of data is 8 GB, for project storage (see [Project storage](/docs/introduction/system/storage#project-storage)) the quota limit can be up to 5TB of data.
 * To see how much space your `$HOME` files are using, run `du -h ~ | sort -h`. (When you have many files or folders, this can take a long time!)
 * To make space available, you'll either need to clean up some files (like installation archives and caches), or move some of your files somewhere else. 
@@ -51,14 +43,9 @@ Your home folder is for storing settings and installing small software packages,
 {{% /alert %}}
 
 ### `The system load on login_X_ is too high! Please use another node if you can.`
-
-
-* This message is mainly a warning for the person that is causing the high load. If that is you, you should either do the work as a cluster job, or limit the number of threads or memory that you use. If you're not the one running heavy tasks, you can choose to ignore it.
-
+* This message is mainly a warning for the person that is causing the high load. If that is you, you should either do the work as a cluster job, or limit the number of threads or memory that you use. If you're not the one running heavy tasks, you can choose to ignore it. 
 
 ### staff-umbrella: `Operation not permitted`
-
-
 * The network filesystem for the bulk, groups and project storage (staff-bulk, staff-groups, staff-umbrella) does not support `chmod` (changing permissions) or `chown` (changing owner or group) operations:
   - When you run these operations, you will receive an `Operation not permitted` error. This has nothing to do with your personal rights, it’s just not supported.
   - It's also not necessary to change these, since the _default permissions are correct for normal use_. So, you can **safely** skip these operations or **ignore** these errors in many situations.

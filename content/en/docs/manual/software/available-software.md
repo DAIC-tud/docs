@@ -8,9 +8,7 @@ description: >
 
 
 ## General software
-
 Most common general software, like programming languages and libraries, is installed on the DAIC servers. 
-
 To check if the program that you need is pre-installed, you can simply try to start it:
 
 ```bash
@@ -18,21 +16,20 @@ $ python
 Python 2.7.5 (default, Jun 28 2022, 15:30:04) 
 [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
 >>> quit()
-$ 
-$ python4
--bash: python4: command not found 
 ```
 
- Alternatively, you can try to locate the program or library using the `whereis` command:
+To find out which binary is used exactly you can use `which` command:
+```bash
+which python
+/usr/bin/python
+```
+
+Alternatively, you can try to locate the program or library using the `whereis` command:
 
  ```bash
  $ whereis python
 python: /usr/bin/python3.4m-config /usr/bin/python3.6m-x86_64-config /usr/bin/python2.7 /usr/bin/python3.6-config /usr/bin/python3.4m-x86_64-config /usr/bin/python3.6m-config /usr/bin/python3.4 /usr/bin/python3.4m /usr/bin/python2.7-config /usr/bin/python3.6 /usr/bin/python3.4-config /usr/bin/python /usr/bin/python3.6m /usr/lib/python2.7 /usr/lib/python3.4 /usr/lib/python3.6 /usr/lib64/python2.7 /usr/lib64/python3.4 /usr/lib64/python3.6 /etc/python /usr/include/python2.7 /usr/include/python3.4m /usr/include/python3.6m /usr/share/man/man1/python.1.gz
-$ 
-$ whereis python4
-python4:$ 
 ```
 
  Or, you can check if the package is installed using the `rpm -qa` command as follows: 
@@ -40,35 +37,10 @@ python4:$
  ```bash
  $ rpm -qa python
 python-2.7.5-92.el7_9.x86_64
-$ 
-$ rpm -qa python4
-$
 ```
- 
-
-
-<!--
-When a program is not installed you should check if a package containing the program is available: 
-
-```bash
-$ yum search python3
-================= N/S matched: python3 ==================
-python3.x86_64 : Version 3 of the Python programming language aka Python 3000
-$ yum search python4
-Warning: No matches found for: python4
-No matches found
-```
-
-When a package is available you can simply request it's installation by sending an e-mail to the HPC cluster administrators. 
-
--->
-
-
 
 ## Environment modules
-
 Some often used third-party software (eg, CUDA, cuDNN, Matlab) is installed in the cluster as {{< external-link "https://modules.readthedocs.io/en/latest/index.html" "environment modules" >}}. 
-
 
 To see or use the available modules, first, enable the software collection:
 
@@ -95,21 +67,19 @@ And to check the description of a specific module:
 $ $ module whatis cudnn
 cudnn/12-8.9.1.23   : cuDNN 8.9.1.23 for CUDA 12
 cudnn/12-8.9.1.23   : NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks.
-
 ```
 
 And to use the module or package, load it as follows:
 
 ```bash
 $ module load cuda/11.2 cudnn/11.2-8.1.1.33 # load the module
-$
+
 $ module list                               # check the loaded modules
 
 Currently Loaded Modules:
    1) cuda/11.2   2) cudnn/11.2-8.1.1.33
 
 ```
-
 
 {{< alert title="Note" color="info" >}}
 For more information about using the module system, run `module help`. 

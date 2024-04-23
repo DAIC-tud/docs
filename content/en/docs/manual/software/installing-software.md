@@ -6,13 +6,14 @@ description: >
   How to install unavailable software?
 ---
 
-
 ## Basic principles
 
 - On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Batch queuing system](/docs/introduction/system/scheduler#file-system-overview)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [File system overview](/docs/introduction/system/storage/#file-system-overview)).
 
-
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
+
+- DAIC provides only 8GB of storage in the `/home` directories and the project spaces (`/tudelft.net/...`) are Windows-based leading to problems installing packages with `pip` due to file permission errors.
+However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [containerization tutorial](/tutorials/containerization) for guidance. 
 
 {{% alert title="Stop!" color="warning" %}}
 
@@ -23,28 +24,259 @@ The available software, packages' names and package versions might differ, and t
 {{% /alert %}}
 
 
+## Maintaining your own environment
+### Conda/Mamba
+Conda and Mamba are both package management and environment management tools used primarily in the data science and programming communities. Conda, developed by Anaconda, Inc., allows users to manage packages and create isolated environments for different projects, supporting multiple languages like Python and R. Mamba is a more recent alternative to Conda that offers faster performance and improved dependency solving using the same package repositories as Conda. Both tools help avoid dependency conflicts and simplify the management of software packages and environments. You can install it with:
 
-## Using binaries when possible
-
-Some programs come as precompiled binaries or are written in a scripting language such as Perl, PHP, Python or shell script. Most of these programs don't actually need to be "installed" since you can simply run these programs directly. In certain scenarios, you may need to make the program executable first: 
+#### Use module load conda
+```bash
+netid@login1:~$ module load miniconda
+netid@login1:~$ which conda
+/opt/insy/miniconda/3.9/condabin/conda
+```
 
 ```bash
-$ ./program        # attempting to run the binary `program`
--bash: ./program: Permission denied
-$ 
-$ chmod +x program # making `program` executable, since it fails due to permissions
-$
-$ ./program        # checking `program` works!
+conda create -n env
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.10.1
+  latest version: 24.3.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+## Package Plan ##
+
+  environment location: /home/nfs/sdrwacker/.conda/envs/env
+```
+
+```
+netid@login1:~$ conda activate env  # Activate the newly created environment
+(env) netid@login1:~$
+
+(env) netid@login1:~$ conda install pandas  # Add a new package to the active environment
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.10.1
+  latest version: 24.3.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+## Package Plan ##
+
+  environment location: /home/nfs/sdrwacker/.conda/envs/test
+
+  added / updated specs:
+    - pandas
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    blas-1.0                   |              mkl           6 KB
+    bottleneck-1.3.7           |  py312ha883a20_0         140 KB
+    bzip2-1.0.8                |       h5eee18b_5         262 KB
+    expat-2.6.2                |       h6a678d5_0         177 KB
+    intel-openmp-2023.1.0      |   hdb19cb5_46306        17.2 MB
+    ld_impl_linux-64-2.38      |       h1181459_1         654 KB
+    libffi-3.4.4               |       h6a678d5_0         142 KB
+    libuuid-1.41.5             |       h5eee18b_0          27 KB
+    mkl-2023.1.0               |   h213fc3f_46344       171.5 MB
+    mkl-service-2.4.0          |  py312h5eee18b_1          66 KB
+    mkl_fft-1.3.8              |  py312h5eee18b_0         204 KB
+    mkl_random-1.2.4           |  py312hdb19cb5_0         284 KB
+    ncurses-6.4                |       h6a678d5_0         914 KB
+    numexpr-2.8.7              |  py312hf827012_0         149 KB
+    numpy-1.26.4               |  py312hc5e2394_0          11 KB
+    numpy-base-1.26.4          |  py312h0da6c21_0         7.7 MB
+    openssl-3.0.13             |       h7f8727e_0         5.2 MB
+    pandas-2.2.1               |  py312h526ad5a_0        15.4 MB
+    pip-23.3.1                 |  py312h06a4308_0         2.8 MB
+    python-3.12.3              |       h996f2a0_0        34.8 MB
+    pytz-2023.3.post1          |  py312h06a4308_0         197 KB
+    readline-8.2               |       h5eee18b_0         357 KB
+    setuptools-68.2.2          |  py312h06a4308_0         1.2 MB
+    six-1.16.0                 |     pyhd3eb1b0_1          18 KB
+    sqlite-3.41.2              |       h5eee18b_0         1.2 MB
+    tbb-2021.8.0               |       hdb19cb5_0         1.6 MB
+    tk-8.6.12                  |       h1ccaba5_0         3.0 MB
+    tzdata-2024a               |       h04d1e81_0         116 KB
+    wheel-0.41.2               |  py312h06a4308_0         131 KB
+    xz-5.4.6                   |       h5eee18b_0         651 KB
+    zlib-1.2.13                |       h5eee18b_0         103 KB
+    ------------------------------------------------------------
+                                           Total:       266.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  bottleneck         pkgs/main/linux-64::bottleneck-1.3.7-py312ha883a20_0
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_5
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.3.11-h06a4308_0
+  expat              pkgs/main/linux-64::expat-2.6.2-h6a678d5_0
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2023.1.0-hdb19cb5_46306
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_0
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  mkl                pkgs/main/linux-64::mkl-2023.1.0-h213fc3f_46344
+  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py312h5eee18b_1
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.8-py312h5eee18b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.2.4-py312hdb19cb5_0
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
+  numexpr            pkgs/main/linux-64::numexpr-2.8.7-py312hf827012_0
+  numpy              pkgs/main/linux-64::numpy-1.26.4-py312hc5e2394_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.26.4-py312h0da6c21_0
+  openssl            pkgs/main/linux-64::openssl-3.0.13-h7f8727e_0
+  pandas             pkgs/main/linux-64::pandas-2.2.1-py312h526ad5a_0
+  pip                pkgs/main/linux-64::pip-23.3.1-py312h06a4308_0
+  python             pkgs/main/linux-64::python-3.12.3-h996f2a0_0
+  python-dateutil    pkgs/main/noarch::python-dateutil-2.8.2-pyhd3eb1b0_0
+  python-tzdata      pkgs/main/noarch::python-tzdata-2023.3-pyhd3eb1b0_0
+  pytz               pkgs/main/linux-64::pytz-2023.3.post1-py312h06a4308_0
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
+  setuptools         pkgs/main/linux-64::setuptools-68.2.2-py312h06a4308_0
+  six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_1
+  sqlite             pkgs/main/linux-64::sqlite-3.41.2-h5eee18b_0
+  tbb                pkgs/main/linux-64::tbb-2021.8.0-hdb19cb5_0
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
+  tzdata             pkgs/main/noarch::tzdata-2024a-h04d1e81_0
+  wheel              pkgs/main/linux-64::wheel-0.41.2-py312h06a4308_0
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_0
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_0
+
+
+Proceed ([y]/n)? y
+....
+```
+
+
+
+### Install your own mamba/conda
+```bash
+-bash-4.2$
+
+alias install-miniforge='
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
+    && bash Miniforge3-Linux-x86_64.sh -b \
+    && rm -f Miniforge3-Linux-x86_64.sh \
+    && eval "$($HOME/miniforge3/bin/conda shell.bash hook)" \
+    && conda init \
+    && conda install -n base -c conda-forge mamba'
+
+cd ~ && install-miniforge
+
+(base) -bash-4.2$
+```
+
+```
+(base) -bash-4.2$which python
+~/miniforge3/bin/python
+```
+
+This will already occupy around 500MB of your home directory totalling ~20k files.
+
+```bash
+du -h miniforge3 --max-depth=0
+486M	miniforge3
+
+find miniforge3 -type f | wc -l
+20719
+```
+
+Now, you can install your own versions of libraries and programs, or create entire environments.
+
+```bash
+mamba create -n py312 python=3.12 
+
+Looking for: ['python=3.12']
+
+conda-forge/noarch                                  14.4MB @  37.6MB/s  0.5s
+conda-forge/linux-64                                33.9MB @  42.4MB/s  1.1s
+Transaction
+
+  Prefix: /home/nfs/sdrwacker/miniforge3/envs/py312
+
+  Updating specs:
+
+   - python=3.12
+
+  Package                  Version  Build               Channel           Size
+────────────────────────────────────────────────────────────────────────────────
+  Install:
+────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex              0.1  conda_forge         conda-forge     Cached
+  + ca-certificates       2024.2.2  hbcca054_0          conda-forge     Cached
+  + ld_impl_linux-64          2.40  h55db66e_0          conda-forge      713kB
+  + libgomp                 13.2.0  hc881cc4_6          conda-forge      422kB
+  + _openmp_mutex              4.5  2_gnu               conda-forge     Cached
+  + libgcc-ng               13.2.0  hc881cc4_6          conda-forge      777kB
+  + openssl                  3.2.1  hd590300_1          conda-forge     Cached
+  + libxcrypt               4.4.36  hd590300_1          conda-forge     Cached
+  + libzlib                 1.2.13  hd590300_5          conda-forge     Cached
+  + libffi                   3.4.2  h7f98852_5          conda-forge     Cached
+  + bzip2                    1.0.8  hd590300_5          conda-forge     Cached
+  + ncurses           6.4.20240210  h59595ed_0          conda-forge     Cached
+  + libuuid                 2.38.1  h0b41bf4_0          conda-forge     Cached
+  + libnsl                   2.0.1  hd590300_0          conda-forge     Cached
+  + libexpat                 2.6.2  h59595ed_0          conda-forge       74kB
+  + xz                       5.2.6  h166bdaf_0          conda-forge     Cached
+  + tk                      8.6.13  noxft_h4845f30_101  conda-forge     Cached
+  + libsqlite               3.45.3  h2797004_0          conda-forge      860kB
+  + readline                   8.2  h8228510_1          conda-forge     Cached
+  + tzdata                   2024a  h0c530f3_0          conda-forge     Cached
+  + python                  3.12.3  hab00c5b_0_cpython  conda-forge       32MB
+  + wheel                   0.43.0  pyhd8ed1ab_1        conda-forge     Cached
+  + setuptools              69.5.1  pyhd8ed1ab_0        conda-forge     Cached
+  + pip                       24.0  pyhd8ed1ab_0        conda-forge     Cached
+
+  Summary:
+
+  Install: 24 packages
+
+  Total download: 35MB
+
+────────────────────────────────────────────────────────────────────────────────
+
+
+Confirm changes: [Y/n] 
+```
+
+{{% alert title="Stop!" color="warning" %}}
+You are limited to 8GB of data in your home directoy. Installing a full development environement for PyTorch can easily exceed 12 GB; Therefore, it is recommeneded to install only tools and libraries that you really need on the login nodes via this route. Instead, use `Apptainer` to create container files containing all dependencies.
+{{% /alert %}}
+
+
+## Using binaries
+Some programs come as precompiled binaries or are written in a scripting language such as Perl, PHP, Python or shell script. Most of these programs don't actually need to be "installed" since you can simply run these programs directly. In certain scenarios, you may need to make the program executable first using `chmod +x`: 
+
+```bash
+$ ./my-executable        # attempting to run the binary `my-executable`
+-bash: ./my-executable: Permission denied
+
+$ chmod +x program       # making `my-executable` executable, since it fails due to permissions
+
+$ ./my-executable        # checking `my-executable` works!
 Hello world!
-$
+
 ```
 
 ## Installing from source
-
 When a pre-made binary of your software is not available, you'll have to install the software yourself from the source. You may need to set up your [Installation environment](#installation-environment) before following this [Installation recipe](#installation-recipe).
 
 ### Installation environment
-
 When you are installing software for the very first time, you need to set up your environment. If you have already done this before , you can skip this section and go directly to the [Installation recipe](#installation-recipe) section.
 
 To set up your environment, first, add the following lines to your `~/.bash_profile` or, alternatively, download this ([bash_profile.txt](https://gitlab.ewi.tudelft.nl/daic/docs/-/blob/main/content/en/docs/software_environment/bash_profile.txt?ref_type=heads)) as shown in the subsequent commands:
@@ -70,15 +302,10 @@ export PYTHONPATH="$PREFIX/lib/python2.7/site-packages${PYTHONPATH:+:$PYTHONPATH
 ```
 {{< /card >}}
 
-
-
-
 {{< alert title="Note!" color="info"  >}}
 1.  if you already have some of these settings in your `~/.bash_profile` (or elsewhere), you should combine them so they don't duplicate the paths. 
 2.  if you want to use `python3.6` instead of `python2.7`, you need to set the `PYTHONPATH` to `python3.6`. 
 {{< /alert >}}
-
-
 
 ```bash
 $ cp ~/.bash_profile ~/.bash_profile.bak # back up your file
@@ -175,29 +402,8 @@ $ cd $ _program_
 $ rm -r /tmp/$USER 
 ```
 
-### Python modules
-
-After setting up the installation environment (above) you are also able to install Python modules by yourself, by using the `--user` option. The easiest way is when the module is available through `pip2` (for Python 2) or `pip3` (for Python 3):
-
-```bash
-$ pip2 search module
-$ pip2 install --user module
-```
-
-
-When you only have the source code for the module, follow the installation instructions for the module, but make sure to use --user in the installation step:
-
-```bash
-$ python setup.py install --user
-```
-
-<!-- 
-## Virtualization: conda, virtualenv, mamba, 
--->
-
-
 ## Containerization
 
-See the [Containerization tutorial](/tutorials/containerization).
+See the [containerization tutorial](/tutorials/containerization).
 
 

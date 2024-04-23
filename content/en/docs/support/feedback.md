@@ -1,10 +1,7 @@
 ---
 title: "Feedback"
-linkTitle: "Feedback"
 weight: 4
-menu:
-  main:
-    weight: 40
+description: Help us to improve this documentation.
 ---
 
 ## Feedback and suggestions

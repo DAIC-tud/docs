@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-linkTitle: "Contact"
+description: Get help from the community or the cluster support team.
 weight: 6
 menu:
   main:

@@ -5,21 +5,20 @@ description: >
   Overview over DAIC funding sources.
 ---
 
-## Funding sources
 In addition to funding received from departmental sources, DAIC has also been financially supported by the following projects and granting sources:
 
 {{< cardpane >}}
-  {{< card header="" title="" subtitle=""  >}}
+  {{< card header="NWO" title="" subtitle=""  >}}
   <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
 	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=50 width=70/>
   </a>
   {{< /card >}}
-  {{< card header="" title="" subtitle=""  >}}
+  {{< card header="Horizon 2020" title="" subtitle=""  >}}
   <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-2020_en">
 	  <img src="https://www.tbvi.eu/wp-content/uploads/2019/03/EU-H2020-logo.png" height=50 width=170>
   </a>
   {{< /card >}}
-  {{< card header="" title="" subtitle=""  >}}
+  {{< card header="Epistemic AI" title="" subtitle=""  >}}
   <a href="https://www.epistemic-ai.eu/home">
 	  <img src="https://lh4.googleusercontent.com/MoGkhiYWHVUl1x4zlp5p-sdy6zyBmfKIOKjBoehBNi3vPQojsMlfF5RbBz9pr-Jb50QT3igrocXqSFkDRDZF45Y=w16383" height=50 width=170 />
   </a>

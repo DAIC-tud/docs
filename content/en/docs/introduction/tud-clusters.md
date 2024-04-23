@@ -2,7 +2,7 @@
 ---
 title: "TU Delft clusters comparison"
 weight: 1
-description: How does DAIC compare to other clusters at TU Delft?
+description: How does DAIC compare to other clusters at TU Delft and in the Netherlands?
 ---
 
 #### TU Delft clusters

@@ -8,14 +8,14 @@ weight: 1
 ### SSH: <code>The authenticity of host 'login<em>X</em>' can't be established.</code>
 
 When connecting to a login node for the first time, you must **not continue** when the key fingerprint reported by your ssh connection does **not match** one of the fingerprints shown here:
-  * For `login1.hpc.tudelft.nl` and `login2.hpc.tudelft.nl`:
+  * For `login1.daic.tudelft.nl` and `login2.daic.tudelft.nl`:
       * `2iPjH/j/Tf5JZU4OJyLpASA/GZ40eCqvcQnSSa++3nQ (ECDSA)`
       * `MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM (ED25519)`
       * `mKgxUQvmOVM74XvFNhWt0ODsRvfnmwIgZWcw8uPJ68o (RSA)`
       * `05:24:a0:b4:83:27:05:32:4b:83:78:2a:20:99:f8:5c (ECDSA)`
       * `C5:21:46:cb:73:cd:72:e6:18:04:d6:67:2a:67:90:75 (ED25519)`
       * `05:17:84:7f:9f:18:e3:71:b4:df:5e:c0:12:db:e8:fc (RSA)`
-  * For `login3.hpc.tudelft.nl`:
+  * For `login3.daic.tudelft.nl`:
       * `IaBwyYiZi1Etj7yBDtdv7sByHzH+hedW69QA8UxGUqk (ECDSA)`
       * `O3AjQQjCfcrwJQ4Ix4dyGaUoYiIv/U+isMT5+sfeA5Q (ED25519)`
       * `fslv0RnC9zkVBf34i3g1BPKaYBcsTgKqu8+PMKLTEvw (RSA)`

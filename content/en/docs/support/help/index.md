@@ -1,6 +1,5 @@
 ---
-title: "Help resources"
-linkTitle: "Help resources"
+title: "Help yourself"
 weight: 1
 description: >
     Help yourself resources.
@@ -29,7 +28,6 @@ My jobs are not starting, is the cluster busy? The following links are resources
         <li>Resource usage and fairshare information for the top 10 cluster users (in terms of </li>Normalized usage)
         <li>Details of jobs in the cluster, sorted by priority and jobID </li>
       </ul>
-    
   </li>
   <li>
       <summary>{{< external-link "https://login.daic.tudelft.nl/protected/job_efficiency.cgi" "SlurmEff (login required)" >}}</summary>
@@ -37,7 +35,6 @@ My jobs are not starting, is the cluster busy? The following links are resources
   </li>
   <li>{{< external-link "https://login.daic.tudelft.nl/cacti/graph_view.php" "Cluster Monitoring Graphs" >}}
   </li>
-
   </li>
 </ul>
 
@@ -51,14 +48,11 @@ In line with the steps in [What to do in case of problems](../docs/intro_daic/us
 - [ ] {{< external-link "https://gitlab.tudelft.nl/pattern-recognition-and-bioinformatics/wiki/-/wikis/HPC-quickstart-guide" "PRB wiki">}} <!--from Ruud & Tom V) -->
 - [ ] {{< external-link "https://gitlab.tudelft.nl/delft-bioinformatics-lab/wiki/-/wikis/Cluster" "DBL wiki" >}} <!--from Yasin -->
 - [ ] {{< external-link "https://qiweb.tudelft.nl/sysman/awi2insy.html" "Imphys docs" >}} <!--(https://qiweb.tudelft.nl/sysman/hpc_servers.html; https://qiweb.tudelft.nl/sysman/hpc/hpc.html from Ronald) -->
-- [ ] {{< external-link "https://github.com/oliehoek-research/organization/tree/master/howto" "Influence github resources" >}} <!--(from Frans O) -->
 - [ ] {{< external-link "https://docs.google.com/document/d/1FnUzmHchHdZi4Iw3UDE-2sPrG_RF-qqIilKLDRXMHyo/edit#heading=h.jjiiwty148c2" "WIS Google doc" >}} <!-- from Ziyu, WIS -->
 
-
 ## Linux support
-* Linux [Q&A Portal](https://linux.ewi.tudelft.nl/): This page aims to be a hub for sharing knowledge, seeking support and prioritizing community issues through upvoting.
-* Linux [Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting        with peers.
-        
+* [Linux Q&A Portal](https://linux.ewi.tudelft.nl/): This page aims to be a hub for sharing knowledge, seeking support and prioritizing community issues through upvoting.
+* [Linux Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting        with peers.
 
 <!-- 
 Additional resources:
@@ -80,3 +74,4 @@ https://support.ceci-hpc.be/doc/index.html
 - {{< external-link "https://www.hpc-carpentry.org/community-lessons/#hpc-carpentry" "HPC carpentry lessons" >}}
 - {{< external-link "https://software-carpentry.org/lessons/" "Other software carpentry lessons" >}}
 - {{< external-link "https://datacarpentry.org/lessons/" "Data carpentry lessons" >}}
+- {{< external-link "https://unix.stackexchange.com/" "Unix & Linux Stackexchange" >}}

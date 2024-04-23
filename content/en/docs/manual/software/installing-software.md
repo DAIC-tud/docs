@@ -198,6 +198,6 @@ $ python setup.py install --user
 
 ## Containerization
 
-See the [Containerization Technology tutorial](../../../tutorials/container_images/#containerization-technology)
+See the [Containerization tutorial](/tutorials/containerization).
 
 

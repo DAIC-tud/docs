@@ -5,6 +5,9 @@ linkTitle: "Quickstart"
 weight: 1
 description: >
   Login to DAIC and submit your first SLURM job.
+menu:
+  main:
+    weight: 1
 ---
 
 

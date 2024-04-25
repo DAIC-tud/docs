@@ -14,11 +14,11 @@ Apptainer is a container platform. It allows you to create and run containers th
 - Mobility of compute. The single file SIF container format is easy to transport and share.
 - A simple, effective security model. You are the same user inside a container as outside, and cannot gain additional privilege on the host system by default. Read more about Security in Apptainer.
 
-### Template
+## Template
 The [Apptainer template](https://gitlab.ewi.tudelft.nl/reit/apptainer-template) repository maintained by the [Research Engineering and Infrastructure Team](https://reit.tudelft.nl) is a good starting point to create your own apptainers.
 
-### How to use Apptainer on the cluster with SLURM?
-Here is how to use the container in a SLURM script.
+## How to use Apptainer on the cluster with SLURM?
+Here is an example how to use the container in a SLURM script.
 
 ```bash
 #!/bin/sh
@@ -35,7 +35,6 @@ Here is how to use the container in a SLURM script.
 #SBATCH --output=slurm-%x-%j.out   # Set name of output log. %j is the Slurm jobId
 #SBATCH --error=slurm-%x-%j.err    # Set name of error log. %j is the Slurm jobId
 
-export DATASETS_ROOT="/scratch/$USER/datasets"
 export APPTAINER_ROOT="/path/to/container/folder"
 export APPTAINER_NAME="my-container.sif"
 
@@ -50,7 +49,7 @@ srun apptainer exec \
   -B /home/$USER:/home/$USER \        # Mount host file-sytem inside container 
   -B /projects/:/projects/ \          # (different for each cluster)
   -B /scratch/$USER:/scratch/$USER \
-  $APPTAINER_ROOT/$APPTAINER_NAME \   # Path to the Apptainer container to run
+  $APPTAINER_ROOT/$APPTAINER_NAME \   # Path to the container to run
   python my-script.py                 # Command to be executed inside container
 ```
 

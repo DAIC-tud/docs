@@ -24,6 +24,7 @@ We recommend applying the following workflow when working with HPC clusters.
 6. Progress is monitored (see [Checking slurm jobs](/docs/manual/job-submission/job-monitoring)).
 7. Final results are downloaded for subsequent downstream analysis.
 8. Intermediate files are deleted (see [How do I clean up tmp?](/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails))
+9. Check out the [List of handy commands on DAIC](/docs/manual/commands)
 
 ## Quickstart
 ### Prerequisites

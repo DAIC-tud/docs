@@ -9,7 +9,6 @@ description: >
 The available processing power and memory in DAIC is large, but still limited. You should use the available resources efficiently and fairly. This page lays out a few general principles and guidelines  for considerate use of DAIC.
 
 ## Using shared resources
-
 The computing servers within DAIC are primarily meant to run large, long (non-interactive) jobs. You share these resources with other users across departments. Thus, you need to be cautious of your usage so you do not hinder other users. 
 
 To help protect the active jobs and resources, when a login server becomes overloaded, new logins to this server are automatically disabled. 
@@ -22,13 +21,9 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 {{% /pageinfo %}}
 
 ### Best practices
-
 * Connect only directly from the bastion server to the login servers (See [Connecting to DAIC](/docs/manual/connecting/))
-
- 
 * Always choose the login server with the lowest use (most importantly system load and memory usage), by checking the {{< external-link "https://login.daic.tudelft.nl/" "Current resource usage page" >}} or the `servers` command for information.
   * Each server displays a message at login. Make sure you understand it before proceeding. This message includes the current load of the server, so look at it at every login
-
 * Only use the storage best suited to your files (See [Filesystem and storage](/docs/introduction/system/storage/)).
 
 <!--
@@ -49,7 +44,6 @@ This means that you will sometimes have to wait for other jobs to finish and at 
   * ~~Release the used resources so other users can use them. Have the script save the final results to file and exit.~~
 -->
 
-
 * Actively monitor the status of your jobs and the loads of the servers.
   * Make sure your job runs normally and is not hindering other jobs. Check the following at the start of a job and thereafter at least twice a day:
     - If your job is not working correctly (or halted) because of a programming error, terminate it immediately; debug and fix the problem instead of just trying again (the result will almost certainly be exactly the same).
@@ -58,10 +52,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
     - Don't leave `top` running unless your are continuously watching it; press q to quit.
     - Watch the current resource usage (see {{< external-link "https://login.daic.tudelft.nl/" "Current resource usage page" >}} or use the `servers` command), and if the server is running close to it's limits (higher than 90% server load or memory, swap or disk usage), consider moving your job to a less busy server. <!-- ~~If more than half of the servers are at their limits, consider killing one or more jobs to make some space for others. ~~ -->
 
-
-
 ### Computing on login nodes
-
 <!--
 * ~~Run only one computing or memory intensive job per login server.~~
   * ~~Leave enough resources for other users. When the number of running threads of all programs combined exceed the number of cores in the server, or the combined virtual memory used exceeds the server's memory, the efficiency of the server will be (severely) reduced.~~
@@ -76,7 +67,6 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 ~~Login nodes have per-user CPU and memory quotas. If you run processes on a login node that push the total usage beyond a certain amount, the limiter will begin killing the largest processes until the total  satisfies the limit. ~~
 {{% /alert %}}
 -->
-
 
 - Please do not run production research computations on the login nodes. If necessary, request an interactive session in these cases (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive/)) 
 

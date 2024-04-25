@@ -7,7 +7,6 @@ description: >
 ---
 
 ## Resources reservations
-
 Slurm gives the possibility to reserve one or more compute nodes _exclusively_ for a specific user or group of users. A reservation ensures that the designated node (or nodes) are dedicated solely to the reservation holder's tasks and are not shared with other users during the reserved period. This feature allows users to plan the execution of future workloads, and accommodates cluster users with special needs beyond the batch system (eg latency measurement scenarios).
 
 {{% alert title="Note" color="warning" %}}
@@ -15,7 +14,6 @@ Using reservations is in line with the [General cluster usage clauses](/docs/int
 {{% /alert %}}
 
 ### Requesting a Reservation
-
 To request a reservation for nodes, please use to the [Request Reservation form](/docs/introduction/policies/access-accounts). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
 
 General guidelines for reservations' requests:
@@ -25,8 +23,6 @@ General guidelines for reservations' requests:
 
 
 ### Using a reservation
-
-
 Once your reservation request is approved and a reservation is placed on the system, you can run your jobs in the reservation by specifying  `--qos=reservation` along with the following directives to your slurm commands: `--reservation=<name>` and `--partition=<partition>`. For example, to submit the job `job.sbatch` to a reservation named `icra_iv` on the `cor1` node on the `cor` partition use:
 
 ```bash
@@ -56,7 +52,6 @@ $ srun --qos=reservation --reservation=<reservation_name> --partition=<partition
 {{% /alert%}}
 
 ### Viewing reservations
-
 To view all active and future reservations run the `scontrol` command as follows:
 
 ```bash

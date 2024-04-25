@@ -22,7 +22,7 @@ Here is an example how to use the container in a SLURM script.
 
 ```bash
 #!/bin/sh
-#SBATCH --job-name="my-script"
+#SBATCH --job-name="apptainer-job"
 #SBATCH --account="my-account"
 #SBATCH --partition="general"      # Request partition.
 #SBATCH --time=01:00:00            # Request run time (wall-clock). Default is 1 minute
@@ -50,6 +50,6 @@ srun apptainer exec \
   -B /projects/:/projects/ \          # (different for each cluster)
   -B /scratch/$USER:/scratch/$USER \
   $APPTAINER_ROOT/$APPTAINER_NAME \   # Path to the container to run
-  python my-script.py                 # Command to be executed inside container
+  python script.py                    # Command to be executed inside container
 ```
 

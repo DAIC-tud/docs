@@ -10,7 +10,7 @@ description: >
 Kerberos is an authentication protocol which uses tickets to authenticate users (and computers). You automatically get a ticket when you log in with your password on a TU Delft installed computer. You can use this ticket to authenticate yourself without password when connecting to other computers or accessing your files. To protect you from misuse, the ticket expires after 10 hours or less (even when you're still logged in).
 
 ### File access
-Your Linux and Windows [home](/docs/introduction/system/storage#personal-storage-aka-home-folder) directories and the [Group](/docs/introduction/system/storage#group-storage) and [Bulk](/docs/introduction/system/storage#project-storage) shares are located on network fileservers, which allows you to access your files from all TU Delft installed computers. Kerberos authentication is used to enable access to, or protect, your files. Without a valid Kerberos ticket (e.g. when the ticket has expired) you will not be able to access your files but instead you will receive a `Permission denied` error.
+Your Linux and Windows [Home](/docs/introduction/system/storage#personal-storage-aka-home-folder) directories and the [Group](/docs/introduction/system/storage#group-storage) and [Project](/docs/introduction/system/storage#project-storage) shares are located on network fileservers, which allows you to access your files from all TU Delft installed computers. Kerberos authentication is used to enable access to, or protect, your files. Without a valid Kerberos ticket (e.g. when the ticket has expired) you will not be able to access your files but instead you will receive a `Permission denied` error.
 
 ### Lifetime of Kerberos Tickets
 Kerberos tickets have a limited valid lifetime (of up to 10 hours) to reduce the risk of abuse, even when you stay logged in. If your tickets expire, you will receive a `Permission Denied` error when you try to access your files and a password prompt when you try to connect to another computer. When you want your program to be able to access your files for longer than the valid ticket lifetime, you'll have to renew your ticket (repeatedly) until your program is done. Kerberos tickets can be renewed up to a maximum renewable life period of 7 days (again to reduce the risk of abuse).
@@ -38,7 +38,6 @@ Make sure that you renew the tickets in the right ticket cache file (see this [`
 * `Renew until`: Your ticket can only be renewed without password up to this time. After this time you will have to obtain a new ticket using your password. 
 
 ### Renewing Kerberos tickets
-
 If you have a valid Kerberos `krbtgt` ticket, you can renew it at any time (until it expires) by running the command `kinit -R`:
 
 ```bash
@@ -81,7 +80,6 @@ Do not disable the screen saver password lock.
 On remote computers you have to manually renew your tickets before they expire.
 
 ### Slurm & Kerberos
-
 * Slurm caches your Kerberos ticket, and uses it to execute your job
 * Regularly renew the ticket in Slurm’s cache while your jobs are queued or running:
 
@@ -101,7 +99,6 @@ Installed keytab.
 You need to rerun this command whenever you change your NetID password (at least every 6 months). Otherwise, the automatic renewal will not work and you will receive a warning e-mail.
 
 ### Renewal using `screen`
-
 On the compute servers, the `screen` program has been modified to allow jobs to run unattended for up to 7 days. It creates a private ticket cache (to prevent the cache from being destroyed at logout) and automatically renews your ticket up to the maximum renewable life. For example, start MATLAB in Screen with `screen matlab` (the order is important!).
 
 ```bash

@@ -47,9 +47,7 @@ srun apptainer exec \
   --nv \                              # Bind NVIDIA libraries from the host
   --env-file ~/.env \                 # Source additional environment variables (optional)
   -B /home/$USER:/home/$USER \        # Mount host file-sytem inside container 
-  -B /projects/:/projects/ \          # (different for each cluster)
-  -B /scratch/$USER:/scratch/$USER \
+  -B /tudelft.net/:/tudelft.net/ \    # (different for each cluster)
   $APPTAINER_ROOT/$APPTAINER_NAME \   # Path to the container to run
   python script.py                    # Command to be executed inside container
 ```
-

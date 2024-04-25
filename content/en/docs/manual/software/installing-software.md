@@ -13,7 +13,7 @@ description: >
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
 
 - DAIC provides only 8GB of storage in the `/home` directories and the project spaces (`/tudelft.net/...`) are Windows-based leading to problems installing packages with `pip` due to file permission errors.
-However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [containerization tutorial](/tutorials/containerization) for guidance. 
+However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Containerization tutorial](/tutorials/containerization) for guidance. 
 
 {{% alert title="Stop!" color="warning" %}}
 
@@ -404,6 +404,6 @@ $ rm -r /tmp/$USER
 
 ## Containerization
 
-See the [containerization tutorial](/tutorials/containerization).
+See the [Containerization tutorial](/tutorials/containerization).
 
 

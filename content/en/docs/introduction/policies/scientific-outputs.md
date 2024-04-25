@@ -52,10 +52,8 @@ The compilation of the following list is done retrospectively by the Data Insigh
 
 {{% alert title="Note" color="info" %}}
 Please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput). 
-A list of such outputs is found in [Scientific outputs](../scientific-outputs)
 {{% /alert %}}
 
-
 {{% alert title="Note" color="info" %}}
-To learn more about reservations, please refer to the [Resources' reservation](../../../manual/job-submission/reservations) sections.
+To learn more about reservations, please refer to the [Resources' reservation](/docs/manual/job-submission/reservations) sections.
 {{% /alert %}}

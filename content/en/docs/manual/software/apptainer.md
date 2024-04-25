@@ -39,7 +39,6 @@ export APPTAINER_ROOT="/path/to/container/folder"
 export APPTAINER_NAME="my-container.sif"
 
 # If you use GPUs
-## Setup environment
 module load cuda/12.1
 
 # Run script

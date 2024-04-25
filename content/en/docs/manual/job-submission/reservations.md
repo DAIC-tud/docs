@@ -21,7 +21,6 @@ General guidelines for reservations' requests:
 * Please ask for the least amount of resources you need as to minimize impact on other users.
 * _Plan ahead and request your reservation as soon as possible_: Reservations usually ignore running jobs, so any running job on the machine(s) you request will continue to run when the reservation starts. While jobs from other users will not start on the reserved node(s), the resources in use by an already running job at the start time of the reservation will not be available in the reservation until this running job ends. The earlier ahead you request resources, the easier it is to allocate the requested resources .
 
-
 ### Using a reservation
 Once your reservation request is approved and a reservation is placed on the system, you can run your jobs in the reservation by specifying  `--qos=reservation` along with the following directives to your slurm commands: `--reservation=<name>` and `--partition=<partition>`. For example, to submit the job `job.sbatch` to a reservation named `icra_iv` on the `cor1` node on the `cor` partition use:
 

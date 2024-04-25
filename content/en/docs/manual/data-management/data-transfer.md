@@ -49,7 +49,7 @@ To transfer a folder from DAIC to your computer:
 $ scp -r [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefolder ./
 ```
 
-The above commands will work from either the university network, or when using EduVPN. If a "jump" via `linux-bastion` is needed (see [Access from outside university network](../connecting/#access-from-outside-university-network)), modify the above commands by replacing scp with `scp -J <netid>@linux-bastion.tudelft.nl` and keep the rest of the command as before:
+The above commands will work from either the university network, or when using EduVPN. If a "jump" via `linux-bastion` is needed (see [Access from outside university network](/docs/manual/connecting/#access-from-outside-university-network)), modify the above commands by replacing scp with `scp -J <netid>@linux-bastion.tudelft.nl` and keep the rest of the command as before:
 
 ```bash
 $ scp <local_file> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>

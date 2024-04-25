@@ -8,7 +8,7 @@ description: >
 ## Contributing departments
 The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is an HPC cluster that was initiated within the INSY department in 2015. Later, resources were joined with ST, collectively called _CS@Delft_, and with other departments across faculties in subsequent expansion cycles. Today, DAIC servers are organized as partitions (see [Batch Queuing System Overview ](/docs/introduction/system/scheduler#batch-queuing-system-overview)) that corresponds to the groups contributing these resources, as can be seen in Table 1.
 
- DAIC has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase (See [TU Delft clusters comparison](tud-clusters)).
+ DAIC has been designed based on the needs of CS@Delft from the beginning. It has grown in time to serve researchers in other TU Delft Departments but maintained the needs of CS and AI in each expansion phase (See [TU Delft clusters comparison](/docs/introduction/tud-clusters)).
 
 <table>
 <caption> Table 1: Current partitions within DAIC and contributing TU Delft departments/faculties.
@@ -48,7 +48,7 @@ The Delft AI Cluster (DAIC - formerly known as INSY-HPC or just plainly HPC) is 
     <td>4</td>
     <td>cor</td>
     <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="/img/logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
-    <td><a href="Mechanical Engineering">Faculty of Mechanical Engineering</a></td>
+    <td><a href="https://www.tudelft.nl/en/me">Faculty of Mechanical Engineering</a></td>
     <td>ME</td>
   </tr>
   <tr>

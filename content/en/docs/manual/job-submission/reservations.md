@@ -11,15 +11,15 @@ description: >
 Slurm gives the possibility to reserve one or more compute nodes _exclusively_ for a specific user or group of users. A reservation ensures that the designated node (or nodes) are dedicated solely to the reservation holder's tasks and are not shared with other users during the reserved period. This feature allows users to plan the execution of future workloads, and accommodates cluster users with special needs beyond the batch system (eg latency measurement scenarios).
 
 {{% alert title="Note" color="warning" %}}
-Using reservations is in line with the [General cluster usage clauses](../intro_daic/user_agreement#general-cluster-usage) of DAIC users' agreement. However, please be mindful that reservations are intended to facilitate special needs that cannot be satisfied by the batch system, and should not be requested to guarantee fast throughput for production runs.
+Using reservations is in line with the [General cluster usage clauses](/docs/introduction/policies/user-agreement#general-cluster-usage) of DAIC users' agreement. However, please be mindful that reservations are intended to facilitate special needs that cannot be satisfied by the batch system, and should not be requested to guarantee fast throughput for production runs.
 {{% /alert %}}
 
 ### Requesting a Reservation
 
-To request a reservation for nodes, please use to the [Request Reservation form](../intro_daic/access_accounts). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
+To request a reservation for nodes, please use to the [Request Reservation form](/docs/introduction/policies/access-accounts). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
 
 General guidelines for reservations' requests:
-* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [DAIC partitions and contributors page](../intro_daic/#brief-history-of-daic) to check the name of the partition contributed by your group, and [the DAIC hardware page](../intro_daic/hardware_infra/) for a listing of available nodes and their features).
+* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [DAIC partitions and contributors page](/docs/introduction/contributors) to check the name of the partition contributed by your group, and [the DAIC hardware page](/docs/introduction/system/) for a listing of available nodes and their features).
 * Please ask for the least amount of resources you need as to minimize impact on other users.
 * _Plan ahead and request your reservation as soon as possible_: Reservations usually ignore running jobs, so any running job on the machine(s) you request will continue to run when the reservation starts. While jobs from other users will not start on the reserved node(s), the resources in use by an already running job at the start time of the reservation will not be available in the reservation until this running job ends. The earlier ahead you request resources, the easier it is to allocate the requested resources .
 

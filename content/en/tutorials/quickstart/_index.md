@@ -14,17 +14,17 @@ We recommend applying the following workflow when working with HPC clusters.
 {{< figure src="clusterWorkflow.png" caption="Cluster workflow, with key Unix* based commands for each step. Text within angle brackets `<`, `>` denote names that are chosen by the user" ref="fig:cluster_workflow">}}
 
 1. Code is developed locally (e.g., on personal laptop or workstation), 
-2. The code is ported to the cluster (see [Connecting to DAIC](../../docs/connecting/) and [Data transfer methods](../../docs/filesystem/#data-transfer-methods)). 
-3. Possibly, software and dependencies are set up (see [Software environment](../../docs/software_environment/)).
-4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](../../docs/job_submissions/#interactive-jobs-on-compute-nodes)), following  [Best practices](../docs/intro_daic/guidelines#best-practices), and consulting with [Support resources](../../support/).
-5. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](../../docs/job_submissions/#job-submission-and-monitoring)), and 
-6. Progress is monitored (see [Checking slurm jobs](../../docs/job_submissions/#checking-slurm-jobs)).
+2. The code is ported to the cluster (see [Connecting to DAIC](/docs/manual/connecting/) and [Data transfer methods](/docs/manual/data-management/data-transfer)). 
+3. Possibly, software and dependencies are set up (see [Software](/docs/manual/software/)).
+4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](/docs/manual/job-submission/jobs-interactive)), following  [Best practices](/docs/manual/guidelines#best-practices), and consulting with [Support resources](/docs/support/).
+5. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](/docs/manual/job-submission/job-scripts)), and 
+6. Progress is monitored (see [Checking slurm jobs](/docs/manual/job-submission/job-monitoring)).
 7. Final results are downloaded for subsequent downstream analysis.
-8. Intermediate files are deleted (see [How do I clean up tmp?](../../support/faqs/job_resources#how-do-i-clean-up-tmp-when-a-job-fails))
+8. Intermediate files are deleted (see [How do I clean up tmp?](/docs/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails))
 
 ## Quickstart
 ### Prerequisites
-1. User account and credentials for DAIC (see [Access and Accounts](../../docs/intro_daic/access_accounts#access-and-accounts)).
+1. User account and credentials for DAIC (see [Access and Accounts](/docs/introduction/policies/access-accounts#access-and-accounts)).
 2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
 3. SSH client on your local computer
 
@@ -33,7 +33,7 @@ You can login to DAIC via SSH:
 
     ssh <netid>@login.daic.tudelft.nl
 
-If you are outside the TUD network you should first login to the TUD network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](../docs/connecting). You will be prompted for your password:
+If you are outside the TUD network you should first login to the TUD network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](/docs/manual/connecting). You will be prompted for your password:
 
 ```bash
 The HPC cluster is restricted to authorized users only.
@@ -116,4 +116,4 @@ When your job finishes you will get a notification via email. Then you can see t
     >>>
     Hello SLURM!
 
-You can see that the standard output of your script has been written to the file `slurm_9267834.out` and the standard error was written to `slurm_9267834.err`. For more useful commands at your disposal have a look [here](../docs/commands).
+You can see that the standard output of your script has been written to the file `slurm_9267834.out` and the standard error was written to `slurm_9267834.err`. For more useful commands at your disposal have a look [here](/docs/manual/commands).

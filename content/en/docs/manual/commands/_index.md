@@ -1,5 +1,12 @@
-# Handy commands on DAIC
+---
+title: "Handy commands on DAIC"
+linkTitle: "Handy commands on DAIC"
+weight: 100
+description: >
+  How/Where to store data.  
+---
 
+# Handy commands on DAIC
 ## SLURM
 SLURM (Simple Linux Utility for Resource Management) is an open-source job scheduler used on many of the world's supercomputers and compute clusters. It allows users to efficiently manage computing resources and queue their computational jobs for execution. Below are some essential SLURM commands with examples and brief explanations, helping users navigate and utilize these resources effectively. Remember to replace `<jobid>` with your specific job ID where necessary. These commands are vital tools for interacting with SLURM and managing your compute tasks effectively.
 

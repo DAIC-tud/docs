@@ -19,7 +19,7 @@ We recommend applying the following workflow when working with HPC clusters.
 1. Code is developed locally (e.g., on personal laptop or workstation), 
 2. The code is ported to the cluster (see [Connecting to DAIC](/docs/manual/connecting/) and [Data transfer methods](/docs/manual/data-management/data-transfer)). 
 3. Possibly, software and dependencies are set up (see [Software](/docs/manual/software/)).
-4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](/docs/manual/job-submission/jobs-interactive)), following  [Best practices](/docs/manual/guidelines#best-practices), and consulting with [Support resources](/support/).
+4. Typically, code is tested on the cluster, e.g. in an interactive session (see [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive)), following  [Best practices](/docs/manual/guidelines#best-practices), and consulting with [Support resources](/support/).
 5. If testing is successful, jobs scripts are submitted to the scheduler (see [Job submission](/docs/manual/job-submission/job-scripts)), and 
 6. Progress is monitored (see [Checking slurm jobs](/docs/manual/job-submission/job-monitoring)).
 7. Final results are downloaded for subsequent downstream analysis.

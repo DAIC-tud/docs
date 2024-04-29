@@ -174,7 +174,7 @@ For more information on job arrays, refer to [Slurm Job Array Support](https://s
 
 ## Troubleshooting Common Issues 
 
-Please see the Frequently asked questions on [Scheduler problems ](/support/faqs/scheduler/) and [Job resources](/support/faqs/job_resources/)
+Please see the Frequently asked questions on [Scheduler problems ](/support/faqs/scheduler/) and [Job resources](/support/faqs/job-resources/)
 
 <!--
 see this example: https://www.nhr.kit.edu/userdocs/horeka/batch/

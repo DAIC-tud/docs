@@ -6,11 +6,10 @@ description: >
   How to submit jobs to slurm?
 ---
 
-Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](#slurm-jobs-terminology-job-job-step-task-and-cpus)).
+Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](/docs/manual/job-submission)).
 
 The code snippet below is a template script that can be customized to run jobs on DAIC. 
 A useful tool that can be used to streamline the debugging of such scripts is {{< external-link "https://www.shellcheck.net/" "ShellCheck" >}}.
-
 
 ```bash
 #!/bin/sh
@@ -33,16 +32,12 @@ A useful tool that can be used to streamline the debugging of such scripts is {{
 
 ```
 
-
 {{% alert title="Note" color="info" %}}
 * DAIC is dual-threaded. It means that CPUs are automatically allocated in multiples of 2. Thus, in your job use (a multiple of) 2 threads.
 * Do not enable mails when submitting large numbers (>20) of jobs at once
 {{% /alert %}} 
 
-
-
 ### Job submission
-
 To submit a job script `jobscript.sbatch`, login to DAIC, and:
 
 * To only test:

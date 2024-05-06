@@ -23,6 +23,7 @@ test:
   script:
     - hugo
     - npm install -g linkinator
+    - cd content
     - linkinator "./**/*.md" --markdown
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH

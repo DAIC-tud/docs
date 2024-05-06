@@ -1,7 +1,7 @@
 ---
 title: "Best practices"
 linkTitle: "Best practices"
-weight: 70
+weight: 1
 description: >
   What is acceptable usage of DAIC?
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Containerization"
+title: "Apptainer"
 weight: 10
 description: >
   Use Apptainer to containerize your projects.
@@ -10,7 +10,6 @@ description: >
 _Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
 
 DAIC supports [Apptainer (previously Singularity)](https://apptainer.org/docs/user/main/introduction.html), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. (see [Pulling images](#pulling-images))
-
 
 Generally, to launch a container image, your commands look as follows:
 
@@ -26,11 +25,9 @@ where:
 *  Both `shell` and `exec` can be used to launch container images. The difference is that `shell` allows you to work inside the container image interactively; while `exec` executes the `<command>` inside the image and exits. Of course, by using something like `/bin/bash` as the `<command>`, `exec` behaves exactly like `shell`. 
 * `run` also launches a container image, but runs the default action defined in the container image. See an example use case in [Building images ](#building-images)
 
-
 The question is now: where to get the `<container>` file from? You can either: 
 1) use a pre-built image by pulling from a repository (see [Pulling images](#pulling-images)), or, 
 2) build your own container image and use it accordingly (see [Building images](#building-images)). 
-
 
 <!-- 
 Add workflow for how to work with containers:
@@ -54,16 +51,11 @@ grs3.daic.tudelft.nl
 ```
 {{% /alert %}} 
 
-
-
 ## Pulling images
-
 Many repositories exist where container images are hosted. Apptainer allows pulling and using images from repositories like [DockerHub](https://hub.docker.com/), [BioContainers](https://biocontainers.pro/registry) and [NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/catalog/containers). 
 
 ### Pulling from DockerHub
-
 For example, to obtain the latest Ubuntu image from DockerHub:
-
 
 ```bash
 $ hostname # check this is DAIC

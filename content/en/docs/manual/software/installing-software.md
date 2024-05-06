@@ -1,7 +1,7 @@
 ---
 title: "Installing software"
 linkTitle: "Installing software"
-weight: 2
+weight: 10
 description: >
   How to install unavailable software?
 ---
@@ -401,9 +401,4 @@ $ cd $ _program_
 ```bash
 $ rm -r /tmp/$USER 
 ```
-
-## Containerization
-
-See the [Containerization tutorial](/tutorials/containerization).
-
 

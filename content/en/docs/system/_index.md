@@ -1,16 +1,20 @@
 ---
-title: "Nodes"
-linkTitle: "Nodes"
-weight: 10
+title: "System specifications"
+linkTitle: "System specifications"
+weight: 20
 description: >
-  An overview over all compute nodes available.
+  What are the foundational components of DAIC?
 ---
 
+{{% pageinfo %}}
+At present [DAIC](https://daic.pages.ewi.tudelft.nl/docs/) and [DelftBlue](https://doc.dhpc.tudelft.nl/delftblue) have different software stacks. This pertains to the operating system (CentOS 7 _vs_ Red Hat Enterprise Linux 8, respectively) and, consequently, the available software. Please refer to the respective [DelftBlue modules](https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/) and [Available software](/docs/manual/software/available-software) documentation before commencing your experiments.
+{{% /pageinfo %}}
+
+## Operating System
+DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7 Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the servers (see [Available software](../../../manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7, then it is not available. See [Installing software](../../../manual/software/installing-software/) for more information. 
 
 ## Nodes
-
 DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Submitting jobs](../../../manual/job-submission/job-scripts)). 
-
 
 {{% alert title="Note" color="info" %}}
 All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading (`ht`) processors (two CPUs per core, always allocated in pairs).
@@ -26,10 +30,8 @@ Check out the [Slurm's sinfo page](https://slurm.schedmd.com/sinfo.html) and  [w
 
 {{% /alert %}}
 
-## List of all nodes
-
+### List of all nodes
 The following table gives an overview of current nodes and their characteristics:
-
 
 <table>
 <thead>
@@ -910,3 +912,339 @@ The following table gives an overview of current nodes and their characteristics
 </table>
 
 <!--->
+
+
+## CPUs
+All nodes have multiple Central Processing Units (CPUs) that perform the operations. Each CPU can process one thread (i.e. a separate string of computer code) at a time. A computer program consists of one or multiple threads, and thus needs one or multiple CPUs simultaneously to do its computations (see {{< external-link "https://en.wikipedia.org/wiki/Central_processing_unit" "wikipedia's CPU page" >}} ).
+
+
+{{% alert title="Note" color="info" %}}
+Most programs use a fixed number of threads. Requesting more CPUs for a program than its number of threads will not make it any faster because it won't know how to use the extra CPUs. When a program has less CPUs available than its number of threads, the threads will have to time-share the available CPUs (i.e. each thread only gets part-time use of a CPU), and, as a result, the program will run slower (And even slower because of the added overhead of the switching of the threads). So it's always necessary to match the number of CPUs to the number of threads, or the other way around. See [submitting jobs](../../../manual/job-submission/job-scripts) for setting resources for batch jobs.
+{{% /alert %}}
+
+The number of threads running simultaneously determines the load of a server. If the number of running threads is equal to the number of available CPUs, the server is loaded 100% (or 1.00). When the number of threads that want to run exceed the number of available CPUs, the load rises above 100%.
+
+The CPU functionality is provided by the hardware cores in the processor chips in the machines. Traditionally, one physical core contained one logical CPU, thus the CPUs operated completely independent. Most current chips feature hyper-threading: one core contains two (or more) logical CPUs. These CPUs share parts of the core and the cache, so one CPU may have to wait when a shared resource is in use by the other CPU. Therefore these CPUs are always allocated in pairs by the job scheduler. 
+
+
+
+## GPUs
+A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [using graphic cards](/docs/manual/job-submission/job-gpu) for requesting GPUs for a computational job.
+
+<table style="undefined;table-layout: fixed; width: 727px">
+<colgroup>
+<col style="width: 131px">
+<col style="width: 148px">
+<col style="width: 198px">
+<col style="width: 93px">
+<col style="width: 82px">
+<col style="width: 97px">
+<col style="width: 78px">
+</colgroup>
+<caption> Table 2: Counts and specifications of DAIC GPUs
+</caption>
+<thead>
+  <tr>
+    <th>GPU (slurm) type<br></th>
+    <th>Count</th>
+    <th>Model </th>
+    <th>Architecture</th>
+    <th>Compute Capability </th>
+    <th>CUDA cores </th>
+    <th>Memory</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>a40</td>
+    <td>66</td>
+    <td>NVIDIA A40</td>
+    <td>Ampere</td>
+    <td>8.6</td>
+    <td>10752</td>
+    <td>46068 MiB</td>
+  </tr>
+  <tr>
+    <td>turing</td>
+    <td>24</td>
+    <td>NVIDIA GeForce RTX 2080 Ti</td>
+    <td>Turing</td>
+    <td>7.5</td>
+    <td>4352</td>
+    <td>11264 MiB</td>
+  </tr>
+  <tr>
+    <td>v100</td>
+    <td>11</td>
+    <td>Tesla V100-SXM2-32GB</td>
+    <td>Volta</td>
+    <td>7.0</td>
+    <td>5120</td>
+    <td>32768 MiB</td>
+  </tr>
+</tbody>
+</table>
+
+In table 2: the headers denote:
+<ul>
+  <li><code>Model</code>: The official product name of the GPU</li>
+  <li><code>Architecture</code>: The hardware design used, and thus the hardware specifications and performance characteristics of the GPU. Each new architecture brings forward a new generation of GPUs. </li>
+  <li><code>Compute capability</code>: determines the general functionality, available features and CUDA support of the GPU. A GPU with a higher capability supports more advanced functionality. </li>
+  <li><code>CUDA cores</code>: The number of cores perform the computations: The more cores, the more work can be done in parallel (provided that the algorithm can make use of higher parallelization). </li>
+  <li><code>Memory</code>: Total installed GPU memory. The GPUs provide their own internal (fixed-size) memory for storing data for GPU computations. All required data needs to fit in the internal memory or your computations will suffer a big performance penalty. </li>
+</ul>
+
+{{% alert title="Note" color="info" %}}
+To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](/docs/manual/job-submission/job-gpu)). The apptainer image used in this code snippet was built as demonstrated in the [containerization tutorial](/tutorials/containerization/).
+
+```bash
+$ sinteractive --cpus-per-task=2 --mem=500 --time=00:02:00 --gres=gpu
+Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
+srun: job 8607783 queued and waiting for resources
+srun: job 8607783 has been allocated resources
+15:50:29 up 51 days,  3:26,  0 users,  load average: 60,33, 59,72, 54,65
+
+SomeNetID@influ1:~$ nvidia-smi  --format=csv,noheader --query-gpu=name	
+NVIDIA GeForce RTX 2080 Ti
+
+SomeNetID@influ1:~$ nvidia-smi -q | grep Architecture	
+Product Architecture                  : Turing                                                                     
+
+SomeNetID@influ1:~$ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
+7.5	
+
+SomeNetID@influ1:~$ apptainer run --nv  cuda_based_image.sif | grep "CUDA Cores"	 # using the apptainer image of the tutorial
+(068) Multiprocessors, (064) CUDA Cores/MP:    4352 CUDA Cores
+
+SomeNetID@influ1:~$ nvidia-smi  --format=csv,noheader --query-gpu=memory.total
+11264 MiB
+
+SomeNetID@influ1:~$ exit
+```
+
+{{% /alert %}}
+
+
+## Memory
+All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [submitting jobs](../../../manual/job-submission/job-scripts) for setting resources for batch jobs.
+
+## Storage
+{{% pageinfo %}}
+DAIC servers have direct access to the TU Delft [home](#personal-storage-aka-home-folder), [group](#group-storage) and [project](#project-storage) storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others (see [data transfer](/docs/manual/data-management/data-transfer/)) , as is demonstrated throughout this page.
+{{% /pageinfo %}}
+
+### File System Overview
+Unlike TU Delft's {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#description-of-the-delftblue-system" "DelftBlue" >}}, DAIC does not have a dedicated storage filesystem. This means no `/scratch` space for storing temporary files (see DelftBlue's {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#description-of-the-delftblue-system" "Storage description" >}} and {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-Policies/#disk-quota-and-scratch-space" "Disk quota and scratch space" >}}). Instead, DAIC relies on direct connection to the TU Delft network storage filesystem (see {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage">}}) from all its nodes, and offers the following types of storage areas:
+
+### Personal storage (aka home folder)
+The Personal Storage is private and is meant to store personal files (program settings, bookmarks).  A backup service protects your home files from both hardware failures and user error (you can restore previous versions of files from up to two weeks ago). The available space is limited by a quota limit (since this space is not meant to be used for research data). 
+
+You have two (separate) home folders: one for Linux and one for Windows (because Linux and Windows store program settings differently). You can access these home folders from a machine (running Linux or Windows OS) using a command line interface or a browser via {{< external-link "https://webdata.tudelft.nl/" "TU Delft's webdata" >}}. For example, Windows home has a `My Documents` folder. `My documents` can be found on a Linux machine under `/winhome/<YourNetID>/My Documents` 
+
+<table>
+<thead>
+  <tr>
+    <th>Home directory</th>
+    <th>Access from</th>
+    <th>Storage location</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td colspan="3">Linux&nbsp;&nbsp;home folder</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Linux </td>
+    <td> <code> /home/nfs/&lt;YourNetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Windows </td>
+    <td>only accessible using an scp/sftp client (see <a href="https://doc.daic.tudelft.nl/docs/manual/connecting#ssh-access">SSH access</a>)</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>webdata</td>
+    <td>not available </td>
+  </tr>
+  <tr>
+    <td colspan="3">Windows home folder</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Linux </td>
+    <td><code>/winhome/&lt;YourNetID&gt;</code></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Windows </td>
+    <td> <code> H: </code> or <code> \\tudelft.net\staff-homes\[a-z]\&lt;YourNetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>webdata</td>
+    <td> <code> https://webdata.tudelft.nl/staff-homes/[a-z]/&lt;YourNetID&gt; </code> </td>
+  </tr>
+</tbody>
+</table>
+
+It's possible to access the backups yourself. In Linux the backups are located under the (hidden, read-only) `~/.snapshot/` folder. In Windows you can right-click the `H:` drive and choose `Restore previous versions`. 
+
+{{% alert title="Note" color="info" %}}
+ To see your disk usage, run something like: 
+ ```bash
+ du -h '</path/to/folder>' | sort -h | tail
+ ```
+{{% /alert %}}
+
+### Group storage
+The Group Storage is meant to share files (documents, educational and research data) with department/group members. The whole department or group has access to this storage, so this is not for confidential or project data. There is a backup service to protect the files, with previous versions up to two weeks ago. There is a Fair-Use policy for the used space. 
+
+<table>
+<thead>
+  <tr>
+    <th>Destination</th>
+    <th>Access from</th>
+    <th>Storage location</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td colspan="3">Group Storage</td>
+  </tr>
+  <tr>
+    <td rowspan="2"></td>
+    <td rowspan="2">Linux </td>
+    <td> <code> /tudelft.net/staff-groups/&lt;faculty&gt;/&lt;department&gt;/&lt;group&gt; </code> or</td>
+  </tr>
+  <tr>
+    <td> <code> /tudelft.net/staff-bulk/&lt;faculty&gt;/&lt;department&gt;/&lt;group&gt;/&lt;NetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td rowspan="2"></td>
+    <td rowspan="2">Windows </td>
+    <td> <code> M: </code> or <code> \\tudelft.net\staff-groups\&lt;faculty&gt;\&lt;department&gt;\&lt;group&gt; </code> or</td>
+  </tr>
+  <tr>
+    <td> <code> L: </code> or <code> \\tudelft.net\staff-bulk\ewi\insy\&lt;group&gt;\&lt;NetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>webdata</td>
+    <td> <code> https://webdata.tudelft.nl/staff-groups/</a>&lt;faculty&gt;/&lt;department&gt;/&lt;group&gt;/ </code> </td>
+  </tr>
+</tbody>
+</table>
+
+### Project Storage 
+The Project Storage is meant for storing (research) data (datasets, generated results, download files and programs, ...) for projects. Only the project members (including external persons) can access the data, so this is suitable for confidential data (but you may want to use encryption for highly sensitive confidential data). There is a backup service and a Fair-Use policy for the used space.
+
+Project leaders (or supervisors) can request a Project Storage location via the {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=846ebb16181c43b5836c063a917dd199&from=03aa10b9-c5aa-4e0a-80b1-28ee7ab383df" "Self-Service Portal or the Service Desk" >}}.
+
+<table>
+<thead>
+  <tr>
+    <th>Destination</th>
+    <th>Access from</th>
+    <th>Storage location</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td colspan="3">Project Storage</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Linux </td>
+    <td> <code> /tudelft.net/staff-umbrella/&lt;project&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Windows </td>
+    <td> <code> U: </code> or <code> \\tudelft.net\staff-umbrella\&lt;project&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>webdata </td>
+    <td> <code> https://webdata.tudelft.nl/staff-umbrella/&lt;project&gt; </code> or <code> <br>https://webdata.tudelft.nl/staff-bulk/&lt;faculty&gt;/&lt;department&gt;/&lt;group&gt;/&lt;NetID&gt; </code> </td>
+  </tr>
+</tbody>
+</table>
+
+### Local Storage 
+Local storage is meant for temporary storage of (large amounts of) data with fast access on a single computer. You can create your own personal folder inside the local storage. Unlike the network storage above, local storage is only accessible on that computer, not on other computers or through network file servers or webdata. There is no backup service nor quota. The available space is large but fixed, so leave enough space for other users. Files under `/tmp` that have not been accessed for 10 days are automatically removed. 
+
+<table>
+<thead>
+  <tr>
+    <th>Destination</th>
+    <th>Access from</th>
+    <th>Storage location</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td colspan="3">Local storage</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Linux </td>
+    <td><code> /tmp/&lt;NetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Windows </td>
+    <td>not available </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>webdata </td>
+    <td>not available </td>
+  </tr>
+</tbody>
+</table>
+
+### Memory Storage
+Memory storage is meant for short-term storage of limited amounts of data with very fast access on a single computer. You can create your own personal folder inside the memory storage location. Memory storage is only accessible on that computer, and there is no backup service nor quota. The available space is limited and shared with programs, so leave enough space (the computer will likely crash when you don't!). Files that have not been accessed for 1 day are automatically removed. 
+
+<table>
+<thead>
+  <tr>
+    <th>Destination</th>
+    <th>Access from</th>
+    <th>Storage location</th>
+  </tr>
+</thead>
+<tbody> 
+  <tr>
+    <td colspan="3">Memory storage</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Linux </td>
+    <td> <code> /dev/shm/&lt;NetID&gt; </code> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Windows </td>
+    <td>not available </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td> webdata </td>
+    <td>not available </td>
+  </tr>
+</tbody>
+</table>
+
+{{% alert title="Warning" color="info" %}}
+Use this only when using other storage makes your job or the whole computer slow. 
+{{% /alert %}}
+
+## Workload scheduler
+DAIC uses the {{< external-link "https://slurm.schedmd.com/" "Slurm scheduler" >}} to efficiently manage workloads. All jobs for the cluster have to be submitted as batch jobs into a queue. The scheduler then manages and prioritizes the jobs in the queue, allocates resources (CPUs, memory) for the jobs, executes the jobs and enforces the resource allocations. See [the job submission pages](/docs/manual/job-submission) for more information.
+
+A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
+
+{{< figure src="/img/DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions" width="750px">}}

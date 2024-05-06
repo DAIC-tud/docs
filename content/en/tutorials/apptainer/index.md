@@ -2,14 +2,32 @@
 title: "Apptainer tutorial"
 weight: 10
 description: >
-  Use Apptainer to containerize your projects.
+  Using Apptainer to containerize environments.
 ---
 
-## Containerization Technology
 
-_Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
+## What is containerization?
+Imagine you want to move your belongings from one place to another. You could just pile everything into a truck, but things might shift around, break, or get mixed up along the way. Instead, you might pack your stuff into separate boxes: one box for clothes, one for kitchen items, one for books, and so on. This way, everything is organized and protected, and you can easily move the boxes around.
 
-DAIC supports [Apptainer (previously Singularity)](https://apptainer.org/docs/user/main/introduction.html), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. (see [Pulling images](#pulling-images))
+Containerization in computing works similarly. When you want to run software or applications, you can pack them into "containers" rather than just running them directly on your computer. These containers are like those boxes—they contain everything the application needs to run, such as code, libraries, and settings. This makes the application portable and consistent.
+
+### Why it's helpful?
+
+- **Consistency**: Because the application runs inside a container, it behaves the same way regardless of where it's running. This means you can develop on one computer, test on another, and deploy on a server without worrying about differences between environments.
+- **Isolation**: Each container is independent from others. This keeps applications from interfering with each other or with the host system, enhancing security and reliability.
+- **Portability**: Containers can run on different machines without modification, making it easier to move applications from one server to another, or even from a local computer to the cloud.
+- **Efficiency**: Containers share the host system's resources like the operating system, which makes them lightweight and fast to start up compared to virtual machines.
+
+On DAIC specifically, many users encounter issues with limited home directory sizes and Windows-based `/tudelft.net` mounts (See [Storage](/docs/system#storage)), which can hinder the use of `conda/mamba` and/or `pip` due to compatibility challenges. Containers offer a solution by enabling users to encapsulate their software and dependencies in a portable, self-contained environment. This means users can store a container e.g. on the `staff-umbrella` storage with all necessary dependencies, including those installed with `pip`. This enables users to create and use multiple large environments and run applications reliably and reproducibly, without running into limitations from Windows-based mounts or small home directories.
+
+## Containerization technology (Apptainer)
+_Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. DAIC supports [Apptainer](https://apptainer.org/docs/user/main/introduction.html)  (previously Singularity), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
+
+- The **definition file** (`*.def`) contains the recipe to build an image.
+- An **image** (`*.sif`) is a complete package that includes everything needed to run an application, such as code, libraries, and settings. It only needs `Apptainer` to be run.
+- A **container** is a running instance of an image with its own working space, so it can hold changes and temporary data such as ongoing calculations as you interact with the application. This could mean training a machine learning model for example.
+
+## How to run commands/programs inside a container?
 
 Generally, to launch a container image, your commands look as follows:
 
@@ -50,8 +68,8 @@ $ hostname # To check we are on a compute node
 grs3.daic.tudelft.nl 
 ```
 {{% /alert %}} 
-
-## Pulling images
+## How to get container files?
+### Pulling images
 Many repositories exist where container images are hosted. Apptainer allows pulling and using images from repositories like [DockerHub](https://hub.docker.com/), [BioContainers](https://biocontainers.pro/registry) and [NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/catalog/containers). 
 
 ### Pulling from DockerHub
@@ -119,13 +137,7 @@ $ apptainer shell -C ubuntu_latest.sif
 {{% /alert %}}
 
 ### Pulling from NVIDIA GPU cloud (NGC)
-
-This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_.
-
-{{% alert title="Tip" color="info" %}}
-To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run. Thus, if you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a Linux virtual machine and Apptainer. 
-{{% /alert %}}
-
+This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_. To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run, if you create your container on a MacBook, or a computer with a different CPU architecture than the target system, there is a good chance that the container will not run.
 
 {{% alert title="Warning" color="warning" %}}
  By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `SINGULARITY_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
@@ -151,26 +163,13 @@ Apptainer> ls /.singularity.d/ # verify this is the image
 Singularity  actions  env  labels.json  libs  runscript  startscript
 ```
 
-## Building images
+### Building images
+If you prefer (or need) to have a custom container image, then you can build your own container image from a _definition_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on DAIC directly: First, you should build the image locally, and then send it to DAIC to run there.__  
 
-If you prefer (or need) to have a custom container image, then you can build your own container image from a _recipe_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on DAIC directly: First, you must build the image locally, and then send it to DAIC to run there.__
-
-{{% alert title="Reminder" color="info" %}}
-Always build the image first in your local machine. To send the built image, `YourImage.sif` to DAIC, do the following:
-```bash
-$ hostname # check this is your machine
-$ scp YourImage.sif <YourNetID>@login.daic.tudelft.nl:/tudelft.net/staff-umbrella/../<YourDirectory>/apptainer # send the image to DAIC
-```
-{{% /alert %}}
-
-{{% alert title="Tip" color="info" %}}
-- To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). If you are a Mac user, you can use [Lima](https://github.com/lima-vm/lima) to install both a  Linux virtual machine and Apptainer.
-{{% /alert %}}
-
-An example _recipe_ file, `cuda_based_recipe.def`, for a cuda-enabled container may look as follows:
+An example definion file, `cuda_based.def`, for a cuda-enabled container may look as follows:
 
 ```bash
-$ cat cuda_based_recipe.def
+$ cat cuda_based.def
 # Header
 Bootstrap: docker
 From: nvidia/cuda:12.1.1-devel-ubuntu22.04
@@ -196,13 +195,11 @@ where:
   * `%runscript` blob: the scripts or commands to execute when the container image is run. That is, this code is the entry point to the container with the `run` command. In this example, the `deviceQuery` is executed once the container is run.
   * Other blobs may be present in the `def` file. See [Definition files documentation](https://apptainer.org/docs/user/main/definition_files.html#definition-files) for more details and examples.
 
-
-
 And now, build this image and send it over to DAIC:
 
 ```bash
 $ hostname #check this is your machine
-$ sudo apptainer build cuda_based_image.sif cuda_based_recipe.def # building may take ~ 2-5 min, depending on your internet
+$ sudo apptainer build cuda_based_image.sif cuda_based.def # building may take ~ 2-5 min, depending on your internet
 INFO:    Starting build...
 Getting image source signatures
 Copying blob d5d706ce7b29 [=>------------------------------------] 29.2MiB / 702.5MiB
@@ -282,28 +279,25 @@ $ apptainer shell --nv -C cuda_based_image.sif
 
 
 {{% alert title="Note" color="info"%}}
-Building container images from a recipe file is recommended to ensure the reproducibility of the resulting container image. However, there can be cases of complex dependencies where it is not clear upfront how the software installations and dependencies should be set up. In such cases, it is possible to interactively develop the image by building it in `writable sandbox` mode first. In such cases, take note of all installation commands used in the sandbox, so you can include them in a recipe file. See [Apptainer Sandbox Directories](https://apptainer.org/docs/user/main/quick_start.html#sandbox-directories) for more details.
+Building container images from a definition file is recommended to ensure the reproducibility of the resulting container image. However, there can be cases of complex dependencies where it is not clear upfront how the software installations and dependencies should be set up. In such cases, it is possible to interactively develop the image by building it in `writable sandbox` mode first. In such cases, take note of all installation commands used in the sandbox, so you can include them in a recipe file. See [Apptainer Sandbox Directories](https://apptainer.org/docs/user/main/quick_start.html#sandbox-directories) for more details.
 {{% /alert %}}
 
 
 
-### Building from local image file
-
-
+### Extending an existing image file
 During software development, it is common to incrementally build code and go through many iterations of debugging and testing. A development container may be used in this process. 
 In such scenarios, re-building the container from the base image with each debugging or testing iteration becomes taxing very quickly, due to dependencies and installations involved. 
 Instead, the `Bootstrap: localimage` and `From:<path/to/local/image>` header can be used to base the development container on some local image.
 
-
-As an example, assume it is desirable to develop some code on the basis of the `cuda_based_recipe.sif` image created in the [Building images](#building-images) section.  Building from the original `cuda_based_recipe.def` file can take ~ 4 minutes. 
-However, if the `*.sif` file is already available, building on top of it, via a `dev_on_cuda_based_recipe.def` file as below, takes ~ 2 minutes. This is already a time saving  factor of 2 in this case.
+As an example, assume it is desirable to develop some code on the basis of the `cuda_based.sif` image created in the [Building images](#building-images) section.  Building from the original `cuda_based.def` file can take ~ 4 minutes. 
+However, if the `*.sif` file is already available, building on top of it, via a `dev_on_cuda_based.def` file as below, takes ~ 2 minutes. This is already a time saving  factor of 2 in this case.
 
 ```bash
 $ hostname # check this is your machine
-$ cat dev_on_cuda_based_recipe.def # def file for an image based on localimage
+$ cat dev_on_cuda_based.def # def file for an image based on localimage
 # Header
 Bootstrap: localimage
-From: cuda_based_recipe.sif
+From: cuda_based.sif
 
 # (Optional) Sections/ data blobs
 %runscript
@@ -313,7 +307,7 @@ From: cuda_based_recipe.sif
 $
 $ sudo apptainer build dev_image.sif # build the image
 INFO:    Starting build...
-INFO:    Verifying bootstrap image cuda_based_recipe.sif
+INFO:    Verifying bootstrap image cuda_based.sif
 WARNING: integrity: signature not found for object group 1
 WARNING: Bootstrap image could not be verified, but build will continue.
 INFO:    Adding runscript
@@ -351,76 +345,75 @@ from: nvidia/cuda:12.1.1-devel-ubuntu22.04
 As can be seen in this example, the new def file not only preserves the dependencies of the original image, but it also preserves a complete history of all build processes while giving flexible environment that can be customized as need arises.
 
 
-### Deploying conda in a container 
-
+## Deploying conda and pip in a container 
 There might be situations where you have a certain conda environment in your local machine that you need to set up in DAIC to commence your analysis. In such cases, deploying your conda environment in a container and sending this container to DAIC does the job for you. 
 
-As an example, let's create a simple demo environment, `demo-env` in our local machine, 
+As an example, let's create a simple demo environment, `environment.yml` in our local machine, 
 
 ```bash
-$ hostname # check this is your machine
-$ conda create -n demo-env python=3.10 # create an environment containing python3.8
-$ conda activate demo-env
-$ conda install numpy # install some conda libraries
-$ pip install matplotlib # install some pip libraries
-$ conda env export --from-history > demo-env.yml # flag added to avoid unnecessary dependencies
-$ # You may manually remove the Prefix line from this file
-$ cat demo-env.yml # check the environment file
-name: demo-env
+name: __apptainer-env__
 channels:
+  - conda-forge
   - defaults
 dependencies:
-  - python=3.10
-  - numpy
-$ # Notice pip-installed libraries are not included in this file
+  - python=3.9
+  - matplotlib
+  - pip
+  - pip:
+    - -r requirements.txt
 ```
 
-Now, it is time to create the container image. One option is to base the image on `condaforge/mambaforge`, which is a minimal Ubuntu installation with `conda` preinstalled at `/opt/conda`:
+And everything that should be installed with pip in `requirement.txt` file:
+```bash
+--extra-index-url https://download.pytorch.org/whl/cu123
+torch
+annoy
+```
 
+Now, it is time to create the container definition file. One option is to base the image on `condaforge/miniforge`, which is a minimal Ubuntu installation with `conda` preinstalled at `/opt/conda`:
 
 ```bash
-$ cat demo-env-recipe.def
 Bootstrap: docker
-From: condaforge/mambaforge
+From: condaforge/miniforge3:latest
 
 %files
-    demo-env.yml /opt
+    environment.yml /environment.yml
+    requirements.txt /requirements.txt
 
 %post
-    conda env create -f /opt/demo-env.yml # create environment from  yml file
-    conda clean -afy # remove unused packages and caches
-    exec /opt/conda/envs/demo-env/bin/pip install matplotlib # install PyPI libraries
+    # Update and install necessary packages
+    apt-get update && apt-get install -y tree time vim ncdu speedtest-cli build-essential
+
+    # Create a new Conda environment using the environment files.
+    mamba env create --quiet --file /environment.yml
+    
+    # Clean up
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+    mamba clean --all -y
+
+    # Now add the script to activate the Conda environment
+    echo '. "/opt/conda/etc/profile.d/conda.sh"' >> $SINGULARITY_ENVIRONMENT
+    echo 'conda activate __apptainer-env__' >> $SINGULARITY_ENVIRONMENT
 ```
 
-This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `demo-env.yml` file will be available in `/opt/` in the container.
+This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `environment.yml` file will be available in `/opt/` in the container.
 
 Now, time to build and check the image:
 
 ```bash
-$ sudo apptainer build demo-env-image.sif demo-env-recipe.def
+$ apptainer build demo-env-image.sif demo-env-recipe.def
 INFO:    Starting build...
 Getting image source signatures
 ...
 INFO:    Creating SIF file...       
 INFO:    Build complete: demo-env-image.sif
-$
-$ apptainer shell -C demo-env-image.sif 
-Apptainer> 
-Apptainer> source activate /opt/conda/envs/demo-env/ # activate the environment
-(demo-env) Apptainer> python                         # run python and check imports
-Python 3.10.11 (main, May 16 2023, 00:28:57) [GCC 11.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import numpy
->>> import matplotlib
->>> exit()
-Apptainer> exit
-$ scp demo-env-image.sif hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer
+...
 ```
 
-Now, to use the environment in this image to run code in a file, `analysis.py`, which uses some data to generate a plot:
+We are going to use the environment inside a container together with a Python script that we store outside the container.
+Create the file `analysis.py`, which generate a plot:
 
-```bash
-$ cat analysis.py # check python code
+```python
 #!/usr/bin/env python3
 
 import matplotlib.pyplot as plt
@@ -432,8 +425,12 @@ y = np.sin(x)
 plt.plot(x, y)
 plt.title('Sine Wave')
 plt.savefig('sine_wave.png')
-$ 
-$ apptainer exec demo-env-image.sif /bin/bash -c "source activate /opt/conda/envs/demo-env && python analysis.py"
+```
+
+Now, we can run the analysis:
+
+```bash
+$ apptainer exec demo-env-image.sif python analysis.py  
 $ ls # check the image file was created
 sine_wave.png
 ```
@@ -444,7 +441,6 @@ In the last example, the container read and wrote a file to the host system dire
 
 
 ## Exposing host directories
-
 Depending on use case, it may be necessary for the container to read or write data from or to the host system. For example, to expose only files in a host directory called `ProjectDataDir` to the container image's `/mnt` directory, add the `--bind` directive with appropriate `<hostDir>:<containerDir>` mapping to the commands you use to launch the container, in conjunction with the `-C` flag eg, `shell` or `exec` as below:
 
 ```bash
@@ -471,7 +467,6 @@ bash: tst: Read-only file system
 ```
 
 ## _[Advanced:]()_ containers and (fake) native installation 
-
 It's possible to use Apptainer to install and then use software as if it were installed natively in the host system. For example, if you are a bioinformatician, you may be using software like  [`samtools`](http://www.htslib.org/) or [`bcftools`](https://samtools.github.io/bcftools/bcftools.html) for many of your analyses, and it may be advantageous to call it directly. Let's take this as an illustrative example:
 
 
@@ -480,7 +475,6 @@ It's possible to use Apptainer to install and then use software as if it were in
 ```bash
 $ mkdir -p software/bin/ software/exec
 ```
-
 
 2. Create the image definition file (or pull from a repository, as appropriate) and build:
 
@@ -558,14 +552,3 @@ software/
 echo export PATH=$PATH:$PWD >> ~/.bash_profile
 ``` 
 {{% /alert %}}
-
-
-<!-- 
-
-## Containers and VScode
-
-- (bonus) attach vscode (or other ide) and apptainer
-- how to connect via vscode
-
-See this link https://stackoverflow.com/questions/63604427/launching-a-singularity-container-remotely-using-visual-studio-code
--->

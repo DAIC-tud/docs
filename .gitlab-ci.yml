@@ -23,7 +23,7 @@ test:
   script:
     - hugo
     - npm install -g linkinator
-    - linkinator --skip '^(https://.*)' public
+    - linkinator public
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 

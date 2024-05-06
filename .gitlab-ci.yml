@@ -32,8 +32,8 @@ pages:
     - find public -type f -regex '.*\.\(xml\|ttf\|svg\)$' -exec brotli -f -k {} \;
     #- find public/ -type f -name "*.jpg" -exec jpegoptim -q -m90 --strip-all --all-progressive {} \;
     #- find public/ -type f -name "*.png" -exec optipng -o5 -strip all -quiet {} \;
-   - npm install -g linkinator
-   - linkinator --recurse public/
+    - npm install -g linkinator
+    - linkinator --recurse public/
 
   artifacts:
     paths:

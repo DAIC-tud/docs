@@ -32,7 +32,7 @@ When in the future your ssh connection tells you that the key has changed, and i
 * Please log out when you’re not using the cluster (so you don’t hit this problem, and so you don’t block resources on the login node).
 
 ### `Disk quota exceeded`
-* The size of the data in this storage has reached the maximum allowed size (also known as _quota limit_). For `$HOME` folders (see [Personal storage](/docs/introduction/system/storage#personal-storage-aka-home-folder)) the maximum allowed amount of data is 8 GB, for project storage (see [Project storage](/docs/introduction/system/storage#project-storage)) the quota limit can be up to 5TB of data.
+* The size of the data in this storage has reached the maximum allowed size (also known as _quota limit_). For `$HOME` folders (see [Personal storage](/docs/system#personal-storage-aka-home-folder)) the maximum allowed amount of data is 8 GB, for project storage (see [Project storage](/docs/system#project-storage)) the quota limit can be up to 5TB of data.
 * To see how much space your `$HOME` files are using, run `du -h ~ | sort -h`. (When you have many files or folders, this can take a long time!)
 * To make space available, you'll either need to clean up some files (like installation archives and caches), or move some of your files somewhere else. 
 

@@ -7,7 +7,7 @@ description: >
 
 When you submit a job in a slurm-based system, it enters a queue waiting for resources.
 The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
-* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Contributing departments](/docs/introduction)). 
+* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Contributing departments](/docs/introduction#contributing-departments)). 
 All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](../priorities)).
 * The _Quality of Service_ is a set of limits that controls what resources a job can use and, therefore, determines the priority level of a job. This includes the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated (see [QoS priority](../priorities#qos-priority)).
 

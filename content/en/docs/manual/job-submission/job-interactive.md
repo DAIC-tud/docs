@@ -9,7 +9,7 @@ description: >
 
 ### Interactive jobs on compute nodes
 
-To work interactively on a node, e.g., to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Submitting jobs](../job-scripts)), as in the examples below:
+To work interactively on a node, e.g., to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Submitting jobs](/docs/manual/job-submission/job-scripts)), as in the examples below:
 
 ```bash
 $ hostname # check you are in one of the login nodes

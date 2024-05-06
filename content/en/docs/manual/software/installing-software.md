@@ -7,13 +7,12 @@ description: >
 ---
 
 ## Basic principles
-
-- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Batch queuing system](/docs/introduction/system/scheduler#file-system-overview)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [File system overview](/docs/introduction/system/storage/#file-system-overview)).
+- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Workload scheduler](/docs/system#workload-scheduler)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [Storage](/docs/system#storage)).
 
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
 
 - DAIC provides only 8GB of storage in the `/home` directories and the project spaces (`/tudelft.net/...`) are Windows-based leading to problems installing packages with `pip` due to file permission errors.
-However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Containerization tutorial](/tutorials/containerization) for guidance. 
+However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Apptainer tutorial](/tutorials/apptainer) for guidance. 
 
 {{% alert title="Stop!" color="warning" %}}
 

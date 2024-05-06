@@ -41,7 +41,7 @@ My jobs are not starting, is the cluster busy? The following links are resources
 
 <!--add blocks of content here to add more sections to the community page -->
 ## Group-specific resources 
-In line with the steps in [What to do in case of problems](../docs/intro_daic/user_agreement#what-to-do-in-case-of-problems), the following links are group-specific resources that you may find relevant:
+In line with the steps in [What to do in case of problems](/docs/policies/user-agreement#what-to-do-in-case-of-problems), the following links are group-specific resources that you may find relevant:
 
 - [x] {{< external-link "https://login.daic.tudelft.nl/" "Main DAIC landing page" >}}  
 - [x] {{< external-link "https://wiki.tudelft.nl/bin/view/Research/InsyCluster/WebHome" "Central wiki" >}}
@@ -52,7 +52,7 @@ In line with the steps in [What to do in case of problems](../docs/intro_daic/us
 
 ## Linux support
 * [Linux Q&A Portal](https://linux.ewi.tudelft.nl/): This page aims to be a hub for sharing knowledge, seeking support and prioritizing community issues through upvoting.
-* [Linux Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting        with peers.
+* [Linux Mattermost channel](https://mattermost.tudelft.nl/linux-user-group/): for daily news, light-hearted conversations, urgent requests, and connecting with peers.
 
 <!-- 
 Additional resources:

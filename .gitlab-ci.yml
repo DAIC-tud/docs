@@ -23,7 +23,7 @@ test:
   script:
     - hugo
     - npm install -g linkinator
-    - linkinator --server-root public
+    - linkinator --server-root public .
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 

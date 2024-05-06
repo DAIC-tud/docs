@@ -16,7 +16,7 @@ weight: 4
 * The requested resources (number of CPUs, amount of memory, number or type of GPUs or specific constraints) limit the number of nodes that are suitable to run a job. So, when possible, reduce the requested resources and constraints, and do not request specific GPU types.
 
 ### Why does my job run on some nodes but fail on other nodes?
-* The nodes have different configurations (processor types, number of cores, memory size, GPU support, and so on- see [Hardware infrastructure](../../../docs/intro_daic/hardware_infra)). If you need a specific feature, make sure to request it in your sbatch script. Examples:
+* The nodes have different configurations (processor types, number of cores, memory size, GPU support, and so on- see [System specifications](/docs/system)). If you need a specific feature, make sure to request it in your sbatch script. Examples:
     ```bash
     #SBATCH --constraint=avx
     #SBATCH --constraint=avx2
@@ -27,7 +27,7 @@ weight: 4
   - The login node `login3` has the least advanced CPUs so if you compile your programs there they should run on all other nodes.
 
 ### Why does my job fail and is there no slurm-XXXXX.out output (or error)?
-* When your job doesn't have a valid Kerberos ticket (see [Kerberos authentication](../../../docs/job_submissions/#kerberos-authentication)) it can't read or write files (such as the `slurm-XXXXX.out` output).
+* When your job doesn't have a valid Kerberos ticket (see [Kerberos authentication](/docs/manual/job-submission/#kerberos)) it can't read or write files (such as the `slurm-XXXXX.out` output).
 * It's best to do a fresh login to a login node when you want to submit a new job. This way you're sure your job's Kerberos ticket is valid and will remain valid for the next 7 days. 
 * If needed, you can update the Kerberos ticket for a running job by executing `auks -a` (also from a fresh login).
 
@@ -52,7 +52,7 @@ Either:
     1. Your jobs are not using all of the requested resources (CPUs, GPUs, memory, runtime).
     2. Your jobs try to use more resources than requested (eg, more active threads than the requested number of CPUs, out of memory failures, timeout failures ... etc).
     3. Too many jobs are failing or being cancelled.
-    4. Generally, failing to follow the [Cluster workflow](../../../quickstart/#quick-start).
+    4. Generally, failing to follow the [Cluster workflow](/tutorials/quickstart).
 
 You need to figure out the problem(s), fix them, and then send an email to the [cluster administrators](mailto:beheer-o-linux-ictfm@tudelft.nl) to explain the problem(s) and the way you fixed them.
 
@@ -63,7 +63,7 @@ You need to figure out the problem(s), fix them, and then send an email to the [
     ```
 
 ### `slurmstepd: error: Exceeded step memory limit at some point.`
-* Your program wants to use more memory than you requested. You’ll either need to limit the memory use of your program or request more memory. Also see [How much memory can I use?](../job-resources#how-much-memory-can-i-use) and [How can I see the CPU or RAM usage of a job?](../job-resources#how-can-i-see-the-cpu-or-ram-usage-of-a-job).
+* Your program wants to use more memory than you requested. You’ll either need to limit the memory use of your program or request more memory. Also see [How much memory can I use?](/support/faqs/job-resources#how-much-memory-can-i-use) and [How can I see the CPU or RAM usage of a job?](/support/faqs/job-resources#how-can-i-see-the-cpu-or-ram-usage-of-a-job).
 
 ### `Auks API request failed : auks cred : credential lifetime is too short` / `Auks API request failed : krb5 cred : unable to renew credential`
 * Your authentication (Kerberos ticket) expired (see [Kerberos authentication](/docs/manual/job-submission/kerberos)). You get a Kerberos ticket (using your password) when you log in to the bastion server or a login node. Jobs that run on a compute node also require authentication. Therefore, when you submit a job, your Kerberos ticket is stored in the Auks system so that your job can use it. However, the maximum lifetime of a Kerberos ticket is 7 days. So 7 days after you last logged in and submitted a job, the Kerberos ticket in the system expires and the job fails.
@@ -76,10 +76,10 @@ When you change your NetID password, your Kerberos keytab becomes invalid, so yo
 
 ### What can be done about some jobs using all CPUs or memory (making it impossible for me to use other unused resources like GPUs)?
 * Resources can be used by one job at a time only, so when some resources are completely used, other jobs will have to wait until their required resources become available. The waiting is unavoidable.
-* See the answer to [Should I feel guilty about running a lot of jobs with GPU/CPU usage?](../job-resources#should-i-feel-guilty-about-running-a-lot-of-jobs-with-gpucpu-usage) (The scheduler is already dividing the available resources fairly over all jobs based on the policies, using priorities based on previous usage. As soon as a running job finishes and it’s resources become available again, the highest priority waiting job is automatically started.)
+* See the answer to [Should I feel guilty about running a lot of jobs with GPU/CPU usage?](/support/faqs/job-resources#should-i-feel-guilty-about-running-a-lot-of-jobs-with-gpucpu-usage) (The scheduler is already dividing the available resources fairly over all jobs based on the policies, using priorities based on previous usage. As soon as a running job finishes and it’s resources become available again, the highest priority waiting job is automatically started.)
 * The policies for the scheduler are set by the cluster users, in the cluster board meeting (see [General cluster usage](/docs/policies#general-cluster-usage)). To change the policies, all users must agree that the changes are necessary and fair to all users. (So _the cluster administrators aren’t able to change the policies on request!_)
 * You can always contact a user (nicely!😉) about the possibility to (for example) exclude a certain node. That user can decide for him-/herself if he/she wants to cooperate or not (for example in case of deadlines).
     It’s usually possible to determine a person’s initial (or first name) and last name from his/her username; if not, run: `finger <username>`
-* If you experience a real problem because of this (not being able to efficiently develop code because of the waiting, or not going to make an upcoming deadline), you should contact [cluster support](../../#support--contact) to see if they can provide support for that specific problem.
+* If you experience a real problem because of this (not being able to efficiently develop code because of the waiting, or not going to make an upcoming deadline), you should contact [cluster support](/support/#support--contact) to see if they can provide support for that specific problem.
 * It’s not desirable to reserve resources for certain types of jobs only. Since other types of jobs wouldn’t be able to use those resources even when they would be idle, this would reduce the overall cluster throughput (and recreate the exact same problem that you experience for those other jobs).
 * No type of research can make special claims regarding resources. All research that uses the cluster is equally dependent on the cluster resources: 50+ CPU jobs or jobs requiring 50GB memory can’t be run on a laptop any more than a GPU job requiring 5GB of GPU memory. When one type of resource is completely used, that is because it is required to do the same kind of research that you need the cluster for.

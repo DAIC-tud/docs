@@ -283,8 +283,7 @@ Building container images from a definition file is recommended to ensure the re
 {{% /alert %}}
 
 
-
-### Extending an existing image file
+### Extending existing images
 During software development, it is common to incrementally build code and go through many iterations of debugging and testing. A development container may be used in this process. 
 In such scenarios, re-building the container from the base image with each debugging or testing iteration becomes taxing very quickly, due to dependencies and installations involved. 
 Instead, the `Bootstrap: localimage` and `From:<path/to/local/image>` header can be used to base the development container on some local image.

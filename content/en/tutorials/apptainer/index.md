@@ -1,5 +1,5 @@
 ---
-title: "Apptainer"
+title: "Apptainer tutorial"
 weight: 10
 description: >
   Use Apptainer to containerize your projects.

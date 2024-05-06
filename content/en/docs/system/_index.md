@@ -7,18 +7,18 @@ description: >
 ---
 
 {{% pageinfo %}}
-At present [DAIC](https://daic.pages.ewi.tudelft.nl/docs/) and [DelftBlue](https://doc.dhpc.tudelft.nl/delftblue) have different software stacks. This pertains to the operating system (CentOS 7 _vs_ Red Hat Enterprise Linux 8, respectively) and, consequently, the available software. Please refer to the respective [DelftBlue modules](https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/) and [Available software](/docs/manual/software/available-software) documentation before commencing your experiments.
+At present [DAIC](https://doc.daic.tudelft.nl/docs/) and [DelftBlue](https://doc.dhpc.tudelft.nl/delftblue) have different software stacks. This pertains to the operating system (CentOS 7 _vs_ Red Hat Enterprise Linux 8, respectively) and, consequently, the available software. Please refer to the respective [DelftBlue modules](https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/) and [Software](/docs/manual/software) section before commencing your experiments.
 {{% /pageinfo %}}
 
 ## Operating System
-DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7 Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the servers (see [Available software](../../../manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7, then it is not available. See [Installing software](../../../manual/software/installing-software/) for more information. 
+DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7 Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the servers (see [Available software](/docs/manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7, then it is not available. See [Installing software](/docs/manual/software/installing-software/) for more information. 
 
 ## Nodes
-DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Submitting jobs](../../../manual/job-submission/job-scripts)). 
+DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Submitting jobs](/docs/manual/job-submission/job-scripts)). 
 
 {{% alert title="Note" color="info" %}}
 All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading (`ht`) processors (two CPUs per core, always allocated in pairs).
-{{% /alert %}}
+{{% /alert %}}    
 
 {{% alert title="Note" color="info" %}}
 You can use Slurm's `sinfo` command to get various information about cluster nodes. For example, to get an overview of compute nodes on DAIC, you can use the command:
@@ -919,7 +919,7 @@ All nodes have multiple Central Processing Units (CPUs) that perform the operati
 
 
 {{% alert title="Note" color="info" %}}
-Most programs use a fixed number of threads. Requesting more CPUs for a program than its number of threads will not make it any faster because it won't know how to use the extra CPUs. When a program has less CPUs available than its number of threads, the threads will have to time-share the available CPUs (i.e. each thread only gets part-time use of a CPU), and, as a result, the program will run slower (And even slower because of the added overhead of the switching of the threads). So it's always necessary to match the number of CPUs to the number of threads, or the other way around. See [submitting jobs](../../../manual/job-submission/job-scripts) for setting resources for batch jobs.
+Most programs use a fixed number of threads. Requesting more CPUs for a program than its number of threads will not make it any faster because it won't know how to use the extra CPUs. When a program has less CPUs available than its number of threads, the threads will have to time-share the available CPUs (i.e. each thread only gets part-time use of a CPU), and, as a result, the program will run slower (And even slower because of the added overhead of the switching of the threads). So it's always necessary to match the number of CPUs to the number of threads, or the other way around. See [submitting jobs](/docs/manual/job-submission/job-scripts) for setting resources for batch jobs.
 {{% /alert %}}
 
 The number of threads running simultaneously determines the load of a server. If the number of running threads is equal to the number of available CPUs, the server is loaded 100% (or 1.00). When the number of threads that want to run exceed the number of available CPUs, the load rises above 100%.
@@ -995,7 +995,7 @@ In table 2: the headers denote:
 </ul>
 
 {{% alert title="Note" color="info" %}}
-To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](/docs/manual/job-submission/job-gpu)). The apptainer image used in this code snippet was built as demonstrated in the [containerization tutorial](/tutorials/containerization/).
+To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](/docs/manual/job-submission/job-gpu)). The apptainer image used in this code snippet was built as demonstrated in the [Apptainer tutorial](/tutorials/apptainer/).
 
 ```bash
 $ sinteractive --cpus-per-task=2 --mem=500 --time=00:02:00 --gres=gpu
@@ -1026,7 +1026,7 @@ SomeNetID@influ1:~$ exit
 
 
 ## Memory
-All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [submitting jobs](../../../manual/job-submission/job-scripts) for setting resources for batch jobs.
+All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [Submitting jobs](/docs/manual/job-submission/job-scripts) for setting resources for batch jobs.
 
 ## Storage
 {{% pageinfo %}}

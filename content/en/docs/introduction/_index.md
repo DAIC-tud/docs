@@ -169,7 +169,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Contributors</td>
-    <td>Certain groups within TU Delft (see <a href="../">Contributing departments</a>)</td>
+    <td>Certain groups within TU Delft (see <a href="#contributing-departments">Contributing departments</a>)</td>
     <td>All TU Delft faculties</td>
     <td>Multiple universities &amp; SURF</td>
   </tr>
@@ -205,19 +205,19 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Request account</td>
-    <td><a href="../policies/access-accounts/"> Access and Accounts </a></td>
+    <td><a href="/docs/policies#access-accounts/"> Access and accounts </a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/Accounting-and-shares/">Get an account</a></td>
     <td><a href="mailto:das-account@cs.vu.nl">Email DAS admin</a> with details like user's affiliation and the planned purpose of the account.</td>
   </tr>
   <tr>
     <td>Getting started</td>
-    <td><a href="../../../tutorials/quickstart/">Quickstart</a></td>
+    <td><a href="/tutorials/quickstart/">Quickstart</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/crash-course/">Crash course</a></td>
     <td></td>
   </tr>
   <tr>
     <td>Hardware</td>
-    <td><a href="../system/nodes">Nodes</a></td>
+    <td><a href="/docs/system">System specifications</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/">DHPC hardware</a></td>
     <td> Head node +
     <ul>
@@ -228,13 +228,13 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Software stack</td>
-    <td><a href="../../manual/software/">Software</a></td>
+    <td><a href="/docs/manual/software/">Software</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/">DHPC modules</a></td>
     <td>Base OS: Rocky Linux, OpenHPC, Slurm Workload Manager</td>
   </tr>
   <tr>
     <td>Data storage</td>
-    <td><a href="../system/storage/">Filesystem &amp; storage</a></td>
+    <td><a href="/docs/system#storage">Storage</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#storage">Storage</a></td>
     <td>Storage: 128 TB (RAID6) </td>
   </tr>

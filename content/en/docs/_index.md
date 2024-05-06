@@ -1,6 +1,6 @@
 
 ---
-title: "DAIC"
+title: "Documentation"
 linkTitle: "Documentation"
 weight: 10
 menu:

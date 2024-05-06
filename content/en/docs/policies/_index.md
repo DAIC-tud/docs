@@ -20,9 +20,9 @@ This user agreement is intended to establish the expectations between all users 
 - **More information:** Please see the [General cluster usage](#general-cluster-usage) and [What to do in case of problems](#what-to-do-in-case-of-problems) sections on where to find more information about cluster use.
 - **Cluster workflow:** 
   * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quickstart](/tutorials/quickstart/)
-  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs. See [Computing on login nodes](/docs/manual/guidelines#computing-on-login-nodes)
-  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job. See [Interactive jobs](/docs/manual/job-submission/job-interactive).
-  * For determining resources of larger jobs, you can submit a single (short) test job. See [Submitting jobs](/docs/manual/job-submission/job-scripts)
+  * You can use the logins nodes for testing your code, determining the required resources and submitting jobs (see [Computing on login nodes](/docs/manual/best-practices#computing-on-login-nodes)).
+  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job (see [Interactive jobs](/docs/manual/job-submission/job-interactive)).
+  * For determining resources of larger jobs, you can submit a single (short) test job (see [Submitting jobs](/docs/manual/job-submission/job-scripts))
 - **QoS:** 
   * A Quality of Service (QoS) is a set of limits that controls what resources a job can use and determines the priority level of a job. DAIC adopts multiple QoSs 
    to optimize the throughput of job scheduling and to reduce the waiting times in the cluster (see [Quality of Service](/docs/manual/job-submission/qos)).
@@ -62,7 +62,7 @@ This user agreement is intended to establish the expectations between all users 
     1. Scheduled maintenance. This is planned in advance and jobs that would run during scheduled maintenance times won't start until the end of maintenance.
 
 
-### What to do in case of problems
+### What to do in case of problems?
 When you encounter problems, please follow the subsequent steps, in the indicated order:
   1. First, please contact your colleagues and fellow cluster users in your lab, concerning problems with your code, job performance and efficiency. They may be running similar jobs and potentially have solutions for your problem.
   2. You can also ask questions to fellow users on the [MatterMost channel](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su). 

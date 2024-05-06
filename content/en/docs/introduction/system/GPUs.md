@@ -6,7 +6,7 @@ description: >
   What graphical processing units are available?
 ---
 
-A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [using graphic cards](../../../manual/job-submission/job-gpu) for requesting GPUs for a computational job.
+A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [using graphic cards](/docs/manual/job-submission/job-gpu) for requesting GPUs for a computational job.
 
 <table style="undefined;table-layout: fixed; width: 727px">
 <colgroup>
@@ -72,7 +72,7 @@ In table 2: the headers denote:
 </ul>
 
 {{% alert title="Note" color="info" %}}
-To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](../../using-daic/job-submissions/#jobs-on-gpu-resources)). The apptainer image used in this code snippet was built as demonstrated in the [containerization tutorial](../../../../tutorials/containerization/).
+To inspect a given GPU and obtain the data of table 2, you can run the following commands on an interactive session or an sbatch script (see [Jobs on GPU resources](/docs/manual/job-submission/job-gpu)). The apptainer image used in this code snippet was built as demonstrated in the [containerization tutorial](/tutorials/containerization/).
 
 ```bash
 $ sinteractive --cpus-per-task=2 --mem=500 --time=00:02:00 --gres=gpu

@@ -7,7 +7,7 @@ description: >
 
 ### Jobs on GPU resources
 
-Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [GPUs](../../../introduction/system/gpus)).
+Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [GPUs](/docs/system#gpus)).
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
@@ -17,7 +17,7 @@ To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]
 
 
 {{% alert title="Note" color="warning"%}}
-For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code (see [Available software](../../software/available-software)).
+For CUDA programs, first, load the needed modules (CUDA, cuDNN) before running your code (see [Available software](/docs/manual/software/available-software)).
 {{% /alert %}}
 
 

@@ -47,7 +47,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 * Actively monitor the status of your jobs and the loads of the servers.
   * Make sure your job runs normally and is not hindering other jobs. Check the following at the start of a job and thereafter at least twice a day:
     - If your job is not working correctly (or halted) because of a programming error, terminate it immediately; debug and fix the problem instead of just trying again (the result will almost certainly be exactly the same).
-    - If your `screen`'s [Kerberos ticket](/docs/manual/job-submission/kerberos/) has expired, renew it so your job can successfully save it's results.
+    - If your `screen`'s [Kerberos ticket](/docs/manual/job-submission/kerberos) has expired, renew it so your job can successfully save it's results.
     - Use the `top` program to monitor the cpu (`%CPU`) and memory (`%MEM`) usage of your code. If either is too high, kill your code so it doesn't cause problems for other users.
     - Don't leave `top` running unless your are continuously watching it; press q to quit.
     - Watch the current resource usage (see {{< external-link "https://login.daic.tudelft.nl/" "Current resource usage page" >}} or use the `servers` command), and if the server is running close to it's limits (higher than 90% server load or memory, swap or disk usage), consider moving your job to a less busy server. <!-- ~~If more than half of the servers are at their limits, consider killing one or more jobs to make some space for others. ~~ -->
@@ -68,7 +68,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 {{% /alert %}}
 -->
 
-- Please do not run production research computations on the login nodes. If necessary, request an interactive session in these cases (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive/)) 
+- Please do not run production research computations on the login nodes. If necessary, request an interactive session in these cases (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive)) 
 
 {{% alert title="Note" color="info" %}}
 

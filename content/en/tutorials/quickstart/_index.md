@@ -28,7 +28,7 @@ We recommend applying the following workflow when working with HPC clusters.
 
 ## Quickstart
 ### Prerequisites
-1. User account and credentials for DAIC (see [Access and Accounts](/docs/policies/access-accounts#access-and-accounts)).
+1. User account and credentials for DAIC (see [Access and Accounts](/docs/policies#access-and-accounts)).
 2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
 3. SSH client on your local computer
 

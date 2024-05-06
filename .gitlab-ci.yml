@@ -21,7 +21,7 @@ default:
 
 test:
   script:
-    - hugo
+    - hugo --minify
     - npm install -g linkinator
     - linkinator public
   rules:

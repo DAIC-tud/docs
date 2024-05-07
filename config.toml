@@ -88,7 +88,6 @@ section = ["HTML", "print", "RSS"]
 copyright = "The DAIC team"
 #privacy_policy = "https://policies.google.com/privacy"
 
-
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
@@ -111,74 +110,45 @@ version = "0.0"
 url_latest_version = "https://doc.daic.tudelft.nl/"
 
 
-
-
-# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
-# An optional link to a related project repo. For example, the sibling repository where your product code lives.
-# github_project_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
-
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
-
-# Uncomment this if your GitHub repo does not have "main" as the default branch,
-# or specify a new value if you want to reference another branch in your GitHub links
-# github_branch= "main"
-
-# Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "62a7c518ab0cb42dc"
-
-# Enable Algolia DocSearch
-# algolia_docsearch = false
-
-# Enable Lunr.js offline search
-offlineSearch = true
-#offlineSearchSummaryLength = 200
-#offlineSearchMaxResults = 25
-
-# Enable syntax highlighting and copy buttons on code blocks with Prism
-prism_syntax_highlighting = true
-
 [sitemap]
   changefreq = "monthly"
   filename = "sitemap.xml"
   priority = 0.5
 
-
 # User interface configuration
 [params.ui]
-#  Set to true to disable breadcrumb navigation.
-breadcrumb_disable = false
-# Set to true to disable the About link in the site footer
-footer_about_disable = false
-# Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
-navbar_logo = true
-# Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
-navbar_translucent_over_cover_disable = false
-# Enable to show the side bar menu in its compact state.
-sidebar_menu_compact = false
-# Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-sidebar_search_disable = false
+  #  Set to true to disable breadcrumb navigation.
+  breadcrumb_disable = false
+  # Set to true to disable the About link in the site footer
+  footer_about_enable = false
+  # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
+  navbar_logo = true
+  # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
+  navbar_translucent_over_cover_disable = false
+  # Enable to show the side bar menu in its compact state.
+  sidebar_menu_compact = false
+  # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
+  sidebar_search_disable = false
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
 # If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
 # add "hide_feedback: true" to the page's front matter.
 [params.ui.feedback]
-enable = true
-# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please click <a href="/feedback/positive">here</a> to notify us. We appreciate it.'
-no = 'Sorry to hear that. Please click <a href="/feedback/negative">here</a> let the page maintainers know.'
+  enable = true
+  # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
+  yes = 'Glad to hear it! Please click <a href="/feedback/positive">here</a> to notify us. We appreciate it.'
+  no = 'Sorry to hear that. Please click <a href="/feedback/negative">here</a> let the page maintainers know.'
 
 # Adds a reading time to the top of each doc.
 # If you want this feature, but occasionally need to remove the Reading time from a single page, 
 # add "hide_readingtime: true" to the page's front matter
 [params.ui.readingtime]
-enable = true
+  enable = true
 
 [params.jstoc]
-enable = true
-custom_headings = "h2, h3"
+  enable = true
+  custom_headings = "h2, h3"
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.

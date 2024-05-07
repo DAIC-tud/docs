@@ -1,0 +1,36 @@
+{{- /* single.html for rendering single content item */ -}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .Title }}</title>
+    {{- /* Meta tags */ -}}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{- /* Load stylesheets */ -}}
+    {{ partial "head.html" . }}
+</head>
+<body>
+    <div class="container">
+        {{- /* Page header */ -}}
+        <header>
+            <h1>{{ .Title }}</h1>
+            {{- /* Optional front matter details (e.g., date, author) */ -}}
+            <p>By {{ .Params.author }} on {{ .Date.Format "Jan 2, 2006" }}</p>
+        </header>
+
+        {{- /* Page content */ -}}
+        <main>
+            {{ .Content }}
+        </main>
+
+        {{- /* Page footer */ -}}
+        <footer>
+            {{ partial "footer.html" . }}
+        </footer>
+    </div>
+
+    {{- /* Load scripts */ -}}
+    {{ partial "scripts.html" . }}
+</body>
+</html>

@@ -25,7 +25,7 @@ The available software, packages' names and package versions might differ, and t
 
 ## Managing environments
 ### Conda/Mamba
-Conda and Mamba are both package management and environment management tools used primarily in the data science and programming communities. Conda, developed by Anaconda, Inc., allows users to manage packages and create isolated environments for different projects, supporting multiple languages like Python and R. Mamba is a more recent alternative to Conda that offers faster performance and improved dependency solving using the same package repositories as Conda. Both tools help avoid dependency conflicts and simplify the management of software packages and environments.
+Conda and Mamba are both package management and environment management tools used primarily in the data science and programming communities. Conda, developed by Anaconda, Inc., allows users to manage packages and create isolated environments for different projects, supporting multiple languages like Python and R. Mamba is a more recent alternative to Conda that offers faster performance and improved dependency solving using the same package repositories as Conda. Both tools help avoid dependency conflicts and simplify the management of software packages and environments. You can install it with:
 
 #### Use module load conda
 Miniconda is available as [module](../modules).
@@ -57,7 +57,7 @@ Please update conda by running
   environment location: /home/nfs/username/.conda/envs/env
 ```
 
-#### Creating a conda environment from a YAML file
+#### Creating a conde environment from a YAML file
 
 Conda allows you to create environments from a YAML file that specifies the packages and their versions for the desired environment. This feature makes it easier to reproduce environments across different machines and share environment configurations with others.
 
@@ -80,8 +80,7 @@ You can set enviromnet variables to install packages and environments in other l
 #### Examples
 - **Set conda environments directory**:
 ```bash
-export CONDA_ENVS_DIRS="/tudelft.net/staff-umbrella/my-project/conda/envs"
-export CONDA_PKGS_DIRS="/tudelft.net/staff-umbrella/my-project/conda/pkgs"
+export CONDA_ENVS_DIRS="/tudelft.net/staff-umbrella/my-project/"
 ```
 
 A caveat is that the `/tudelft.net` mounts are windows based and therefore have compatibility issues with `pip`. When you create your conda environments there you will not be able to use `pip` to install packages. It is therefore recommeneded to keep the conda environments minimal and in your home directory, and to use [containerization](../containerization) for larger environments.

@@ -15,24 +15,24 @@ The `man` command is a tool for displaying the manual pages (documentation) of v
 
 #### Basic Usage
 
-- **Display the manual page for a command:**
-    ```bash
-    man command
-    ```
+**Display the manual page for a command:**
+```bash
+man <command>
+```
 
-    This displays the manual page for the specified command.
+This displays the manual page for the specified command.
 
 #### Examples
 
-- **Show the manual page for the `ls` command:**
-    ```bash
-    man ls
-    ```
+**Show the manual page for the `ls` command:**
+```bash
+man ls
+```
 
-- **Show the manual page for the `man` command:**
-    ```bash
-    man man
-    ```
+**Show the manual page for the `man` command:**
+```bash
+man man
+```
 
 ### echo
 Used for displaying a line of text/string that is passed as an argument. This is a fundamental command for displaying output in shell scripts.

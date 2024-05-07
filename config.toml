@@ -144,41 +144,79 @@ prism_syntax_highlighting = true
   filename = "sitemap.xml"
   priority = 0.5
 
+[params]
+	subtitle = "Crisp, minimal, privacy-conscious personal [blog theme for Hugo](https://github.com/chollinger93/ink-free)"
+
+	# Optional 64x64 avatar image.
+	#avatar = "https://image.freepik.com/free-vector/young-man-head-with-beard-avatar-character_24877-36786.jpg"
+
+	featherIconsCDN = false
+
+	# Site color - dark/light/auto
+	mode = "auto"
+
+	# Enable a table of contents:
+	# Either "static"/true, "floating", "both", or "none" (default: static)
+	# The floating TOC dissapears on mobile and adds 200px vertical space
+	toc = "both"
+	# Whether to truncate everything but H1/H2 headings if the last element in a TOC isn't visible. Enabled by default
+	enableTocTrunate = true
+
+	# Max tags
+	maxTags = 7
+
+	# Define words per minute to approximate reading time
+	wpm = 250
+
+	# Stupid footers :)
+	footers = [ 
+		"What Tiger King can teach us about x86 Assembly",
+		"10 Reasons why gcc SHOULD be re-written in JavaScript - You won't believe #8!"
+	]
+
+	# Github base url
+	github = "https://github.com/chollinger93/ink-free"
+
+	# For statistics, we can compare the total word count against a book of your choice
+	statisticsEnabled = true
+	referenceBookWords = 11500.0
+	referenceBook = "The Metamorphosis"
+	referenceAuthor = "Franz Kafka"
 
 # User interface configuration
 [params.ui]
-#  Set to true to disable breadcrumb navigation.
-breadcrumb_disable = false
-# Set to true to disable the About link in the site footer
-footer_about_disable = false
-# Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
-navbar_logo = true
-# Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
-navbar_translucent_over_cover_disable = false
-# Enable to show the side bar menu in its compact state.
-sidebar_menu_compact = false
-# Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-sidebar_search_disable = false
+  #  Set to true to disable breadcrumb navigation.
+  breadcrumb_disable = false
+  # Set to true to disable the About link in the site footer
+  footer_about_disable = false
+  # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
+  navbar_logo = true
+  # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
+  navbar_translucent_over_cover_disable = false
+  # Enable to show the side bar menu in its compact state.
+  sidebar_menu_compact = false
+  # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
+  sidebar_search_disable = false
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
 # If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
 # add "hide_feedback: true" to the page's front matter.
 [params.ui.feedback]
-enable = true
-# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please click <a href="/feedback/positive">here</a> to notify us. We appreciate it.'
-no = 'Sorry to hear that. Please click <a href="/feedback/negative">here</a> let the page maintainers know.'
+  enable = true
+  # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
+  yes = 'Glad to hear it! Please click <a href="/feedback/positive">here</a> to notify us. We appreciate it.'
+  no = 'Sorry to hear that. Please click <a href="/feedback/negative">here</a> let the page maintainers know.'
 
 # Adds a reading time to the top of each doc.
 # If you want this feature, but occasionally need to remove the Reading time from a single page, 
 # add "hide_readingtime: true" to the page's front matter
 [params.ui.readingtime]
-enable = true
+  enable = true
 
 [params.jstoc]
-enable = true
-custom_headings = "h2, h3"
+  enable = true
+  custom_headings = "h2, h3"
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.

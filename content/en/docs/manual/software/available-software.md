@@ -56,3 +56,6 @@ python34-3.4.10-8.el7.x86_64
 python36-numpy-f2py-1.12.1-3.el7.x86_64
 ...
 ```
+
+### Useful commands on DAIC
+For a list of handy commands on DAIC have a look [here](/docs/manual/commands).

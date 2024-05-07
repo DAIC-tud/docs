@@ -58,6 +58,125 @@ Example: List all files and directories in the current directory, including hidd
 ls -a
 ```
 
+### tree
+
+The `tree` command is a utility that displays the directory structure of a path in a tree-like format. It provides a visual representation of the hierarchy of files and directories, making it easier to understand the organization of a file system.
+
+#### Basic Usage
+
+- **Display the directory tree structure:**
+    ```bash
+    tree [path]
+    ```
+
+    This command displays the directory structure starting from the specified path or the current directory if no path is specified.
+
+#### Options
+
+- `-a`: Display all files and directories, including hidden ones (those starting with a dot).
+- `-d`: Display only directories, omitting files.
+- `-L level`: Limit the depth of the tree to the specified level.
+- `--noreport`: Suppress the file and directory count summary at the end of the output.
+- `-H baseHREF`: Create an HTML output starting with the specified base URL.
+- `-o filename`: Output the tree structure to a file with the specified name.
+- `--charset encoding`: Use the specified character encoding (e.g., `UTF-8`).
+- `-P pattern`: Only display files matching the specified pattern (e.g., `*.txt`).
+- `-I pattern`: Exclude files and directories matching the specified pattern (e.g., `*.bak`).
+
+#### Examples
+
+- **Display the directory tree structure starting from the current directory:**
+    ```bash
+    tree
+    ```
+
+- **Display the directory tree structure from a specific path:**
+    ```bash
+    tree /path/to/start
+    ```
+
+- **Display only directories in the tree structure:**
+    ```bash
+    tree -d
+    ```
+
+- **Display the tree structure and limit the depth to 2 levels:**
+    ```bash
+    tree -L 2
+    ```
+
+- **Display the tree structure and output it to a file:**
+    ```bash
+    tree -o output.txt
+    ```
+
+- **Display all files and directories, including hidden ones:**
+    ```bash
+    tree -a
+    ```
+
+The `tree` command is a helpful tool for quickly understanding the layout of a directory and its contents. It is especially useful for navigating complex file systems and identifying the location of files and directories within a hierarchy.
+
+### which
+
+The `which` command shows the full path of a command's executable file by searching the directories listed in the `PATH` environment variable.
+
+#### Basic Usage
+
+- **Find the path of a command:**
+    ```bash
+    which command
+    ```
+
+    This displays the full path of the specified command's executable file.
+
+#### Examples
+
+- **Find the path of the `ls` command:**
+    ```bash
+    which ls
+    ```
+
+- **Find the path of the `python` command:**
+    ```bash
+    which python
+    ```
+
+### whereis
+
+The `whereis` command locates not only the executable file but also the source and manual page files of a command, if available.
+
+#### Basic Usage
+
+- **Locate a command:**
+    ```bash
+    whereis command
+    ```
+
+    This displays the paths to the executable, source, and manual page files of the specified command, if they exist.
+
+#### Options
+
+- `-b`: Search only for binaries (executable files).
+- `-m`: Search only for manual pages.
+- `-s`: Search only for source files.
+- `-u`: Search for any missing information (binaries, source, or manual) and report it.
+- `-B path`: Add a directory to the search path for binaries.
+- `-M path`: Add a directory to the search path for manual pages.
+- `-S path`: Add a directory to the search path for source files.
+
+#### Examples
+
+- **Locate the `ls` command:**
+    ```bash
+    whereis ls
+    ```
+
+- **Locate the `gcc` command and its source files:**
+    ```bash
+    whereis -s gcc
+    ```
+
 ### cat
 Concatenates and displays file contents. It's commonly used to view the contents of a file.
 
@@ -242,3 +361,26 @@ Example: Display accounting data for all jobs.
 ```bash
 sacct --format=JobID,JobName%30,State,Elapsed,Timelimit,AllocNodes,Priority,Start,NodeList
 ```
+
+## Other
+### module
+
+In the context of Unix-like operating systems, the `module` command is part of the environment modules system, a tool that provides a dynamic approach to managing the user environment. This system allows users to load and unload different software packages or environments on demand.
+
+#### Basic Usage
+
+- **Load a module:**
+    ```bash
+    module load module-name
+    ```
+
+    This command loads the specified module, setting up the environment variables and paths needed for the software package.
+
+- **Unload a module:**
+    ```bash
+    module unload module-name
+    ```
+
+    This command unloads the specified module, removing any environment variables and paths associated with it.
+
+For a more detailed description of `module` see [Modules](/docs/manual/software/modules).

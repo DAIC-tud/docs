@@ -1,7 +1,7 @@
 ---
 title: "Job submission"
 linkTitle: "Job submission"
-weight: 20
+weight: 40
 description: >
   How to submit jobs to slurm?
 ---

@@ -23,16 +23,21 @@ The available software, packages' names and package versions might differ, and t
 {{% /alert %}}
 
 
-## Maintaining your own environment
+## Managing environments
 ### Conda/Mamba
 Conda and Mamba are both package management and environment management tools used primarily in the data science and programming communities. Conda, developed by Anaconda, Inc., allows users to manage packages and create isolated environments for different projects, supporting multiple languages like Python and R. Mamba is a more recent alternative to Conda that offers faster performance and improved dependency solving using the same package repositories as Conda. Both tools help avoid dependency conflicts and simplify the management of software packages and environments. You can install it with:
 
 #### Use module load conda
+Miniconda is available as [module](../modules).
+
 ```bash
-netid@login1:~$ module load miniconda
-netid@login1:~$ which conda
+$ module load miniconda
+$ which conda
 /opt/insy/miniconda/3.9/condabin/conda
 ```
+
+### Creating a conda environment
+To create a new environment you can run `conda create`:
 
 ```bash
 conda create -n env
@@ -49,14 +54,58 @@ Please update conda by running
 
 ## Package Plan ##
 
-  environment location: /home/nfs/sdrwacker/.conda/envs/env
+  environment location: /home/nfs/username/.conda/envs/env
 ```
 
-```
-netid@login1:~$ conda activate env  # Activate the newly created environment
-(env) netid@login1:~$
+#### Creating a conde environment from a YAML file
 
-(env) netid@login1:~$ conda install pandas  # Add a new package to the active environment
+Conda allows you to create environments from a YAML file that specifies the packages and their versions for the desired environment. This feature makes it easier to reproduce environments across different machines and share environment configurations with others.
+
+```bash
+conda env create -f environment.yml (-n new-name)
+```
+
+For how to create a `environment.yml` file see [Exporting environments](#exporting-environments)
+
+### Environment variables
+You can set enviromnet variables to install packages and environments in other locations:
+
+- `CONDA_PREFIX`: This variable points to the active conda environment's root directory. When an environment is active, `CONDA_PREFIX` contains the path to that environment's root directory.
+
+- `CONDA_ENVS_DIRS`: This variable specifies the directories where conda environments are stored. You can set it to a list of directories (separated by colons on Unix-like systems and semicolons on Windows). Conda will search for and store environments in these directories.
+
+- `CONDA_PKGS_DIRS`: This variable specifies the directories where conda stores downloaded packages. Like `CONDA_ENVS_DIRS`, you can set it to a list of directories. Conda uses these directories as cache locations for package downloads and installations.
+
+
+#### Examples
+- **Set conda environments directory**:
+```bash
+export CONDA_ENVS_DIRS="/tudelft.net/staff-umbrella/my-project/"
+```
+
+A caveat is that the `/tudelft.net` mounts are windows based and therefore have compatibility issues with `pip`. When you create your conda environments there you will not be able to use `pip` to install packages. It is therefore recommeneded to keep the conda environments minimal and in your home directory, and to use [containerization](../containerization) for larger environments.
+
+### List existing environments
+
+You can list environments with 
+
+```bash
+conda env list
+```
+
+### Activating environments
+You can activate an existing environemnt with `conda activate`, for example to install more packages:
+
+```bash
+$ conda activate env  # Activate the newly created environment
+```
+
+### Modifying environments
+
+Sometimes you need to add/remove/change packages and libraries in existing environments. First, activate the enviroment you want to change with `conda activate` and then run `conda install package-name` or `conda remove package-name`. You can also use `pip` to install packages inside a conda environment, but for that `pip` has to be installed inside the environment. To make sure `pip` is installed in your enviroment run `conda install pip` first.
+
+```bash
+(env) $ conda install pandas  # Add a new package to the active environment
 Collecting package metadata (current_repodata.json): done
 Solving environment: done
 
@@ -160,13 +209,22 @@ Proceed ([y]/n)? y
 ....
 ```
 
+### Exporting environments
 
+You can export versions of all installed packages and libaries inside a coda environment with `conda env export`.
+It is good practice to keep track of all versions that you have used for a particular experiment by exporting it into a YAML file typically called `environment.yml`:
+
+```bash
+conda env export --no-builds > environment.yml
+```
 
 ### Install your own mamba/conda
-```bash
--bash-4.2$
 
-alias install-miniforge='
+Sometimes the versions provided by `module` are outdated and users need their own installation of `conda` or `mamba`. 
+A minimal version can be installed as demonstrated in the following:
+
+```bash
+$ alias install-miniforge='
     wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
     && bash Miniforge3-Linux-x86_64.sh -b \
     && rm -f Miniforge3-Linux-x86_64.sh \
@@ -174,13 +232,10 @@ alias install-miniforge='
     && conda init \
     && conda install -n base -c conda-forge mamba'
 
-cd ~ && install-miniforge
+$ cd ~ && install-miniforge
 
-(base) -bash-4.2$
-```
-
-```
-(base) -bash-4.2$which python
+(base) $  # This shows that the 'base' environment is active.
+(base) $ which python
 ~/miniforge3/bin/python
 ```
 
@@ -194,69 +249,11 @@ find miniforge3 -type f | wc -l
 20719
 ```
 
-Now, you can install your own versions of libraries and programs, or create entire environments.
-
-```bash
-mamba create -n py312 python=3.12 
-
-Looking for: ['python=3.12']
-
-conda-forge/noarch                                  14.4MB @  37.6MB/s  0.5s
-conda-forge/linux-64                                33.9MB @  42.4MB/s  1.1s
-Transaction
-
-  Prefix: /home/nfs/sdrwacker/miniforge3/envs/py312
-
-  Updating specs:
-
-   - python=3.12
-
-  Package                  Version  Build               Channel           Size
-────────────────────────────────────────────────────────────────────────────────
-  Install:
-────────────────────────────────────────────────────────────────────────────────
-
-  + _libgcc_mutex              0.1  conda_forge         conda-forge     Cached
-  + ca-certificates       2024.2.2  hbcca054_0          conda-forge     Cached
-  + ld_impl_linux-64          2.40  h55db66e_0          conda-forge      713kB
-  + libgomp                 13.2.0  hc881cc4_6          conda-forge      422kB
-  + _openmp_mutex              4.5  2_gnu               conda-forge     Cached
-  + libgcc-ng               13.2.0  hc881cc4_6          conda-forge      777kB
-  + openssl                  3.2.1  hd590300_1          conda-forge     Cached
-  + libxcrypt               4.4.36  hd590300_1          conda-forge     Cached
-  + libzlib                 1.2.13  hd590300_5          conda-forge     Cached
-  + libffi                   3.4.2  h7f98852_5          conda-forge     Cached
-  + bzip2                    1.0.8  hd590300_5          conda-forge     Cached
-  + ncurses           6.4.20240210  h59595ed_0          conda-forge     Cached
-  + libuuid                 2.38.1  h0b41bf4_0          conda-forge     Cached
-  + libnsl                   2.0.1  hd590300_0          conda-forge     Cached
-  + libexpat                 2.6.2  h59595ed_0          conda-forge       74kB
-  + xz                       5.2.6  h166bdaf_0          conda-forge     Cached
-  + tk                      8.6.13  noxft_h4845f30_101  conda-forge     Cached
-  + libsqlite               3.45.3  h2797004_0          conda-forge      860kB
-  + readline                   8.2  h8228510_1          conda-forge     Cached
-  + tzdata                   2024a  h0c530f3_0          conda-forge     Cached
-  + python                  3.12.3  hab00c5b_0_cpython  conda-forge       32MB
-  + wheel                   0.43.0  pyhd8ed1ab_1        conda-forge     Cached
-  + setuptools              69.5.1  pyhd8ed1ab_0        conda-forge     Cached
-  + pip                       24.0  pyhd8ed1ab_0        conda-forge     Cached
-
-  Summary:
-
-  Install: 24 packages
-
-  Total download: 35MB
-
-────────────────────────────────────────────────────────────────────────────────
-
-
-Confirm changes: [Y/n] 
-```
+Now, you can install your own versions of libraries and programs, or create entire environments as descibed above.
 
 {{% alert title="Stop!" color="warning" %}}
 You are limited to 8GB of data in your home directoy. Installing a full development environement for PyTorch can easily exceed 12 GB; Therefore, it is recommeneded to install only tools and libraries that you really need on the login nodes via this route. Instead, use `Apptainer` to create container files containing all dependencies.
 {{% /alert %}}
-
 
 ## Using binaries
 Some programs come as precompiled binaries or are written in a scripting language such as Perl, PHP, Python or shell script. Most of these programs don't actually need to be "installed" since you can simply run these programs directly. In certain scenarios, you may need to make the program executable first using `chmod +x`: 

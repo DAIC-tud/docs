@@ -29,38 +29,10 @@ The `man` command is a tool for displaying the manual pages (documentation) of v
     man ls
     ```
 
-- **Show the manual page for the `grep` command:**
+- **Show the manual page for the `man` command:**
     ```bash
-    man grep
+    man man
     ```
-
-#### Options
-
-- `-k keyword`: Search for manual pages that match a specific keyword.
-- `-f pattern`: Search for manual pages with names matching a specific pattern.
-- `-M path`: Specify a path to search for manual pages.
-- `-m system`: Specify the system type for which to display manual pages.
-- `-a`: Display all manual pages for a specified command.
-- `-w`: Display the location of the manual page file instead of the manual page itself.
-- `-7`: Use a 7-bit character encoding.
-- `-i`: Ignore case when searching for a keyword.
-- `-t`: Format the output with `groff` and display it using the system's pager.
-
-The `man` command is structured into sections based on the type of content provided:
-
-- **1**: User commands.
-- **2**: System calls.
-- **3**: Library functions.
-- **4**: Special files and devices.
-- **5**: File formats and conventions.
-- **6**: Games and screensavers.
-- **7**: Miscellaneous.
-- **8**: System administration commands.
-
-You can specify the section of the manual you want to view using the syntax `man section command`, such as `man 3 printf` to view the `printf` function in the library functions section.
-
-The `man` command is a crucial resource for learning about commands and their options, understanding system calls and library functions, and finding detailed information about file formats and conventions.
-
 
 ### echo
 Used for displaying a line of text/string that is passed as an argument. This is a fundamental command for displaying output in shell scripts.

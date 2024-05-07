@@ -6,7 +6,6 @@ description: >
   How/Where to store data.  
 ---
 
-# Handy commands on DAIC
 ## BASH
 BASH (Bourne Again SHell) is an open-source Unix shell and command language. It is the default shell on many Linux distributions and macOS, and it's available on Windows via the Windows Subsystem for Linux, Git BASH, and other emulators. BASH is widely used for scripting and automating tasks in a computing environment. Below are some fundamental BASH commands with examples and brief explanations, aiding users in effective navigation and task execution. Remember to use these commands carefully, especially those that can modify or delete files and directories. They are fundamental tools for interacting with BASH and managing your tasks effectively.
 

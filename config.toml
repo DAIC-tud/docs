@@ -1,3 +1,5 @@
+theme = "docsy"
+
 baseURL = "https://doc.daic.tudelft.nl/"
 title = "DAIC documentation"
 

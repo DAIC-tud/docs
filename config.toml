@@ -88,7 +88,6 @@ section = ["HTML", "print", "RSS"]
 copyright = "The DAIC team"
 #privacy_policy = "https://policies.google.com/privacy"
 
-
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
@@ -110,41 +109,6 @@ version = "0.0"
 # point people to the main doc site.
 url_latest_version = "https://doc.daic.tudelft.nl/"
 
-
-
-
-# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
-# An optional link to a related project repo. For example, the sibling repository where your product code lives.
-# github_project_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
-
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
-
-# Uncomment this if your GitHub repo does not have "main" as the default branch,
-# or specify a new value if you want to reference another branch in your GitHub links
-# github_branch= "main"
-
-# Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "62a7c518ab0cb42dc"
-
-# Enable Algolia DocSearch
-# algolia_docsearch = false
-
-# Enable Lunr.js offline search
-offlineSearch = true
-#offlineSearchSummaryLength = 200
-#offlineSearchMaxResults = 25
-
-# Enable syntax highlighting and copy buttons on code blocks with Prism
-prism_syntax_highlighting = true
-
-[sitemap]
-  changefreq = "monthly"
-  filename = "sitemap.xml"
-  priority = 0.5
-
-[params]
 	subtitle = "Crisp, minimal, privacy-conscious personal [blog theme for Hugo](https://github.com/chollinger93/ink-free)"
 
 	# Optional 64x64 avatar image.
@@ -182,6 +146,38 @@ prism_syntax_highlighting = true
 	referenceBookWords = 11500.0
 	referenceBook = "The Metamorphosis"
 	referenceAuthor = "Franz Kafka"
+
+
+# Repository configuration (URLs for in-page links to opening issues and suggesting changes)
+github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
+# An optional link to a related project repo. For example, the sibling repository where your product code lives.
+# github_project_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
+
+# Specify a value here if your content directory is not in your repo's root directory
+# github_subdir = ""
+
+# Uncomment this if your GitHub repo does not have "main" as the default branch,
+# or specify a new value if you want to reference another branch in your GitHub links
+# github_branch= "main"
+
+# Google Custom Search Engine ID. Remove or comment out to disable search.
+# gcs_engine_id = "62a7c518ab0cb42dc"
+
+# Enable Algolia DocSearch
+# algolia_docsearch = false
+
+# Enable Lunr.js offline search
+offlineSearch = true
+#offlineSearchSummaryLength = 200
+#offlineSearchMaxResults = 25
+
+# Enable syntax highlighting and copy buttons on code blocks with Prism
+prism_syntax_highlighting = true
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
 
 # User interface configuration
 [params.ui]

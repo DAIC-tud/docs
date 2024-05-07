@@ -5,7 +5,7 @@ image: registry.gitlab.com/pages/hugo/hugo_extended:latest
 
 variables:
   HUGO_ENV: production
-  THEME_URL: "github.com/google/docsy@v0.7.1"
+  THEME_URL: "github.com/google/docsy@v0.10.0"
 
 default:
   before_script:

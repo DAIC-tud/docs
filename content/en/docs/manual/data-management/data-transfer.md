@@ -6,17 +6,9 @@ description: >
   How to move data to DAIC.
 ---
 
-## Data Transfer Methods
+Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute servers. If possible use one of these for files that you want to access on both your personal computer and the compute servers. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
 
-### Between TU Delft installed machines 
-
-Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute servers. If possible use one of these for files that you want to access on both your personal computer and the compute servers. 
-
-### Using webdata
-
-Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
-
-### Using SCP/SFTP
+## SCP
 
 Both your Linux and Windows Personal Storage and the Project and Group Storage are also available world-wide via an SCP/SFTP client. This is the simplest transfer method via the `scp` command, which has the following basic syntax:
 
@@ -75,15 +67,95 @@ Please use `student-linux.tudelft.nl` instead of `linux-bastion.tudelft.nl` as a
 Use quotes when file or folder names contain spaces or special characters. 
 {{% /alert %}} 
 
-### SCP alternatives
 
-More powerful alternatives to scp exist, like `rsync` for synchronizing source and destination, and `sshfs` for mounting folders to your linux computer. See {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/Data-transfer-to-DelftBlue/#rsync" "DelftBlue file transfer" >}}  documentation for use of these tools, and use the proper DAIC addresses instead.
+## rsync
+`rsync` is a robust file copying and synchronization tool commonly used in Unix-like operating systems. It allows you to transfer files and directories efficiently, both locally and remotely. `rsync` supports options that enable compression, preserve file attributes, and allow for incremental updates.
 
+### Basic Usage
 
-### To or from local storage
+- **Copy files locally:**
+    ```bash
+    rsync [options] source destination
+    ```
 
-For files that you want to transfer to or from local storage, first transfer them to Project or Scratch Storage. Then in your job script, copy the files to the local storage, run your work, and afterwards delete your files from local storage. 
+    This command copies files and directories from the source to the destination.
 
+- **Copy files remotely:**
+    ```bash
+    rsync [options] source user@remote_host:destination
+    ```
+
+    This command transfers files from a local source to a remote destination.
+
+### Examples
+
+- **Synchronize a local directory with a remote directory:**
+    ```bash
+    rsync -avz /path/to/local/dir user@remote_host:/path/to/remote/dir
+    ```
+
+    This synchronizes a local directory with a remote directory, using archive mode (`-a`) to preserve file attributes, verbose mode (`-v`) for detailed output, and compression (`-z`) for efficient transfer.
+
+- **Synchronize a remote directory with a local directory:**
+    ```bash
+    rsync -avz user@remote_host:/path/to/remote/dir /path/to/local/dir
+    ```
+
+    This transfers files from a remote directory to a local directory, using the same options as the previous example.
+
+- **Delete files in the destination that are not present in the source:**
+    ```bash
+    rsync -av --delete /path/to/source/dir /path/to/destination/dir
+    ```
+
+    This synchronizes the source and destination directories and deletes files in the destination that are not in the source.
+
+- **Exclude certain files or directories during transfer:**
+    ```bash
+    rsync -av --exclude='*.tmp' /path/to/source/dir /path/to/destination/dir
+    ```
+
+    This synchronizes the source and destination directories, excluding files with the `.tmp` extension.
+
+### Other Options in rsync
+
+In addition to the commonly used options, `rsync` provides several other options for more advanced control and customization during file transfers:
+
+- `--dry-run`: Perform a trial run without making any changes. This option allows you to see what would be done without actually doing it.
+
+- `--checksum`: Use checksums instead of file size and modification time to determine if files should be transferred. This is more precise but slower.
+
+- `--partial`: Keep partially transferred files and resume them later. This is useful in case of an interrupted transfer.
+
+- `--partial-dir=DIR`: Specify a directory to hold partial transfers. This option works well with `--partial`.
+
+- `--bwlimit=KBPS`: Limit the bandwidth used by the transfer to the specified rate in kilobytes per second. Useful for managing network load.
+
+- `--timeout=SECONDS`: Set a maximum wait time in seconds for receiving data. If the timeout is exceeded, `rsync` will exit.
+
+- `--no-implied-dirs`: When transferring a directory, this option prevents the creation of implied directories on the destination side that exist in the source but not explicitly specified in the transfer.
+
+- `--files-from=FILE`: Read a list of source files from the specified FILE. This can be useful when you want to transfer specific files.
+
+- `--update`: Skip files that are newer on the destination than the source. This is useful for incremental backups.
+
+- `--ignore-existing`: Skip files that already exist on the destination. Useful when you want to avoid overwriting existing files.
+
+- `--inplace`: Update files in place instead of creating temporary files and renaming them later. This can save disk space and improve speed.
+
+- `--append`: Append data to files instead of replacing them if they already exist on the destination.
+
+- `--append-verify`: Append data and verify it with checksums to ensure integrity.
+
+- `--backup`: Make backups of files that are overwritten or deleted during the transfer. By default, a `~` is appended to the backup filename.
+
+- `--backup-dir=DIR`: Specify a directory to store backup files.
+
+- `--suffix=SUFFIX`: Specify a suffix to append to backup files instead of the default `~`.
+
+- `--progress`: Displays the progress of the transfer, including the speed and the number of bytes transferred. This is useful for monitoring long transfers and seeing how much data has been copied so far.
+
+These options, along with others, provide additional flexibility and control over your `rsync` transfers, allowing you to fine-tune the synchronization process to meet your specific needs.
 
 
 <!--

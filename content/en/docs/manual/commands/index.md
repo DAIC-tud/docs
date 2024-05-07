@@ -240,5 +240,5 @@ sinfo
 Displays accounting data for all jobs and job steps. Useful for tracking resource usage and performance metrics.
 Example: Display accounting data for all jobs.
 ```bash
-sacct
+sacct --format=JobID,JobName%30,State,Elapsed,Timelimit,AllocNodes,Priority,Start,NodeList
 ```

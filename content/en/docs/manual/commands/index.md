@@ -219,7 +219,7 @@ Example:
 slurmtop
 ```
 
-### scontrol show job `<jobid>`
+### scontrol
 Shows detailed information and resources allocated to the job with the specified SLURM job ID.
 
 Example: Show details of a job with job ID `jobid`.

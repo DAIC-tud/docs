@@ -109,6 +109,7 @@ version = "0.0"
 # point people to the main doc site.
 url_latest_version = "https://doc.daic.tudelft.nl/"
 
+gcs_engine_id = "62a7c518ab0cb42dc"
 
 [sitemap]
   changefreq = "monthly"
@@ -126,7 +127,7 @@ url_latest_version = "https://doc.daic.tudelft.nl/"
   # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
   navbar_translucent_over_cover_disable = false
   # Enable to show the side bar menu in its compact state.
-  sidebar_menu_compact = false
+  sidebar_menu_compact = true
   # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
   sidebar_search_disable = false
 

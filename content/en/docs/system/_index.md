@@ -269,12 +269,12 @@ The following table gives an overview of current nodes and their characteristics
   </tr>
   <tr>
     <td>cor1</td>
-    <td></td>
+    <td>2 x Intel(R) Xeon(R) Gold 6242 CPU @ 2.80GHz</td>
     <td>16</td>
     <td>64</td>
-    <td></td>
-    <td>1500 GB</td>
-    <td>Tesla V100 SXM2 16GB</td>
+    <td>3599.975</td>
+    <td>1510.33 GB</td>
+    <td>Tesla V100 SXM2 32GB</td>
     <td>8</td>
   </tr>
   <tr>

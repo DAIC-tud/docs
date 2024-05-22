@@ -107,6 +107,11 @@ In addition to funding received from departmental sources, DAIC has also been fi
 	  <img src="/img/logo-epistemic-ai.png" height=50 width=170 />
   </a>
   {{< /card >}}
+    {{< card header="NWO" title="" subtitle=""  >}}
+  <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
+	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=50 width=70/>
+  </a>
+  {{< /card >}}
 {{< /cardpane >}}
 
 

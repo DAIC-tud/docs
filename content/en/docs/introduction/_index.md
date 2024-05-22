@@ -94,7 +94,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
 {{< cardpane >}}
   {{< card header="NWO" title="" subtitle=""  >}}
   <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
-	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=100 width=170/>
+	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=60 width=170/>
   </a>
   {{< /card >}}
   {{< card header="Horizon 2020" title="" subtitle=""  >}}
@@ -112,6 +112,11 @@ In addition to funding received from departmental sources, DAIC has also been fi
 	  <img src="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fassets-global.website-files.com%2F658f265af26f3187eb6b03b0%2F65fa9bd046a7b0dba64008fe_1280px-Booking.com_logo.svg-p-500.png&data=05%7C02%7CA.E.Ahmed%40tudelft.nl%7C5897e06bc0cf49e02a5b08dc7a51e22b%7C096e524d692940308cd38ab42de0887b%7C0%7C0%7C638519739312808690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=KacApWStt6AIp2SeMlR2MqzHxoVuou7aJZuS7%2BwjXpY%3D&reserved=0" height=100 width=170/>
   </a>
   {{< /card >}}
+  {{< card header="MMLL" title="" subtitle=""  >}}
+    <a href="">
+	    <img src="images/funders_MMLLlogo.png" height=100 width=170/>
+    </a>
+  {{< /card >}}  
 {{< /cardpane >}}
 
 
@@ -120,7 +125,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
 {{< cardpane >}}
   {{< card header="NWO" title="" subtitle=""  >}}
   <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
-	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=100 width=170/>
+	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=60 width=170/>
   </a>
   {{< /card >}}
   {{< card header="Horizon 2020" title="" subtitle=""  >}}
@@ -132,11 +137,6 @@ In addition to funding received from departmental sources, DAIC has also been fi
   <a href="https://www.epistemic-ai.eu/home">
 	  <img src="/img/logo-epistemic-ai.png" height=100 width=170 />
   </a>
-  {{< /card >}}
-  {{< card header="MMLL" title="" subtitle=""  >}}
-    <a href="">
-	    <img src="images/funders_MMLLlogo.png" height=100 width=170/>
-    </a>
   {{< /card >}}
 {{< /cardpane >}}
 

@@ -94,20 +94,30 @@ In addition to funding received from departmental sources, DAIC has also been fi
 {{< cardpane >}}
   {{< card header="NWO" title="" subtitle=""  >}}
   <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
-	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=50 width=70/>
+	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=80 width=100/>
   </a>
   {{< /card >}}
   {{< card header="Horizon 2020" title="" subtitle=""  >}}
   <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-2020_en">
-	  <img src="https://www.tbvi.eu/wp-content/uploads/2019/03/EU-H2020-logo.png" height=50 width=170>
+	  <img src="https://www.tbvi.eu/wp-content/uploads/2019/03/EU-H2020-logo.png"  >
   </a>
   {{< /card >}}
-  {{< card header="Epistemic AI" title="" subtitle=""  >}}
-  <a href="https://www.epistemic-ai.eu/home">
-	  <img src="/img/logo-epistemic-ai.png" height=50 width=170 />
-  </a>
-  {{< /card >}}
+  
 {{< /cardpane >}}
+
+{{< cardpane >}}
+{{< card header="Epistemic AI" title="" subtitle=""  >}}
+  <a href="https://www.epistemic-ai.eu/home">
+	  <img src="/img/logo-epistemic-ai.png"  />
+  </a>
+  {{< /card >}}
+
+   {{< card header="MMLL" title="" subtitle=""  >}}
+    <a href="">
+	    <img src="images/funders_MMLLlogo.png" height=50 width=170/>
+    </a>
+  {{< /card >}}
+{{< /cardpane>}}
 
 
 {{< cardpane >}}
@@ -117,11 +127,12 @@ In addition to funding received from departmental sources, DAIC has also been fi
   </a>
   {{< /card >}}
 
-  {{< card header="MMLL" title="" subtitle=""  >}}
-    <a href="">
-	    <img src="images/funders_MMLLlogo.png" height=50 width=170/>
+ {{< card header="Others" title="" subtitle=""  >}}
+    <a href="https://daic.tudelft.nl/docs/introduction/#contributing-departments">
+	    Contributing departments' funding
     </a>
   {{< /card >}}
+ 
 {{< /cardpane >}}
 
 

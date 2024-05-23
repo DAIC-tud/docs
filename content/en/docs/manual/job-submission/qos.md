@@ -115,6 +115,8 @@ Read [Priority and waiting times](/docs/manual/job-submission/priorities) for mo
 
 ### See Quality of Service definitions
 
+On DAIC you can check the QoS policies with the `sacctmgr` command:
+
 ```bash
 $ sacctmgr list qos
       Name   Priority  GraceTime    Preempt   PreemptExemptTime PreemptMode                                    Flags UsageThres UsageFactor       GrpTRES   GrpTRESMins GrpTRESRunMin GrpJobs GrpSubmit     GrpWall       MaxTRES MaxTRESPerNode   MaxTRESMins     MaxWall     MaxTRESPU MaxJobsPU MaxSubmitPU     MaxTRESPA MaxJobsPA MaxSubmitPA       MinTRES 
@@ -131,3 +133,30 @@ guest-sho+         10   00:00:00                                    cluster     
 guest-long          0   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=200,gres+                                         65536                                                         7-00:00:00 cpu=128,gres+         1          10                                      cpu=1,mem=1M 
     medium         35   00:00:00                                    cluster                              DenyOnLimit               1.000000 cpu=3352,gre+                                         65536                                                         1-12:00:00 cpu=1466,gre+                  2000                                      cpu=1,mem=1M 
 ```
+
+### How to use QoS in your `sbatch` scripts?
+
+In your `sbatch.slurm` script you can specify the QoS with `#SBATCH --qos=...` option.
+
+**Example:**
+```
+#!/bin/bash
+#SBATCH --job-name=hello-world
+#SBATCH --partition=general
+#SBATCH --account=ewi-insy-reit
+#SBATCH --qos=short               # This is how you specify QoS
+#SBATCH --time=0:01:00     
+#SBATCH --nodes=1        
+#SBATCH --tasks-per-node=1        
+#SBATCH --cpus-per-task=2        
+#SBATCH --mem=1GB                
+#SBATCH --output=slurm-%n-%j.out  
+#SBATCH --error=slurm-%n-%j.err
+
+srun echo 'Hi, from Slurm!'
+sleep 30  # Wait for 30 seconds before exiting.
+```
+
+### QoS for reservations
+
+In case you have a reservation you need to specify `--qos=reservation` and `--reservation=<reservation-name>. You can find an example [here](../reservations#using-reservations). 

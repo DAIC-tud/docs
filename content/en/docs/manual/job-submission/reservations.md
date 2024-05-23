@@ -13,15 +13,7 @@ Slurm gives the possibility to reserve one or more compute nodes _exclusively_ f
 Using reservations is in line with the [General cluster usage clauses](/docs/policies#general-cluster-usage) of DAIC users' agreement. However, please be mindful that reservations are intended to facilitate special needs that cannot be satisfied by the batch system, and should not be requested to guarantee fast throughput for production runs.
 {{% /alert %}}
 
-### Requesting a Reservation
-To request a reservation for nodes, please use to the [Request Reservation form](/docs/policies#access-accounts). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
-
-General guidelines for reservations' requests:
-* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [Partitions](/docs/manual/job-submission/partitions) to check the name of the partition contributed by your group, and [System specifications](/docs/system/) for a listing of available nodes and their features).
-* Please ask for the least amount of resources you need as to minimize impact on other users.
-* _Plan ahead and request your reservation as soon as possible_: Reservations usually ignore running jobs, so any running job on the machine(s) you request will continue to run when the reservation starts. While jobs from other users will not start on the reserved node(s), the resources in use by an already running job at the start time of the reservation will not be available in the reservation until this running job ends. The earlier ahead you request resources, the easier it is to allocate the requested resources .
-
-### Using a reservation
+### Using reservations
 Once your reservation request is approved and a reservation is placed on the system, you can run your jobs in the reservation by specifying  `--qos=reservation` along with the following directives to your slurm commands: `--reservation=<name>` and `--partition=<partition>`. For example, to submit the job `job.sbatch` to a reservation named `icra_iv` on the `cor1` node on the `cor` partition use:
 
 ```bash
@@ -49,6 +41,16 @@ When a reservation is used to run your jobs, remember to also pass the reservati
 $ srun --qos=reservation --reservation=<reservation_name> --partition=<partition_name> <some_script.sh>
 ```
 {{% /alert%}}
+
+To make use of an existing reservation you have to specify `--qos=reservation` and `--reservation=<reservation-name>` in your `sbatch` script.
+
+### Requesting a Reservation
+To request a reservation for nodes, please use to the [Request Reservation form](/docs/policies#access-accounts). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
+
+General guidelines for reservations' requests:
+* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [Partitions](/docs/manual/job-submission/partitions) to check the name of the partition contributed by your group, and [System specifications](/docs/system/) for a listing of available nodes and their features).
+* Please ask for the least amount of resources you need as to minimize impact on other users.
+* _Plan ahead and request your reservation as soon as possible_: Reservations usually ignore running jobs, so any running job on the machine(s) you request will continue to run when the reservation starts. While jobs from other users will not start on the reserved node(s), the resources in use by an already running job at the start time of the reservation will not be available in the reservation until this running job ends. The earlier ahead you request resources, the easier it is to allocate the requested resources.
 
 ### Viewing reservations
 To view all active and future reservations run the `scontrol` command as follows:

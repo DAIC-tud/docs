@@ -10,6 +10,14 @@ menu:
     weight: 1
 ---
 
+## Prerequisites
+
+1. User account and credentials for DAIC (If needed, use this [Access request form](https://forms.office.com/e/tSAckyHevL)).
+4. Data storage on the university network (if needed, use this [Storage request form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae))
+2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
+3. SSH client on your local computer to log-in DAIC (See [Connecting to DAIC](https://daic.tudelft.nl/docs/manual/connecting/)).
+
+
 
 ## General workflow
 We recommend applying the following workflow when working with HPC clusters.
@@ -26,11 +34,9 @@ We recommend applying the following workflow when working with HPC clusters.
 8. Intermediate files are deleted (see [How do I clean up tmp?](/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails))
 9. Check out the [List of handy commands on DAIC](/docs/manual/commands)
 
+
+
 ## Quickstart
-### Prerequisites
-1. User account and credentials for DAIC (see [Access and Accounts](/docs/policies#access-and-accounts)).
-2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
-3. SSH client on your local computer
 
 ### Login via SSH
 You can login to DAIC via SSH:

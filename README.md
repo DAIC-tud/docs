@@ -26,16 +26,15 @@ on Linux.
 1. Build the docker image 
 
    ```bash
-   docker-compose build
+   docker build -f Dockerfile -t my-hugo-site .
    ```
 
 1. Run the built image
 
    ```bash
-   docker-compose up
+   docker run -p 1313:1313 -v $(pwd):/site my-hugo-site
    ```
 
-   > NOTE: You can run both commands at once with `docker-compose up --build`.
 
 1. Verify that the service is working. 
 

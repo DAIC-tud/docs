@@ -109,7 +109,9 @@ version = "0.0"
 # point people to the main doc site.
 url_latest_version = "https://doc.daic.tudelft.nl/"
 
-gcs_engine_id = "62a7c518ab0cb42dc"
+#gcs_engine_id = "62a7c518ab0cb42dc"
+offlineSearch = true
+
 
 [sitemap]
   changefreq = "monthly"

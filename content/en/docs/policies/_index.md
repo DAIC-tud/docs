@@ -88,6 +88,6 @@ Please acknowledge DAIC in your scientific publications using this sentence:
 Please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
 
 ## Access and accounts
-- DAIC is a cluster dedicated for TU Delft researchers (eg, PhD students, postdocs, .. etc) from participating groups (see [Contributing departments](/docs/introduction#contributing-departments)). 
-- To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC access request form](https://forms.office.com/e/tSAckyHevL). 
+- DAIC is a cluster dedicated for TU Delft researchers (eg, PhD students, postdocs, .. etc) from participating groups (see [Contributing departments](/docs/introduction/contributors-funders)). 
+- To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC request Access form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). 
 - Additionally, requests for resources reservations can also be accommodated (see [General cluster usage](#general-cluster-usage)). 

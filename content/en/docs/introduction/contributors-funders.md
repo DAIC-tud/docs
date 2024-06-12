@@ -1,8 +1,7 @@
 ---
 title: "Contributors and funding"
 weight: 1
-description: >
-  What is DAIC?
+
 ---
 
 ## Contributing departments

@@ -1,8 +1,7 @@
 ---
 title: "Advisors and Impact"
-weight: 3
-description: >
-  What are the foundational components of DAIC?
+weight: 2
+
 ---
 
 ## Advisory board

@@ -1,8 +1,7 @@
 ---
 title: "TU Delft clusters comparison"
-weight: 2
-description: >
-  How does DAIC compare to other TU Delft cluster?
+weight: 3
+
 ---
 
 ## Cluster comparison

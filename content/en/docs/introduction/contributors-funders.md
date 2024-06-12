@@ -108,7 +108,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
 
    {{< card header="MMLL" title="" subtitle=""  >}}
     <a href="">
-	    <img src="images/funders_MMLLlogo.png" height=50 width=170/>
+	    <img src="/docs/introduction/images/funders_MMLLlogo.png" height=50 width=170/>
     </a>
   {{< /card >}}
 {{< /cardpane>}}

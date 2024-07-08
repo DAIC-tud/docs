@@ -4,9 +4,9 @@ weight: 1
 description: Help us to improve this documentation.
 ---
 
-## Upcoming training courses
+## Past and Upcoming training courses
 
-The _[Research Engineering and Infrastructure Team (REIT)](https://reit.tudelft.nl/)_ offer a series of training courses designed to enhance your expertise in utilizing DAIC. Current offerings are:
+The _[Research Engineering and Infrastructure Team (REIT)](https://reit.tudelft.nl/)_ offers a series of training courses designed to enhance your expertise in utilizing DAIC. These include:
 
 
 

@@ -24,14 +24,37 @@ weight: 2
 
 To help demonstrate the impact of DAIC, we ask that you both _**cite**_ and _**acknowledge**_ DAIC in your scientific publications. Please use the following formats:
 
-{{< card header="Citation (APA)" >}}
+{{< tabpane langEqualsHeader=true >}}
+
+{{% tab header="**Citation**:" disabled=true right=false /%}}
+
+{{% tab header="**APA**" text=true  %}}
 Delft AI Cluster (DAIC). (2024). The Delft AI Cluster (DAIC), RRID:SCR_025091. https://doi.org/10.4233/rrid:scr_025091
-{{< /card >}}
+{{% /tab %}}
 
-- Downloadable citation formats: [BibTeX](../daic.BibTeX), [RIS (EndNote/RefMan)](../daic.RIS)
+{{< tab header="**BibTeX**" lang=bibtex >}}
+@misc{DAIC,
+  author = {{Delft AI Cluster (DAIC)}},
+  title = {The Delft AI Cluster (DAIC), RRID:SCR_025091},
+  year = {2024},
+  doi = {10.4233/rrid:scr_025091},
+  url = {https://doc.daic.tudelft.nl/}
+}
+{{< /tab >}}
 
 
-{{< card header="Acknowledgement text" >}}
+{{< tab header="**RIS(EndNote/RefMan)**" lang=ris >}}
+TY  - DATA
+T1  - The Delft AI Cluster (DAIC), RRID:SCR_025091
+UR  - https://doi.org/10.4233/rrid:scr_025091
+PB  - TU Delft
+PY  - 2024
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+
+{{< card header="**Acknowledgement text**" >}}
 Research reported in this work was partially or completely facilitated by computational resources and support of the Delft AI Cluster (DAIC) at TU Delft (RRID: <a href="https://doi.org/10.4233/rrid:scr_025091">SCR_025091</a>), but remains the sole responsibility of the authors, not the DAIC team.
 {{< /card >}}
 

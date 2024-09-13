@@ -62,6 +62,7 @@ id = "G-ZMXKPTENJ1"
 # Language configuration
 [languages]
 [languages.en]
+[languages.en.params]
 title = "DAIC documentation"
 description = "Documentation of the Delft AI cluster (DAIC)"
 languageName ="English"

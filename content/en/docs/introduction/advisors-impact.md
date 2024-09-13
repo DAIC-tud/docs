@@ -19,15 +19,32 @@ weight: 2
 {{< /cardpane >}}
 
 
+## Citation and Acknowledgement
+
+To help demonstrate the impact of DAIC, we ask that you both _**cite**_ and _**acknowledge**_ DAIC in your scientific publications. Please use the following formats:
+
+### Citation (APA)
+
+> Delft AI Cluster (DAIC). (2024). The Delft AI Cluster (DAIC), RRID:SCR_025091. https://doi.org/10.4233/rrid:scr_025091
+ 
+- **Downloadable citation format**: [BibTeX](../daic.BibTeX), [RIS (EndNote/RefMan)](../daic.RIS)
+
+### Acknowledgement Text
+
+> **Research reported in this work was partially or completely facilitated by computational resources and support of the Delft AI Cluster (DAIC) at TU Delft ([https://doc.daic.tudelft.nl](https://doc.daic.tudelft.nl)), but remains the sole responsibility of the authors, not the DAIC team.**
 
 
-## Scientific impact
+
+{{% alert title="Bonus" color="info" %}}
+
+Please also post your publications to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput) so we can add it to our records.
+
+{{% /alert %}}
+
+
+## Scientific impact in numbers
 Since 2015, DAIC has facilitated more than 2000 scientific outputs from the various DAIC-participating departments:
 
-{{% alert title="Note" color="info" %}}
-The compilation of the following list is done retrospectively by the Data Insights team and/or is based on self-reporting by individual researchers. As a result, it may not be exhaustive nor complete. 
-  * If your paper is not in this list, then please post its details to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput); and make sure to acknowledge and cite us as shown in the Acknowledgement section.
-{{% /alert %}}
 
 |                 | Article | Conference/Meeting contribution | Book/Book chapter/Book editing | Dissertation (TU Delft) | Abstract | Other | Editorial | Patent | **Grand Total** |
 | --------------- | --------------------- | -------------------- | ------------------------ | ---------------- | --------- | -------------- | ----------------------------- | ------------------------- | --------------- |

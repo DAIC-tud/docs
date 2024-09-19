@@ -2,9 +2,6 @@
 title: "Contact"
 description: Get help from the community or the cluster support team.
 weight: 6
-menu:
-  main:
-    weight: 50
 ---
 
 ## DAIC support & contact:

@@ -31,9 +31,10 @@ Conda and Mamba are both package management and environment management tools use
 Miniconda is available as [module](../modules).
 
 ```bash
-$ module load miniconda
-$ which conda
-/opt/insy/miniconda/3.9/condabin/conda
+module use /opt/insy/modulefiles # If not already
+module load miniconda
+which conda
+# /opt/insy/miniconda/3.9/bin/conda
 ```
 
 ### Creating a conda environment

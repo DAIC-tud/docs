@@ -77,12 +77,11 @@ You are responsible that your jobs run efficiently:
   3. Short job efficiency: If you are running many (hundreds or thousands of) very short jobs (duration of a few minutes), you may want to consider that starting and individually loading the same modules for each job may create overheads. When reasonably possible, it might save computation time to instead group some jobs together. The jobs can still be submitted to the `short` queue if the runtime is less than 4 hours.
   4. GPU job efficiency: If you are running multi-GPU jobs (for example due to GPU memory limitations), you may want to consider that the communications between the GPUs and other CPU processes (for example data loaders) may create overheads. It might be useful to consider running jobs on less GPUs with more GPU memory each, or taking advantage of specialized libraries optimized for multi-GPU computing in your code.
 
-### Acknowledging DAIC
-Please acknowledge DAIC in your scientific publications using this sentence:
+### Citing and acknowledging DAIC
+Please cite and acknowledge DAIC in your scientific publications using the format specified in the [Citation and Acknowledgement](/docs/introduction/advisors-impact#citation-and-acknowledgement) section.
 
-{{< card header="Acknowledgement" >}}
-> Research reported in this work was partially or completely facilitated by computational resources and support of the the Delft AI Cluster (DAIC) at TU Delft (URL:https://doc.daic.tudelft.nl/), but remains the sole responsibility of the authors, not the DAIC team.
-{{< /card >}}  
+
+
 
 ### Reporting of scientific outputs
 Please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).

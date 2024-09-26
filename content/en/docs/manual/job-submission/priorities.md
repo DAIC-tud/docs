@@ -16,19 +16,86 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 
 ### Priority tiers
-DAIC partitions are tiered: the `general` partition is in the lowest priority tier, department partitions (eg, `insy`, `st`) are in the middle priority tier, and partitions for specific groups (eg, `visionlab`, `wis`) are in the highest priority tier. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/introduction)).
+DAIC partitions are tiered: 
+- The `general` partition is in the _lowest priority tier_, 
+- Department partitions (eg, `insy`, `st`) are in the _middle priority tier_, and 
+- Partitions for specific groups (eg, `visionlab`, `wis`) are in the _highest priority tier_. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/introduction)).
 
-When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to backfill lower (user) priority jobs that fit (if any).
+When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to _backfill_ lower (user) priority jobs that fit (if any).
 
-The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
+> The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
 
 #### Where to submit jobs?
-The idea behind the tiering is that you submit to all partitions, e.g. `--partition=wis,st,general`, and let the scheduler figure out where the job can start the soonest.  This should give the job the highest possible priority on the different partitions (resources) in the cluster, at no cost for yourself or others.
+The purpose of this tiering is to let you submit your jobs to _multiple partitions_ (e.g., `--partition=wis,st,general`), allowing the scheduler to determine where the job can start the soonest. This ensures your job has the _highest possible priority_ across different partitions in the cluster, without negatively impacting your or others’ resource access.
 
-Resources of all partitions (eg, `st`) are also part of the `general` partition (see [Fig 1]({{< ref "fig:daic_partitions" >}})). Thus:
-* submitting to the  `general` partition allows jobs to use all nodes
-* submitting to group-specific partitions alone results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
-* The optimal way is to submit to both `general` and group-specific partitions when accessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+Keep in mind that:
+- Resources of all partitions (eg, `st`) are also part of the `general` partition (see [Fig 1]({{< ref "/docs/system#fig:daic_partitions" >}})). Thus:
+  * Submitting to the  `general` partition _allows jobs to use all nodes_
+  * Submitting to group-specific partitions _alone_ results in longer waiting times, since the `general` partition has much more resources than any of them (The bigger the resource pool, the more chances a job has to be scheduled or back-filled)
+  * The _optimal strategy_ is to submit to _both_ `general` and group-specific partitions when accessible. This is to skip over higher-priority jobs that would otherwise get started first on resources that are also in the specific partition.
+- You should __only submit jobs to partitions that your account has access to__. Submitting jobs to unauthorized partitions (e.g., using `--partition=insy,st` when your submitting account does not have access to both of these) will result in the job remaining in a pending state and generate excessive logging, potentially overloading the Slurm controller nodes.
+
+{{% alert title="Warning" color="warning" %}}
+Always ensure you are submitting jobs to partitions accessible by your account. You can check your account and partition permissions with the following commands- example output for a user is shown below:
+
+```shell-session
+$ sacctmgr show user "$USER" withassoc Format='DefaultAccount,Account' --parsable # Check your account(s)
+Def Acct|Account|
+ewi-insy-prb|me-cor|
+ewi-insy-prb|ewi-insy-reit|
+ewi-insy-prb|ewi-insy-prb|
+ewi-insy-prb|ewi-st|
+
+$ echo "Partition   AllowAccounts"; scontrol show partition -a | \
+> awk '
+>     /PartitionName=/ {
+>         split($1, a, "=");
+>         partition = a[2]
+>     } 
+>     /AllowAccounts=/ {
+>         split($2, b, "=");
+>         print partition, b[2]
+>     }
+> ' | \
+> grep -E 'ALL|ewi-insy-prb'      # Check paritions accessible to your *default* account
+Partition   AllowAccounts
+general ALL
+insy ewi-insy,ewi-insy-cgv,ewi-insy-cys,ewi-insy-ii,ewi-insy-ii-influence,ewi-insy-mmc,ewi-insy-prb,ewi-insy-prb-dbl,ewi-insy-prb-prlab,ewi-insy-prb-spclab,ewi-insy-prb-visionlab,ewi-insy-reit,ewi-insy-sdm,ewi-insy-sup
+```
+Within the submission script for this user, observe the following correct and incorrect examples:
+
+{{% /alert %}}
+
+{{< cardpane  >}}
+
+{{< card code=true header="**Correct**: explicit _default_ account and parition specification" lang=bash >}}
+#SBATCH --account=ewi-insy-prb
+#SBATCH --partition=insy 
+{{< /card >}}
+
+{{< card code=true header="**Correct**: Implicit _default_ account omitted since it has access to the specified patition" lang=bash >}}
+#SBATCH --partition=insy 
+{{< /card >}}
+
+{{< /cardpane >}}
+
+{{< cardpane  >}}
+
+{{< card code=true header="**Incorrect**: Multiple partitions with account mismatch" lang=bash >}}
+#SBATCH --account=ewi-insy-prb
+#SBATCH --partition=insy,st  
+{{< /card >}}
+{{< card code=true header="**Incorrect**: Specifying a wrong account for the partition" lang=bash >}}
+#SBATCH --account=ewi-st
+#SBATCH --partition=insy 
+{{< /card >}}
+
+{{< /cardpane >}}
+
+{{% alert title="" color="warning" %}}
+**Consequences:** Submitting jobs to unauthorized partitions may result in jobs remaining pending and could overload the system, leading to potential job cancellations without warning.
+{{% /alert %}}
+
 
 
 ### Priority calculations

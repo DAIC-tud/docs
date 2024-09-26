@@ -31,9 +31,10 @@ Conda and Mamba are both package management and environment management tools use
 Miniconda is available as [module](../modules).
 
 ```bash
-$ module load miniconda
-$ which conda
-/opt/insy/miniconda/3.9/condabin/conda
+module use /opt/insy/modulefiles # If not already
+module load miniconda
+which conda
+# /opt/insy/miniconda/3.9/bin/conda
 ```
 
 ### Creating a conda environment
@@ -277,8 +278,7 @@ When you are installing software for the very first time, you need to set up you
 
 To set up your environment, first, add the following lines to your `~/.bash_profile` or, alternatively, download this ([bash_profile.txt](https://gitlab.ewi.tudelft.nl/daic/docs/-/blob/main/content/en/docs/software_environment/bash_profile.txt?ref_type=heads)) as shown in the subsequent commands:
 
-{{< card header="bash_profile.txt" >}}
-```bash
+{{< card code=true header="bash_profile.txt" lang="bash">}}
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
    . ~/.bashrc
@@ -295,7 +295,7 @@ export PATH="$HOME/bin:$PREFIX/bin:$PATH"
 export PERL5LIB="$PREFIX/lib64/perl5:$PREFIX/share/perl5${PERL5LIB:+:$PERL5LIB}"
 export PKG_CONFIG_PATH="$PREFIX/lib64/pkgconfig:$PREFIX/share/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 export PYTHONPATH="$PREFIX/lib/python2.7/site-packages${PYTHONPATH:+:$PYTHONPATH}"
-```
+
 {{< /card >}}
 
 {{< alert title="Note!" color="info"  >}}

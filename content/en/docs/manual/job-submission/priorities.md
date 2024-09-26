@@ -19,14 +19,14 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 DAIC partitions are tiered: 
 - The `general` partition is in the _lowest priority tier_, 
 - Department partitions (eg, `insy`, `st`) are in the _middle priority tier_, and 
-- Partitions for specific groups (eg, `visionlab`, `wis`) are in the _highest priority tier_. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/introduction)).
+- Partitions for specific groups (eg, `influence`, `mmll`) are in the _highest priority tier_. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/introduction)).
 
 When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to _backfill_ lower (user) priority jobs that fit (if any).
 
 > The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
 
 #### Where to submit jobs?
-The purpose of this tiering is to let you submit your jobs to _multiple partitions_ (e.g., `--partition=wis,st,general`), allowing the scheduler to determine where the job can start the soonest. This ensures your job has the _highest possible priority_ across different partitions in the cluster, without negatively impacting your or others’ resource access.
+The purpose of this tiering is to let you submit your jobs to _multiple partitions_ (e.g., `--partition=mml,insy,general`), allowing the scheduler to determine where the job can start the soonest. This ensures your job has the _highest possible priority_ across different partitions in the cluster, without negatively impacting your or others’ resource access.
 
 Keep in mind that:
 - Resources of all partitions (eg, `st`) are also part of the `general` partition (see [Fig 1]({{< ref "/docs/system#fig:daic_partitions" >}})). Thus:

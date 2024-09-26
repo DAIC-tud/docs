@@ -16,8 +16,15 @@ Most modern operating systems, including Linux, macOS and Windows 10, come by de
 ```bash
 $ ssh [<YourNetID>@]login.daic.tudelft.nl
 ```
-This command logs you in into one of the three login nodes of DAIC (`login[1-3]`), 
-where `<YourNetID>` is your TU Delft's NetID. You can optionally omit the square brackets and their contents if the username on the machine you are connecting from matches your NetID.
+
+This command logs you in into DAIC's `login1` node, where `<YourNetID>` is your TU Delft's NetID. You can optionally omit the square brackets and their contents if the username on the machine you are connecting from matches your NetID.
+
+{{% alert title="Note" color="info" %}}
+Currently DAIC has 3 login nodes: `login1`, `login2`, and `login3`. You can connect to any of these nodes as per your needs.  For more on the choice of login nodes, see [DAIC login nodes](/docs/system#login-nodes).
+{{% /alert %}}
+
+
+
 
 
 {{% alert title="Note" color="info" %}}

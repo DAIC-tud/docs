@@ -10,10 +10,62 @@ description: >
 At present [DAIC](https://doc.daic.tudelft.nl/docs/) and [DelftBlue](https://doc.dhpc.tudelft.nl/delftblue) have different software stacks. This pertains to the operating system (CentOS 7 _vs_ Red Hat Enterprise Linux 8, respectively) and, consequently, the available software. Please refer to the respective [DelftBlue modules](https://doc.dhpc.tudelft.nl/delftblue/DHPC-modules/) and [Software](/docs/manual/software) section before commencing your experiments.
 {{% /pageinfo %}}
 
+<!---------------
+
+```mermaid
+---
+title: DAIC Specifications
+---
+flowchart TD
+
+    C[Slurm Resource Manager]
+    D[Linux OS]
+    subgraph Login["Login Nodes"]
+      A1["login1"] 
+      A2["login2 (Virtual Node)"] 
+      A3["login3"] 
+    end
+    subgraph Compute["Compute Nodes (dummay names shown)"]
+      B1[Node 1] 
+      B2[Node 2]
+      B3[Node 3]
+      B4[...]
+      B5[Node 60]
+    end
+    subgraph Storage
+      E1["staff-bulk (not recommended)"]
+      E2["staff-umbrella (recommended)"]
+    end
+    Login --Job Submission  -- C
+    C -- Job Scheduling -- Compute
+    C -- Data Management -- Storage
+    D ---  C
+```
+----->
+
+{{< figure src="/img/DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions" width="750px">}}
+
 ## Operating System
 DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7 Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the servers (see [Available software](/docs/manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7, then it is not available. See [Installing software](/docs/manual/software/installing-software/) for more information. 
 
-## Nodes
+## Login Nodes
+
+The login nodes are the gateway to the DAIC HPC cluster and are specifically designed for lightweight tasks such as job submission, file management, and compiling code (on certain nodes). These nodes are not intended for running resource-intensive jobs, which should be submitted to the [Compute Nodes](#compute-nodes).
+
+### Specifications and usage notes
+
+| Hostname  | CPU (Sockets x Model)                               | Total Cores | Total RAM  | Operating System      | GPU Type     | GPU Count | Usage Notes                                                   |
+|-----------|-----------------------------------------------------|-------------|------------|-----------------------|--------------|-----------|---------------------------------------------------------------|
+| `login1`  | 1 x Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz       | 8           | 15.39 GB   | OpenShift Enterprise   | Quadro K2200 | 1         | For file transfers, job submission, and lightweight tasks.   |
+| `login2`  | 1 x Intel(R) Xeon(R) CPU E5-2683 v3 @ 2.00GHz       | 1           | 3.70 GB    | OpenShift Enterprise   | N/A          | N/A       | Virtual server, for non-intensive tasks. **No compilation.** |
+| `login3`  | 2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz       | 32          | 503.60 GB  | RHEV                  | Quadro K2200 | 1         | For large compilation and interactive sessions.              |
+
+
+
+
+
+
+## Compute Nodes
 DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Submitting jobs](/docs/manual/job-submission/job-scripts)). 
 
 {{% alert title="Note" color="info" %}}
@@ -914,7 +966,7 @@ The following table gives an overview of current nodes and their characteristics
 <!--->
 
 
-## CPUs
+### CPUs
 All nodes have multiple Central Processing Units (CPUs) that perform the operations. Each CPU can process one thread (i.e. a separate string of computer code) at a time. A computer program consists of one or multiple threads, and thus needs one or multiple CPUs simultaneously to do its computations (see {{< external-link "https://en.wikipedia.org/wiki/Central_processing_unit" "wikipedia's CPU page" >}} ).
 
 
@@ -928,7 +980,7 @@ The CPU functionality is provided by the hardware cores in the processor chips i
 
 
 
-## GPUs
+### GPUs
 A few types of GPUs are available in some of DAIC nodes, as shown in table 1. The total numbers of these GPUs/type and their technical specifications are shown in table 2. See [using graphic cards](/docs/manual/job-submission/job-gpu) for requesting GPUs for a computational job.
 
 <table style="undefined;table-layout: fixed; width: 727px">
@@ -1025,7 +1077,7 @@ SomeNetID@influ1:~$ exit
 {{% /alert %}}
 
 
-## Memory
+### Memory
 All machines have large main memories for performing computations on big data sets. A job cannot use more than it's allocated amount of memory. If it needs to use more memory, it will fail or be killed. It's not possible to combine the memory from multiple nodes for a single task. 32-bit programs can only address (use) up to 3Gb (gigabytes) of memory. See [Submitting jobs](/docs/manual/job-submission/job-scripts) for setting resources for batch jobs.
 
 ## Storage
@@ -1247,4 +1299,4 @@ DAIC uses the {{< external-link "https://slurm.schedmd.com/" "Slurm scheduler" >
 
 A slurm-based cluster is composed of a set of _login nodes_ that are used to access the cluster and submit computational jobs. A _central manager_ orchestrates computational demands across a set of _compute nodes_. These nodes are organized logically into groups called _partitions_, that defines job limits or access rights. The central manager provides fault-tolerant hierarchical communications, to ensure optimal and fair use  of available compute resources to eligible users, and make it easier to run and schedule complex jobs across compute resources (multiple nodes).
 
-{{< figure src="/img/DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions" width="750px">}}
+

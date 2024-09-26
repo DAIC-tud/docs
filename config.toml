@@ -89,9 +89,6 @@ section = ["HTML", "print", "RSS"]
 copyright = "The DAIC team"
 #privacy_policy = "https://policies.google.com/privacy"
 
-# First one is picked as the Twitter card image if not set on page.
-# images = ["images/project-illustration.png"]
-
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
 version_menu = "Releases"
@@ -156,23 +153,6 @@ github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
   custom_headings = "h2, h3"
 
 [params.links]
-# End user relevant links. These will show up on left side of footer and in the community page if you have one.
-#[[params.links.user]]
-#  name = "User mailing list"
-#  url = "https://example.org/mail"
-#  icon = "fa fa-envelope"
-#  desc = "Discussion and help from your fellow users"
-# [[params.links.user]]
- # name ="Twitter"
- # url = "https://example.org/twitter"
- # icon = "fab fa-twitter"
- # desc = "Follow us on Twitter to get the latest news!"
-# [[params.links.user]]
- # name = "Stack Overflow"
- # url = "https://example.org/stack"
- # icon = "fab fa-stack-overflow"
- # desc = "Practical questions and curated answers"
-# Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
   name = "GitLab"
   url = "https://gitlab.ewi.tudelft.nl/daic/docs"

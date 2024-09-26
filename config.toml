@@ -113,6 +113,7 @@ url_latest_version = "https://doc.daic.tudelft.nl/"
 #gcs_engine_id = "62a7c518ab0cb42dc"
 offlineSearch = true
 
+github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
 
 [sitemap]
   changefreq = "monthly"

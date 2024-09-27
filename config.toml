@@ -78,6 +78,7 @@ weight = 1
     style = "tango"
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     guessSyntax = "true"
+    noClasses = false
 
 # Everything below this are Site Params
 
@@ -86,7 +87,8 @@ weight = 1
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "The DAIC team"
+  copyright = "The DAIC team"
+
 #privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.

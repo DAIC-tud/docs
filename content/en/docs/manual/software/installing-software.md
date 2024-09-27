@@ -30,18 +30,18 @@ Conda and Mamba are both package management and environment management tools use
 #### Use module load conda
 Miniconda is available as [module](../modules).
 
-```bash
-module use /opt/insy/modulefiles # If not already
-module load miniconda
-which conda
-# /opt/insy/miniconda/3.9/bin/conda
+```shell-session
+$ module use /opt/insy/modulefiles  # If not already
+$ module load miniconda 
+$ which conda 
+/opt/insy/miniconda/3.9/bin/conda
 ```
 
 ### Creating a conda environment
 To create a new environment you can run `conda create`:
 
-```bash
-conda create -n env
+```shell-session
+$ conda create -n env
 Collecting package metadata (current_repodata.json): done
 Solving environment: done
 
@@ -53,7 +53,7 @@ Please update conda by running
 
     $ conda update -n base -c defaults conda
 
-## Package Plan ##
+ ## Package Plan ##
 
   environment location: /home/nfs/username/.conda/envs/env
 ```
@@ -62,8 +62,8 @@ Please update conda by running
 
 Conda allows you to create environments from a YAML file that specifies the packages and their versions for the desired environment. This feature makes it easier to reproduce environments across different machines and share environment configurations with others.
 
-```bash
-conda env create -f environment.yml (-n new-name)
+```shell-session
+$ conda env create -f environment.yml (-n new-name)
 ```
 
 For how to create a `environment.yml` file see [Exporting environments](#exporting-environments)
@@ -80,8 +80,9 @@ You can set enviromnet variables to install packages and environments in other l
 
 #### Examples
 - **Set conda environments directory**:
-```bash
-export CONDA_ENVS_DIRS="/tudelft.net/staff-umbrella/my-project/"
+
+```shell-session
+$ export CONDA_ENVS_DIRS="/tudelft.net/staff-umbrella/my-project/"
 ```
 
 A caveat is that the `/tudelft.net` mounts are windows based and therefore have compatibility issues with `pip`. When you create your conda environments there you will not be able to use `pip` to install packages. It is therefore recommeneded to keep the conda environments minimal and in your home directory, and to use [containerization](../containerization) for larger environments.
@@ -90,15 +91,18 @@ A caveat is that the `/tudelft.net` mounts are windows based and therefore have 
 
 You can list environments with 
 
-```bash
-conda env list
+```shell-session
+$ conda env list
 ```
+
+
+
 
 ### Activating environments
 You can activate an existing environemnt with `conda activate`, for example to install more packages:
 
-```bash
-$ conda activate env  # Activate the newly created environment
+```shell-session
+$ conda activate env  # Activate the newly created environment 
 ```
 
 ### Modifying environments
@@ -215,8 +219,8 @@ Proceed ([y]/n)? y
 You can export versions of all installed packages and libaries inside a coda environment with `conda env export`.
 It is good practice to keep track of all versions that you have used for a particular experiment by exporting it into a YAML file typically called `environment.yml`:
 
-```bash
-conda env export --no-builds > environment.yml
+```shell-session
+$ conda env export --no-builds > environment.yml
 ```
 
 ### Install your own mamba/conda
@@ -242,11 +246,11 @@ $ cd ~ && install-miniforge
 
 This will already occupy around 500MB of your home directory totalling ~20k files.
 
-```bash
-du -h miniforge3 --max-depth=0
+```shell-session
+$ du -h miniforge3 --max-depth=0
 486M	miniforge3
 
-find miniforge3 -type f | wc -l
+$ find miniforge3 -type f | wc -l
 20719
 ```
 
@@ -259,7 +263,7 @@ You are limited to 8GB of data in your home directoy. Installing a full developm
 ## Using binaries
 Some programs come as precompiled binaries or are written in a scripting language such as Perl, PHP, Python or shell script. Most of these programs don't actually need to be "installed" since you can simply run these programs directly. In certain scenarios, you may need to make the program executable first using `chmod +x`: 
 
-```bash
+```shell-session
 $ ./my-executable        # attempting to run the binary `my-executable`
 -bash: ./my-executable: Permission denied
 
@@ -303,13 +307,14 @@ export PYTHONPATH="$PREFIX/lib/python2.7/site-packages${PYTHONPATH:+:$PYTHONPATH
 2.  if you want to use `python3.6` instead of `python2.7`, you need to set the `PYTHONPATH` to `python3.6`. 
 {{< /alert >}}
 
-```bash
+```shell-session
 $ cp ~/.bash_profile ~/.bash_profile.bak # back up your file
 $ curl -s https://wiki.tudelft.nl/pub/Research/InsyCluster/InstallingSoftware/bash_profile.txt >> ~/.bash_profile # download and append the lines above
-$
-$ # clean up any duplicate settings
-$
-$ source ~/.bash_profile # 
+```
+
+Then, clean up any duplicate settings, and:
+```shell-session
+$ source ~/.bash_profile
 $ mkdir -p "$PREFIX"
 ```
 
@@ -328,12 +333,24 @@ Software installation _usually_ just requires you to follow the general installa
 
 1. Place the source of the software in a folder under `/tmp`:
 
-```bash
+```shell-session
 $ mkdir /tmp/$USER
 $ cd /tmp/$USER
+```
+You can sometimes download the software directly from the internet:
+
+```shell-session
 $ wget http://host/path/software.tar.gz
 $ tar -xzf software.tar.gz
-          Or from github: git clone https://github.com/software
+```
+Or, clone the software from a git repository:
+```shell-session
+$ git clone https://github.com/software
+```
+
+Then:
+
+```shell-session
 $ cd software
 ```
 
@@ -345,7 +362,7 @@ Note: `.tgz` is the same as `.tar.gz`, for `.tar.bz2` files use tar `-xjf softwa
 
 1. If the software provides a `configure` script, run it:
 
-```bash
+```shell-session
 $ ./configure --prefix="$PREFIX" 
 ```
 
@@ -353,7 +370,7 @@ If `configure` complains about missing software, you'll either have to install t
 
 If your software provides a `CMakeLists.txt` file, run `cmake` (note: the trailing two dots on the last line are needed exactly as shown):
 
-```bash
+```shell-session
 $ mkdir -p build $ cd build $ cmake -DCMAKE_INSTALL_PREFIX="$PREFIX" .. 
 ```
 
@@ -365,7 +382,7 @@ There is no point in continuing until all reported problems have been fixed.
 
 2. Compile the software:
 
-```bash
+```shell-session
 $ make 
 ```
 
@@ -375,26 +392,26 @@ If compilation is aborted due to an error, {{< external-link "https://www.google
 
 3. Install the software. When you used configure or cmake, you can simply run:
 
-```bash
+```shell-session
 $ make install 
 ```
 
 
 When you used neither, you need to use:
-```bash
+```shell-session
 $ make prefix="$PREFIX" install 
 ```
 
 4. Your software should now be ready to use, so check it:
 
-```bash
+```shell-session
 $ cd $ _program_ 
 ```
 
 
 5. When the program works, clean up `/tmp/netid`:
 
-```bash
+```shell-session
 $ rm -r /tmp/$USER 
 ```
 

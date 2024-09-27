@@ -31,3 +31,37 @@ figcaption::before {
 }
 
 @import "tocbot";
+
+/* Style and prevent copying for default shell prompts ($) */
+pre.chroma .gp {
+  color: gray; /* Make the $ prompt gray */
+  user-select: none; /* Prevent prompt from being copied */
+}
+
+// Not working-
+// /* Style for Conda environment prompts (e.g., (myenv) $) */
+// pre.chroma .go:contains("myenv") {
+//   color: green; /* Color for Conda environment */
+//   user-select: none; /* Prevent copying */
+// }
+// /* Style for Apptainer prompts (Apptainer>) */
+// pre.chroma .go{
+//   color: blue; /* Make the Apptainer prompt blue */
+//   user-select: none; /* Prevent prompt from being copied */
+// }
+
+/* Style the command text */
+pre.chroma .nb {
+  color: #268bd2;
+}
+
+/* Style for string content */
+pre.chroma .s2 {
+  color: #2aa198;
+}
+
+/* Prevent selection of output */
+pre.chroma .go {
+  color: #586e75;
+  user-select: none;
+}

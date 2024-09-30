@@ -10,13 +10,16 @@ menu:
     weight: 1
 ---
 
+{{< alert "info" "Join the Community!" >}}
+If you join the DAIC community channel on [Mattermost](https://mattermost.tudelft.nl/daic/channels/town-square), you'll have access to exclusive resources and support.
+{{< /alert >}}
+
 ## Prerequisites
 
 1. User account and credentials for DAIC (If needed, use this [Access request form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507)).
 4. Data storage on the university network (if needed, use this [Storage request form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae))
 2. Basic familiarity with the command line (see {{< external-link "https://swcarpentry.github.io/shell-novice/" "The software carpentry's Unix shell materials">}})
 3. SSH client on your local computer to log-in DAIC (See [Connecting to DAIC](https://daic.tudelft.nl/docs/manual/connecting/)).
-
 
 
 ## General workflow

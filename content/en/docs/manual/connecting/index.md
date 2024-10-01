@@ -87,7 +87,7 @@ Direct access to DAIC from _outside the university network_ is blocked by a fire
 
 For the linux bastion, if you are an employee or guest, use `linux-bastion.tudelft.nl`. If you are a student (BSc or MSc), then use `student-linux.tudelft.nl` as per the following examples:
 
-```bash
+```shell-session
 $ hostname # check this is your local machine
 $ ssh YourNetID@linux-bastion.tudelft.nl
 The authenticity of host 'linux-bastion.tudelft.nl (131.180.123.195)' can't be established.
@@ -116,29 +116,66 @@ The HPC cluster is restricted to authorized users only.
 
 YourNetID@login.daic's password: 
 Last login: Tue Jul 25 01:32:08 2023 from srv227.tudelft.net
-#########################################################################
-#                                                                       #
-# Welcome to login1, login server of the HPC cluster.                   #
-#                                                                       #
-# By using this cluster you agree to the terms and conditions.          #
-#                                                                       #
-# For information about using the HPC cluster, see:                     #
-# https://login.hpc.tudelft.nl/                                         #
-#                                                                       #
-# The bulk, group and project shares are available under /tudelft.net/, #
-# your windows home share is available under /winhome/$USER/.           #
-#                                                                       #
-#########################################################################
+ #########################################################################
+ #                                                                       #
+ # Welcome to login1, login server of the HPC cluster.                   #
+ #                                                                       #
+ # By using this cluster you agree to the terms and conditions.          #
+ #                                                                       #
+ # For information about using the HPC cluster, see:                     #
+ # https://login.hpc.tudelft.nl/                                         #
+ #                                                                       #
+ # The bulk, group and project shares are available under /tudelft.net/, #
+ # your windows home share is available under /winhome/$USER/.           #
+ #                                                                       #
+ #########################################################################
  01:28:15 up 51 days, 13:41,  1 user,  load average: 0,10, 0,13, 0,14
-YourNetID@login1:~$ 
-YourNetID@login1:~$ 
-YourNetID@login1:~$ hostname
+ ```
+ ```bash
+YourNetID@login1:~$ hostname # check you are in DAIC
 login1.hpc.tudelft.nl
 YourNetID@login1:~$ 
 YourNetID@login1:~$ 
 ```
 
 
+# Test
+
+{{< highlight shell-session "prompt=^\(myenv\)\ \$ " >}}
+(myenv) $ conda list
+# packages in environment at /path/to/myenv:
+# ...
+{{< /highlight >}}
+
+{{< highlight shell-session "prompt=^Apptainer>\ " >}}
+Apptainer> ls
+# Output:
+# containerfile1  containerfile2
+{{< /highlight >}}
+
+```shell-session
+$ echo "hello from shell"
+hello from shell
+(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
+$ ls
+hi txt
+```
+
+```console
+$ echo "hello from console"
+hello from console
+(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
+$ ls
+hi txt
+```
+
+```bash
+$ echo "hello from bash"
+hello from bash
+(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
+$ ls
+hi txt
+```
 
 
 ## Making OpenSSH more user-friendly 
@@ -226,33 +263,6 @@ Last login: Wed Jul 19 12:32:01 2023 from 145.90.39.240
 [YourNetID@srv228 ~]$ hostname # check you are on the bastion server
 srv228.tudelft.net
 ```
-{{% /alert %}}
-
-
-
-### Single Sign-On with bastion server
-
-By default you have to enter your password for every connection (eg, first to the bastion and then to `DAIC`, for all SSH and SCP/SFTP connections from outside university network). It's much more convenient to only have to enter your password once. SSH multiplexing can be configured to reduce these logins by adding the following to the end of the configuration file:
-
-```bash
-$ cat ~/.ssh/config
-Host *
-  ControlMaster auto
-  ControlPath /tmp/ssh-%r@%h:%p
-```
-where:
-* The `ControlPath` specifies where to store the “control socket” for the multiplexed connections. In this case, `%r` refers to the remote login name, `%h` refers to the target host name, and `%p` refers to the destination port. Including this information in the control socket name helps SSH separate control sockets for connections to different hosts.
-* The `ControlMaster` is what activates multiplexing. With the `auto` setting, SSH will try to use a master connection if one exists, but if one doesn’t exist it will create a new one (this is probably the most flexible approach, but you can refer to ssh-config(5) for more details on the other settings).
-
-
-
-{{% alert title="Note" color="info" %}}
- Windows users may need to adapt the `ControlPath` location to match Windows. 
-{{% /alert %}}
-
-
-{{% alert title=Warning color="warning"%}}
-SSH public key logins (passwordless login) *won't work* reliably, because Kerberos authentication is required to access your home directory
 {{% /alert %}}
 
 
@@ -381,6 +391,36 @@ Host daic-login
 
 ```
 {{% /alert%}}
+
+
+
+### Efficient SSH Connections with SSH Multiplexing
+
+By default you have to enter your password for every connection (eg, first to the bastion and then to `DAIC`, for all SSH and SCP/SFTP connections from outside university network). To make this process more convenient, you can configure *SSH multiplexing*, which reduces the number of times you need to authenticate for multiple connections. You can enable this by adding the following to your SSH configuration file: :
+
+```bash
+$ cat ~/.ssh/config
+Host *
+  ControlMaster auto
+  ControlPath /tmp/ssh-%r@%h:%p
+```
+where:
+* The `ControlPath` specifies where to store the “control socket” for the multiplexed connections. `%r` refers to the remote login name, `%h` refers to the target host name, and `%p` refers to the destination port. This ensures that SSH separates control sockets for different connections.
+
+* The `ControlMaster` setting activates multiplexing. With the `auto` setting, SSH will use an existing master connection if available or create a new one when necessary. This configuration helps streamline SSH connections and reduces the need to enter your password for each new session.
+
+
+
+{{% alert title="Note" color="info" %}}
+ Windows users may need to adapt the `ControlPath` location to match Windows. 
+{{% /alert %}}
+
+
+{{% alert title="Important" color="warning"%}}
+SSH public key logins (passwordless login) **are not supported** on DAIC, because [Kerberos authentication](../job-submission/kerberos#kerberos-authentication) is required to access your home directory. You will need to enter your password for each session
+{{% /alert %}}
+
+
 ### Graphical clients
 
 For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "https://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "https://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.

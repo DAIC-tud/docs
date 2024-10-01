@@ -13,6 +13,10 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 
  For DAIC, Table 1 shows the QoS limits on the `general` partition.
 
+<!------- Check that this content is true using:
+sacctmgr list qos
+------>
+
 <div id=daicPartitionsQoS>
 <table>
 <caption> Table 1: The general partition and its operational and per-QoS per-user limits; specific groups use other partitions and QoS

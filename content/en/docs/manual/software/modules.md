@@ -52,3 +52,38 @@ Currently Loaded Modules:
 {{< alert title="Note" color="info" >}}
 For more information about using the module system, run `module help`. 
 {{< /alert >}}
+
+### Compilers and Development Tools
+
+The cluster provides several compilers and development tools. The following table lists the available compilers and development tools. These are available in the `devtoolset` module:
+
+```shell-session
+$ module avail devtoolset
+
+---------------------------------------------------------------------------------------------- /opt/insy/modulefiles ----------------------------------------------------------------------------------------------
+   devtoolset/6    devtoolset/7    devtoolset/8    devtoolset/9    devtoolset/10    devtoolset/11 (L,D)
+
+  Where:
+   L:  Module is loaded
+   D:  Default Module
+
+If the avail list is too long consider trying:
+
+"module --default avail" or "ml -d av" to just list the default modules.
+"module overview" or "ml ov" to display the number of modules for each name.
+
+Use "module spider" to find all possible modules and extensions.
+Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
+
+$ module whatis devtoolset
+devtoolset/11       : Developer Toolset 11 Software Collection
+devtoolset/11       : GNU Compiler Collection, GNU Debugger, and other development, debugging, and performance monitoring tools.
+
+$ module load devtoolset/11
+$ gcc --version
+gcc (GCC) 11.2.1 20220127 (Red Hat 11.2.1-9)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+```

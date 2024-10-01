@@ -58,6 +58,7 @@ For more information about using the module system, run `module help`.
 The cluster provides several compilers and development tools. The following table lists the available compilers and development tools. These are available in the `devtoolset` module:
 
 ```shell-session
+$ module use /opt/insy/modulefiles
 $ module avail devtoolset
 
 ---------------------------------------------------------------------------------------------- /opt/insy/modulefiles ----------------------------------------------------------------------------------------------

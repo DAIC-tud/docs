@@ -4,11 +4,21 @@ weight: 1
 
 ---
 
-## Contributing departments
-
 The Delft AI Cluster (DAIC) - formerly known as INSY-HPC or just plainly HPC-  was initiated within the INSY department in 2015. Later, resources were joined with ST, collectively called _CS@Delft_, and with other departments across faculties in subsequent expansion cycles. 
 
-The cluster is available (only) to users from these participating departments, and access can be arranged through the department's contact persons (see [Access and accounts](/docs/policies#access-and-accounts)).
+
+{{% alert title="Contributing to DAIC?" color="success" %}}
+If you are interested in contributing to the cluster, please contact us via this [TopDesk DAIC Contact Us form](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=889f49ca2fe440539cbd713918432046&openedFromService=true).
+{{% /alert %}}
+
+
+
+
+## Contributing departments
+
+
+
+The cluster is available (only) to users from participating departments, and access can be arranged through the department's contact persons (see [Access and accounts](/docs/policies#access-and-accounts)).
 
 
 <table>

@@ -25,7 +25,7 @@ When resources become available, the scheduler will first look for jobs in the h
 
 > The partition priorities have no impact on resources that are in use, so jobs have to wait until the resources become available.
 
-#### Where to submit jobs?
+#### Partition selection
 The purpose of this tiering is to let you submit your jobs to _multiple partitions_ (e.g., `--partition=mml,insy,general`), allowing the scheduler to determine where the job can start the soonest. This ensures your job has the _highest possible priority_ across different partitions in the cluster, without negatively impacting your or others’ resource access.
 
 Keep in mind that:
@@ -41,10 +41,8 @@ Always ensure you are submitting jobs to partitions accessible by your account. 
 ```shell-session
 $ sacctmgr show user "$USER" withassoc Format='DefaultAccount,Account' --parsable # Check your account(s)
 Def Acct|Account|
-ewi-insy-prb|me-cor|
-ewi-insy-prb|ewi-insy-reit|
-ewi-insy-prb|ewi-insy-prb|
 ewi-insy-prb|ewi-st|
+ewi-insy-prb|ewi-insy-prb|
 
 $ echo "Partition   AllowAccounts"; scontrol show partition -a | \
 > awk '
@@ -62,19 +60,23 @@ Partition   AllowAccounts
 general ALL
 insy ewi-insy,ewi-insy-cgv,ewi-insy-cys,ewi-insy-ii,ewi-insy-ii-influence,ewi-insy-mmc,ewi-insy-prb,ewi-insy-prb-dbl,ewi-insy-prb-prlab,ewi-insy-prb-spclab,ewi-insy-prb-visionlab,ewi-insy-reit,ewi-insy-sdm,ewi-insy-sup
 ```
-Within the submission script for this user, observe the following correct and incorrect examples:
+This shows that the user can use the `ewi-insy-prb` or the `ewi-st` accounts.
+The second command shows that all accounts can submit to the `general` partition and several accounts can submit to the `insy` partition.
+**Replace the `ewi-insy-prb` in the grep line above to get the partition details for your specific account.**
+
+For the example above note the following correct and incorrect examples:
 
 {{% /alert %}}
 
 {{< cardpane  >}}
 
-{{< card code=true header="**Correct**: explicit _default_ account and parition specification" lang=bash >}}
+{{< card code=true header="**Correct**: explicit _default_ account and partition specification" lang=bash >}}
 #SBATCH --account=ewi-insy-prb
-#SBATCH --partition=insy 
+#SBATCH --partition=insy,general
 {{< /card >}}
 
 {{< card code=true header="**Correct**: Implicit _default_ account omitted since it has access to the specified patition" lang=bash >}}
-#SBATCH --partition=insy 
+#SBATCH --partition=insy,general
 {{< /card >}}
 
 {{< /cardpane >}}

@@ -15,6 +15,41 @@ All nodes in DAIC are part of the `general` partition, but other partitions exis
 
 <!------- Check that this content is true using:
 sacctmgr list qos
+
+# show every associations of every user.
+# if user=username is passed, show only associations for the specific user username
+# see "man sacctmgr" for more
+function cri_show_assoc ()
+{
+    sacctmgr -p list associations $@ format=Account,User,Partition,Qos,DefaultQOS tree | column -ts'|'
+}
+
+$ cri_show_assoc user=u
+Account  User  Partition  QOS            Def QOS
+acc1     u     part1      q_acc1_part1     q_acc1_part1
+acc1     u     part2      q_acc1_part2     q_acc1_part2
+acc1     u     part3      q_acc1_part3     q_acc1_part3
+acc1     u     part4      q_acc1_part4     q_acc1_part4
+acc1     u     part5      q_acc1_part5     q_acc1_part5
+acc1     u     part6      q_acc1_part6     q_acc1_part6
+acc1     u     part7      q_acc1_part7     q_acc1_part7
+acc1     u     part7      q_acc1_part7     q_acc1_part7
+acc1     u     part8      q_acc1_part8     q_acc1_part8
+acc1     u     part9      q_acc1_part9     q_acc1_part9
+acc1     u     part10     q_acc1_part10    q_acc1_part10
+acc1     u                q_acc1           q_acc1
+
+# show every QoS definition
+# if name=qosname is passed, show only the specific QoS qosname definition
+# see "man sacctmgr" for more
+function cri_show_qos ()
+{
+    sacctmgr -p list qos $@ format=Name,Priority,GraceTime,GrpTRES,GrpJobs,GrpSubmit,GrpSubmit,MaxTRES,MaxTRESPerUser,MaxJobsPU | column -ts'|'
+}
+
+$ cri_show_qos name=q_acc1
+Name    Priority  GraceTime  GrpTRES  GrpJobs  GrpSubmit  MaxTRES  MaxTRESPU  MaxJobsPU
+q_acc1  0         00:00:00                     2000                cpu=4200
 ------>
 
 <div id=daicPartitionsQoS>

@@ -6,8 +6,9 @@ weight: 6
 
 ## DAIC support & contact:
 If the answer to your question is not found in any of the [Group-specific resources](../help#group-specific-resources), or the [Frequently Asked Questions](../faqs) consult with:
-* DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 
 * DAIC support via the Self [Service Portal](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938).
+
+* DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 
 
 {{% alert title="Note" color="info" %}}
 * The linux bastions and the central storage are general IT facilities, *not* dedicated parts of the DAIC cluster. Direct your questions about those to their respective support teams.

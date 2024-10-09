@@ -80,10 +80,8 @@ $ ssh -X [<YourNetID>@]linux-bastion.tudelft.nl
 
 ## Access from outside university network 
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:
-1. Use TU Delft's EduVPN or other recommended VPN. Once connected to a VPN, you can ssh to DAIC directly, as in [SSH access](#ssh-access). See TU Delft {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN" >}} page, or
-2. Connect via Linux bastion server. In this case, first, you connect (using an SSH or SCP/SFTP client) to the bastion server, and then ssh into DAIC, as depicted in Fig 1. 
 
-{{< figure src="images/connecting_to_hpc.png" caption="Connecting to DAIC from outside TU Delft network" width="500px" >}}
+1. Connect via Linux bastion server. In this case, first, you connect (using an SSH or SCP/SFTP client) to the bastion server, and then ssh into DAIC, as depicted in Figure 1. 
 
 For the linux bastion, if you are an employee or guest, use `linux-bastion.tudelft.nl`. If you are a student (BSc or MSc), then use `student-linux.tudelft.nl` as per the following examples:
 
@@ -134,48 +132,16 @@ Last login: Tue Jul 25 01:32:08 2023 from srv227.tudelft.net
  ```bash
 YourNetID@login1:~$ hostname # check you are in DAIC
 login1.hpc.tudelft.nl
-YourNetID@login1:~$ 
-YourNetID@login1:~$ 
 ```
 
 
-# Test
+2. Use TU Delft's EduVPN or other recommended VPN. Once connected to a VPN, you can ssh to DAIC directly, as in [SSH access](#ssh-access). See TU Delft {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN" >}} page.
 
-{{< highlight shell-session "prompt=^\(myenv\)\ \$ " >}}
-(myenv) $ conda list
-# packages in environment at /path/to/myenv:
-# ...
-{{< /highlight >}}
+{{< figure src="images/connecting_to_hpc.png" caption="Connecting to DAIC from outside TU Delft network" width="500px" >}}
 
-{{< highlight shell-session "prompt=^Apptainer>\ " >}}
-Apptainer> ls
-# Output:
-# containerfile1  containerfile2
-{{< /highlight >}}
-
-```shell-session
-$ echo "hello from shell"
-hello from shell
-(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
-$ ls
-hi txt
-```
-
-```console
-$ echo "hello from console"
-hello from console
-(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
-$ ls
-hi txt
-```
-
-```bash
-$ echo "hello from bash"
-hello from bash
-(myenv) $ conda list # packages in environment at /path/to/myenv: # ... 
-$ ls
-hi txt
-```
+{{% alert title="VPN access trouble?" color="warning" %}}
+If you are having trouble accessing DAIC via the VPN, please report an issue via [this Self-Service link](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=5880a7704835440589808f22666f3579). 
+{{%/alert%}}
 
 
 ## Making OpenSSH more user-friendly 
@@ -201,7 +167,7 @@ where:
 
 
 You can then connect to DAIC by just typing the following command:
-```bash
+```shell-session
 $ ssh daic
 
 The HPC cluster is restricted to authorized users only.

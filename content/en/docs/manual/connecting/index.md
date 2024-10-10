@@ -7,113 +7,75 @@ description: >
 ---
 
 ## SSH access
+
 If you have a valid DAIC account (see [Access and accounts](/docs/policies#access-accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
 
+{{%alert title="SSH clients" color="info"%}}
+Most modern operating systems like Linux, macOS, and Windows 10 include SSH, SCP, and SFTP clients (part of the OpenSSH package) by default. If not, you can install third-party programs like: {{< external-link "https://mobaxterm.mobatek.net/" MobaXterm>}} , {{< external-link "https://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}}, or {{< external-link "https://filezilla-project.org/" "FileZilla" >}}. 
+{{%/alert%}}
 
-### Command line access
-Most modern operating systems, including Linux, macOS and Windows 10, come by default with SSH, SCP and SFTP clients from OpenSSH pre-installed (but you can also use a third-party SSH or SFTP program). To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}), and run the following command: 
+## Access from the TU Delft Network
+
+To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}), and run the following command: 
 
 ```bash
 $ ssh [<YourNetID>@]login.daic.tudelft.nl
 ```
 
-This command logs you in into DAIC's `login1` node, where `<YourNetID>` is your TU Delft's NetID. You can optionally omit the square brackets and their contents if the username on the machine you are connecting from matches your NetID.
+> `<YourNetID>` is your TU Delft NetID. If the username on your machine you are connecting from matches your NetID, you can omit the square brackets and their contents, `[<YourNetID>@]`.
 
-{{% alert title="Note" color="info" %}}
-Currently DAIC has 3 login nodes: `login1`, `login2`, and `login3`. You can connect to any of these nodes as per your needs.  For more on the choice of login nodes, see [DAIC login nodes](/docs/system#login-nodes).
+This will log you in into DAIC's `login1.daic.tudelft.nl` node for now. Note that this setup might change in the future as the system undergoes migration, potentially reducing the number of login nodes..
+
+{{% alert title="Note" color="info"  %}}
+Currently DAIC has 3 login nodes: `login1.daic.tudelft.nl`, `login2.daic.tudelft.nl`, and `login3.daic.tudelft.nl`. You can connect to any of these nodes directly as per your needs.  For more on the choice of login nodes, see [DAIC login nodes](/docs/system#login-nodes).
 {{% /alert %}}
 
 
 
-
-
 {{% alert title="Note" color="info" %}}
- The first time that you connect to an SSH server, you will be asked to confirm the server's identity. This identity will be used in future sessions to detect (evil) server changes. If the SSH client later on detects a change, do not connect, unless you have been informed that the identity was changed legitimately. 
-
+Upon first connection to an SSH server, you will be prompted to confirm the server’s identity, with a message similar to:
 ```bash
 The authenticity of host 'login.daic.tudelft.nl (131.180.183.244)' can't be established.
 ED25519 key fingerprint is SHA256:MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'login.daic.tudelft.nl' (ED25519) to the list of known hosts.
 ```
+A distinct fingerprint will be shown for each login node, as below:
 {{% /alert %}}
 
-The server then asks you for your password, so enter it to proceed to the welcome screen. Note that the password you print will not appear:
+{{< tabpane  langEqualsHeader=true >}}
+{{% tab header="**Fingerprints of login nodes**:" disabled=true right=false /%}}
 
-```bash
-The HPC cluster is restricted to authorized users only.
+{{< tab header="`login1`" lang=bash >}}
+SHA256:MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM
+{{< /tab >}}
 
-YourNetID@login.daic.tudelft.nl's password: 
-Last login: Mon Jul 24 18:36:23 2023 from tud262823.ws.tudelft.net
-#########################################################################
-#                                                                       #
-# Welcome to login1, login server of the HPC cluster.                   #
-#                                                                       #
-# By using this cluster you agree to the terms and conditions.          #
-#                                                                       #
-# For information about using the HPC cluster, see:                     #
-# https://login.hpc.tudelft.nl/                                         #
-#                                                                       #
-# The bulk, group and project shares are available under /tudelft.net/, #
-# your windows home share is available under /winhome/$USER/.           #
-#                                                                       #
-#########################################################################
- 18:40:16 up 51 days,  6:53,  9 users,  load average: 0,82, 0,36, 0,53
-YourNetID@login1:~$ hostname  # show the current hostname
-login1.hpc.tudelft.nl
-YourNetID@login1:~$ echo $HOME  # show the path to your home directory
-/home/nfs/YourNetID
-YourNetID@login1:~$ pwd  # show current path
-/home/nfs/YourNetID
-YourNetID@login1:~$ exit  # exit current connection
-logout
-Connection to login.daic.tudelft.nl closed.
-```
-In this example, the user, `YourNetID`, is logged in via the login node `login1.hpc.tudelft.nl` as can be seen from the `hostname` output.  The user has landed in the `$HOME` directory, as can be seen by printing its value, and checked by the `pwd` command. Finally, the `exit` command is used to exit the cluster.
+{{< tab header="`login2`" lang=bash >}}
+SHA256:MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM
+{{< /tab >}}
+
+{{< tab header="`login3`" lang=bash >}}
+SHA256:O3AjQQjCfcrwJQ4Ix4dyGaUoYiIv/U+isMT5+sfeA5Q
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+{{% alert title="" color="info" %}}
+If you notice any discrepancy in the key fingerprint, do not proceed unless notified of legitimate changes.
+{{% /alert %}}
 
 
-Alternatively, if you like to run graphical applications on DAIC, you need to enable X11 forwarding via the `-X` option as follows:
-
-```bash
-$ ssh -X [<YourNetID>@]linux-bastion.tudelft.nl
-```
-
-## Access from outside university network 
-Direct access to DAIC from _outside the university network_ is blocked by a firewall. Thus, to access DAIC, there are two options. You can either:
-
-1. Connect via Linux bastion server. In this case, first, you connect (using an SSH or SCP/SFTP client) to the bastion server, and then ssh into DAIC, as depicted in Figure 1. 
-
-For the linux bastion, if you are an employee or guest, use `linux-bastion.tudelft.nl`. If you are a student (BSc or MSc), then use `student-linux.tudelft.nl` as per the following examples:
+Once identity confirmed, enter your password when prompted (nothing will be printed as you type your password):
 
 ```shell-session
-$ hostname # check this is your local machine
-$ ssh YourNetID@linux-bastion.tudelft.nl
-The authenticity of host 'linux-bastion.tudelft.nl (131.180.123.195)' can't be established.
-ED25519 key fingerprint is SHA256:VJUFsQkIebODETsXwczkInnRrpdYYqAZDbsoKP1we+A.
-This key is not known by any other names                                                                     
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes 
-Warning: Permanently added 'linux-bastion.tudelft.nl' (ED25519) to the list of known hosts.
-YourNetID@linux-bastion.tudelft.nl's password:                                                                
-                ____  ____ _____                                         
- ___ _ ____   _|___ \|___ \___  |                                                                            
-/ __| '__\ \ / / __) | __) | / /                                                                             
-\__ \ |   \ V / / __/ / __/ / /                                                                              
-|___/_|    \_/ |_____|_____/_/                                                                               
-                                                                         
-YourNetID@srv227:~$
-YourNetID@srv227:~$ hostname # check you are on the bastion server
-srv227.tudelft.net                      
-YourNetID@srv227:~$                                                      
-YourNetID@srv227:~$ ssh login.daic 
-The authenticity of host 'login.daic (131.180.183.244)' can't be established.
-ECDSA key fingerprint is SHA256:2iPjH/j/Tf5JZU4OJyLpASA/GZ40eCqvcQnSSa++3nQ.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added 'login.daic' (ECDSA) to the list of known hosts.
-                           
 The HPC cluster is restricted to authorized users only.
+YourNetID@login.daic.tudelft.nl's password:
+```
 
-YourNetID@login.daic's password: 
-Last login: Tue Jul 25 01:32:08 2023 from srv227.tudelft.net
+Next, a welcome message will be shown:
+
+```shell-session
+Last login: Mon Jul 24 18:36:23 2023 from tud262823.ws.tudelft.net
  #########################################################################
  #                                                                       #
  # Welcome to login1, login server of the HPC cluster.                   #
@@ -127,15 +89,80 @@ Last login: Tue Jul 25 01:32:08 2023 from srv227.tudelft.net
  # your windows home share is available under /winhome/$USER/.           #
  #                                                                       #
  #########################################################################
- 01:28:15 up 51 days, 13:41,  1 user,  load average: 0,10, 0,13, 0,14
- ```
- ```bash
-YourNetID@login1:~$ hostname # check you are in DAIC
-login1.hpc.tudelft.nl
+ 18:40:16 up 51 days,  6:53,  9 users,  load average: 0,82, 0,36, 0,53
 ```
+ And, now you can now verify your environment with basic commands:
+
+```bash
+YourNetID@login1:~$ hostname  # show the current hostname
+login1.hpc.tudelft.nl
+YourNetID@login1:~$ echo $HOME  # show the path to your home directory
+/home/nfs/YourNetID
+YourNetID@login1:~$ pwd  # show current path
+/home/nfs/YourNetID
+YourNetID@login1:~$ exit  # exit current connection
+logout
+Connection to login.daic.tudelft.nl closed.
+```
+In this example, the user, `YourNetID`, is logged in via the login node `login1.hpc.tudelft.nl` as can be seen from the `hostname` output.  The user has landed in the `$HOME` directory, as can be seen by printing its value, and checked by the `pwd` command. Finally, the `exit` command is used to exit the cluster.
 
 
-2. Use TU Delft's EduVPN or other recommended VPN. Once connected to a VPN, you can ssh to DAIC directly, as in [SSH access](#ssh-access). See TU Delft {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN" >}} page.
+{{% alert title="Graphical applications" color="warning" %}}
+
+We discourage running graphical applications (via `ssh -X`) on DAIC login nodes, as GUI applications are not supported on the HPC systems.
+
+{{% /alert %}}
+
+## Access from outside university network 
+Direct access to DAIC from _outside the university network_ is blocked by a firewall. To access DAIC, you have two options:
+
+### 1.  Using the Linux Bastion Server
+
+To connect to DAIC via the Linux Bastion Server:
+
+1. SSH into the bastion server. The bastion server acts as a gateway to the DAIC cluster.
+    - **If you are an _employee or guest_**, use `linux-bastion.tudelft.nl`.
+    - **If you are a _student (BSc or MSc)_** use ` student-linux.tudelft.nl`.  
+
+    ```shell-session
+    ssh [<YourNetID>@l]inux-bastion.tudelft.nl
+    ```
+    As with DAIC login nodes, the first time you attempt to login to the bastion, you will be asked to confirm the server's identity. Upon confirmation and entering your password, a welcome screen will be shown:
+
+    ```shell-session
+    The authenticity of host 'linux-bastion.tudelft.nl (131.180.123.195)' can't be established.
+    ED25519 key fingerprint is SHA256:VJUFsQkIebODETsXwczkInnRrpdYYqAZDbsoKP1we+A.
+    This key is not known by any other names                                                                     
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes 
+    Warning: Permanently added 'linux-bastion.tudelft.nl' (ED25519) to the list of known hosts.
+    YourNetID@linux-bastion.tudelft.nl's password:                                                                
+                    ____  ____ _____                                         
+     ___ _ ____   _|___ \|___ \___  |                                                                            
+    / __| '__\ \ / / __) | __) | / /                                                                             
+    \__ \ |   \ V / / __/ / __/ / /                                                                              
+    |___/_|    \_/ |_____|_____/_/                                                                               
+
+    YourNetID@srv227:~$
+    ```
+
+
+2. Once on the bastion server, SSH into DAIC as shown in [SSH access](#ssh-access).
+
+    ```bash
+    YourNetID@srv227:~$ ssh login.daic.tudelft.nl # Or any other login node
+    ```
+
+
+{{% alert title="Tip" color="info" %}}
+To simplify this procedure, use SSH’s proxy jump feature to access DAIC via the bastion server:
+```shell-session
+$ ssh -J [<YourNetID>@]linux-bastion.tudelft.nl [<YourNetID>@]login.daic.tudelft.nl
+```
+{{% /alert %}}
+
+### 2. Using a VPN
+
+You can also use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](##access-from-the-tu-delft-network). 
 
 {{< figure src="images/connecting_to_hpc.png" caption="Connecting to DAIC from outside TU Delft network" width="500px" >}}
 
@@ -144,241 +171,95 @@ If you are having trouble accessing DAIC via the VPN, please report an issue via
 {{%/alert%}}
 
 
-## Making OpenSSH more user-friendly 
+## Simplifying SSH with Configuration Files
 
-### Configuration files
+To simplify SSH connections, you can store configurations in a file  _in your local machine_. The SSH configuration file can be created (or found, if already exists) in `~/.ssh/config` on Linux/Mac systems, or in `C:\Users\<YourUserName>\.ssh` on Windows.
 
-For convenience, you can place certain information about your SSH connections to a configuration file _in your local machine_. The SSH configuration file can be found in `~/.ssh/config` on Linux systems, and in `C:\Users\<YourUserName>\.ssh` on Windows.
+For example, on a Linux system, you can have the following lines in the configuration file:
 
-For example, on a Linux system, you can place the following lines in the configuration file:
-
-```bash
-$ cat ~/.ssh/config
+{{< card code=true header="**`~/.ssh/config`**" lang="bash" >}}
 Host daic
-  HostName login.daic.tudelft.nl
+  HostName login.daic.tudelft.nl # Or any other login node
   User <YourNetID>
-```
-
-where:
-* The `Host` keyword starts the SSH configuration block and specifies the name (or pattern of names, like `daic` in this example) to which the configuration entries will apply. 
-* The `HostName` is the actual hostname to log into. Numeric IP addresses are also permitted (both on the command line and in HostName specifications).
-* The `User` is the login username. This is especially important when the username differs between your machine and the remote server/cluster.
-* The `Port` is the port number on the remote host. Port 22 is the default port for ssh.
-
-
-You can then connect to DAIC by just typing the following command:
-```shell-session
-$ ssh daic
-
-The HPC cluster is restricted to authorized users only.
-
-YourNetID@login.daic.tudelft.nl's password: 
-Last login: Tue Jul 25 02:24:49 2023 from srv228.tudelft.net
-#########################################################################
-#                                                                       #
-# Welcome to login1, login server of the HPC cluster.                   #
-#                                                                       #
-# By using this cluster you agree to the terms and conditions.          #
-#                                                                       #
-# For information about using the HPC cluster, see:                     #
-# https://login.hpc.tudelft.nl/                                         #
-#                                                                       #
-# The bulk, group and project shares are available under /tudelft.net/, #
-# your windows home share is available under /winhome/$USER/.           #
-#                                                                       #
-#########################################################################
- 02:24:59 up 51 days, 14:38,  1 user,  load average: 0,08, 0,10, 0,13
-YourNetID@login1:~$
-YourNetID@login1:~$ hostname # check you are in DAIC
-login1.hpc.tudelft.nl
-```
-
-{{% alert title="Warning" color="info" %}}
-This method of access applies only when connecting from within TU Delft's network. If connecting from outside the university network, it is also convenient to add `bastion` to your ssh configuration file as follows: 
-
-```bash
 Host bastion
-  Hostname linux-bastion.tudelft.nl # For employees and guests. If you are student, use: student-linux.tudelft.nl instead
+  Hostname linux-bastion.tudelft.nl # If employee/guest. Else, use: student-linux.tudelft.nl instead
   User <YourNetID>
   PreferredAuthentications password
+{{< /card >}}
+
+
+where:
+> * The `Host` keyword starts the SSH configuration block and specifies the name (or pattern of names, like `daic` in this example) to which the configuration entries will apply. 
+> * The `HostName` is the actual hostname to log into. Numeric IP addresses are also permitted (both on the command line and in HostName specifications).
+> * The `User` is the login username. This is especially important when the username differs between your machine and the remote server/cluster.
+
+
+You can then connect to DAIC from inside TU Delft network by just typing the following command:
+
+```shell-session
+$ ssh daic
 ```
 
- You can then connect simply by:
+Or, if outside the university network, you can connect via the bastion server:
 
-```bash
-$ hostname # check you are on your local machine
-$ ssh bastion 
-YourNetID@linux-bastion-ex.tudelft.nl's password: 
-                ____  ____  ___                            
- ___ _ ____   _|___ \|___ \( _ )
-/ __| '__\ \ / / __) | __) / _ \
-\__ \ |   \ V / / __/ / __/ (_) |
-|___/_|    \_/ |_____|_____\___/
-                                                           
-
-!! Attention dear users !!
-
-=====
-This server is not meant for storing large files.
-It's mainly for hopping to another server and storing your ssh keys.
-Your homedirectory is therefore limited in space.
-If you store large files on this server anyway we reserve the right to remove them.
-=====
-Last login: Wed Jul 19 12:32:01 2023 from 145.90.39.240
-[YourNetID@srv228 ~]$ 
-[YourNetID@srv228 ~]$ hostname # check you are on the bastion server
-srv228.tudelft.net
+```shell-session
+$ ssh bastion
 ```
-{{% /alert %}}
+
+And, similarly, you can create/modify the configuration file on the `bastion` server (in `~/ssh/config`) by adding a `Host` configuration block for DAIC as above, to simplify the connection to DAIC from there. 
 
 
-### ssh proxy jump support
+## ssh proxy jump feature
 
 To connect directly from your machine to a DAIC login node (when outside the university network), use the ssh _Jump Host_ option to jump the bastion server as follows:
 
 ``` bash
-$ ssh -J <user@jump_host> <user@target_host>
-```
-  where:
-  * `<user@jump_host>`: The user and hostname (or IP address) of the jump host, the intermediary server you can reach directly. 
-  * `<user@target_host>`: This is the user and hostname (or IP address) of the final target host, the server you want to connect to.
-
-
-Thus, to login to DAIC (when outside the university network):
-
-```bash
 $ ssh -J YourNetID@linux-bastion.tudelft.nl YourNetID@login.daic.tudelft.nl # use `student-linux.tudelft.nl` instead if you are a student
-YourNetID@linux-bastion.tudelft.nl's password: 
-
-The HPC cluster is restricted to authorized users only.
-
-YourNetID@login.hpc.tudelft.nl's password: 
-Last login: Wed Jan 17 06:37:15 2024 from srv227.tudelft.net
-#########################################################################
-#									#
-# Welcome to login1, login server of the HPC cluster.			#
-# 									#
-# By using this cluster you agree to the terms and conditions.		#
-#									#
-# For information about using the HPC cluster, see:			#
-# https://login.hpc.tudelft.nl/						#
-#									#
-# The bulk, group and project shares are available under /tudelft.net/,	#
-# your windows home share is available under /winhome/$USER/.		#
-#									#
-#########################################################################
- 06:39:25 up 25 days, 14:21,  4 users,  load average: 0,39, 0,26, 0,24
-YourNetID@login1:~$ 
-YourNetID@login1:~$ 
 ```
 
 For convenience, you can also edit your ssh configuration file, `~/.ssh/config`, on your local computer as follows: 
 
 ```bash
-Host daic-login
+Host daic
   Hostname login.daic.tudelft.nl
   User <YourNetID>
   ProxyJump linux-bastion.tudelft.nl # For employees and guests. If you are a student, use: student-linux.tudelft.nl instead
 ```
 
 Where:
-* `HostName`: Specifies the actual hostname or IP address of the target host (a DAIC login node in this case).
-* `User`: Specifies the username to use when connecting to the target host. This is your TU Delft's NetID
-*`ProxyJump`: Specifies the jump server, bastion in this case. 
-
-
-{{% alert title="Note" color="info" %}}
-Putting it all together, your `~/.ssh/config` file could simply be:
-
-```bash
-Host bastion
-  Hostname linux-bastion.tudelft.nl # For employees and guests. If you are student, use: student-linux.tudelft.nl instead
-  User <YourNetID>
-  PreferredAuthentications password
-Host daic-login
-  Hostname login.daic.tudelft.nl
-  User <YourNetID>
-  ProxyJump bastion
-```
-
-{{% /alert %}}
+> *`ProxyJump`: Specifies the jump server, bastion in this case. 
 
 
 
-You can then simply use: `ssh daic-login` to login. 
-
-```bash
-$ hostname # check this is your local machine
-$ ssh daic-login
-YourNetID@linux-bastion-ex.tudelft.nl's password: 
-
-The HPC cluster is restricted to authorized users only.
-
-YourNetID@login.hpc.tudelft.nl's password: 
-Last login: Tue Jul 25 02:13:33 2023 from srv228.tudelft.net
-#########################################################################
-#                                                                       #
-# Welcome to login1, login server of the HPC cluster.                   #
-#                                                                       #
-# By using this cluster you agree to the terms and conditions.          #
-#                                                                       #
-# For information about using the HPC cluster, see:                     #
-# https://login.hpc.tudelft.nl/                                         #
-#                                                                       #
-# The bulk, group and project shares are available under /tudelft.net/, #
-# your windows home share is available under /winhome/$USER/.           #
-#                                                                       #
-#########################################################################
- 02:13:56 up 51 days, 14:27,  1 user,  load average: 0,02, 0,10, 0,12
-YourNetID@login1:~$ 
-YourNetID@login1:~$ hostname
-login1.hpc.tudelft.nl
-```
-
+You can then simply use: `ssh daic` to login. 
 
 {{%alert title="Note" color="info" %}}
 When using the _ProxyJump feature_, you will be prompted for your password twice: once for the bastion server, and then for DAIC
 {{%/alert%}}
 
-{{%alert title="Advanced: Conditional proxy jumps" color="info" %}}
-
-To flexibly switch between connecting to DAIC directly (when within university network) and connecting via bastion (when outside the network), the ssh `Match exec` directive can be used as follows:
- 
-```bash 
-Host bastion
-  Hostname linux-bastion-ex.tudelft.nl
-  User <YourNetID>
-  PreferredAuthentications password
-Match host daic-login !exec "nc -z -w 1 login.daic.tudelft.nl %p"
-    ProxyJump bastion
-Host daic-login
-  Hostname login.daic.tudelft.nl
-  User <YourNetID>
-
-```
-{{% /alert%}}
 
 
 
-### Efficient SSH Connections with SSH Multiplexing
+## Efficient SSH Connections with SSH Multiplexing
 
-By default you have to enter your password for every connection (eg, first to the bastion and then to `DAIC`, for all SSH and SCP/SFTP connections from outside university network). To make this process more convenient, you can configure *SSH multiplexing*, which reduces the number of times you need to authenticate for multiple connections. You can enable this by adding the following to your SSH configuration file: :
+SSH multiplexing allows you to reuse an existing connection for multiple SSH sessions, reducing the time spent entering your password for every new connection. After the first connection is established, subsequent connections will be much faster since the existing control connection is reused.
 
-```bash
-$ cat ~/.ssh/config
+To enable SSH multiplexing, add the following lines to your SSH configuration file. Assuming a Linux/Mac system, you can add the following lines to `~/.ssh/config`:
+
+{{< card code=true header="**`~/.ssh/config`**" lang="bash" >}}
 Host *
   ControlMaster auto
   ControlPath /tmp/ssh-%r@%h:%p
-```
+{{< /card >}}
+
 where:
-* The `ControlPath` specifies where to store the “control socket” for the multiplexed connections. `%r` refers to the remote login name, `%h` refers to the target host name, and `%p` refers to the destination port. This ensures that SSH separates control sockets for different connections.
+> * The `ControlPath` specifies where to store the “control socket” for the multiplexed connections. `%r` refers to the remote login name, `%h` refers to the target host name, and `%p` refers to the destination port. This ensures that SSH separates control sockets for different connections.
+> * The `ControlMaster` setting activates multiplexing. With the `auto` setting, SSH will use an existing master connection if available or create a new one when necessary. This configuration helps streamline SSH connections and reduces the need to enter your password for each new session.
 
-* The `ControlMaster` setting activates multiplexing. With the `auto` setting, SSH will use an existing master connection if available or create a new one when necessary. This configuration helps streamline SSH connections and reduces the need to enter your password for each new session.
-
-
+This setup will speed up connections after the first one and reduce the need to repeatedly enter your password for each new SSH session.
 
 {{% alert title="Note" color="info" %}}
- Windows users may need to adapt the `ControlPath` location to match Windows. 
+On Windows you may need to adjust the `ControlPath` to match a valid path for your operating system. For example, instead of `/tmp/`, you might use a path like `C:/Users/<YourUserName>/AppData/Local/Temp/`.
 {{% /alert %}}
 
 
@@ -387,18 +268,3 @@ SSH public key logins (passwordless login) **are not supported** on DAIC, becaus
 {{% /alert %}}
 
 
-### Graphical clients
-
-For Windows, the (free) graphical clients PuTTY (SSH) and FileZilla (SFTP) are available (see official {{< external-link "https://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}} and {{< external-link "https://filezilla-project.org/" "FileZilla page" >}}). On machines with a TUD-configured Windows installation, you can find PuTTY under `Start -> All Programs -> Tools -> Putty Suite -> PuTTY` and FileZilla under `Start -> All Programs -> Internet -> Filezilla FTP Client-> FileZilla`.
-
-In Linux, you can use your default file manager (`Konqueror` or `Nautilus`) for SFTP, and just run SSH from a terminal. PuTTY (SSH) and FileZilla (SFTP) are available, but have to be installed by hand.
-
-Machines with a TUD-configured Mac OS X installation come with Fetch (SFTP) installed in the Application folder. FileZilla (SFTP) is available, but has to be installed. For SSH, it's probably easiest to just run SSH from a terminal. 
-
-<!--
-#### ~~PuTTY settings~~
-
- ~~The following screen-shots show the most important settings for using PuTTY with the TU Delft linux servers. Unless otherwise specified, just use the default values.~~
-
-#### ~~FileZilla settings~~
--->  

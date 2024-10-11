@@ -6,7 +6,7 @@ description: >
   How to move data to DAIC.
 ---
 
-Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute servers. If possible use one of these for files that you want to access on both your personal computer and the compute servers. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
+Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute nodes. If possible use one of these for files that you want to access on both your personal computer and the compute nodes. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
 
 ## SCP
 

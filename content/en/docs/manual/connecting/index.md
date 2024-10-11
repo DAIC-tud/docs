@@ -18,8 +18,9 @@ Most modern operating systems like Linux, macOS, and Windows 10 include SSH, SCP
 
 To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}), and run the following command: 
 
-```bash
-$ ssh [<YourNetID>@]login.daic.tudelft.nl
+```shell-session
+$ ssh <YourNetID>@login.daic.tudelft.nl # Or
+$ ssh login.daic.tudelft.nl             # If your username matches your NetID 
 ```
 
 > `<YourNetID>` is your TU Delft NetID. If the username on your machine you are connecting from matches your NetID, you can omit the square brackets and their contents, `[<YourNetID>@]`.
@@ -124,8 +125,9 @@ To connect to DAIC via the Linux Bastion Server:
     - **If you are an _employee or guest_**, use `linux-bastion.tudelft.nl`.
     - **If you are a _student (BSc or MSc)_** use ` student-linux.tudelft.nl`.  
 
-    ```shell-session
-    ssh [<YourNetID>@l]inux-bastion.tudelft.nl
+    ```bash
+    ssh <YourNetID>@linux-bastion.tudelft.nl #OR
+    ssh linux-bastion.tudelft.nl             # If your username matches your NetID
     ```
     As with DAIC login nodes, the first time you attempt to login to the bastion, you will be asked to confirm the server's identity. Upon confirmation and entering your password, a welcome screen will be shown:
 

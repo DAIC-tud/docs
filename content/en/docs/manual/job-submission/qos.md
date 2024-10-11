@@ -57,7 +57,7 @@ q_acc1  0         00:00:00                     2000                cpu=4200
 <caption> Table 1: The general partition and its operational and per-QoS per-user limits; specific groups use other partitions and QoS
 </caption>
 <tfoot><tr><td colspan="11"><font color="gray">
- *infinite QoS jobs will be killed when servers go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
+ *infinite QoS jobs will be killed when compute nodes go down, eg, during maintenance. It is not recommended to submit jobs with this QoS.
 </font></td></tr></tfoot>
 <thead>
   <tr>

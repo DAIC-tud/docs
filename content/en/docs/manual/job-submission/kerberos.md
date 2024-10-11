@@ -88,7 +88,7 @@ $ auks -a
 Auks API request succeed
 ```
 
-* To automatically renew your ticket in Slurm’s cache until you change your NetID password, run the following on the `login1` server:
+* To automatically renew your ticket in Slurm’s cache until you change your NetID password, run the following on the `login1` node:
 
 ```bash
 $ install_keytab
@@ -99,7 +99,7 @@ Installed keytab.
 You need to rerun this command whenever you change your NetID password (at least every 6 months). Otherwise, the automatic renewal will not work and you will receive a warning e-mail.
 
 ### Renewal using `screen`
-On the compute servers, the `screen` program has been modified to allow jobs to run unattended for up to 7 days. It creates a private ticket cache (to prevent the cache from being destroyed at logout) and automatically renews your ticket up to the maximum renewable life. For example, start MATLAB in Screen with `screen matlab` (the order is important!).
+On the compute nodes, the `screen` program has been modified to allow jobs to run unattended for up to 7 days. It creates a private ticket cache (to prevent the cache from being destroyed at logout) and automatically renews your ticket up to the maximum renewable life. For example, start MATLAB in Screen with `screen matlab` (the order is important!).
 
 ```bash
 $ screen matlab

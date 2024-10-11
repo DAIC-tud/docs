@@ -7,7 +7,7 @@ description: >
 ---
 
 ## General software
-Most common general software, like programming languages and libraries, is installed on the DAIC servers. 
+Most common general software, like programming languages and libraries, is installed on the DAIC nodes. 
 To check if the program that you need is pre-installed, you can simply try to start it:
 
 ```bash

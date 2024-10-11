@@ -14,6 +14,8 @@ If you have a valid DAIC account (see [Access and accounts](/docs/policies#acces
 Most modern operating systems like Linux, macOS, and Windows 10 include SSH, SCP, and SFTP clients (part of the OpenSSH package) by default. If not, you can install third-party programs like: {{< external-link "https://mobaxterm.mobatek.net/" MobaXterm>}} , {{< external-link "https://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}}, or {{< external-link "https://filezilla-project.org/" "FileZilla" >}}. 
 {{%/alert%}}
 
+{{< figure src="/img/DAIC_partitions.png" caption="Connecting to DAIC from inside and outside TU Delft network" ref="fig:daic_partitions" width="750px">}}
+
 ## Access from the TU Delft Network
 
 To connect to DAIC _within TU Delft network_ (ie, via eduram or wired connection), open a command-line interface (prompt, or terminal, see {{< external-link "https://en.wikipedia.org/wiki/Command-line_interface" "Wikipedia's CLI page" >}}), and run the following command: 
@@ -166,7 +168,6 @@ $ ssh -J [<YourNetID>@]linux-bastion.tudelft.nl [<YourNetID>@]login.daic.tudelft
 
 You can also use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](##access-from-the-tu-delft-network). 
 
-{{< figure src="images/connecting_to_hpc.png" caption="Connecting to DAIC from outside TU Delft network" width="500px" >}}
 
 {{% alert title="VPN access trouble?" color="warning" %}}
 If you are having trouble accessing DAIC via the VPN, please report an issue via [this Self-Service link](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=5880a7704835440589808f22666f3579). 

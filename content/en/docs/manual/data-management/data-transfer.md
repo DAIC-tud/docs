@@ -87,37 +87,15 @@ Use quotes when file or folder names contain spaces or special characters.
 
     This command transfers files from a local source to a remote destination.
 
-### Examples
+### Options in rsync
 
-- **Synchronize a local directory with a remote directory:**
-    ```bash
-    rsync -avz /path/to/local/dir user@remote_host:/path/to/remote/dir
-    ```
+Commonly used options in `rsync` with DAIC are:
 
-    This synchronizes a local directory with a remote directory, using archive mode (`-a`) to preserve file attributes, verbose mode (`-v`) for detailed output, and compression (`-z`) for efficient transfer.
-
-- **Synchronize a remote directory with a local directory:**
-    ```bash
-    rsync -avz user@remote_host:/path/to/remote/dir /path/to/local/dir
-    ```
-
-    This transfers files from a remote directory to a local directory, using the same options as the previous example.
-
-- **Delete files in the destination that are not present in the source:**
-    ```bash
-    rsync -av --delete /path/to/source/dir /path/to/destination/dir
-    ```
-
-    This synchronizes the source and destination directories and deletes files in the destination that are not in the source.
-
-- **Exclude certain files or directories during transfer:**
-    ```bash
-    rsync -av --exclude='*.tmp' /path/to/source/dir /path/to/destination/dir
-    ```
-
-    This synchronizes the source and destination directories, excluding files with the `.tmp` extension.
-
-### Other Options in rsync
+- `-a` 	for recursion and to preserve almost everything
+- `-z` 	compress file data during the transfer
+- `-v `	verbose mode to display information while copying
+- `--progress` 	show progress of files during transfer
+- `--no-perms` 	don’t preserve file permissions
 
 In addition to the commonly used options, `rsync` provides several other options for more advanced control and customization during file transfers:
 
@@ -156,6 +134,45 @@ In addition to the commonly used options, `rsync` provides several other options
 - `--progress`: Displays the progress of the transfer, including the speed and the number of bytes transferred. This is useful for monitoring long transfers and seeing how much data has been copied so far.
 
 These options, along with others, provide additional flexibility and control over your `rsync` transfers, allowing you to fine-tune the synchronization process to meet your specific needs.
+
+
+### Examples
+
+- **Copy data to project drives**: use the `--no-perms` option:
+    ```bash
+    rsync -av --no-perms </path/to/local/dir> user@login.daic.tudelft.nl:/tudelft.net/staff-umbrella/<project-id>
+    ```
+
+    This command copies files and directories from a local source to a remote destination, preserving file attributes except for permissions.
+
+- **Synchronize a local directory with a remote directory:**
+    ```bash
+    rsync -avz /path/to/local/dir user@remote_host:/path/to/remote/dir
+    ```
+
+    This synchronizes a local directory with a remote directory, using archive mode (`-a`) to preserve file attributes, verbose mode (`-v`) for detailed output, and compression (`-z`) for efficient transfer.
+
+- **Synchronize a remote directory with a local directory:**
+    ```bash
+    rsync -avz user@remote_host:/path/to/remote/dir /path/to/local/dir
+    ```
+
+    This transfers files from a remote directory to a local directory, using the same options as the previous example.
+
+- **Delete files in the destination that are not present in the source:**
+    ```bash
+    rsync -av --delete /path/to/source/dir /path/to/destination/dir
+    ```
+
+    This synchronizes the source and destination directories and deletes files in the destination that are not in the source.
+
+- **Exclude certain files or directories during transfer:**
+    ```bash
+    rsync -av --exclude='*.tmp' /path/to/source/dir /path/to/destination/dir
+    ```
+
+    This synchronizes the source and destination directories, excluding files with the `.tmp` extension.
+
 
 
 <!--

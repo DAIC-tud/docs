@@ -8,6 +8,11 @@ description: >
 
 Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute nodes. If possible use one of these for files that you want to access on both your personal computer and the compute nodes. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
 
+
+{{% alert title="Mounting folders" color="info" %}}
+Besides the commands below, there are multiple ways to upload and download code and data to and from the central storage. The officially advised way would be either via direct mount or via `sftp.tudelft.nl`. Find more information [here](https://filelist.tudelft.nl/Calendar/2024/08%20August/Project%20storage%20instructions.pdf)
+{{% /alert %}}
+
 ## SCP
 
 Both your Linux and Windows Personal Storage and the Project and Group Storage are also available world-wide via an SCP/SFTP client. This is the simplest transfer method via the `scp` command, which has the following basic syntax:

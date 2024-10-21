@@ -17,8 +17,6 @@ This guide provides the basic steps to get you started with the Delft AI Cluster
 If you join the DAIC community channel on [Mattermost](https://mattermost.tudelft.nl/daic/channels/town-square), you'll have access to exclusive resources and support.
 {{< /alert >}}
 
-
-
 ## General Workflow
 
 The interactive diagram below outlines the general workflow when working with the Delft AI Cluster (DAIC) cluster. Each step links to detailed documentation.
@@ -30,8 +28,6 @@ title: "Cluster Workflow"
 ---
 flowchart TB
 
-    classDef orange fill:#FFA600,stroke:#FF6C00,stroke-width:2px;
-    classDef blue fill:#0076C2,stroke:#005A8C,stroke-width:2px;
     classDef cyan fill:#00A6D6,stroke:#007A99,stroke-width:2px;
     classDef white fill: #FFFFFF,stroke:#000000,stroke-width:2px;
     classDef yellow fill:#FFB81C,stroke:#FF8C00,stroke-width:2px;
@@ -41,46 +37,43 @@ flowchart TB
     Prerequisites:::yellow
     Quickstart:::green
     Resources:::darkgreen
-    %%Reminder:::orange
-    codeWorkflow:::white
-    %%Workflow:::cyan
+    Reminder:::white
+    Workflow:::cyan
 
+    subgraph Practical[" "]
+        direction RL
 
-    subgraph Workflow 
-        direction TB    
-        subgraph codeWorkflow
-            direction TB
-            A["Develop code locally, then port code to the cluster" ]
-            C[Set up software and dependencies in the cluster]
-            A --> C 
+        subgraph Workflow[" "]
+            direction TB    
+            C[Set up software & dependencies in DAIC]
 
+            D[Transfer data to DAIC]
+
+            E["Test interactively"]
+
+            F[Submit jobs & Monitor progress]
+            H[Download results & clean up ]
+
+            D --> E
+            C --> E
+            E --> F --> H 
+            
             click C "/docs/manual/software/" "Software setup"
+            click D "/docs/manual/data-management/data-transfer" "Data transfer methods"
+            click E "/docs/manual/job-submission/job-interactive" "Interactive jobs on compute nodes"
+            click F "/docs/manual/job-submission/job-scripts" "Job submission"
+            click H "/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails" "How do I clean up tmp?"
         end
+        subgraph  local["Develop locally, then port code"]
+        end
+    end  
 
-        D[Port data to the cluster]
-
-        E["Test in interactive session"]
-
-        F[Submit batch jobs & Monitor job progress]
-        H[Download final results & Delete intermediate files ]
-
-        D --> E
-        codeWorkflow --> E
-        E --> F --> H 
-
-        click D "/docs/manual/data-management/data-transfer" "Data transfer methods"
-        click E "/docs/manual/job-submission/job-interactive" "Interactive jobs on compute nodes"
-        click F "/docs/manual/job-submission/job-scripts" "Job submission"
-        click H "/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails" "How do I clean up tmp?"
-        
-    end    
-
-    subgraph Reminder
+    subgraph Reminder[" "]
         subgraph Resources
             direction LR
             r0@{ shape: hex, label: "DAIC support resources"}
             r1@{ shape: hex, label: "Handy commands on DAIC"}
-            r2@{ shape: hex, label: "Basics of working with the command line" }
+            r2@{ shape: hex, label: "Command line basics" }
 
             click r0 "/support/" "DAIC support resources"
             click r1 "/docs/manual/commands" "List of handy commands"
@@ -90,7 +83,7 @@ flowchart TB
         subgraph Quickstart
             direction LR
             q1@{ shape: hex, label: "Login via SSH"}
-        %%    q2@{ shape: hex, label: "Submit a job to SLURM"}
+            %%q2@{ shape: hex, label: "Submit a job to SLURM"}
             click q1 "/docs/manual/connecting/" "Login via SSH"
         end
 

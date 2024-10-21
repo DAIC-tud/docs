@@ -49,15 +49,15 @@ A distinct fingerprint will be shown for each login node, as below:
 {{< tabpane  langEqualsHeader=true >}}
 {{% tab header="**Fingerprints of login nodes**:" disabled=true right=false /%}}
 
-{{< tab header="`login1`" lang=bash >}}
+{{< tab header="`login1`" >}}
 SHA256:MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM
 {{< /tab >}}
 
-{{< tab header="`login2`" lang=bash >}}
+{{< tab header="`login2`" >}}
 SHA256:MURg8IQL8oG5o2KsUwx1nXXgCJmDwHbttCJ9ljC9bFM
 {{< /tab >}}
 
-{{< tab header="`login3`" lang=bash >}}
+{{< tab header="`login3`" >}}
 SHA256:O3AjQQjCfcrwJQ4Ix4dyGaUoYiIv/U+isMT5+sfeA5Q
 {{< /tab >}}
 

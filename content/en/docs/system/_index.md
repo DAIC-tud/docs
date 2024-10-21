@@ -1224,6 +1224,11 @@ Project leaders (or supervisors) can request a Project Storage location via the 
 </tbody>
 </table>
 
+{{% alert title="Tip" color="info" %}}
+
+Data deleted from project storage, `staff-umbrella`, remains in a hidden `.snapshot` folder. If accidently deleted, you can recover such data by copying it from the (hidden)`.snapshot` folder in your storage.
+{{% /alert %}}
+
 ### Local Storage 
 Local storage is meant for temporary storage of (large amounts of) data with fast access on a single computer. You can create your own personal folder inside the local storage. Unlike the network storage above, local storage is only accessible on that computer, not on other computers or through network file servers or webdata. There is no backup service nor quota. The available space is large but fixed, so leave enough space for other users. Files under `/tmp` that have not been accessed for 10 days are automatically removed. 
 

@@ -114,7 +114,7 @@ version = "0.0"
 url_latest_version = "https://daic.tudelft.nl/"
 
 gcs_engine_id = "62a7c518ab0cb42dc"
-offlineSearch = true
+offlineSearch = false
 
 
 [sitemap]

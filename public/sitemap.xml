@@ -18,7 +18,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/general/</loc>
-    <lastmod>2024-05-06T14:21:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -38,12 +37,12 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/manual/job-submission/priorities/</loc>
-    <lastmod>2024-09-26T17:04:43+02:00</lastmod>
+    <lastmod>2024-10-04T14:37:06+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/quickstart/</loc>
-    <lastmod>2024-09-30T17:11:40+02:00</lastmod>
+    <lastmod>2024-10-21T16:11:04+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -63,7 +62,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -73,12 +71,10 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/software/</loc>
-    <lastmod>2024-05-06T14:21:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/job-resources/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -88,7 +84,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/manual/connecting/</loc>
-    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
+    <lastmod>2024-10-21T16:20:00+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -98,7 +94,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/scheduler/</loc>
-    <lastmod>2024-05-06T15:45:32+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -163,7 +158,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/system/</loc>
-    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
+    <lastmod>2024-10-21T09:56:35+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -218,7 +213,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/manual/data-management/data-transfer/</loc>
-    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
+    <lastmod>2024-10-21T11:41:33+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

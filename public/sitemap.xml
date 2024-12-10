@@ -18,7 +18,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/general/</loc>
-    <lastmod>2024-05-06T14:21:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -63,7 +62,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -73,12 +71,10 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/software/</loc>
-    <lastmod>2024-05-06T14:21:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/job-resources/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -98,7 +94,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/scheduler/</loc>
-    <lastmod>2024-05-06T15:45:32+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

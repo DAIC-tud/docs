@@ -147,25 +147,32 @@ Conclusion: in this example, you can run **4** jobs with **2** threads each **_i
 ### How do I clean up `/tmp` (when a job fails)
 * When your job stores temporary data locally on a node, your job needs to clean up this data before it exits. So include an `rm` command at the end of your job script. (The system does not clean up this data automatically.)
 * When the job fails (or is canceled or hits a timeout), the clean up requires some special code in the job script:
-    ```bash
-    #!/bin/sh
-    #SBATCH ... # Your usual resources' specifications
 
-    tmpdir="/tmp/${USER}/${SLURM_JOBID}" # Create local temporary folder
-    mkdir --parents "$tmpdir"
-    
-    # You may want to uncomment this to know what to clean up when the clean up fails:
-    #echo "Temporary folder: $(hostname --short):${tmpdir}"
-    
-    function clean_up { # Cleanup temporary folder
-      rm --recursive --force "$tmpdir" && echo "Clean up of $tmpdir completed successfully."
-      exit
-    }
-    trap 'clean_up' EXIT # Setup clean_up to run on exit
+{{< card code=true header="job.sh" lang="bash">}}
+#!/bin/sh
+#SBATCH ... # Your usual resources' specifications
 
-    # Your code- Make sure your program uses this "$tmpdir" location
-    srun …
-    ```
+tmpdir="/tmp/${USER}/${SLURM_JOBID}" # Create local temporary folder
+mkdir --parents "$tmpdir"
+
+# You may want to uncomment this to know what to clean up when the clean up fails:
+#echo "Temporary folder: $(hostname --short):${tmpdir}"
+
+function clean_up { # Cleanup temporary folder
+    rm --recursive --force "$tmpdir" && echo "Clean up of $tmpdir completed successfully."
+    exit
+}
+trap 'clean_up' EXIT # Setup clean_up to run on exit
+
+# Your code- Make sure your program uses this "$tmpdir" location
+srun …
+{{< /card >}}
+
+{{% alert title="Warning" %}}
+Please make sure (through explicit arguments to your program) that your data is placed (only) in the location `$tmpdir`. This way, you can be sure that your data is stored in the correct location and that you can clean up the data correctly. 
+{{% /alert %}}
+
+
 * If all else fails, login interactively to the node and manually clean up the files:
     ```bash
     sinteractive --nodelist=<node>
@@ -177,4 +184,5 @@ Conclusion: in this example, you can run **4** jobs with **2** threads each **_i
     ```bash
     #SBATCH --tmp=<size>G
     ```
+
 

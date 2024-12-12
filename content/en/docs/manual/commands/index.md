@@ -1,7 +1,7 @@
 ---
 title: "Handy commands on DAIC"
 linkTitle: "Handy commands on DAIC"
-weight: 1
+weight: 100
 description: >
   Brief description of useful commandline tools.
 ---

@@ -46,7 +46,7 @@ flowchart TD
 {{< figure src="/img/DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions" width="750px">}}
 
 ## Operating System
-DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7 Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the servers (see [Available software](/docs/manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/CentOS" "CentOS" >}} 7, then it is not available. See [Installing software](/docs/manual/software/installing-software/) for more information. 
+DAIC runs the {{< external-link "https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux" "Red Hat Enterprise Linux 7" >}}  Linux distribution, which provides the general Linux software. Most common software, including programming languages, libraries and development files for compiling your own software, is installed on the nodes (see [Available software](/docs/manual/software/available-software)). However, a not-so-common program that you need might not be installed. Similarly, if your research requires a state-of-the-art program that is not (yet) available as a package for {{< external-link "https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux" "Red Hat" >}} 7, then it is not available. See [Installing software](/docs/manual/software/installing-software/) for more information. 
 
 ## Login Nodes
 
@@ -69,7 +69,7 @@ The login nodes are the gateway to the DAIC HPC cluster and are specifically des
 DAIC compute nodes are all multi CPU servers, with large memories, and some with GPUs. The nodes in the cluster are heterogeneous, i.e. they have different types of hardware (processors, memory, GPUs), different functionality (some more advanced than others) and different performance characteristics. If a program requires specific features, you need to specifically request those for that job (see [Submitting jobs](/docs/manual/job-submission/job-scripts)). 
 
 {{% alert title="Note" color="info" %}}
-All servers have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading (`ht`) processors (two CPUs per core, always allocated in pairs).
+All compute nodes have [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) 1 and 2 (AVX, AVX2) support, and hyper-threading (`ht`) processors (two CPUs per core, always allocated in pairs).
 {{% /alert %}}    
 
 {{% alert title="Note" color="info" %}}
@@ -1082,7 +1082,7 @@ All machines have large main memories for performing computations on big data se
 
 ## Storage
 {{% pageinfo %}}
-DAIC servers have direct access to the TU Delft [home](#personal-storage-aka-home-folder), [group](#group-storage) and [project](#project-storage) storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others (see [data transfer](/docs/manual/data-management/data-transfer/)) , as is demonstrated throughout this page.
+DAIC compute nodes have direct access to the TU Delft [home](#personal-storage-aka-home-folder), [group](#group-storage) and [project](#project-storage) storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others (see [data transfer](/docs/manual/data-management/data-transfer/)) , as is demonstrated throughout this page.
 {{% /pageinfo %}}
 
 ### File System Overview
@@ -1223,6 +1223,11 @@ Project leaders (or supervisors) can request a Project Storage location via the 
   </tr>
 </tbody>
 </table>
+
+{{% alert title="Tip" color="info" %}}
+
+Data deleted from project storage, `staff-umbrella`, remains in a hidden `.snapshot` folder. If accidently deleted, you can recover such data by copying it from the (hidden)`.snapshot` folder in your storage.
+{{% /alert %}}
 
 ### Local Storage 
 Local storage is meant for temporary storage of (large amounts of) data with fast access on a single computer. You can create your own personal folder inside the local storage. Unlike the network storage above, local storage is only accessible on that computer, not on other computers or through network file servers or webdata. There is no backup service nor quota. The available space is large but fixed, so leave enough space for other users. Files under `/tmp` that have not been accessed for 10 days are automatically removed. 

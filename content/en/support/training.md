@@ -12,9 +12,9 @@ The _[Research Engineering and Infrastructure Team (REIT)](https://reit.tudelft.
 
 | Course Title               | Description                                                                 | 
 |----------------------------|-----------------------------------------------------------------------------|
-| [**DAIC 101**](https://course-daic-101-reit-2c75fb79e7bd0bf6d52fe199ce61df2d3853439c2d.pages.ewi.tudelft.nl/)               | An introduction to DAIC, ideal for new users. This course covers basic functionalities and best practices for operating within the DAIC environment. | 
-| [**Scalable AI on DAIC**](https://course-scalable-ai-101-on-daic-reit-269bd2bcab2a750403b5951dcf7.pages.ewi.tudelft.nl/)    | Learn how to scale your AI applications efficiently using DAIC’s robust infrastructure. |
-| [**Containerization & DAIC**](https://course-containerization-on-daic-reit-67ea74b84e508ad65b86c20bf6.pages.ewi.tudelft.nl/) | Explore the integration of container technologies with DAIC to streamline and enhance your research workflows. | 
+| [**DAIC 101**](https://reit.pages.ewi.tudelft.nl/course-daic-101)               | An introduction to DAIC, ideal for new users. This course covers basic functionalities and best practices for operating within the DAIC environment. | 
+| [**Scalable AI on DAIC**](https://reit.pages.ewi.tudelft.nl/course-scalable-ai-101-on-daic)    | Learn how to scale your AI applications efficiently using DAIC’s robust infrastructure. |
+| [**Containerization & DAIC**](https://reit.pages.ewi.tudelft.nl/course-containerization-on-daic) | Explore the integration of container technologies with DAIC to streamline and enhance your research workflows. | 
 
 
 

@@ -1,6 +1,6 @@
 theme = "docsy"
 
-baseURL = "https://doc.daic.tudelft.nl/"
+baseURL = "https://daic.tudelft.nl/"
 title = "DAIC documentation"
 
 # Language settings
@@ -88,6 +88,7 @@ section = ["HTML", "print", "RSS"]
 
 [params]
   copyright = "The DAIC team"
+  github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
 
 #privacy_policy = "https://policies.google.com/privacy"
 
@@ -110,14 +111,14 @@ version = "0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://doc.daic.tudelft.nl/"
+url_latest_version = "https://daic.tudelft.nl/"
 
 #gcs_engine_id = "62a7c518ab0cb42dc"
 offlineSearch = true
 
 
 [sitemap]
-  changefreq = "monthly"
+  changefreq = "always"
   filename = "sitemap.xml"
   priority = 0.5
 

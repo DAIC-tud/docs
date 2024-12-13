@@ -1,5 +1,5 @@
 ---
-title: "Priorities, Partitions & Quality of Service"
+title: "Priorities, Partitions, Quality of Service & Reservations"
 weight: 1
 description: >
   How to submit jobs to slurm?

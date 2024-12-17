@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/docs/manual/software/available-software/</loc>
-    <lastmod>2024-05-07T10:25:02+02:00</lastmod>
+    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -28,7 +28,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/introduction/</loc>
-    <lastmod>2024-06-12T11:20:34+02:00</lastmod>
+    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -38,12 +38,12 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/quickstart/</loc>
-    <lastmod>2024-09-30T17:11:40+02:00</lastmod>
+    <lastmod>2024-10-21T16:11:04+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/training/</loc>
-    <lastmod>2024-07-08T09:37:06+02:00</lastmod>
+    <lastmod>2024-10-11T14:41:58+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -58,7 +58,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
+    <lastmod>2024-12-10T17:13:27+01:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -73,7 +73,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/faqs/job-resources/</loc>
-    <lastmod>2024-04-25T10:56:40+02:00</lastmod>
+    <lastmod>2024-12-10T17:12:19+01:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -83,7 +83,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/manual/connecting/</loc>
-    <lastmod>2024-10-01T13:09:48+02:00</lastmod>
+    <lastmod>2024-10-21T16:20:00+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -98,7 +98,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/support/contact/</loc>
-    <lastmod>2024-09-19T14:18:26+02:00</lastmod>
+    <lastmod>2024-10-08T09:51:46+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -137,23 +137,17 @@
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/docs/manual/job-submission/job-interactive/</loc>
-    <lastmod>2024-05-06T14:21:40+02:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>http://localhost:1313/docs/manual/software/</loc>
     <lastmod>2024-04-22T15:57:45+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>http://localhost:1313/docs/manual/job-submission/job-scripts/</loc>
-    <lastmod>2024-04-29T09:39:24+02:00</lastmod>
+    <loc>http://localhost:1313/docs/manual/job-submission/slurm-basics/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/system/</loc>
-    <lastmod>2024-09-26T09:18:37+02:00</lastmod>
+    <lastmod>2024-10-21T09:56:35+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -164,21 +158,6 @@
   </url><url>
     <loc>http://localhost:1313/docs/manual/</loc>
     <lastmod>2024-05-06T12:09:36+02:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/docs/manual/job-submission/job-monitoring/</loc>
-    <lastmod>2024-04-22T15:57:45+02:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/docs/manual/job-submission/canceling-jobs/</loc>
-    <lastmod>2024-04-22T15:57:45+02:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/docs/manual/job-submission/job-gpu/</loc>
-    <lastmod>2024-05-06T13:47:00+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -208,7 +187,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/docs/manual/job-submission/kerberos/</loc>
-    <lastmod>2024-05-06T15:48:04+02:00</lastmod>
+    <lastmod>2024-10-11T15:27:55+02:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>

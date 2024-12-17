@@ -1,6 +1,6 @@
 ---
 title: "Priorities, Partitions & Quality of Service"
-weight: 1
+weight: 2
 description: >
   How to submit jobs to slurm?
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Working with Slurm"
-linkTitle: "Working with Slurm"
+title: "Basics of Slurm jobs"
+linkTitle: "Basics of Slurm jobs"
 weight: 1
 description: >
   How to submit jobs to the cluster?

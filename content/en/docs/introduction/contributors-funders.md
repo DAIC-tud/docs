@@ -98,7 +98,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
 {{< cardpane >}}
   {{< card header="NWO" title="" subtitle=""  >}}
   <a href="https://www.nwo.nl/en/researchprogrammes/nwo-talent-programme/projects-vidi">
-	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=80 width=100/>
+	  <img src="https://bscs.umcg.nl/nl/wp-content/uploads/sites/2/2022/07/VIDI2.png" height=180 width=100/>
   </a>
   {{< /card >}}
   {{< card header="Horizon 2020" title="" subtitle=""  >}}
@@ -117,8 +117,8 @@ In addition to funding received from departmental sources, DAIC has also been fi
   {{< /card >}}
 
    {{< card header="MMLL" title="" subtitle=""  >}}
-    <a href="">
-	    <img src="/docs/introduction/images/funders_MMLLlogo.png" height=50 width=170/>
+    <a href="https://www.st.ewi.tudelft.nl/~mtjspaan/mmll/index_en.html">
+	    <img src="/docs/introduction/images/funders_MMLLlogo.png" height=150 width=350 />
     </a>
   {{< /card >}}
 {{< /cardpane>}}
@@ -127,9 +127,19 @@ In addition to funding received from departmental sources, DAIC has also been fi
 {{< cardpane >}}
   {{< card header="Booking.com" title="" subtitle=""  >}}
   <a href="https://www.booking.com/">
-	  <img src="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fassets-global.website-files.com%2F658f265af26f3187eb6b03b0%2F65fa9bd046a7b0dba64008fe_1280px-Booking.com_logo.svg-p-500.png&data=05%7C02%7CA.E.Ahmed%40tudelft.nl%7C5897e06bc0cf49e02a5b08dc7a51e22b%7C096e524d692940308cd38ab42de0887b%7C0%7C0%7C638519739312808690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=KacApWStt6AIp2SeMlR2MqzHxoVuou7aJZuS7%2BwjXpY%3D&reserved=0" height=50 width=170/>
+	  <img src="https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fassets-global.website-files.com%2F658f265af26f3187eb6b03b0%2F65fa9bd046a7b0dba64008fe_1280px-Booking.com_logo.svg-p-500.png&data=05%7C02%7CA.E.Ahmed%40tudelft.nl%7C5897e06bc0cf49e02a5b08dc7a51e22b%7C096e524d692940308cd38ab42de0887b%7C0%7C0%7C638519739312808690%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=KacApWStt6AIp2SeMlR2MqzHxoVuou7aJZuS7%2BwjXpY%3D&reserved=0" height=150 width=270/>
   </a>
   {{< /card >}}
+
+   {{< card header="D-STANDARD" title="" subtitle=""  >}}
+    <a href="https://d-standart.eu/">
+	    <img src="https://www.nccuk.com/media/yiubuee4/d-standart_logotype_rvb_basique.png" height=150 width=270 />
+    </a>
+  {{< /card >}}
+
+{{< /cardpane >}}
+
+{{< cardpane >}}
 
  {{< card header="Others" title="" subtitle=""  >}}
     <a href="https://daic.tudelft.nl/docs/introduction/#contributing-departments">

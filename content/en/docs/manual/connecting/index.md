@@ -8,7 +8,7 @@ description: >
 
 ## SSH access
 
-If you have a valid DAIC account (see [Access and accounts](/docs/policies#access-accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
+If you have a valid DAIC account (see [Access and accounts](/docs/policies#access-and-accounts)), you can access DAIC resources using an SSH client. SSH (Secure SHell) is a protocol that allows you to connect to a remote computer via a secure network connection. SSH  supports remote command-line login and remote command execution. SCP (Secure CoPy) and SFTP (Secure File Transfer Protocol) are file transfer protocols based on SSH (see {{< external-link "https://en.wikipedia.org/wiki/Secure_Shell" "wikipedia's ssh page">}}).
 
 {{%alert title="SSH clients" color="info"%}}
 Most modern operating systems like Linux, macOS, and Windows 10 include SSH, SCP, and SFTP clients (part of the OpenSSH package) by default. If not, you can install third-party programs like: {{< external-link "https://mobaxterm.mobatek.net/" MobaXterm>}} , {{< external-link "https://www.chiark.greenend.org.uk/~sgtatham/putty/" "PuTTY page" >}}, or {{< external-link "https://filezilla-project.org/" "FileZilla" >}}. 

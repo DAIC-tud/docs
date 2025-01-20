@@ -31,7 +31,12 @@ This user agreement is intended to establish the expectations between all users 
 
 ### Access and accounts
 - DAIC is a cluster dedicated for TU Delft _researchers_ (eg, PhD students, postdocs, .. etc) _from participating groups_ (see [Contributing departments](/docs/introduction/contributors-funders)). 
-- To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC request Access form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). 
+
+{{% alert title="Needing access to DAIC?" color="primary" %}}
+To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC request Access form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). 
+{{% /alert %}}
+
+
 - Additionally, requests for resources reservations can also be accommodated (see [Terms of service](#terms-of-service)).    
 
 ### Terms of service

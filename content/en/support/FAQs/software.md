@@ -22,3 +22,8 @@ There are a few options:
 ### How to use TensorBoard on the DAIC cluster?
 * TensorBoard is very insecure: anybody can connect to it, without authentication (i.e. when you run TensorBoard on the DAIC cluster, any TU Delft user can connect to it). And this is actually {{< external-link "https://github.com/tensorflow/tensorboard/issues/267"  "on purpose">}}, because making it secure and being able to guarantee that would require too much effort. **So you can't run TensorBoard directly on the DAIC cluster!**
 * The most secure way to run TensorBoard is to run it on your personal computer (with a proper firewall). When you put your TensorFlow log files on a network folder, you can access them directly on your personal computer so you can use TensorBoard in the same way as you do in the DAIC cluster. (You can also download the log files if you find that easier.)
+
+### My Snakemake rules seem to be working properly, but it's telling me that it can't set marker
+
+- This comes with an error `Failed to set marker file for job started ([Errno 1] Operation not permitted. Please ensure write permissions for the directory {self.workflow.persistence.path}`. This makes it so that it's only able to run a single rule before it can't keep track of the metadata anymore. 
+- The known solution is to edit the source code. In Snakemake's `jobs.py` file, you can search the error message and simply change `raise WorkflowError` to `logger.warning`

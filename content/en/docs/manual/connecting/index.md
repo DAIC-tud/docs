@@ -116,62 +116,21 @@ We discourage running graphical applications (via `ssh -X`) on DAIC login nodes,
 
 {{% /alert %}}
 
-## Access from outside university network 
-Direct access to DAIC from _outside the university network_ is blocked by a firewall. To access DAIC, you have two options:
+## Access from outside university network using a VPN
+Direct access to DAIC from _outside the university network_ is blocked by a firewall. Therefore, a VPN is needed
 
-### 1.  Using the Linux Bastion Server
-
-To connect to DAIC via the Linux Bastion Server:
-
-1. SSH into the bastion server. The bastion server acts as a gateway to the DAIC cluster.
-    - **If you are an _employee or guest_**, use `linux-bastion.tudelft.nl`.
-    - **If you are a _student (BSc or MSc)_** use ` student-linux.tudelft.nl`.  
-
-    ```bash
-    ssh <YourNetID>@linux-bastion.tudelft.nl #OR
-    ssh linux-bastion.tudelft.nl             # If your username matches your NetID
-    ```
-    As with DAIC login nodes, the first time you attempt to login to the bastion, you will be asked to confirm the server's identity. Upon confirmation and entering your password, a welcome screen will be shown:
-
-    ```shell-session
-    The authenticity of host 'linux-bastion.tudelft.nl (131.180.123.195)' can't be established.
-    ED25519 key fingerprint is SHA256:VJUFsQkIebODETsXwczkInnRrpdYYqAZDbsoKP1we+A.
-    This key is not known by any other names                                                                     
-    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes 
-    Warning: Permanently added 'linux-bastion.tudelft.nl' (ED25519) to the list of known hosts.
-    YourNetID@linux-bastion.tudelft.nl's password:                                                                
-                    ____  ____ _____                                         
-     ___ _ ____   _|___ \|___ \___  |                                                                            
-    / __| '__\ \ / / __) | __) | / /                                                                             
-    \__ \ |   \ V / / __/ / __/ / /                                                                              
-    |___/_|    \_/ |_____|_____/_/                                                                               
-
-    YourNetID@srv227:~$
-    ```
-
-
-2. Once on the bastion server, SSH into DAIC as shown in [SSH access](#ssh-access).
-
-    ```bash
-    YourNetID@srv227:~$ ssh login.daic.tudelft.nl # Or any other login node
-    ```
-
-
-{{% alert title="Tip" color="info" %}}
-To simplify this procedure, use SSH’s proxy jump feature to access DAIC via the bastion server:
-```shell-session
-$ ssh -J [<YourNetID>@]linux-bastion.tudelft.nl [<YourNetID>@]login.daic.tudelft.nl
-```
-{{% /alert %}}
-
-### 2. Using a VPN
-
-You can also use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](##access-from-the-tu-delft-network). 
+You need to use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](##access-from-the-tu-delft-network). 
 
 
 {{% alert title="VPN access trouble?" color="warning" %}}
 If you are having trouble accessing DAIC via the VPN, please report an issue via [this Self-Service link](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=5880a7704835440589808f22666f3579). 
 {{%/alert%}}
+
+{{% alert title="Using the Linux Bastion Server" color="info" %}}
+
+As of January 16th 2025, access to TU Delft bastion hosts is only possible via a VPN. Therefore, it is now recommended to activate a TU Delft VPN and directly connect to DAIC (instead of jumping via the bastion host).
+
+{{% /alert %}}
 
 
 ## Simplifying SSH with Configuration Files
@@ -210,35 +169,6 @@ $ ssh bastion
 ```
 
 And, similarly, you can create/modify the configuration file on the `bastion` server (in `~/ssh/config`) by adding a `Host` configuration block for DAIC as above, to simplify the connection to DAIC from there. 
-
-
-## ssh proxy jump feature
-
-To connect directly from your machine to a DAIC login node (when outside the university network), use the ssh _Jump Host_ option to jump the bastion server as follows:
-
-``` bash
-$ ssh -J YourNetID@linux-bastion.tudelft.nl YourNetID@login.daic.tudelft.nl # use `student-linux.tudelft.nl` instead if you are a student
-```
-
-For convenience, you can also edit your ssh configuration file, `~/.ssh/config`, on your local computer as follows: 
-
-```bash
-Host daic
-  Hostname login.daic.tudelft.nl
-  User <YourNetID>
-  ProxyJump linux-bastion.tudelft.nl # For employees and guests. If you are a student, use: student-linux.tudelft.nl instead
-```
-
-Where:
-> *`ProxyJump`: Specifies the jump server, bastion in this case. 
-
-
-
-You can then simply use: `ssh daic` to login. 
-
-{{%alert title="Note" color="info" %}}
-When using the _ProxyJump feature_, you will be prompted for your password twice: once for the bastion server, and then for DAIC
-{{%/alert%}}
 
 
 

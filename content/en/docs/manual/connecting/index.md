@@ -143,10 +143,7 @@ For example, on a Linux system, you can have the following lines in the configur
 Host daic
   HostName login.daic.tudelft.nl # Or any other login node
   User <YourNetID>
-Host bastion
-  Hostname linux-bastion.tudelft.nl # If employee/guest. Else, use: student-linux.tudelft.nl instead
-  User <YourNetID>
-  PreferredAuthentications password
+
 {{< /card >}}
 
 
@@ -156,19 +153,14 @@ where:
 > * The `User` is the login username. This is especially important when the username differs between your machine and the remote server/cluster.
 
 
-You can then connect to DAIC from inside TU Delft network by just typing the following command:
+You can then connect to DAIC from inside TU Delft network (or behind TU Delft VPN) by just typing the following command:
 
 ```shell-session
 $ ssh daic
 ```
 
-Or, if outside the university network, you can connect via the bastion server:
 
-```shell-session
-$ ssh bastion
-```
 
-And, similarly, you can create/modify the configuration file on the `bastion` server (in `~/ssh/config`) by adding a `Host` configuration block for DAIC as above, to simplify the connection to DAIC from there. 
 
 
 

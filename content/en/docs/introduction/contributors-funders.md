@@ -38,55 +38,69 @@ The cluster is available (only) to users from participating departments, and acc
     <td>1</td>
     <td>3dgi</td>
     <td><a href="https://3d.bk.tudelft.nl/"><img src="/img/logo_3dgi.png" height=20 width=60/>3D Geoinformation</a></td>
-    <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">  Faculty of Architecture and the Built Environment</a></td>
-    <td>ABE/BK</td>
+    <td rowspan="2"><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment">  Faculty of Architecture and the Built Environment</a></td>
+    <td rowspan="2">ABE/BK</td>
   </tr>
-  <tr>
+    <tr>
     <td>2</td>
-    <td>asm</td>
-    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="/img/logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
-    <td><a href="https://www.tudelft.nl/en/ae">Faculty of Aerospace Engineering</a></td>
-    <td>AE/LR</td>
+    <td></td>
+    <td><a href="https://www.tudelft.nl/en/architecture-and-the-built-environment/about-the-faculty/departments/architecture">Architecture</a></td>
   </tr>
   <tr>
     <td>3</td>
+    <td>asm</td>
+    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/aerospace-structures-and-materials"> <img src="/img/logo_asm.png" height=20 width=70/> Aerospace Structures and Materials</a></td>
+    <td rowspan="2"><a href="https://www.tudelft.nl/en/ae">Faculty of Aerospace Engineering</a></td>
+    <td rowspan="2">AE/LR</td>
+  </tr>
+    <tr>
+    <td>4</td>
+    <td></td>
+    <td> <a href="https://www.tudelft.nl/en/ae/organisation/departments/control-and-operations"> Control and Operations</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
     <td>imphys</td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences/about-faculty/departments/imphys">Imaging Physics</a></td>
     <td><a href="https://www.tudelft.nl/en/faculty-of-applied-sciences">Faculty of Applied Sciences</a></td>
     <td>AS/TNW</td>
   </tr>
   <tr>
-    <td>4</td>
+    <td>6</td>
     <td>cor</td>
     <td><a href="https://www.tudelft.nl/me/over/afdelingen/cognitive-robotics-cor"><img src="/img/logo_cor.png" height=20 width=70/>Cognitive Robotics</a></td>
     <td><a href="https://www.tudelft.nl/en/me">Faculty of Mechanical Engineering</a></td>
     <td>ME</td>
   </tr>
   <tr>
-    <td>5</td>
+    <td>7</td>
     <td>grs</td>
     <td><a href="https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing">Geoscience &amp; Remote Sensing</a></td>
     <td><a href="https://www.tudelft.nl/en/ceg">Faculty Of Civil Engineering and Geosciences</a></td>
     <td>CEG/CiTG</td>
   </tr>
   <tr>
-    <td>6</td>
+    <td>8</td>
     <td>influence</td>
     <td rowspan="3"><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems">Intelligent Systems</a></td>
     <td rowspan="5"><a href="https://www.tudelft.nl/en/eemcs">Faculty of Electrical Engineering, Mathematics &amp; Computer Science</a></td>
     <td rowspan="5">EEMCS/EWI</td>
   </tr>
   <tr>
-    
   </tr>
   <tr>
-    <td>7</td>
+    <td>9</td>
     <td>insy</td>
   </tr>
   <tr>
-    <td>8</td>
+    <td>10</td>
     <td>st</td>
-    <td rowspan="2"><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
+    <td><a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/software-technology">Software Technology</a></td>
+  </tr>
+   <tr>
+    <td>11</td>
+    <td></td>
+    <td><a href="https://sps.ewi.tudelft.nl/">Signal Processing Systems</a>, <a href="https://microelectronics.tudelft.nl/">Microelectronics</a></td>
   </tr>
 
 </tbody>

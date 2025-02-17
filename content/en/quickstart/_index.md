@@ -108,7 +108,7 @@ $ ssh <YouNetID>@login.daic.tudelft.nl
 ```
 
 {{% alert title="Outside access" color="info" %}}
-If you are outside the TU Delft network you should first either login via bastion, or login to the TU Delft network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](/docs/manual/connecting).
+If you are outside the TU Delft network you should first login to the TU Delft network with [eduVPN](https://tudelft.eduvpn.nl/portal/home). For more information about configuring SSH and the VPN, please visit [How to connect to DAIC?](/docs/manual/connecting).
 {{% /alert %}}
 
 2. You will be prompted for your password:

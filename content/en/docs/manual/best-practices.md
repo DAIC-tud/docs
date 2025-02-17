@@ -21,7 +21,6 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 {{% /pageinfo %}}
 
 ### Best practices
-* Connect only directly from the bastion server to the login nodes (See [Connecting to DAIC](/docs/manual/connecting/))
 * Always choose the login node with the lowest use (most importantly system load and memory usage), by checking the {{< external-link "https://login.daic.tudelft.nl/" "Current resource usage page" >}} or the `servers` command for information.
   * Each login node displays a message at login. Make sure you understand it before proceeding. This message includes the current load of the node, so look at it at every login
 * Only use the storage best suited to your files (See [Storage](/docs/system#storage)).

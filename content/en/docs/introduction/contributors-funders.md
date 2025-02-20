@@ -82,9 +82,13 @@ The cluster is available (only) to users from participating departments, and acc
   <tr>
     <td>8</td>
     <td>influence</td>
-    <td rowspan="3"><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems">Intelligent Systems</a></td>
-    <td rowspan="5"><a href="https://www.tudelft.nl/en/eemcs">Faculty of Electrical Engineering, Mathematics &amp; Computer Science</a></td>
-    <td rowspan="5">EEMCS/EWI</td>
+    <td rowspan="4"><a href="https://www.tudelft.nl/en/eemcs/the-faculty/departments/intelligent-systems">Intelligent Systems</a></td>
+    <td rowspan="6"><a href="https://www.tudelft.nl/en/eemcs">Faculty of Electrical Engineering, Mathematics &amp; Computer Science</a></td>
+    <td rowspan="6">EEMCS/EWI</td>
+  </tr>
+    <tr>
+    <td>8</td>
+    <td>prb</td>
   </tr>
   <tr>
   </tr>

@@ -69,7 +69,7 @@ import gurobipy as gp
 
 connection_params = {
     "TokenServer": "flexserv-x1.tudelft.nl",
-    "TSPort": "27099"
+    "TSPort": 27099
 }
 
 with gp.Env(params=connection_params) as env:

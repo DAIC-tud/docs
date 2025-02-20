@@ -58,7 +58,9 @@ Solved in 0 iterations and 0.01 seconds (0.00 work units)
 Optimal objective  0.000000000e+00
 ```
 
-## Configuring the License
+
+
+{{% alert title="Configuring the License" color="primary" %}}
 
 If needed, and since DAIC uses a remote license server, you can specify the license settings in your script:
 
@@ -77,5 +79,6 @@ with gp.Env(params=connection_params) as env:
         except:
             # Add appropriate error handling here.
             raise
-```
 
+```            
+{{% /alert %}}

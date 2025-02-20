@@ -1,6 +1,6 @@
 ---
 title: "Apptainer tutorial"
-weight: 10
+weight: 2
 description: >
   Using Apptainer to containerize environments.
 ---

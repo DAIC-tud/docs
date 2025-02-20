@@ -1,6 +1,6 @@
 ---
 title: "Customize your shell"
-weight: 2
+weight: 1
 description: >
   After logging in to DAIC you can customize your shell.
 ---

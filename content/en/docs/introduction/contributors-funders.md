@@ -121,7 +121,7 @@ In addition to funding received from departmental sources, DAIC has also been fi
   {{< /card >}}
   {{< card header="Horizon 2020" title="" subtitle=""  >}}
   <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-2020_en">
-	  <img src="https://www.tbvi.eu/wp-content/uploads/2019/03/EU-H2020-logo.png"  >
+	  <img src="/img/logo_eu-horizon2020.png"  >
   </a>
   {{< /card >}}
   

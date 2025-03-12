@@ -172,4 +172,15 @@ In addition to funding received from departmental sources, DAIC has also been fi
  
 {{< /cardpane >}}
 
+{{< cardpane >}}
+
+ {{< card header="Immersive Tech Lab" title="" subtitle=""  >}}
+    Immersive Technology Lab, part of <a href="https://daic.tudelft.nl/docs/introduction/#contributing-departments">
+	     Convergence AI
+    </a>
+  {{< /card >}}
+ 
+{{< /cardpane >}}
+
+
 

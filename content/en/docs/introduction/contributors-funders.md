@@ -153,16 +153,16 @@ In addition to funding received from departmental sources, DAIC has also been fi
     <a href="https://d-standart.eu/">
 	    <img src="https://www.nccuk.com/media/yiubuee4/d-standart_logotype_rvb_basique.png" height=150 width=270 />
     </a>
-  {{< /card >}}
-
-   {{< card header="Model-Driven Decisions Lab (MoDDL)" title="" subtitle=""  >}}
-    <a href="https://www.tudelft.nl/en/moddl191223"> MoDDL
-    </a>
-  {{< /card >}}  
+  {{< /card >}} 
 
 {{< /cardpane >}}
 
 {{< cardpane >}}
+
+  {{< card header="Model-Driven Decisions Lab (MoDDL)" title="" subtitle=""  >}}
+    <a href="https://www.tudelft.nl/en/moddl191223"> MoDDL
+    </a>
+  {{< /card >}} 
 
  {{< card header="Others" title="" subtitle=""  >}}
     <a href="https://daic.tudelft.nl/docs/introduction/#contributing-departments">

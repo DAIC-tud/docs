@@ -155,6 +155,11 @@ In addition to funding received from departmental sources, DAIC has also been fi
     </a>
   {{< /card >}}
 
+   {{< card header="Model-Driven Decisions Lab (MoDDL)" title="" subtitle=""  >}}
+    <a href="https://www.tudelft.nl/en/moddl191223"> MoDDL
+    </a>
+  {{< /card >}}  
+
 {{< /cardpane >}}
 
 {{< cardpane >}}

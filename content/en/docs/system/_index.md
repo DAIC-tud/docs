@@ -1299,6 +1299,39 @@ Memory storage is meant for short-term storage of limited amounts of data with v
 Use this only when using other storage makes your job or the whole computer slow. 
 {{% /alert %}}
 
+### Quotas
+
+The different storage locations in (accessible by) DAIC have different quotas (or capacity) associated with them. It is imporant to be vigilant of your disk usage to ensure smooth computational workflows.
+
+Helpful commands
+
+- For `/home`:
+
+```bash
+$ quota -s -f ~
+Disk quotas for user netid (uid 000000): 
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+svm111.storage.tudelft.net:/staff_homes_linux/n/netid
+                  4870M   6554M   8192M           19671   4295m   4295m  
+```
+- For project space:
+  You can use either:
+
+```bash
+$ du -hs /tudelft.net/staff-umbrella/my-cool-project
+37G	/tudelft.net/staff-umbrella/my-cool-project
+```
+  Or:
+
+```bash
+$ df -h /tudelft.net/staff-umbrella/my-cool-project
+Filesystem                                       Size  Used Avail Use% Mounted on
+svm107.storage.tudelft.net:/staff_umbrella_my-cool-project  1,0T   38G  987G   4% /tudelft.net/staff-umbrella/my-cool-project
+```
+
+Note that the difference is due to snapshots, which can stay for up to 2 weeks
+
+
 ## Workload scheduler
 DAIC uses the {{< external-link "https://slurm.schedmd.com/" "Slurm scheduler" >}} to efficiently manage workloads. All jobs for the cluster have to be submitted as batch jobs into a queue. The scheduler then manages and prioritizes the jobs in the queue, allocates resources (CPUs, memory) for the jobs, executes the jobs and enforces the resource allocations. See [the job submission pages](/docs/manual/job-submission) for more information.
 

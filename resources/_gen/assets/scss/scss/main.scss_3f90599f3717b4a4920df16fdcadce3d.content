@@ -19717,12 +19717,6 @@ Nothing defined here. The Hugo project that uses this theme can override Bootstr
 assets/scss/_styles_project.scss
 
 */
-.td-page-meta--view {
-  display: none !important; }
-
-.td-page-meta--edit {
-  display: none !important; }
-
 .td-page-meta--child {
   display: none !important; }
 
@@ -19820,5 +19814,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+/* Style and prevent copying for shell prompts */
+pre.chroma .gp {
+  color: gray;
+  /* Adjust color as needed */
+  user-select: none;
+  /* Prevent prompt from being copied */ }
+
+/* Style and prevent copying of outputs */
+pre.chroma .go {
+  color: #586e75;
+  /* Adjust color as needed */
+  user-select: none; }
+
+/* Style the command text */
+pre.chroma .nb {
+  color: #268bd2;
+  /* Adjust color as needed */ }
+
+/* Style for string content */
+pre.chroma .s2 {
+  color: #2aa198;
+  /* Adjust color as needed */ }
+
+/* Comment Multiline */
+.chroma .cm {
+  color: #2d7c08; }
+
+/* Comment Preproc */
+.chroma .cp {
+  color: #2d7c08; }
+
+/* Comment single line */
+.chroma .c1 {
+  color: #2d7c08; }
+
+/* Comment Special */
+.chroma .cs {
+  color: #2d7c08; }
 
 /*# sourceMappingURL=main.css.map */

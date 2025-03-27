@@ -1,0 +1,27 @@
+pre.chroma code.language-shell-session {
+    counter-reset: line;
+}
+
+/* Insert prompt before each line */
+pre.chroma code.language-shell-session span:not(.ln)::before {
+    counter-increment: line;
+    content: "$ ";
+    color: gray;
+    user-select: none; /* Prevent prompt from being selected or copied */
+}
+
+/* Apply only to command lines, not output */
+pre.chroma code.language-shell-session .output::before {
+    content: ""; /* No prompt for output lines */
+}
+
+/* Make the cover block transperant */
+.daic-cover-box {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+}

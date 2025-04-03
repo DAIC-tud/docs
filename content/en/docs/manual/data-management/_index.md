@@ -93,6 +93,16 @@ Use quotes when file or folder names contain spaces or special characters.
 
     This command transfers files from a local source to a remote destination.
 
+{{% alert title="Note" color="warning" %}}
+When sending data to be stored in `staff-umbrella` or `staff-bulk`, **always** include the option `--no-perms`. for example:
+
+```bash
+$ rsync --progress -avz --no-perms <source_file> [<netid>@]login.daic.tudelft.nl:<destination_umbrella_directory>
+``` 
+
+This keeps you posted with progress of data transfer, and circumevents the different permissions between Windows and Linux of the file system. This approach is also efficient because it send the data in archived format.
+{{% /alert %}}       
+
 #### Examples
 
 - **Synchronize a local directory with a remote directory:**

@@ -67,7 +67,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 {{% /alert %}}
 -->
 
-- Please do not run production research computations on the login nodes. If necessary, request an interactive session in these cases (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive)) 
+- Please do not run production research computations on the login nodes. If necessary, request an interactive session in these cases (See [Interactive jobs on compute nodes](/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes)) 
 
 {{% alert title="Note" color="info" %}}
 

@@ -349,7 +349,7 @@ There might be situations where you have a certain conda environment in your loc
 
 As an example, let's create a simple demo environment, `environment.yml` in our local machine, 
 
-```{.bash filename="Apptainer.def"}
+```bash
 name: apptainer
 channels:
   - conda-forge
@@ -369,7 +369,7 @@ torch
 annoy
 ```
 
-Now, it is time to create the container definition file. One option is to base the image on `condaforge/miniforge`, which is a minimal Ubuntu installation with `conda` preinstalled at `/opt/conda`:
+Now, it is time to create the container definition file `Apptainer.def`. One option is to base the image on `condaforge/miniforge`, which is a minimal Ubuntu installation with `conda` preinstalled at `/opt/conda`:
 
 ```bash
 Bootstrap: docker
@@ -395,19 +395,52 @@ From: condaforge/miniforge3:latest
     echo 'conda activate apptainer' >> $APPTAINER_ENVIRONMENT
 ```
 
+{{% alert title="APPTAINER_ENVIRONMENT" color="secondary" %}}
+The `$APPTAINER_ENVIRONMENT` variable in Apptainer refers to a special shell script that gets sourced when a container is run in shell mode. This is a key mechanism for setting up the environment for your container.
+
+Here's what's happening in the code:
+
+1. `echo '. "/opt/conda/etc/profile.d/conda.sh"' >> $APPTAINER_ENVIRONMENT`
+   - This adds a command to source the Conda initialization script
+   - The script enables the `conda` command in your shell environment
+
+2. `echo 'conda activate apptainer' >> $APPTAINER_ENVIRONMENT`
+   - This adds a command to activate the "apptainer" Conda environment
+   - This ensures your container automatically starts with the right environment activated
+
+When a user runs your container with `apptainer shell my-container.sif`, these commands will execute automatically, ensuring:
+
+1. The conda command is available
+2. The "apptainer" environment is activated
+3. All the Python packages specified in your `environment.yml` are available
+
+This approach is much cleaner than requiring users to manually activate the environment every time they run the container. It makes your container more user-friendly and ensures consistent behavior.
+
 This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `environment.yml` file will be available in `/opt/` in the container.
+{{% /alert %}}
+
 
 Now, time to build and check the image:
 
 ```bash
-$ apptainer build demo-env-image.sif demo-env-recipe.def
+$ apptainer build demo-env-image.sif Apptainer.def
 INFO:    Starting build...
 Getting image source signatures
 ...
 INFO:    Creating SIF file...       
-INFO:    Build complete: demo-env-image.sif
+INFO:    Build complete: Apptainer.sif
 ...
 ```
+
+Let's verify our container setup:
+
+```bash
+$ apptainer exec demo-env-image.sif which python
+/opt/conda/envs/apptainer/bin/python
+```
+
+Perfect! This confirms that our container image built successfully and the Conda environment is automatically activated. The Python executable is correctly pointing to our custom environment path, indicating that all our dependencies should be available.
+
 
 We are going to use the environment inside a container together with a Python script that we store outside the container.
 Create the file `analysis.py`, which generate a plot:

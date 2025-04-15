@@ -32,7 +32,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 
 * Do interactive code development, debugging and testing in your local machine, as much as possible. In the cluster, try to organize your code as scripts, instead of working interactively in the command line.
 
-* If you need to test and debug in the cluster, for example, in a GPU node, request an interactive session and do not work in the login node itself (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive)).
+* If you need to test and debug in the cluster, for example, in a GPU node, request an interactive session and do not work in the login node itself (See [Interactive jobs on compute nodes](/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes)).
 
 * Save results frequently: your job can crash, the compute node can become overloaded, or the network shares can become unavailable. 
 

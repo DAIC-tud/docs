@@ -140,7 +140,7 @@ $ apptainer shell -C ubuntu_latest.sif
 This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_. To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run, if you create your container on a MacBook, or a computer with a different CPU architecture than the target system, there is a good chance that the container will not run.
 
 {{% alert title="Warning" color="warning" %}}
- By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `SINGULARITY_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
+ By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `APPTAINER_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
 {{% /alert %}} 
 
 ```bash
@@ -391,8 +391,8 @@ From: condaforge/miniforge3:latest
     mamba clean --all -y
 
     # Now add the script to activate the Conda environment
-    echo '. "/opt/conda/etc/profile.d/conda.sh"' >> $SINGULARITY_ENVIRONMENT
-    echo 'conda activate __apptainer-env__' >> $SINGULARITY_ENVIRONMENT
+    echo '. "/opt/conda/etc/profile.d/conda.sh"' >> $APPTAINER_ENVIRONMENT
+    echo 'conda activate __apptainer-env__' >> $APPTAINER_ENVIRONMENT
 ```
 
 This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `environment.yml` file will be available in `/opt/` in the container.

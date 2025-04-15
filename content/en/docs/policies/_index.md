@@ -19,9 +19,9 @@ This user agreement is intended to establish the expectations between all users 
   * _HPC Engineers_, in CS@Delft, provide support to (CS) students, researchers and staff members to efficiently use DAIC resources. This includes: maintaining updated documentation resources, running onboarding and advanced training courses on cluster usage, organizing workshops to assess compute needs, plan infrastructure upgrades, and may collaborate with researchers on individual projects as fits.
 - **More information:** Please see the [Terms of service](#terms-of-service) and [What to do in case of problems](#what-to-do-in-case-of-problems) sections on where to find more information about cluster use.
 - **Cluster workflow:** 
-  * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quickstart](/tutorials/quickstart/)
+  * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quickstart](/quickstart/)
   * You can use the logins nodes for testing your code, determining the required resources and submitting jobs (see [Computing on login nodes](/docs/manual/best-practices#computing-on-login-nodes)).
-  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job (see [Interactive jobs](/docs/manual/job-submission/job-interactive)).
+  * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job (see [Interactive jobs](/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes)).
   * For determining resources of larger jobs, you can submit a single (short) test job (see [Submitting jobs](/docs/manual/job-submission/))
 - **QoS:** 
   * A Quality of Service (QoS) is a set of limits that controls what resources a job can use and determines the priority level of a job. DAIC adopts multiple QoSs 
@@ -41,7 +41,7 @@ To access DAIC resources, eligible candidates from these groups can request an a
 
 ### Terms of service
 1. You may use cluster resources for your research within the QoS restrictions of your domain user and user group. Depending on your user group, you might be eligible to use specific partitions, giving higher priorities on certain nodes. See [Priority tiers](/docs/manual/job-submission/priorities), and please check this with your lab.
-2. Depending on your user group, you might be eligible to get priorities on certain nodes. For example, you might have access to a specialized partition or limited-time node reservation for your group or department (for example before a conference deadline). Please check this with your lab and try to use these in your `*.sbatch` file, your jobs should then start faster! See [Resources Reservations](/docs/manual/job-submission/reservations) for more information.
+2. Depending on your user group, you might be eligible to get priorities on certain nodes. For example, you might have access to a specialized partition or limited-time node reservation for your group or department (for example before a conference deadline). Please check this with your lab and try to use these in your `*.sbatch` file, your jobs should then start faster! See [Resources Reservations](/docs/manual/job-submission/priorities/#resources-reservations) for more information.
 3. In general, you will be informed about standard administrative actions on the cluster. All official DAIC cluster e-mails are sent to your official TU Delft mailbox, so it is advised to check it regularly.
 	  1. You will receive e-mails about downtimes relating to scheduled maintenance.
     2. You, or your supervisor, will receive e-mails about scheduled cluster user board meetings where any updates and changes to the cluster structure, software, or hardware will be announced. Please check with your lab or feel free to join the cluster board meetings if you want to be up-to-date about any changes.
@@ -86,7 +86,7 @@ When you encounter problems, please follow the subsequent steps, in the indicate
   2. You can also ask questions to fellow users on the [MatterMost channel](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su). 
   3. For prolonged problems, your initial contact point is your supervisor/PI.
   4. As a final step, you can contact the cluster administrators for technical sysadmin problems or persistent efficiency problems, or for more information if you are not sure why you are banned from the cluster. You can do this by reporting your question, through the {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/" "Self Service Portal" >}}, to the Service Desk. In your question, refer to the ‘DAIC cluster’.
-  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](/docs/introduction#advisory-board) to bring it up as an agenda point in the next user board meeting.
+  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](/docs/introduction/advisors-impact/) to bring it up as an agenda point in the next user board meeting.
 
 
 

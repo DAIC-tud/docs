@@ -35,8 +35,7 @@ Here is an example how to use the container in a SLURM script.
 #SBATCH --output=slurm-%x-%j.out   # Set name of output log. %j is the Slurm jobId
 #SBATCH --error=slurm-%x-%j.err    # Set name of error log. %j is the Slurm jobId
 
-export APPTAINER_ROOT="/path/to/container/folder"
-export APPTAINER_NAME="my-container.sif"
+export APPTAINER_IMAGE="/path/to/my-container.sif"
 
 # If you use GPUs
 module use /opt/insy/modulefiles
@@ -44,12 +43,21 @@ module load cuda/12.1
 
 # Run script
 srun apptainer exec \
-  --nv \                              # Bind NVIDIA libraries from the host
-  --env-file ~/.env \                 # Source additional environment variables (optional)
-  -B /home/$USER:/home/$USER \        # Mount host file-sytem inside container 
-  -B /tudelft.net/:/tudelft.net/ \    # (different for each cluster)
-  $APPTAINER_ROOT/$APPTAINER_NAME \   # Path to the container to run
-  python script.py                    # Command to be executed inside container
+  --nv \
+  --env-file ~/.env \                 
+  -B $HOME:$HOME \
+  -B /tudelft.net/:/tudelft.net/ \
+  $APPTAINER_IMAGE \
+  python script.py
+
+# --nv binds NVIDIA libraries from the host (only if you use CUDA)
+# --env-file source additional environment variables from e.g. .env file (optional)
+# -B /$HOME:/$HOME/ mounts host file-sytem inside container
+# The home folder should be mounted by default, but sometimes it is not
+# -B can be used several times, change this to match your cluster file-system
+# $APPTAINER_IMAGE is the full path to the container.sif file
+# python script.py is the command that you want to use inside the container
+
 ```
 
 ### Tutorial

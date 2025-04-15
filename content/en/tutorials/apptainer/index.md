@@ -349,8 +349,8 @@ There might be situations where you have a certain conda environment in your loc
 
 As an example, let's create a simple demo environment, `environment.yml` in our local machine, 
 
-```bash
-name: __apptainer-env__
+```{.bash filename="Apptainer.def"}
+name: apptainer
 channels:
   - conda-forge
   - defaults
@@ -392,7 +392,7 @@ From: condaforge/miniforge3:latest
 
     # Now add the script to activate the Conda environment
     echo '. "/opt/conda/etc/profile.d/conda.sh"' >> $APPTAINER_ENVIRONMENT
-    echo 'conda activate __apptainer-env__' >> $APPTAINER_ENVIRONMENT
+    echo 'conda activate apptainer' >> $APPTAINER_ENVIRONMENT
 ```
 
 This file is similar to the file in the [Building images](#building-images), with the addition of `%files` area. `%files` specifies the files in the host system (ie, your machine) that need to be copied to the container image, and optionally, where should they be available. In the previous example, the `environment.yml` file will be available in `/opt/` in the container.

@@ -55,7 +55,7 @@ srun apptainer exec \
 # -B /$HOME:/$HOME/ mounts host file-sytem inside container
 # The home folder should be mounted by default, but sometimes it is not
 # -B can be used several times, change this to match your cluster file-system
-# $APPTAINER_IMAGE is the full path to the container.sif file
+# APPTAINER_IMAGE is the full path to the container.sif file
 # python script.py is the command that you want to use inside the container
 
 ```

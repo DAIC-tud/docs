@@ -12,7 +12,7 @@ This user agreement is intended to establish the expectations between all users 
 ### Defintions
 - **Cluster structure:** The DAIC cluster is made up of shared resources contributed by different labs and groups. The pooling of resources from different groups is beneficial for everyone: it enables larger, parallelized computations and more efficient use of resources with less idle time.
 - **Basic principles:** Regardless of the specific details, cluster use is always based on basic principles of fair-use and fair-share (through priority) of resources, and all users are expected to take care at all times that their cluster use is not hindering other users.
-- **Policies:** Cluster policies are decided by the user board and enforced by various automated and non-automated actions, for example by the job scheduler based on [QoS limits](/docs/manual/job-submission/qos) and the administrators for ensuring the stability and performance of the cluster.
+- **Policies:** Cluster policies are decided by the user board and enforced by various automated and non-automated actions, for example by the job scheduler based on [QoS limits](/docs/manual/job-submission/priorities/#quality-of-service-qos) and the administrators for ensuring the stability and performance of the cluster.
 - **Support:** 
   * _Cluster administrators_ offer, __during office hours__, different levels of support, which include (in order of priority): ensuring the stability and performance of the cluster, providing generic software, helping with cluster-specific questions and problems, and providing information (via e-mails and during the board meeting) about cluster updates.
   * _Contact persons_  from participating groups add and manage users at the level of their respective groups, communicate needs and updates between their groups and system administrators, and may help with cluster-specific questions and problems.
@@ -22,10 +22,10 @@ This user agreement is intended to establish the expectations between all users 
   * The typical steps for running a job on the cluster are: Test → Determine resources → Submit → Monitor job → Repeat until results are obtained. See [Quickstart](/tutorials/quickstart/)
   * You can use the logins nodes for testing your code, determining the required resources and submitting jobs (see [Computing on login nodes](/docs/manual/best-practices#computing-on-login-nodes)).
   * For testing jobs which require larger resources (more than 4 CPUs and/or more than 4 GB of memory and/or one or more powerful GPUs), start an interactive job (see [Interactive jobs](/docs/manual/job-submission/job-interactive)).
-  * For determining resources of larger jobs, you can submit a single (short) test job (see [Submitting jobs](/docs/manual/job-submission/job-scripts))
+  * For determining resources of larger jobs, you can submit a single (short) test job (see [Submitting jobs](/docs/manual/job-submission/))
 - **QoS:** 
   * A Quality of Service (QoS) is a set of limits that controls what resources a job can use and determines the priority level of a job. DAIC adopts multiple QoSs 
-   to optimize the throughput of job scheduling and to reduce the waiting times in the cluster (see [Quality of Service](/docs/manual/job-submission/qos)).
+   to optimize the throughput of job scheduling and to reduce the waiting times in the cluster (see [Quality of Service](/docs/manual/job-submission/priorities/#quality-of-service-qos)).
   * The DAIC QoS limits are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. 
    * Any (perceived) imbalance in the use of resources by a certain QoS or user should not be hold against a user or the scheduler, but should be discussed in the user board.
 

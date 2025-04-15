@@ -21,7 +21,7 @@ Containerization in computing works similarly. When you want to run software or 
 On DAIC specifically, many users encounter issues with limited home directory sizes and Windows-based `/tudelft.net` mounts (See [Storage](/docs/system#storage)), which can hinder the use of `conda/mamba` and/or `pip` due to compatibility challenges. Containers offer a solution by enabling users to encapsulate their software and dependencies in a portable, self-contained environment. This means users can store a container e.g. on the `staff-umbrella` storage with all necessary dependencies, including those installed with `pip`. This enables users to create and use multiple large environments and run applications reliably and reproducibly, without running into limitations from Windows-based mounts or small home directories.
 
 ## Containerization technology (Apptainer)
-_Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. DAIC supports [Apptainer](https://apptainer.org/docs/user/main/introduction.html)  (previously Singularity), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
+_Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. DAIC supports [Apptainer](https://apptainer.org/docs/user/main/introduction.html)  (previously Apptainer), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
 
 - The **definition file** (`*.def`) contains the recipe to build an image.
 - An **image** (`*.sif`) is a complete package that includes everything needed to run an application, such as code, libraries, and settings. It only needs `Apptainer` to be run.
@@ -110,8 +110,8 @@ BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
 PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
 UBUNTU_CODENAME=jammy
 
-$ ls /.singularity.d/ # container-specific directory should not be found on host
-ls: cannot access /.singularity.d/: No such file or directory
+$ ls /.apptainer.d/ # container-specific directory should not be found on host
+ls: cannot access /.apptainer.d/: No such file or directory
 
 $ apptainer shell ubuntu_latest.sif # launch container interactively
 Apptainer>
@@ -119,15 +119,15 @@ Apptainer> hostname
 login1.daic.tudelft.nl
 Apptainer> ls
 ubuntu_latest.sif
-Apptainer> ls /.singularity.d/ 
-Singularity  actions  env  labels.json  libs  runscript  startscript
+Apptainer> ls /.apptainer.d/ 
+Apptainer  actions  env  labels.json  libs  runscript  startscript
 Apptainer> exit
 ```
 
 In the above snippet, note:
 * The command prompt changes within the container to `Apptainer>`
 * The container seamlessly interacts with the host system. For example, it inherits its `hostname` (the DAIC login node in this case). The container also inherits the `$HOME` variable, and is able to edit/delete files from there.
-* The container has its own file system, which is distinct from the host. The presence of a directory like `/.singularity.d` is another feature of the specific to the container.
+* The container has its own file system, which is distinct from the host. The presence of a directory like `/.apptainer.d` is another feature of the specific to the container.
 
 {{% alert title="Warning" color="warning"%}}
 To isolate files in your system (ie, your local machine or DAIC) from the files inside the container (and thus, avoid possible erroneous deletes/edits), it is recommended to add a `-c` or `-C` flags to your apptainer commands
@@ -140,7 +140,7 @@ $ apptainer shell -C ubuntu_latest.sif
 This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_. To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run, if you create your container on a MacBook, or a computer with a different CPU architecture than the target system, there is a good chance that the container will not run.
 
 {{% alert title="Warning" color="warning" %}}
- By default, Apptainer images are saved to `~/.singularity`. Ideally, to avoid quota issues, you'd set the environment variable `APPTAINER_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
+ By default, Apptainer images are saved to `~/.apptainer`. Ideally, to avoid quota issues, you'd set the environment variable `APPTAINER_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
 {{% /alert %}} 
 
 ```bash
@@ -159,8 +159,8 @@ $ apptainer shell -C --nv pytorch_23.05-py3.sif  #--nv to use NVIDIA GPU and hav
 Apptainer>
 Apptainer> hostname
 login1.daic.tudelft.nl # hostname inherited
-Apptainer> ls /.singularity.d/ # verify this is the image
-Singularity  actions  env  labels.json  libs  runscript  startscript
+Apptainer> ls /.apptainer.d/ # verify this is the image
+Apptainer  actions  env  labels.json  libs  runscript  startscript
 ```
 
 ### Building images
@@ -270,7 +270,7 @@ Result = PASS
 ```
 
 {{% alert title="Warning" color="warning"%}}
-Always pass `--nv` to apptainer to run GPU-accelerated applications or libraries inside the container. Note that you also need **1)** your host system must have NVIDIA GPU drivers installed and compatible with the version of Singularity you are using, and **2)** the container you are running should have the necessary dependencies and configurations to support GPU acceleration.
+Always pass `--nv` to apptainer to run GPU-accelerated applications or libraries inside the container. Note that you also need **1)** your host system must have NVIDIA GPU drivers installed and compatible with the version of Apptainer you are using, and **2)** the container you are running should have the necessary dependencies and configurations to support GPU acceleration.
 
 ```bash
 $ apptainer shell --nv -C cuda_based_image.sif
@@ -324,7 +324,7 @@ Apptainer> ls /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery # comman
 /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery
 
 Apptainer>
-Apptainer> cat /.singularity.d/bootstrap_history/Apptainer0 # The original def file is also preserved 
+Apptainer> cat /.apptainer.d/bootstrap_history/Apptainer0 # The original def file is also preserved 
 bootstrap: docker
 from: nvidia/cuda:12.1.1-devel-ubuntu22.04
 

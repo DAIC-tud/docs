@@ -7,12 +7,14 @@ description: >
 ---
 
 ## Basic principles
-- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Workload scheduler](/docs/system#workload-scheduler)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (eg, your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [Storage](/docs/system#storage)).
+
+- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Workload scheduler](/docs/system#workload-scheduler)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (e.g., your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [Storage](/docs/system#storage)).
 
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
 
-- DAIC provides only 8GB of storage in the `/home` directories and the project spaces (`/tudelft.net/...`) are Windows-based leading to problems installing packages with `pip` due to file permission errors.
-However, `/tudelft.net/...` locations are mounted on all nodes. Therefore, the recommened way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Apptainer tutorial](/tutorials/apptainer) for guidance. 
+- Like other clusters, DAIC has a set quota on `$HOME` directories (see [system specifications](/docs/system#storage) for current limits). It means that installing software in your `$HOME` directory is limited. If you need more space, you should use a project share (see [Storage](/docs/system#storage)).
+
+- Both group storage (under `/tudelft.net/staff-groups/` or `/tudelft.net/staff-bulk/`) and project storage (under `/tudelft.net/staff-umbrella/`) are Windows-based, leading to problems installing packages with tools like `pip` due to file permission errors. Therefore, the recommended way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Apptainer tutorial](/tutorials/apptainer) for guidance.
 
 {{% alert title="Stop!" color="warning" %}}
 
@@ -244,7 +246,7 @@ $ cd ~ && install-miniforge
 ~/miniforge3/bin/python
 ```
 
-This will already occupy around 500MB of your home directory totalling ~20k files.
+This will already occupy around 500MB in your `$HOME` directory, totaling ~20,000 files. Make sure to stay within your quota (see [system specifications](/docs/system/#personal-storage-aka-home-folder)).
 
 ```shell-session
 $ du -h miniforge3 --max-depth=0
@@ -257,7 +259,7 @@ $ find miniforge3 -type f | wc -l
 Now, you can install your own versions of libraries and programs, or create entire environments as descibed above.
 
 {{% alert title="Stop!" color="warning" %}}
-You are limited to 8GB of data in your home directoy. Installing a full development environement for PyTorch can easily exceed 12 GB; Therefore, it is recommeneded to install only tools and libraries that you really need on the login nodes via this route. Instead, use `Apptainer` to create container files containing all dependencies.
+You are limited to a fixed quota in your `$HOME` directory (see [system specifications](/docs/system/#personal-storage-aka-home-folder)). Installing a full development environment (e.g. for PyTorch) can easily exceed this quota. Therefore, it is recommended to install only essential tools and libraries in your `$HOME` directory. For larger environments, consider installing them in a [project](/docs/system/#project-storage) (preferred) or [group](/docs/system/#group-storage) share.
 {{% /alert %}}
 
 ## Using binaries
@@ -318,10 +320,11 @@ $ source ~/.bash_profile
 $ mkdir -p "$PREFIX"
 ```
 
-The line `export PREFIX="$HOME/.local"` sets your software installation directory to `/home/nfs/<YourNetID>/.local` (which is the default and accessible on all nodes). This is in your personal home directory where you have a space quota of 8GB. However, for software for your research project, you should instead use a project share, for example: 
+The line `export PREFIX="$HOME/.local"` sets your software installation directory to `/home/nfs/<YourNetID>/.local` (which is the default and accessible on all nodes). This is in your personal home directory, which has a fixed quota (see [system specifications](/docs/system/#personal-storage-aka-home-folder)). For software intended to be shared with others, you should instead use a [project](/docs/system/#project-storage) (preferred) or [group](/docs/system/#group-storage) share.
+
 
 ```bash
-export PREFIX="/tudelft.net/staff-umbrella/project/software"
+export PREFIX="/tudelft.net/staff-umbrella/<your-project>/software"
 ```
 
 The other variables will let you use your self-installed programs. You are now ready to install your software! 

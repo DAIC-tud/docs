@@ -1089,7 +1089,7 @@ DAIC compute nodes have direct access to the TU Delft [home](#personal-storage-a
 Unlike TU Delft's {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#description-of-the-delftblue-system" "DelftBlue" >}}, DAIC does not have a dedicated storage filesystem. This means no `/scratch` space for storing temporary files (see DelftBlue's {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#description-of-the-delftblue-system" "Storage description" >}} and {{< external-link "https://doc.dhpc.tudelft.nl/delftblue/DHPC-Policies/#disk-quota-and-scratch-space" "Disk quota and scratch space" >}}). Instead, DAIC relies on direct connection to the TU Delft network storage filesystem (see {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage">}}) from all its nodes, and offers the following types of storage areas:
 
 ### Personal storage (aka home folder)
-The Personal Storage is private and is meant to store personal files (program settings, bookmarks).  A backup service protects your home files from both hardware failures and user error (you can restore previous versions of files from up to two weeks ago). The available space is limited by a quota limit (since this space is not meant to be used for research data). 
+The Personal Storage is private and is meant to store personal files (program settings, bookmarks).  A backup service protects your home files from both hardware failures and user error (you can restore previous versions of files from up to two weeks ago). The available space is limited by a quota (see [Quotas](#checking-quota-limits)) and is not intended for storing research data.
 
 You have two (separate) home folders: one for Linux and one for Windows (because Linux and Windows store program settings differently). You can access these home folders from a machine (running Linux or Windows OS) using a command line interface or a browser via {{< external-link "https://webdata.tudelft.nl/" "TU Delft's webdata" >}}. For example, Windows home has a `My Documents` folder. `My documents` can be found on a Linux machine under `/winhome/<YourNetID>/My Documents` 
 
@@ -1299,9 +1299,9 @@ Memory storage is meant for short-term storage of limited amounts of data with v
 Use this only when using other storage makes your job or the whole computer slow. 
 {{% /alert %}}
 
-### Quotas
+### Checking quota limits
 
-The different storage locations in (accessible by) DAIC have different quotas (or capacity) associated with them. It is imporant to be vigilant of your disk usage to ensure smooth computational workflows.
+The different storage areas accessible on DAIC have quotas (or usage limits). It’s important to regularly check your usage to avoid job failures and ensure smooth workflows.
 
 Helpful commands
 
@@ -1312,7 +1312,7 @@ $ quota -s -f ~
 Disk quotas for user netid (uid 000000): 
      Filesystem   space   quota   limit   grace   files   quota   limit   grace
 svm111.storage.tudelft.net:/staff_homes_linux/n/netid
-                  4870M   6554M   8192M           19671   4295m   4295m  
+                 12872M  24576M  30720M           19671   4295m   4295m  
 ```
 - For project space:
   You can use either:

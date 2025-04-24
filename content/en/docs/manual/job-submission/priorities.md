@@ -177,28 +177,6 @@ PriorityWeightTRES      = (null)
 ```
 {{% /alert %}}
 
-### QoS priority 
-The purpose of the (multiple) QoSs in DAIC is to optimize the throughput of the cluster and to reduce the waiting times for jobs:
-* Long jobs block resources for a long time, thus leading to long waiting times and fragmentation of resources.
-* Short jobs block resources only for short times, and can more easily fill in the gaps in the scheduling of resources (thus start sooner), and are therefore better for throughput and waiting times.
-
-Thus, DAIC has the following policy:
-* To stimulate short jobs, the `short` QoS has a higher priority, and allows you to use a larger part of all resources, than the `medium` and `long` QoS.
-* To prevent long jobs from blocking all resources in the cluster for long times (thus causing long waiting times), only a certain part of all cluster resources is available to all running `long` QoS jobs (of all users) combined. 
-* All running `medium` QoS jobs together can use a somewhat larger part of all resources in the cluster, and all running `short` QoS jobs combined are allowed to fill the biggest part of the cluster. 
-  * These limits are called the _QoS group limits_.
-  * When this limit is reached, no new jobs with this QoS can be started, until some of the running jobs with this QoS finish and release some resources. 
-  * The scheduler will indicate this with the reason `QoS Group CPU/memory/GRES limit`.
-
-* To prevent one user from single-handedly using all available resources in a certain QoS, there are also limits for the total resources that all running jobs of one user in a specific QoS can use. 
-  * These are called the _QoS per-user limits_. 
-  * When this limit is reached, no new jobs of this user with this QoS can be started, until some of the running jobs of this user and with this QoS finish and release some resources.
-  * The scheduler will indicate this with the reason `QoS User CPU/memory/GRES limit`.
-
-These per-group and per-user limits are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. Any (perceived) imbalance in the use of resources by a certain QoS or user should not be held against a user or the scheduler, but should be discussed in the user board.
-
-
-
 ## Quality of Service (QoS)
 
 
@@ -393,9 +371,27 @@ srun echo 'Hi, from Slurm!'
 sleep 30  # Wait for 30 seconds before exiting.
 ```
 
-### QoS for reservations
 
-In case you have a reservation you need to specify `--qos=reservation` and `--reservation=<reservation-name>. You can find an example [here](../reservations#using-reservations). 
+### QoS priority 
+The purpose of the (multiple) QoSs in DAIC is to optimize the throughput of the cluster and to reduce the waiting times for jobs:
+* Long jobs block resources for a long time, thus leading to long waiting times and fragmentation of resources.
+* Short jobs block resources only for short times, and can more easily fill in the gaps in the scheduling of resources (thus start sooner), and are therefore better for throughput and waiting times.
+
+Thus, DAIC has the following policy:
+* To stimulate short jobs, the `short` QoS has a higher priority, and allows you to use a larger part of all resources, than the `medium` and `long` QoS.
+* To prevent long jobs from blocking all resources in the cluster for long times (thus causing long waiting times), only a certain part of all cluster resources is available to all running `long` QoS jobs (of all users) combined. 
+* All running `medium` QoS jobs together can use a somewhat larger part of all resources in the cluster, and all running `short` QoS jobs combined are allowed to fill the biggest part of the cluster. 
+  * These limits are called the _QoS group limits_.
+  * When this limit is reached, no new jobs with this QoS can be started, until some of the running jobs with this QoS finish and release some resources. 
+  * The scheduler will indicate this with the reason `QoS Group CPU/memory/GRES limit`.
+
+* To prevent one user from single-handedly using all available resources in a certain QoS, there are also limits for the total resources that all running jobs of one user in a specific QoS can use. 
+  * These are called the _QoS per-user limits_. 
+  * When this limit is reached, no new jobs of this user with this QoS can be started, until some of the running jobs of this user and with this QoS finish and release some resources.
+  * The scheduler will indicate this with the reason `QoS User CPU/memory/GRES limit`.
+
+These per-group and per-user limits are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. Any (perceived) imbalance in the use of resources by a certain QoS or user should not be held against a user or the scheduler, but should be discussed in the user board.
+
 
 
 ## Resources reservations

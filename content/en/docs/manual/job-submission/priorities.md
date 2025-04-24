@@ -10,7 +10,7 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 1. Jobs that can preempt: _Not enabled in DAIC_
 2. Jobs with an advanced reservation: _See {{< external-link "https://slurm.schedmd.com/reservations.html" "Slurm's Advanced Resource Reservation Guide" >}}_
-3. Partition Priority Tier: _See [Priority tiers](#partition-priority-tiers)_
+3. Partition Priority Tier: _See [Priority tiers](#partitions--priority-tiers)_
 4. Job priority: _See [Priority calculations](#priority-calculations) and [QoS priority](#qos-priority)_
 6. Job ID
 
@@ -19,7 +19,7 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 In SLURM, a partition is a scheduling construct that groups nodes or resources based on certain characteristics or policies. Partitions are used to organize and manage resources within a cluster, and they allow system administrators to control how jobs are allocated and executed on different nodes. 
 
-To see all paritions on DAIC, you can use the command `scontrol show parition -a`. To check owners of these partitions, check the [Contributing departments](introduction/contributors-funders/#contributing-departments) page.
+To see all paritions on DAIC, you can use the command `scontrol show parition -a`. To check owners of these partitions, check the [Contributing departments](/docs/introduction/contributors-funders/#contributing-departments) page.
 
 ### Partitions & priority tiers
 DAIC partitions are tiered: 

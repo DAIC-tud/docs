@@ -10,12 +10,18 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 1. Jobs that can preempt: _Not enabled in DAIC_
 2. Jobs with an advanced reservation: _See {{< external-link "https://slurm.schedmd.com/reservations.html" "Slurm's Advanced Resource Reservation Guide" >}}_
-3. Partition PriorityTier: _See [Priority tiers](#priority-tiers)_
+3. Partition Priority Tier: _See [Priority tiers](#partition-priority-tiers)_
 4. Job priority: _See [Priority calculations](#priority-calculations) and [QoS priority](#qos-priority)_
 6. Job ID
 
+## Partitions
 
-### Priority tiers
+
+In SLURM, a partition is a scheduling construct that groups nodes or resources based on certain characteristics or policies. Partitions are used to organize and manage resources within a cluster, and they allow system administrators to control how jobs are allocated and executed on different nodes. 
+
+To see all paritions on DAIC, you can use the command `scontrol show parition -a`. To check owners of these partitions, check the [Contributing departments](introduction/contributors-funders/#contributing-departments) page.
+
+### Partitions & priority tiers
 DAIC partitions are tiered: 
 - The `general` partition is in the _lowest priority tier_, 
 - Department partitions (eg, `insy`, `st`) are in the _middle priority tier_, and 
@@ -191,30 +197,7 @@ Thus, DAIC has the following policy:
 
 These per-group and per-user limits are set by the DAIC user board, and the scheduler strictly enforces these limits. Thus, no user can use more resources than the amount that was set by the user board. Any (perceived) imbalance in the use of resources by a certain QoS or user should not be held against a user or the scheduler, but should be discussed in the user board.
 
-## Partitions
 
-
-In SLURM, a partition is a scheduling construct that groups nodes or resources based on certain characteristics or policies. Partitions are used to organize and manage resources within a cluster, and they allow system administrators to control how jobs are allocated and executed on different nodes. 
-
-### See partition definitions
-
-On DAIC the `scontrol` command only shows you the general partitions. More partitions are available.
-
-```bash
-$ scontrol show partition
-PartitionName=general
-   AllowGroups=ALL AllowAccounts=ALL DenyQos=influence
-   AllocNodes=login[1-3],oodtest Default=YES QoS=N/A
-   DefaultTime=00:01:00 DisableRootJobs=NO ExclusiveUser=NO GraceTime=0 Hidden=NO
-   MaxNodes=UNLIMITED MaxTime=UNLIMITED MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED
-   Nodes=3dgi[1-2],100plus,awi[01-26],cor1,gpu[01-11],grs[1-4],influ[1-6],insy[11-16],tbm5,wis1
-   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO
-   OverTimeLimit=NONE PreemptMode=OFF
-   State=UP TotalCPUs=4064 TotalNodes=59 SelectTypeParameters=NONE
-   JobDefaults=(null)
-   DefMemPerNode=1024 MaxMemPerNode=UNLIMITED
-   TRESBillingWeights=CPU=0.5,Mem=0.083333333G,GRES/gpu=16.0
-```
 
 ## Quality of Service (QoS)
 

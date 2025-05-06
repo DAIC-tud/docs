@@ -3,6 +3,20 @@ title: "Slurm questions"
 weight: 4
 ---
 
+### Why is my job waiting so long in the queue? How can I improve its priority?
+
+Slurm uses a fair-share scheduling model on DAIC, which means your job's **start time depends on your requested resources, your group's recent usage, and priority settings** like partition and QoS.
+
+Here are some tips to improve your job's priority and reduce queue time:
+
+- **Request as much as you need—but no more.** Large jobs take longer to schedule, and over-requesting doesn’t speed things up. For advice on scalable job sizes, see the [Scalable AI on DAIC training](https://reit.pages.ewi.tudelft.nl/course-scalable-ai-101-on-daic/).
+- **Add your group’s partition.** Jobs submitted to your group partition, in addition to `general` benefit from higher priority. See the [partition overview](https://daic.tudelft.nl/docs/manual/job-submission/priorities/#partitions).
+- **Use appropriate QoS (Quality of Service) settings.** Shorter QoS levels (e.g., `short`) have higher priority. If `short` is too limiting, use longer durations as needed. More details in the [QoS documentation](https://daic.tudelft.nl/docs/manual/job-submission/priorities/#quality-of-service-qos).
+- **For testing or quick runs,** use `sinteractive`. It grants the highest priority for a small interactive session, and accepts the same flags as `sbatch`, including `--parition`. See the [Interactive jobs on compute nodes](https://daic.tudelft.nl/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes) page
+
+You can always check your job’s position in the queue using `squeue` or `scontrol show job <jobid>` for more details.
+
+
 ### Interactive sessions hang when left for some time without input
 * This seems to be a bug. For now, use `sattach` or one of the login nodes.
 * Of course, if a session is really idle (i.e. nothing running), just close it so another job can run.

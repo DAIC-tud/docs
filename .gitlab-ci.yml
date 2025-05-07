@@ -59,6 +59,7 @@ mirror_to_github:
     - git config --global user.name "GitLab Mirror Bot"
     - git config --global user.email "mirror-bot@daic.tudelft.nl"
     - git remote add github https://$GITHUB_TOKEN@github.com/daic-tud/docs.git
-    - git push github --mirror
+    - git push github main  # push default branch only
+    - git push github --tags  # push tags too
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH    

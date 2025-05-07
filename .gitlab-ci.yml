@@ -48,7 +48,7 @@ pages:
   # https://blog.ideotec.es/support-compression-gitlab-pages/
 
 # ---------------------------------------------------
-# Mirror changes to GitHub (only from default branch)
+# Mirror changes to GitHub
 # ---------------------------------------------------
 mirror_to_github:
   image: alpine:latest
@@ -59,7 +59,8 @@ mirror_to_github:
     - git config --global user.name "GitLab Mirror Bot"
     - git config --global user.email "mirror-bot@daic.tudelft.nl"
     - git remote add github https://$GITHUB_TOKEN@github.com/daic-tud/docs.git
-    - git push github main  # push default branch only
+    - git fetch --all  # ensure full refs are available
+    - git push github --all  # push all
     - git push github --tags  # push tags too
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH    

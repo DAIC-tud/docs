@@ -46,3 +46,20 @@ pages:
 # Compress
   # https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets
   # https://blog.ideotec.es/support-compression-gitlab-pages/
+
+# ---------------------------------------------------
+# 🚀 Mirror changes to GitHub (only from default branch)
+# ---------------------------------------------------
+mirror_to_github:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - apk add --no-cache git
+    - git config --global user.name "GitLab Mirror Bot"
+    - git config --global user.email "mirror-bot@daic.tudelft.nl"
+    - git clone --mirror https://gitlab.ewi.tudelft.nl/daic/docs.git
+    - cd docs.git
+    - git remote add github https://$GITHUB_TOKEN@github.com/daic-tud/docs.git
+    - git push github --mirror
+  only:
+    - $CI_DEFAULT_BRANCH

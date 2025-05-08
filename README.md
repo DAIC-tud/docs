@@ -1,3 +1,5 @@
+[![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20OpenCost%20Guru-006BFF)](https://gurubase.io/g/opencost)
+
 ## Docsy based documentation
 
 This site uses the docsy theme and hugo

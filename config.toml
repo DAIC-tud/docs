@@ -119,8 +119,6 @@ priority = 0.5
 
 # User interface configuration
 [params.ui]
-# To enable gurubase
-custom_head = ["custom-head.html"]
 #  Set to true to disable breadcrumb navigation.
 breadcrumb_disable = false
 # Set to true to disable the About link in the site footer

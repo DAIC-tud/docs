@@ -146,6 +146,36 @@ SomeNetID@insy11:~$
 SomeNetID@insy11:~$ exit # exit the interactive session
 ```
 
+{{% alert title="Note" color="info" %}}
+To inspect a given GPU and obtain its details, you can run the following commands on an interactive session or an `sbatch` script.
+
+```bash
+$ sinteractive --cpus-per-task=2 --mem=500 --time=00:02:00 --gres=gpu
+Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
+srun: job 8607783 queued and waiting for resources
+srun: job 8607783 has been allocated resources
+15:50:29 up 51 days,  3:26,  0 users,  load average: 60,33, 59,72, 54,65
+
+SomeNetID@influ1:~$ nvidia-smi  --format=csv,noheader --query-gpu=name	
+NVIDIA GeForce RTX 2080 Ti
+
+SomeNetID@influ1:~$ nvidia-smi -q | grep Architecture	
+Product Architecture                  : Turing                                                                     
+
+SomeNetID@influ1:~$ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
+7.5	
+
+SomeNetID@influ1:~$ apptainer run --nv  cuda_based_image.sif | grep "CUDA Cores"	 # using the apptainer image of the tutorial
+(068) Multiprocessors, (064) CUDA Cores/MP:    4352 CUDA Cores
+
+SomeNetID@influ1:~$ nvidia-smi  --format=csv,noheader --query-gpu=memory.total
+11264 MiB
+
+SomeNetID@influ1:~$ exit
+```
+
+{{% /alert %}}
+
 ## Interactive jobs on compute nodes
 
 To work interactively on a node, e.g., to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Submitting jobs](/docs/manual/job-submission/job-scripts)), as in the examples below:

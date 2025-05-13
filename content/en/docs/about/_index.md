@@ -12,9 +12,9 @@ A high-performance computing (HPC) cluster is a collection of interconnected com
 
 ### What is DAIC?
 
-The Delft AI Cluster (DAIC), formerly known as INSY-HPC (or simply “HPC”), is a TU Delft high-performance computing cluster consisting of Linux [compute nodes (i.e., servers)](/docs/system/#compute-nodes) with substantial processing power and memory for running large, long, or GPU-enabled jobs.
+The Delft AI Cluster (DAIC), formerly known as INSY-HPC (or simply “HPC”), is a TU Delft high-performance computing cluster consisting of Linux [compute nodes (i.e., servers)](/docs/system/) with substantial processing power and memory for running large, long, or GPU-enabled jobs.
 
-What started in 2015 as a CS-only cluster has grown to serve researchers across many TU Delft departments. Each expansion has continued to support the needs of computer science and AI research. Today, DAIC nodes are organized into [partitions](/docs/manual/job-submission/partitions/) that correspond to the groups contributing those resources. (See [Contributing departments](/docs/introduction/contributors-funders/#contributing-departments) and [TU Delft clusters comparison](/docs/introduction/tud-clusters/).)
+What started in 2015 as a CS-only cluster has grown to serve researchers across many TU Delft departments. Each expansion has continued to support the needs of computer science and AI research. Today, DAIC nodes are organized into [partitions](/docs/manual/job-submission/priorities/#partitions) that correspond to the groups contributing those resources. (See [Contributing departments](/docs/about/contributors-funders/#contributing-departments) and [TU Delft clusters comparison](/docs/system/tud-clusters/).)
 
 {{< figure src="/img/DAIC_partitions.png" caption="DAIC partitions and access/usage best practices" ref="fig:daic_partitions" width="750px">}}
 

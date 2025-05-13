@@ -19,13 +19,13 @@ When slurm is not configured for FIFO scheduling, jobs are prioritized in the fo
 
 In SLURM, a partition is a scheduling construct that groups nodes or resources based on certain characteristics or policies. Partitions are used to organize and manage resources within a cluster, and they allow system administrators to control how jobs are allocated and executed on different nodes. 
 
-To see all paritions on DAIC, you can use the command `scontrol show parition -a`. To check owners of these partitions, check the [Contributing departments](/docs/introduction/contributors-funders/#contributing-departments) page.
+To see all paritions on DAIC, you can use the command `scontrol show parition -a`. To check owners of these partitions, check the [Contributing departments](/docs/about/contributors-funders/#contributing-departments) page.
 
 ### Partitions & priority tiers
 DAIC partitions are tiered: 
 - The `general` partition is in the _lowest priority tier_, 
 - Department partitions (eg, `insy`, `st`) are in the _middle priority tier_, and 
-- Partitions for specific groups (eg, `influence`, `mmll`) are in the _highest priority tier_. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/introduction)).
+- Partitions for specific groups (eg, `influence`, `mmll`) are in the _highest priority tier_. Those partitions correspond to resources contributed by the respective groups or departments (see [Contributing departments](/docs/about/contributors-funders/#contributing-departments)).
 
 When resources become available, the scheduler will first look for jobs in the highest priority partition that those resources are in, and start the highest (user) priority jobs that fit within the resources (if any). When resources remain, the scheduler will check the next lower priority tier, and so on. Finally, the scheduler will try to _backfill_ lower (user) priority jobs that fit (if any).
 
@@ -130,7 +130,7 @@ More details is available in [Slurm's SchedulerType](https://slurm.schedmd.com/s
   - QOS: the quality of service associated with the job, which is specified with the slurm `--qos` directive  (see [QoS priority](#qos-priority)).
 
 {{% alert title="Info" color="info" %}}
-The whole idea behind the FairShare scheduling in DAIC is to share all the available resources fairly and efficiently with all users (instead of having strict limitations in the amount of resource use or in which hardware users can compute). The resources in the cluster are contributed in different amounts by different groups (see [Contributing departments](/docs/introduction)), and the scheduler makes sure that each group can use a _share_ of the resource relative to what the group contributed. 
+The whole idea behind the FairShare scheduling in DAIC is to share all the available resources fairly and efficiently with all users (instead of having strict limitations in the amount of resource use or in which hardware users can compute). The resources in the cluster are contributed in different amounts by different groups (see [Contributing departments](/docs/about/contributors-funders/#contributing-departments)), and the scheduler makes sure that each group can use a _share_ of the resource relative to what the group contributed. 
 To check how the cluster is configured you may run:
 
 ```bash
@@ -182,7 +182,7 @@ PriorityWeightTRES      = (null)
 
 When you submit a job in a slurm-based system, it enters a queue waiting for resources.
 The _partition_ and _Quality of Service(QoS)_ are the two job parameters slurm uses to assign resources for a job:
-* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Contributing departments](/docs/introduction#contributing-departments)). 
+* The _partition_  is a set of compute nodes on which a job can be scheduled. In DAIC, the nodes contributed or funded by a certain group are lumped into a corresponding partition (see [Contributing departments](/docs/about/contributors-funders/#contributing-departments)). 
 All nodes in DAIC are part of the `general` partition, but other partitions exist for prioritization purposes on select nodes (see [Priority tiers](/docs/manual/job-submission/priorities)).
 * The _Quality of Service_ is a set of limits that controls what resources a job can use and, therefore, determines the priority level of a job. This includes the run time, CPU, GPU and memory limits on the given partition. Jobs that exceed these limits are automatically terminated (see [QoS priority](/docs/manual/job-submission/priorities#qos-priority)).
 
@@ -405,7 +405,7 @@ Using reservations is in line with the [General cluster usage clauses](/docs/pol
 To request a reservation for nodes, please use to the [Request Reservation form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
 
 General guidelines for reservations' requests:
-* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [Partitions](/docs/manual/job-submission/partitions) to check the name of the partition contributed by your group, and [System specifications](/docs/system/) for a listing of available nodes and their features).
+* You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [Computing nodes](/docs/system/compute-nodes) for a listing of available nodes, their features, and which paritions they belong to).
 * Please ask for the least amount of resources you need as to minimize impact on other users.
 * _Plan ahead and request your reservation as soon as possible_: Reservations usually ignore running jobs, so any running job on the machine(s) you request will continue to run when the reservation starts. While jobs from other users will not start on the reserved node(s), the resources in use by an already running job at the start time of the reservation will not be available in the reservation until this running job ends. The earlier ahead you request resources, the easier it is to allocate the requested resources.
 

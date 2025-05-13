@@ -8,11 +8,11 @@ description: >
 
 ## Basic principles
 
-- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Workload scheduler](/docs/system#workload-scheduler)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (e.g., your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [Storage](/docs/system#storage)).
+- On a cluster, it's important that software is available and identical on all nodes, both _login_ and _compute_ nodes (see [Workload scheduler](/docs/system/scheduler/)). For self-installed software, it's easier to install the software in one shared location than installing and maintaining the same software separately on every single node. You should therefore install your software on one of the network shares (e.g., your `$HOME` folder or an `umbrella` or `bulk` folder) that are accessible from all nodes (see [Storage](/docs/system/storage)).
 
 - As a regular Linux user you don't have administrator rights. Yet, you can do your normal work, including installing software _in a personal folder_, without needing administrator rights. Consequently, you don't need (nor are you allowed) to use the `sudo` or `su` commands that are often shown in manuals. 
 
-- Like other clusters, DAIC has a set quota on `$HOME` directories (see [system specifications](/docs/system#storage) for current limits). It means that installing software in your `$HOME` directory is limited. If you need more space, you should use a project share (see [Storage](/docs/system#storage)).
+- Like other clusters, DAIC has a set quota on `$HOME` directories (see [Checking Quota Limits](/docs/system/storage/#checking-quota-limits)). It means that installing software in your `$HOME` directory is limited. If you need more space, you should use a project share (see [Storage](/docs/system/storage)).
 
 - Both group storage (under `/tudelft.net/staff-groups/` or `/tudelft.net/staff-bulk/`) and project storage (under `/tudelft.net/staff-umbrella/`) are Windows-based, leading to problems installing packages with tools like `pip` due to file permission errors. Therefore, the recommended way of using your own software and environments is to use containerization and to store your containers under `/tudelft.net/staff-umbrella/...`. Check out the [Apptainer tutorial](/tutorials/apptainer) for guidance.
 
@@ -259,7 +259,7 @@ $ find miniforge3 -type f | wc -l
 Now, you can install your own versions of libraries and programs, or create entire environments as descibed above.
 
 {{% alert title="Stop!" color="warning" %}}
-You are limited to a fixed quota in your `$HOME` directory (see [system specifications](/docs/system/#personal-storage-aka-home-folder)). Installing a full development environment (e.g. for PyTorch) can easily exceed this quota. Therefore, it is recommended to install only essential tools and libraries in your `$HOME` directory. For larger environments, consider installing them in a [project](/docs/system/#project-storage) (preferred) or [group](/docs/system/#group-storage) share.
+You are limited to a fixed quota in your `$HOME` directory (see [Personal Storage](/docs/system/storage/#personal-storage-aka-home-folder)). Installing a full development environment (e.g. for PyTorch) can easily exceed this quota. Therefore, it is recommended to install only essential tools and libraries in your `$HOME` directory. For larger environments, consider installing them in a [project](/docs/system/storage/#project-storage) (preferred) or [group](/docs/system/storage/#group-storage) share.
 {{% /alert %}}
 
 ## Using binaries
@@ -320,7 +320,7 @@ $ source ~/.bash_profile
 $ mkdir -p "$PREFIX"
 ```
 
-The line `export PREFIX="$HOME/.local"` sets your software installation directory to `/home/nfs/<YourNetID>/.local` (which is the default and accessible on all nodes). This is in your personal home directory, which has a fixed quota (see [system specifications](/docs/system/#personal-storage-aka-home-folder)). For software intended to be shared with others, you should instead use a [project](/docs/system/#project-storage) (preferred) or [group](/docs/system/#group-storage) share.
+The line `export PREFIX="$HOME/.local"` sets your software installation directory to `/home/nfs/<YourNetID>/.local` (which is the default and accessible on all nodes). This is in your personal home directory, which has a fixed quota (see [Personal storage](/docs/system/storage/#personal-storage-aka-home-folder)). For software intended to be shared with others, you should instead use a [project](/docs/system/storage/#project-storage) (preferred) or [group](/docs/system/storage/#group-storage) share.
 
 
 ```bash

@@ -87,7 +87,7 @@ The cluster is available only to users from participating departments. Access is
 
 
 {{% alert title="Note" color="primary" %}}
-To check the corresponding nodes or servers for each department, see the [Cluster Specification](/docs/system#compute-nodes) page.
+To check the corresponding nodes or servers for each department, see the [Cluster Specification](/docs/system) page.
 {{% /alert %}}
 
 

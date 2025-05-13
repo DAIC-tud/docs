@@ -30,7 +30,7 @@ $ ssh login.daic.tudelft.nl             # If your username matches your NetID
 This will log you in into DAIC's `login1.daic.tudelft.nl` node for now. Note that this setup might change in the future as the system undergoes migration, potentially reducing the number of login nodes..
 
 {{% alert title="Note" color="info"  %}}
-Currently DAIC has 3 login nodes: `login1.daic.tudelft.nl`, `login2.daic.tudelft.nl`, and `login3.daic.tudelft.nl`. You can connect to any of these nodes directly as per your needs.  For more on the choice of login nodes, see [DAIC login nodes](/docs/system#login-nodes).
+Currently DAIC has 3 login nodes: `login1.daic.tudelft.nl`, `login2.daic.tudelft.nl`, and `login3.daic.tudelft.nl`. You can connect to any of these nodes directly as per your needs.  For more on the choice of login nodes, see [DAIC login nodes](/docs/system/login-nodes/).
 {{% /alert %}}
 
 

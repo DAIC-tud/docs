@@ -8,7 +8,7 @@ description: >
 
 ## Job script
 
-Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](/docs/manual/job-submission)).
+Job scripts are text files, where the header set of directives that specify compute resources, and the remainder is the code that needs to run. All resources and scheduling are specified in the header as `#SBATCH` directives (see `man sbatch` for more information). Code could be a set of steps to run in series, or parallel tasks within these steps (see [Slurm job's terminology](/docs/manual/job-submission/slurm-basics)).
 
 The code snippet below is a template script that can be customized to run jobs on DAIC. 
 A useful tool that can be used to streamline the debugging of such scripts is {{< external-link "https://www.shellcheck.net/" "ShellCheck" >}}.
@@ -60,7 +60,7 @@ Submitted batch job 2
 
 ### Using GPU resources
 
-Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [GPUs](/docs/system#gpus)).
+Some DAIC nodes have GPUs of different types, that can be used for various compute purposes (see [GPUs](/docs/system/compute-nodes/#gpus)).
 
 
 To request a gpu for a job, use the sbatch directive `--gres=gpu[:type][:number]`, where the optional `[:type]` and `[:number]` specify the type and number of the GPUs requested, as in the examples below:
@@ -178,7 +178,7 @@ SomeNetID@influ1:~$ exit
 
 ## Interactive jobs on compute nodes
 
-To work interactively on a node, e.g., to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Submitting jobs](/docs/manual/job-submission/job-scripts)), as in the examples below:
+To work interactively on a node, e.g., to debug a running code, or test on a GPU, start an interactive session using `sinteractve <compute requirements>`. If no parameters were provided, the default are applied. `<compute requirement>` can be specified the same way as sbatch directives within an sbatch script (see [Submitting jobs](/docs/manual/job-submission/slurm-basics/#job-scripts)), as in the examples below:
 
 ```bash
 $ hostname # check you are in one of the login nodes

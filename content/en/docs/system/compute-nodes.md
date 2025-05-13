@@ -138,6 +138,13 @@ All compute nodes support [Advanced Vector Extensions](https://en.wikipedia.org/
 The following table gives an overview of current nodes and their characteristics. Use the search bar to filter by hostname, GPU type, or any other column, and select columns to be visible. 
 <!-- The "Controller" column refers to the onboard network controller. -->
 
+{{% alert title="Note" color="info" %}}
+Slurm partitions typically correspond to research groups or departments that have contributed compute resources to the cluster. Most partition names follow the format `<faculty>-<department>` or `<faculty>-<department>-<section>`. A few exceptions exist for project-specific nodes.
+
+For more information, see the [Partitions](/docs/manual/job-submission/priorities/#partitions) section.
+{{% /alert %}}
+
+
 <table id="nodes-table" class="display">
 <thead>
   <tr>

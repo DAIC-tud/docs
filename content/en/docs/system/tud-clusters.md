@@ -27,7 +27,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Contributors</td>
-    <td>Certain groups within TU Delft (see <a href="#contributing-departments">Contributing departments</a>)</td>
+    <td>Certain groups within TU Delft (see <a href="/docs/about/contributors-funders/#contributing-departments">Contributing departments</a>)</td>
     <td>All TU Delft faculties</td>
     <td>Multiple universities &amp; SURF</td>
   </tr>
@@ -51,7 +51,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Website</td>
-    <td><a href="https://doc.daic.tudelft.nl/">DAIC documentation</a></td>
+    <td><a href="https://daic.tudelft.nl/">DAIC documentation</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/">DelftBlue Documentation</a></td>
     <td><a href="https://asci.tudelft.nl/project-das/">DAS Documentation</a></td>
   </tr>
@@ -69,7 +69,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Getting started</td>
-    <td><a href="/tutorials/quickstart/">Quickstart</a></td>
+    <td><a href="/quickstart/">Quickstart</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/crash-course/">Crash course</a></td>
     <td></td>
   </tr>
@@ -92,7 +92,7 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
   </tr>
   <tr>
     <td>Data storage</td>
-    <td><a href="/docs/system#storage">Storage</a></td>
+    <td><a href="/docs/system/storage">Storage</a></td>
     <td><a href="https://doc.dhpc.tudelft.nl/delftblue/DHPC-hardware/#storage">Storage</a></td>
     <td>Storage: 128 TB (RAID6) </td>
   </tr>

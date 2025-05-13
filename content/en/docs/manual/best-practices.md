@@ -9,9 +9,9 @@ description: >
 The available processing power and memory in DAIC is large, but still limited. You should use the available resources efficiently and fairly. This page lays out a few general principles and guidelines  for considerate use of DAIC.
 
 ## Using shared resources
-The [computing nodes](docs/system/#compute-nodes) within DAIC are primarily meant to run large, long (non-interactive) jobs. You share these resources with other users across departments. Thus, you need to be cautious of your usage so you do not hinder other users. 
+The [computing nodes](docs/system/compute-nodes) within DAIC are primarily meant to run large, long (non-interactive) jobs. You share these resources with other users across departments. Thus, you need to be cautious of your usage so you do not hinder other users. 
 
-To help protect the active jobs and resources, when a [login node](docs/system/#login-nodes) becomes overloaded, new logins to this node are automatically disabled. 
+To help protect the active jobs and resources, when a [login node](docs/system/login-nodes) becomes overloaded, new logins to this node are automatically disabled. 
 This means that you will sometimes have to wait for other jobs to finish and at other times ICT may have to kill a job to create space for other users.
 
 {{% pageinfo %}}
@@ -23,7 +23,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 ### Best practices
 * Always choose the login node with the lowest use (most importantly system load and memory usage), by checking the {{< external-link "https://login.daic.tudelft.nl/" "Current resource usage page" >}} or the `servers` command for information.
   * Each login node displays a message at login. Make sure you understand it before proceeding. This message includes the current load of the node, so look at it at every login
-* Only use the storage best suited to your files (See [Storage](/docs/system#storage)).
+* Only use the storage best suited to your files (See [Storage](/docs/system/storage)).
 
 <!--
 * ~~Automate your job.~~

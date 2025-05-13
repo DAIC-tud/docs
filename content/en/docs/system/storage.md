@@ -7,7 +7,7 @@ description: >
 
 ## Storage
 {{% pageinfo %}}
-DAIC compute nodes have direct access to the TU Delft [home](#personal-storage-aka-home-folder), [group](#group-storage) and [project](#project-storage) storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others (see [data transfer](/docs/manual/data-management/data-transfer/)) , as is demonstrated throughout this page.
+DAIC compute nodes have direct access to the TU Delft [home](#personal-storage-aka-home-folder), [group](#group-storage) and [project](#project-storage) storage. You can use your TU Delft installed machine or an SCP or SFTP client to transfer files to and from these storage areas and others (see [data transfer](/docs/manual/data-management/)) , as is demonstrated throughout this page.
 {{% /pageinfo %}}
 
 ### File System Overview

@@ -59,9 +59,9 @@ flowchart TB
             E --> F --> H 
             
             click C "/docs/manual/software/" "Software setup"
-            click D "/docs/manual/data-management/data-transfer" "Data transfer methods"
-            click E "/docs/manual/job-submission/job-interactive" "Interactive jobs on compute nodes"
-            click F "/docs/manual/job-submission/job-scripts" "Job submission"
+            click D "/docs/manual/data-management/" "Data transfer methods"
+            click E "/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes" "Interactive jobs on compute nodes"
+            click F "/docs/manual/job-submission/slurm-basics/#job-script" "Job submission"
             click H "/support/faqs/job-resources#how-do-i-clean-up-tmp-when-a-job-fails" "How do I clean up tmp?"
         end
         subgraph  local["Develop locally, then port code"]

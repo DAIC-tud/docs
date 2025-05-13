@@ -12,11 +12,11 @@ $(document).ready(function() {
     if ($('#nodes-table').length) {
         $('#nodes-table').DataTable({
             dom: 'Bfrtip', // Add Buttons (B) to the DOM, f=filtering, r=processing, t=table, i=info, p=pagination
-            "paging": true, // Enable pagination           
-            scrollY: "300px", // Set the height of the table
+            "paging": false, // Enable pagination           
+            scrollY: "400px", // Set the height of the table
             scrollCollapse: true, // Allow the table to collapse if there are fewer rows
             scrollX: true, // Enable horizontal scrolling
-            "pageLength": 5, // Show 5 entries per page by default
+            // "pageLength": 5, // Show 5 entries per page by default
             "lengthMenu": [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ], // Options for number of entries per page
             buttons: [
                 'colvis' // Add the column visibility button

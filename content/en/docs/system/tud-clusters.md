@@ -1,7 +1,8 @@
 ---
-title: "TU Delft clusters comparison"
-weight: 3
-
+title: "Cluster comparison"
+weight: 6
+description: >
+  Overview of the clusters available to TU Delft researchers, including DAIC, DelftBlue, and DAS.
 ---
 
 ## Cluster comparison

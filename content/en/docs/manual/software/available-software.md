@@ -1,7 +1,7 @@
 ---
 title: "Available software"
 linkTitle: "Available software"
-weight: 1
+weight: 2
 description: >
   How to find and work with pre-installed software?
 ---

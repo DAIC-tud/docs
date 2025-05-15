@@ -122,7 +122,7 @@ In addition to funding from contributing departments, DAIC has received support 
 
   {{< card header="MMLL" >}}
     <a href="https://www.st.ewi.tudelft.nl/~mtjspaan/mmll/index_en.html">
-	    <img src="/docs/introduction/images/funders_MMLLlogo.png" height=150 width=350 />
+	    <img src="/docs/about/images/funders_MMLLlogo.png" height=150 width=350 />
     </a>
   {{< /card >}}
 
@@ -163,7 +163,7 @@ In addition to funding from contributing departments, DAIC has received support 
 {{< cardpane >}}
 
   {{< card header="Others" title="" subtitle=""  >}}
-    <a href="https://daic.tudelft.nl/docs/introduction/#contributing-departments">
+    <a href="https://daic.tudelft.nl/docs/about/contributors-funders/#contributing-departments">
 	    Contributing departments' funding
     </a>
   {{< /card >}}

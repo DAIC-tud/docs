@@ -30,7 +30,7 @@ This user agreement is intended to establish the expectations between all users 
    * Any (perceived) imbalance in the use of resources by a certain QoS or user should not be hold against a user or the scheduler, but should be discussed in the user board.
 
 ### Access and accounts
-- DAIC is a cluster dedicated for TU Delft _researchers_ (eg, PhD students, postdocs, .. etc) _from participating groups_ (see [Contributing departments](/docs/introduction/contributors-funders)). 
+- DAIC is a cluster dedicated for TU Delft _researchers_ (eg, PhD students, postdocs, .. etc) _from participating groups_ (see [Contributing departments](/docs/about/contributors-funders)). 
 
 {{% alert title="Needing access to DAIC?" color="primary" %}}
 To access DAIC resources, eligible candidates from these groups can request an account via the [DAIC request Access form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). 
@@ -55,7 +55,7 @@ To access DAIC resources, eligible candidates from these groups can request an a
 2. You are not allowed to use the cluster for reasons unrelated to your studies and research.
 3. If your jobs are destructive to other users' jobs or are threatening cluster integrity, your jobs might be canceled. You have the responsibility at all times to avoid behavior which interferes negatively with other users' cluster usage. See [Consequences of irresponsible usage](#consequences-of-irresponsible-usage).
 4. If the destructive behavior of your jobs does not change over time or you are unresponsive to e-mails from system admins requesting information or requiring immediate action regarding your cluster use, you might receive a ban from the cluster. See [Consequences of irresponsible usage](#consequences-of-irresponsible-usage).
-5. You are expected to **cite and acknowledge DAIC** in your scientific publications using the format specified in the [Citation and Acknowledgement](/docs/introduction/advisors-impact#citation-and-acknowledgement) section. Additionally, please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
+5. You are expected to **cite and acknowledge DAIC** in your scientific publications using the format specified in the [Citation and Acknowledgement](/docs/about/advisors-impact#citation-and-acknowledgement) section. Additionally, please remember to post any scientific output based-off work performed on DAIC to the [ScientificOutput MatterMost channel](https://mattermost.tudelft.nl/daic/channels/scientificoutput).
 
 ### Responsible cluster usage
 You are responsible that your jobs run efficiently:
@@ -86,7 +86,7 @@ When you encounter problems, please follow the subsequent steps, in the indicate
   2. You can also ask questions to fellow users on the [MatterMost channel](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su). 
   3. For prolonged problems, your initial contact point is your supervisor/PI.
   4. As a final step, you can contact the cluster administrators for technical sysadmin problems or persistent efficiency problems, or for more information if you are not sure why you are banned from the cluster. You can do this by reporting your question, through the {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/" "Self Service Portal" >}}, to the Service Desk. In your question, refer to the ‘DAIC cluster’.
-  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](/docs/introduction/advisors-impact/) to bring it up as an agenda point in the next user board meeting.
+  5. For severe recurring problems, complaints and suggestions for policy changes, or issues affecting multiple users, you can contact the [DAIC advisory board](/docs/about/advisors-impact/) to bring it up as an agenda point in the next user board meeting.
 
 
 
@@ -119,7 +119,7 @@ This means that you will sometimes have to wait for other jobs to finish and at 
 
 * Do interactive code development, debugging and testing in your local machine, as much as possible. In the cluster, try to organize your code as scripts, instead of working interactively in the command line.
 
-* If you need to test and debug in the cluster, for example, in a GPU node, request an interactive session and do not work in the login node itself (See [Interactive jobs on compute nodes](/docs/manual/job-submission/job-interactive)).
+* If you need to test and debug in the cluster, for example, in a GPU node, request an interactive session and do not work in the login node itself (See [Interactive jobs on compute nodes](/docs/manual/job-submission/slurm-basics/#interactive-jobs-on-compute-nodes)).
 
 * Save results frequently: your job can crash, the server can become overloaded, or the network shares can become unavailable. 
 

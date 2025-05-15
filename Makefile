@@ -1,3 +1,6 @@
 check-links:
-	npx linkinator https://doc.daic.tudelft.nl/ --include '(!?^https://doc.daic.tudleft.nl).*' -r --skip '(.*_print|change-me|login.daic|servicedesk.*)'
+	npx --yes linkinator https://daic.tudelft.nl/ -r \
+		--skip '(.*_print|change-me|login.daic|servicedesk.*|topdesk\.net|wiki\.tudelft\.nl)'\
+		--markdown \
+		--verbosity error
 

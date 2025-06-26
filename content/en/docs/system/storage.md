@@ -192,6 +192,8 @@ Local storage is meant for temporary storage of (large amounts of) data with fas
 Using `/dev/shm` is very risky, and should only be done when you understand all implications. Consider using the [local storage](#local-storage) (`/tmp`) as a safer alternative. 
 
 **Cluster-wide Risk**: When memory storage fills up, it can cause memory exhaustion that kills running jobs. The scheduler cannot identify the cause, so it continues launching new jobs that will also fail, potentially making the whole cluster unusable.
+
+**Clean up policy**: Users must always clean up '/dev/shm' after using it, even when jobs fail or are stopped via the scheduler. Failing to do so may lead to a ban from using the cluster.
 {{% /alert %}}
 
 Memory storage is meant for short-term storage of limited amounts of data with very fast access on a single computer. You can create your own personal folder inside the memory storage location. Memory storage is only accessible on that computer, and there is no backup service nor quota. The available space is limited and shared with programs, so leave enough space (the computer will likely crash when you don't!). Files that have not been accessed for 1 day are automatically removed. 

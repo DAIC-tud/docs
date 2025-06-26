@@ -155,7 +155,7 @@ Data deleted from project storage, `staff-umbrella`, remains in a hidden `.snaps
 {{% /alert %}}
 
 ### Local Storage 
-Local storage is meant for temporary storage of (large amounts of) data with fast access on a single computer. You can create your own personal folder inside the local storage. Unlike the network storage above, local storage is only accessible on that computer, not on other computers or through network file servers or webdata. There is no backup service nor quota. The available space is large but fixed, so leave enough space for other users. Files under `/tmp` that have not been accessed for 10 days are automatically removed. 
+Local storage is meant for temporary storage of (large amounts of) data with fast access on a single computer. You can create your own personal folder inside the local storage. Unlike the network storage above, local storage is only accessible on that computer, not on other computers or through network file servers or webdata. There is no backup service nor quota. The available space is large but fixed, so leave enough space for other users. Files under `/tmp` that have not been accessed for 10 days are automatically removed. A process that has a file opened can access the data until the file is closed, even when the file is deleted. When the file is deleted, the file entry will be removed but the data will not be removed until the file is closed. Therefore, files that are kept open by a process can be used for longer. Additionally, files that are being accessed (read, written) multiple times within one day won't be deleted.
 
 <table>
 <thead>
@@ -187,7 +187,11 @@ Local storage is meant for temporary storage of (large amounts of) data with fas
 </tbody>
 </table>
 
-### Memory Storage
+### Memory Storage `/dev/shm`
+{{% alert title="Warning" color="danger" %}}
+Using `/dev/shm` is very risky, and should only be done when you understand all implications. Consider using the [local storage](#local-storage) (`/tmp`) as a safer alternative. 
+{{% /alert %}}
+
 Memory storage is meant for short-term storage of limited amounts of data with very fast access on a single computer. You can create your own personal folder inside the memory storage location. Memory storage is only accessible on that computer, and there is no backup service nor quota. The available space is limited and shared with programs, so leave enough space (the computer will likely crash when you don't!). Files that have not been accessed for 1 day are automatically removed. 
 
 <table>
@@ -220,9 +224,14 @@ Memory storage is meant for short-term storage of limited amounts of data with v
 </tbody>
 </table>
 
-{{% alert title="Warning" color="info" %}}
-Use this only when using other storage makes your job or the whole computer slow. 
+{{% alert title="Info" color="info" %}}
+Use this only when using other storage makes your job or the whole computer slow. Files in `/dev/shm/` use system memory directly and do not count toward your job's memory allocation. Request enough memory to cover both your job's processing needs and any files stored in memory storage. Never exceed your allocated memory, not even for one second. 
 {{% /alert %}}
+
+{{% alert title="Warning" color="danger" %}}
+**Cluster-wide Risk**: When memory storage fills up, it can cause system-wide memory exhaustion that kills running jobs across the entire cluster. The scheduler cannot identify the cause, so it continues launching new jobs that will also fail, potentially making the whole cluster unusable.
+{{% /alert %}}
+
 
 ### Checking quota limits
 

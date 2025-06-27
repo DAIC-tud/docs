@@ -212,9 +212,7 @@ While you can run Ollama manually, the wrapper scripts provide several convenien
   NFS root‑squash errors.
 * **Automatic cleanup.** The wrapper cleans up `host.txt` and `port.txt` files after the server stops, so you can tell if you have a server up and running.
 
-{{% alert title="Note" color="info" %}}  
 
----
 
 ## 7. Troubleshooting
 

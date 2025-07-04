@@ -119,7 +119,7 @@ We discourage running graphical applications (via `ssh -X`) on DAIC login nodes,
 ## Access from outside university network using a VPN
 Direct access to DAIC from _outside the university network_ is blocked by a firewall. Therefore, a VPN is needed
 
-You need to use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](##access-from-the-tu-delft-network). 
+You need to use TU Delft's EduVPN or OpenVPN (See TU Delft's {{< external-link "https://www.tudelft.nl/en/library/using-the-library/facilities-study-places/off-campus-access/access-via-vpn" "Access via VPN " >}} recommendations ) to access DAIC directly. Once connected to the VPN,  you can ssh to DAIC directly, as in [Access from the TU Delft Network](#access-from-the-tu-delft-network). 
 
 
 {{% alert title="VPN access trouble?" color="warning" %}}

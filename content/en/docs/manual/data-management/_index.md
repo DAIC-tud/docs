@@ -7,7 +7,9 @@ description: >
 ---
 
 ## Data Management Guidelines
-There are different use cases and quota limits for the different TU Delft network drives. For example, `Umbrella` (project storage), is for everybody and everything, while `bulk` needs to be cleaned up, migrated and phased out. Always check TU Delft {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage" >}} for guidelines on using network drives and quota limits.
+There are different use cases and quota limits for the different TU Delft network drives.
+
+For example, `Umbrella` (project storage) is intended for general project data, while `bulk` is a legacy storage area that is being phased out. Always check the TU Delft {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage" >}} for guidelines on using network drives and quota limits.
 
 
 ## Data transfer
@@ -94,13 +96,21 @@ Use quotes when file or folder names contain spaces or special characters.
     This command transfers files from a local source to a remote destination.
 
 {{% alert title="Note" color="warning" %}}
-When sending data to be stored in `staff-umbrella` or `staff-bulk`, **always** include the option `--no-perms`. for example:
+When sending data to `staff-umbrella` or `staff-bulk`, you **must** use the `--no-perms` option to avoid errors, as the underlying network filesystem does not support changing permissions.
+
+A recommended command to use is:
 
 ```bash
 $ rsync --progress -avz --no-perms <source_file> [<netid>@]login.daic.tudelft.nl:<destination_umbrella_directory>
 ``` 
 
-This keeps you posted with progress of data transfer, and circumevents the different permissions between Windows and Linux of the file system. This approach is also efficient because it send the data in archived format.
+This command is effective because: 
+- `--progress` shows the transfer progress. 
+- `-a` (archive mode) efficiently copies directories and preserves file attributes like timestamps. 
+- `-v` provides verbose output. 
+- `-z` compresses data to speed up the transfer. 
+- `--no-perms` prevents errors related to file permissions on the destination.
+
 {{% /alert %}}       
 
 #### Examples
@@ -179,3 +189,103 @@ These options, along with others, provide additional flexibility and control ove
 * https://www.nhr.kit.edu/userdocs/horeka/filesystems/
 * https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp
 -->
+
+## Data download
+
+When downloading large datasets from third-party servers (e.g. collaborators or public repositories), don't use the DAIC login or bastion nodes. These are optimized for compute access, not large data transfers.
+
+
+Instead, mount DAIC storage (e.g. `staff-umbrella` or `staff-bulk`) and download the data directly into it from your own computer. This avoids unnecessary use of the DAIC internal network and login resources.
+
+Follow these steps to download data directly to your project storage (and access it from DAIC):
+
+###  **Access your DAIC storage from your local computer**
+
+    You can either mount the storage as a network drive or use an `SFTP` client. Mounting is often more convenient as it makes the remote storage appear like a local folder.
+    Choose the appropriate method for your operating system:
+
+
+
+{{< tabpane text=true right=true >}}
+  {{% tab header="**Operating System**:" disabled=true /%}}
+
+  {{% tab header="Windows" %}}
+**For TU Delft-managed computers:**
+- Project Data Storage is mounted automatically under `This PC` as `Project Data (U:)` or `\\tudelft.net\staff-umbrella`.
+
+**For personal computers:**
+- Connect to EduVPN first.
+- Install [**WebDrive**](https://webdata.tudelft.nl/) and connect to `sftp.tudelft.nl`. Click on `staff-umbrella` (this is the Project Data Storage).
+
+  {{% /tab %}}
+
+  {{% tab header="MacOS" %}}
+
+**Option 1: Using Finder**
+1. Press `⌘K` or choose **Go > Connect to Server**.
+2. Enter: `smb://tudelft.net/staff-umbrella/<your_project_name>` and click `Connect`.
+3. (Optional) Add this address to your **Favorite Servers** for easy access later.
+
+**Option 2: Using an SFTP client (e.g., Terminal, FileZilla, CyberDuck)**
+
+Connect to `sftp.tudelft.nl` with your NetID and password. From the terminal, you can use:
+
+```bash
+sftp <YourNetID>@sftp.tudelft.nl
+cd staff-umbrella/<your_project_name>
+put data.zip  # Upload a file (data.zip) to your storage
+get results.zip # Download a file (results.zip) from your storage
+```
+
+Graphical clients like [FileZilla](https://filezilla-project.org/) or [CyberDuck](https://cyberduck.io/) provide a drag-and-drop interface for the same purpose.
+
+    {{% /tab %}}
+
+    {{% tab header="Linux" %}}
+
+**For TU Delft-managed computers:**
+- For managed Ubuntu 22.04, [contact ICT](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=bb079374b047400382d67566e4b57597&from=cac22e81-a71b-4aaa-b268-da90e255e19a&openedFromService=true) for setting up the mount.
+- For Ubuntu 18.04, storage is mounted under `/tudelft.net/staff-umbrella/`:
+  - You can access it via the terminal:
+    ```bash
+    cd /tudelft.net/staff-umbrella/<your_project_name>
+    ```
+  - Or via the file manager (nautilus or dolphin): `under Other locations > Computer > tudelft.net > staff-umbrella > <your_project_name>`
+
+**For personal computers:**
+**Option 1: Mount with sshfs**
+```bash
+mkdir ~/storage_mount
+sshfs NetID@sftp.tudelft.nl:/staff-umbrella/<your_project_name> ~/storage_mount
+ls ~/storage_mount # List files in your project storage
+```
+And, after you are done with the mount:
+
+```bash
+fusermount -u ~/storage_mount
+```
+
+**Option 2: Use `sftp`**
+
+```bash
+sftp <YourNetID>@sftp.tudelft.nl
+cd staff-umbrella/<your_project_name>
+put data.zip  # Upload a file (data.zip) to your storage
+get results.zip # Download a file (results.zip) from your storage
+```
+ {{% /tab %}}
+
+{{< /tabpane >}}
+
+### 2. **Download the data directly to the storage location:** 
+
+Once you have mounted or connected to your storage, you can use standard tools like `wget`, `curl`, or your web browser to download files directly into that location.
+
+For example, if you mounted your storage on Linux at `~/storage_mount`, you can download a large dataset into your project folder with wget:
+
+```bash
+wget -P ~/storage_mount/datasets/ https://www.robots.ox.ac.uk/~vgg/data/flowers/102/102flowers.tgz
+
+```
+
+The file (the [Oxford Flowers 102 Dataset](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html) in this example) downloads directly to your project folder in the `staff-umbrella` storage, using your local machine's network connection.

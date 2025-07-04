@@ -145,6 +145,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
 {{% /alert %}}
 
 
+
+
+
+
 <table id="nodes-table" class="display">
 <thead>
   <tr>
@@ -153,12 +157,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <th>Cores per Socket</th>
     <th>Total Cores</th>
     <th>CPU Speed (MHz)</th>
-    <th>Total RAM</th>
-    <th>Local Disk (/tmp)</th>
+    <th>Total RAM (GiB)</th>
+    <th>Local Disk (/tmp, GiB)</th>
     <th>GPU Type</th>
     <th>GPU Count</th>
-    <th>Infiniband</th>
-    <!-- <th>Controller</th> -->
     <th>SlurmPartitions</th>
     <th>SlurmActiveFeatures</th>
   </tr></thead>
@@ -169,12 +171,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>16</td>
     <td>32</td>
     <td>2097.594</td>
-    <td>755.585 GB</td>
-    <td>3,1T</td>
+    <td>755</td>
+    <td>3174</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>02:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01) 02:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01) 02:00.2 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01) 02:00.3 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5719 Gigabit Ethernet PCIe (rev 01) 04:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01) 04:00.1 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;ht;10gbe;bigmem</td>
   </tr>
@@ -183,13 +183,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 7502P 32-Core Processor</td>
     <td>32</td>
     <td>32</td>
-    <td>2500</td>
-    <td>251.41 GB</td>
-    <td>148G</td>
+    <td>2500.000</td>
+    <td>251</td>
+    <td>148</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>41:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 41:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>general;bk-ur-uds</td>
     <td>avx;avx2;ht;10gbe;ssd</td>
   </tr>
@@ -198,13 +196,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 7502P 32-Core Processor</td>
     <td>32</td>
     <td>32</td>
-    <td>2500</td>
-    <td>251.41 GB</td>
-    <td>148G</td>
+    <td>2500.000</td>
+    <td>251</td>
+    <td>148</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>41:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 41:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>general;bk-ur-uds</td>
     <td>avx;avx2;ht;10gbe;ssd</td>
   </tr>
@@ -213,13 +209,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2833.728</td>
-    <td>376.384 GB</td>
-    <td>393G</td>
+    <td>3494.921</td>
+    <td>376</td>
+    <td>393</td>
     <td>Tesla V100-PCIE-32GB</td>
     <td>1</td>
-    <td>No</td>
-    <!-- <td>01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01) 01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;10gbe;avx512;gpumem32;nvme;ssd</td>
   </tr>
@@ -228,13 +222,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz</td>
     <td>14</td>
     <td>28</td>
-    <td>2820.703</td>
-    <td>503.619 GB</td>
-    <td>393G</td>
+    <td>2899.951</td>
+    <td>504</td>
+    <td>393</td>
     <td>Tesla V100-SXM2-16GB</td>
     <td>2</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 08:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01) 08:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;10gbe;bigmem;ssd</td>
   </tr>
@@ -244,12 +236,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -259,12 +249,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -274,12 +262,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -289,12 +275,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -304,12 +288,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -319,12 +301,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>503.625 GB</td>
-    <td>5,4T</td>
+    <td>503</td>
+    <td>5529</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;imphysexclusive</td>
   </tr>
@@ -334,12 +314,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>251.641 GB</td>
-    <td>856G</td>
+    <td>251</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -349,12 +327,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>251.641 GB</td>
-    <td>856G</td>
+    <td>251</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -364,12 +340,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>251.641 GB</td>
-    <td>856G</td>
+    <td>251</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -379,12 +353,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>14</td>
     <td>28</td>
     <td>2899.951</td>
-    <td>251.641 GB</td>
-    <td>856G</td>
+    <td>251</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>02:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3] 05:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03) 06:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network Connection (rev 03)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -393,13 +365,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2745.709</td>
-    <td>376.385 GB</td>
-    <td>856G</td>
+    <td>2672.149</td>
+    <td>376</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>18:00.0 Network controller: Mellanox Technologies MT27520 Family [ConnectX-3 Pro] 19:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 19:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -408,13 +378,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2636.492</td>
-    <td>376.385 GB</td>
-    <td>856G</td>
+    <td>3299.932</td>
+    <td>376</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>18:00.0 Network controller: Mellanox Technologies MT27520 Family [ConnectX-3 Pro] 19:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 19:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -423,13 +391,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2644.635</td>
-    <td>376.385 GB</td>
-    <td>856G</td>
+    <td>3542.370</td>
+    <td>376</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>18:00.0 Network controller: Mellanox Technologies MT27520 Family [ConnectX-3 Pro] 19:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 19:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -438,13 +404,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz</td>
     <td>18</td>
     <td>36</td>
-    <td>2669.061</td>
-    <td>376.385 GB</td>
-    <td>856G</td>
+    <td>2840.325</td>
+    <td>376</td>
+    <td>856</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>18:00.0 Network controller: Mellanox Technologies MT27520 Family [ConnectX-3 Pro] 19:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 19:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -453,13 +417,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6242 CPU @ 2.80GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>3452.148</td>
-    <td>1510.33 GB</td>
-    <td>7,0T</td>
+    <td>3573.315</td>
+    <td>1510</td>
+    <td>7168</td>
     <td>Tesla V100-SXM2-32GB</td>
     <td>8</td>
-    <td>No</td>
-    <!-- <td>5e:00.0 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01) 5e:00.1 Ethernet controller: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01) 81:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01) 81:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)</td> -->
     <td>general;me-cor</td>
     <td>avx;avx2;ht;10gbe;avx512;gpumem32;ssd</td>
   </tr>
@@ -468,13 +430,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -483,13 +443,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -498,13 +456,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -513,13 +469,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -528,13 +482,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -543,13 +495,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -558,13 +508,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -573,13 +521,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -588,13 +534,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -603,13 +547,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;tnw-imphys</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -618,13 +560,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.408 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) 63:00.1 Ethernet controller: Intel Corporation Ethernet Controller X710 for 10GBASE-T (rev 02) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>bk-ur-uds;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -633,13 +573,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7413 24-Core Processor</td>
     <td>24</td>
     <td>48</td>
-    <td>2650</td>
-    <td>503.407 GB</td>
-    <td>415G</td>
+    <td>2650.000</td>
+    <td>503</td>
+    <td>415</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -648,13 +586,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -663,13 +599,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -678,13 +612,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -693,13 +625,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -708,13 +638,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-st</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -723,13 +651,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -738,13 +664,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -753,14 +677,12 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
-    <td>ewi-insy-prb;general;ewi-insy</td>
+    <td>general;ewi-insy-prb;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
   <tr>
@@ -768,13 +690,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -783,13 +703,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -798,13 +716,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -813,13 +729,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>mmll;general;ewi-insy</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -828,13 +742,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>1007.24 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>1007</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>lr-asm;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -843,13 +755,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>me-cor;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -858,13 +768,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>me-cor;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -873,13 +781,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7543 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2800</td>
-    <td>503.275 GB</td>
-    <td>856G</td>
+    <td>2800.000</td>
+    <td>503</td>
+    <td>856</td>
     <td>NVIDIA A40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>63:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 63:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) e1:00.0 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe e1:00.1 Ethernet controller: Broadcom Inc. and subsidiaries NetXtreme BCM5720 2-port Gigabit Ethernet PCIe</td> -->
     <td>me-cor;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -888,13 +794,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-insy;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -903,13 +807,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-insy;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -918,13 +820,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-me-sps;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -933,13 +833,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>lr-co;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -948,13 +846,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-insy;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -963,13 +859,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>1 x AMD EPYC 9534 64-Core Processor</td>
     <td>64</td>
     <td>64</td>
-    <td>2450</td>
-    <td>755.228 GB</td>
-    <td>856G</td>
+    <td>2450.000</td>
+    <td>755</td>
+    <td>856</td>
     <td>NVIDIA L40</td>
     <td>3</td>
-    <td>No</td>
-    <!-- <td>c4:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) c4:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>bk-ar;general</td>
     <td>avx;avx2;10gbe;bigmem;gpumem32;ssd</td>
   </tr>
@@ -979,12 +873,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>8</td>
     <td>16</td>
     <td>3499.804</td>
-    <td>251.633 GB</td>
-    <td>181G</td>
+    <td>251</td>
+    <td>181</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 03:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3]</td> -->
     <td>citg-grs;general</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -994,12 +886,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>8</td>
     <td>16</td>
     <td>3499.804</td>
-    <td>251.633 GB</td>
-    <td>181G</td>
+    <td>251</td>
+    <td>181</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 03:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3]</td> -->
     <td>citg-grs;general</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -1009,12 +899,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>8</td>
     <td>16</td>
     <td>3499.804</td>
-    <td>251.633 GB</td>
-    <td>181G</td>
+    <td>251</td>
+    <td>181</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 03:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3]</td> -->
     <td>citg-grs;general</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -1024,12 +912,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>8</td>
     <td>16</td>
     <td>3500</td>
-    <td>251.633 GB</td>
-    <td>181G</td>
+    <td>251</td>
+    <td>181</td>
     <td>N/A</td>
     <td>0</td>
-    <td>Yes</td>
-    <!-- <td>01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01) 03:00.0 Network controller: Mellanox Technologies MT27500 Family [ConnectX-3]</td> -->
     <td>citg-grs;general</td>
     <td>avx;avx2;ht;ib;ssd</td>
   </tr>
@@ -1038,13 +924,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2320.971</td>
-    <td>376.391 GB</td>
-    <td>197G</td>
+    <td>3385.711</td>
+    <td>376</td>
+    <td>197</td>
     <td>NVIDIA GeForce RTX 2080 Ti</td>
     <td>8</td>
-    <td>No</td>
-    <!-- <td>61:00.0 Ethernet controller: Intel Corporation Ethernet Connection X722 for 10GBASE-T (rev 09) 61:00.1 Ethernet controller: Intel Corporation Ethernet Connection X722 for 10GBASE-T (rev 09)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;avx512;nvme;ssd</td>
   </tr>
@@ -1053,13 +937,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2300</td>
-    <td>187.232 GB</td>
-    <td>369G</td>
+    <td>2300.000</td>
+    <td>187</td>
+    <td>369</td>
     <td>NVIDIA GeForce RTX 2080 Ti</td>
     <td>4</td>
-    <td>No</td>
-    <!-- <td>18:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 18:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;avx512;ssd</td>
   </tr>
@@ -1068,13 +950,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2300</td>
-    <td>187.232 GB</td>
-    <td>369G</td>
+    <td>2300.000</td>
+    <td>187</td>
+    <td>369</td>
     <td>NVIDIA GeForce RTX 2080 Ti</td>
     <td>4</td>
-    <td>No</td>
-    <!-- <td>18:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 18:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;avx512;ssd</td>
   </tr>
@@ -1083,13 +963,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x AMD EPYC 7452 32-Core Processor</td>
     <td>32</td>
     <td>64</td>
-    <td>2350</td>
-    <td>251.626 GB</td>
-    <td>148G</td>
+    <td>2350.000</td>
+    <td>252</td>
+    <td>148</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>64:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01) 64:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;ssd</td>
   </tr>
@@ -1099,12 +977,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>32</td>
     <td>64</td>
     <td>2350</td>
-    <td>503.61 GB</td>
-    <td>148G</td>
+    <td>503</td>
+    <td>148</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>64:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01) 64:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;bigmem;ssd</td>
   </tr>
@@ -1114,12 +990,10 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>32</td>
     <td>64</td>
     <td>2350</td>
-    <td>503.61 GB</td>
-    <td>148G</td>
+    <td>503</td>
+    <td>148</td>
     <td>N/A</td>
     <td>0</td>
-    <td>No</td>
-    <!-- <td>64:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01) 64:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10G X550T (rev 01)</td> -->
     <td>influence;ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;bigmem;ssd</td>
   </tr>
@@ -1128,13 +1002,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2300</td>
-    <td>754.33 GB</td>
-    <td>416G</td>
+    <td>2300.000</td>
+    <td>754</td>
+    <td>416</td>
     <td>NVIDIA GeForce RTX 2080 Ti</td>
     <td>4</td>
-    <td>No</td>
-    <!-- <td>18:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 18:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;avx512;bigmem;ssd</td>
   </tr>
@@ -1143,13 +1015,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td>2 x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz</td>
     <td>16</td>
     <td>32</td>
-    <td>2300</td>
-    <td>754.33 GB</td>
-    <td>416G</td>
+    <td>2300.000</td>
+    <td>754</td>
+    <td>416</td>
     <td>NVIDIA GeForce RTX 2080 Ti</td>
     <td>4</td>
-    <td>No</td>
-    <!-- <td>18:00.0 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01) 18:00.1 Ethernet controller: Broadcom Inc. and subsidiaries BCM57416 NetXtreme-E Dual-Media 10G RDMA Ethernet Controller (rev 01)</td> -->
     <td>ewi-insy;general</td>
     <td>avx;avx2;ht;10gbe;avx512;bigmem;ssd</td>
   </tr>
@@ -1165,12 +1035,11 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
     <td><strong>76.79 TiB</strong></td> <!-- Local Disk (/tmp) -->
     <td></td> <!-- GPU Type -->
     <td><strong>137 GPU</strong></td> <!-- GPU Count -->
-    <td></td> <!-- Infiniband -->
-    <!-- <td></td> Controller -->
     <td></td> <!-- SlurmPartitions -->
     <td></td> <!-- SlurmActiveFeatures -->
   </tr>
 </tfoot>
+
 </table>
 
 

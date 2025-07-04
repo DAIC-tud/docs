@@ -7,18 +7,124 @@ description: >
 ---
 
 ## Data Management Guidelines
-There are different use cases and quota limits for the different TU Delft network drives.
 
-For example, `Umbrella` (project storage) is intended for general project data, while `bulk` is a legacy storage area that is being phased out. Always check the TU Delft {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage" >}} for guidelines on using network drives and quota limits.
+DAIC login and compute nodes have direct access to standard TU Delft network storage, including your personal home folder, group storage, and project storage. It is important to use the correct storage location for your data, as each has different use cases, access rights, and quota limits.
+
+For example, **Project Storage** (`staff-umbrella`) is the recommended location for research data, datasets, and code. In contrast, `staff-bulk` is a legacy storage area that is being phased out. For a complete overview of storage types, official guidelines, and quota limits, always consult the **TU Delft {{< external-link "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Overview data storage" >}}**.
+
+This page explains the best methods for transferring data to and from these storage locations.
 
 
-## Data transfer
+## Recommended Workflow: Direct Data Download
 
-Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute servers. If possible use one of these for files that you want to access on both your personal computer and the compute servers. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer.
+The most efficient way to download large datasets from external sources (e.g. collaborators or public repositories) is to transfer them directly from your local computer to your TU Delft project storage. This avoids using the DAIC login and compute nodes, which are optimized for computation, not large data transfers, and preduces unnecessary load on the internal network.
 
-### SCP
 
-Both your Linux and Windows Personal Storage and the Project and Group Storage are also available world-wide via an SCP/SFTP client. This is the simplest transfer method via the `scp` command, which has the following basic syntax:
+Follow these steps to download data directly to your project storage (and access it from DAIC):
+
+### 1. Access your DAIC storage from your local computer
+
+
+You can either mount the storage as a network drive or use an `SFTP` client. Mounting is often more convenient as it makes the remote storage appear like a local folder. Choose the appropriate method for your operating system:
+
+
+{{< tabpane text=true right=true >}}
+  {{% tab header="**Operating System**:" disabled=true /%}}
+
+  {{% tab header="Windows" %}}
+**For TU Delft-managed computers:**
+- Project Data Storage is mounted automatically under `This PC` as `Project Data (U:)` or `\\tudelft.net\staff-umbrella`.
+
+**For personal computers:**
+- Connect to EduVPN first.
+- Install [**WebDrive**](https://webdata.tudelft.nl/) and connect to `sftp.tudelft.nl`. Click on `staff-umbrella` (this is the Project Data Storage).
+
+  {{% /tab %}}
+
+  {{% tab header="MacOS" %}}
+
+**Option 1: Using Finder**
+1. Press `⌘K` or choose **Go > Connect to Server**.
+2. Enter: `smb://tudelft.net/staff-umbrella/<your_project_name>` and click `Connect`.
+3. (Optional) Add this address to your **Favorite Servers** for easy access later.
+
+**Option 2: Using an SFTP client (e.g., Terminal, FileZilla, CyberDuck)**
+
+Connect to `sftp.tudelft.nl` with your NetID and password. From the terminal, you can use:
+
+```bash
+sftp <YourNetID>@sftp.tudelft.nl
+cd staff-umbrella/<your_project_name>
+put data.zip  # Upload a file (data.zip) to your storage
+get results.zip # Download a file (results.zip) from your storage
+```
+
+Graphical clients like [FileZilla](https://filezilla-project.org/) or [CyberDuck](https://cyberduck.io/) provide a drag-and-drop interface for the same purpose.
+
+    {{% /tab %}}
+
+    {{% tab header="Linux" %}}
+
+**For TU Delft-managed computers:**
+- For managed Ubuntu 22.04, [contact ICT](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=bb079374b047400382d67566e4b57597&from=cac22e81-a71b-4aaa-b268-da90e255e19a&openedFromService=true) for setting up the mount.
+- For Ubuntu 18.04, storage is mounted under `/tudelft.net/staff-umbrella/`:
+  - You can access it via the terminal:
+    ```bash
+    cd /tudelft.net/staff-umbrella/<your_project_name>
+    ```
+  - Or via the file manager (nautilus or dolphin): `under Other locations > Computer > tudelft.net > staff-umbrella > <your_project_name>`
+
+**For personal computers:**
+**Option 1: Mount with sshfs**
+```bash
+mkdir ~/storage_mount
+sshfs YourNetID@sftp.tudelft.nl:/staff-umbrella/<your_project_name> ~/storage_mount
+ls ~/storage_mount # Check contents of your project storage
+```
+And, after you are done with the mount:
+
+```bash
+fusermount -u ~/storage_mount
+```
+
+**Option 2: Use `sftp`**
+
+```bash
+sftp <YourNetID>@sftp.tudelft.nl
+cd staff-umbrella/<your_project_name>
+put data.zip  # Upload a file (data.zip) to your storage
+get results.zip # Download a file (results.zip) from your storage
+```
+ {{% /tab %}}
+
+{{< /tabpane >}}
+
+### 2. Download the data directly to the storage location
+
+Once you have mounted or connected to your storage, you can use standard tools like `wget`, `curl`, or your web browser to download files directly into that location.
+
+For example, if you mounted your storage on Linux at `~/storage_mount`, you can download a large dataset into your project folder with wget:
+
+```bash
+wget -P ~/storage_mount/datasets/ https://www.robots.ox.ac.uk/~vgg/data/flowers/102/102flowers.tgz
+
+```
+
+The file (the [Oxford Flowers 102 Dataset](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html) in this example) downloads directly to your project folder in the `staff-umbrella` storage, using your local machine's network connection.
+
+
+
+## Command-Line Transfer Tools
+<!-- Your Windows Personal Storage and the Project and Group Storage are available on all TU Delft installed machines including the DAIC compute servers. If possible use one of these for files that you want to access on both your personal computer and the compute servers. Your Windows Personal Storage and the Project and Group Storage are also accessible off-campus through the TU Delft `webdata service`. See the {{< external-link "https://webdata.tudelft.nl/" "webdata page" >}} for manuals on using the service with your personal computer. -->
+Both your Linux and Windows Personal Storage and the Project and Group Storage are also available world-wide via an SCP/SFTP client.
+
+For direct transfers between your local machine and DAIC, or for scripting automated workflows, you can use command-line tools like `scp` and `rsync`.
+
+
+### SCP (Secure Copy)
+
+The `scp` command provides a simple way to copy files over a secure channel. It has the following basic syntax:
+
 
 ```bash
 $ scp <source_file> <target_destination>       # for files
@@ -28,36 +134,36 @@ $ scp -r <source_folder> <target_destination>  # for folders
 For example, to transfer a file from your computer to DAIC:
 
 ```bash
-$ scp mylocalfile [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
+$ scp mylocalfile [<YourNetID>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
 ```
 
 To transfer a folder (recursively) from your computer to DAIC:
 
 ```bash
-$ scp -r mylocalfolder [<netid>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
+$ scp -r mylocalfolder [<YourNetID>@]login.daic.tudelft.nl:~/destination_path_on_DAIC/
 ```
 
 To transfer a file from DAIC to your computer:
 
 ```bash
-$ scp [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefile ./
+$ scp [<YourNetID>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefile ./
 ```
 
 To transfer a folder from DAIC to your computer:
 
 ```bash
-$ scp -r [<netid>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefolder ./
+$ scp -r [<YourNetID>@]login.daic.tudelft.nl:~/origin_path_on_DAIC/remotefolder ./
 ```
 
-The above commands will work from either the university network, or when using EduVPN. If a "jump" via `linux-bastion` is needed (see [Access from outside university network](/docs/manual/connecting/#access-from-outside-university-network)), modify the above commands by replacing scp with `scp -J <netid>@linux-bastion.tudelft.nl` and keep the rest of the command as before:
+The above commands work from both the university network, or when using EduVPN. If a "jump" via `linux-bastion` is needed (see [Access from outside university network](/docs/manual/connecting/#access-from-outside-university-network)), modify the above commands by replacing scp with `scp -J <YourNetID>@linux-bastion.tudelft.nl` and keep the rest of the command as before:
 
 ```bash
-$ scp <local_file> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
-$ scp -r <local_folder> [<netid>@]linux-bastion.tudelft.nl:<remote_destination>
-$ scp [<netid>@]linux-bastion.tudelft.nl:<remote_file> <local_destination> 
-$ scp -r [<netid>@]linux-bastion.tudelft.nl:<remote_folder> <local_destination>
+# Transfer a local file to DAIC via the bastion host
+$ scp -J [<YourNetID>@]linux-bastion.tudelft.nl <localfile> [<YourNetID>@]login.daic.tudelft.nl:/tudelft.net/staff-umbrella/<your_project_name>/
 
-$ sftp [<netid>@]linux-bastion.tudelft.nl
+# Transfer a remote file from DAIC to your local machine via the bastion host
+$ scp -J [<YourNetID>@]linux-bastion.tudelft.nl [<YourNetID>@]login.daic.tudelft.nl:/tudelft.net/staff-umbrella/<your_project_name>/<remotefile> ./
+
 ```
 
 Where:
@@ -83,17 +189,17 @@ Use quotes when file or folder names contain spaces or special characters.
 
 - **Copy files locally:**
     ```bash
-    rsync [options] source destination
+    rsync [options] <source> <destination>
     ```
 
-    This command copies files and directories from the source to the destination.
+    This command copies files and directories from the `source` to the `destination`.
 
 - **Copy files remotely:**
     ```bash
-    rsync [options] source user@remote_host:destination
+    rsync [options] <source> <user>@<remote_host>:<destination>
     ```
 
-    This command transfers files from a local source to a remote destination.
+    This command transfers files from a local `source` to a  `destination` on a remote host.
 
 {{% alert title="Note" color="warning" %}}
 When sending data to `staff-umbrella` or `staff-bulk`, you **must** use the `--no-perms` option to avoid errors, as the underlying network filesystem does not support changing permissions.
@@ -101,7 +207,7 @@ When sending data to `staff-umbrella` or `staff-bulk`, you **must** use the `--n
 A recommended command to use is:
 
 ```bash
-$ rsync --progress -avz --no-perms <source_file> [<netid>@]login.daic.tudelft.nl:<destination_umbrella_directory>
+$ rsync --progress -avz --no-perms <source_file> [<YourNetID>@]login.daic.tudelft.nl:<destination_umbrella_directory>
 ``` 
 
 This command is effective because: 
@@ -189,103 +295,3 @@ These options, along with others, provide additional flexibility and control ove
 * https://www.nhr.kit.edu/userdocs/horeka/filesystems/
 * https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/dateisysteme_hlr/index.en.jsp
 -->
-
-## Data download
-
-When downloading large datasets from third-party servers (e.g. collaborators or public repositories), don't use the DAIC login or bastion nodes. These are optimized for compute access, not large data transfers.
-
-
-Instead, mount DAIC storage (e.g. `staff-umbrella` or `staff-bulk`) and download the data directly into it from your own computer. This avoids unnecessary use of the DAIC internal network and login resources.
-
-Follow these steps to download data directly to your project storage (and access it from DAIC):
-
-###  **Access your DAIC storage from your local computer**
-
-    You can either mount the storage as a network drive or use an `SFTP` client. Mounting is often more convenient as it makes the remote storage appear like a local folder.
-    Choose the appropriate method for your operating system:
-
-
-
-{{< tabpane text=true right=true >}}
-  {{% tab header="**Operating System**:" disabled=true /%}}
-
-  {{% tab header="Windows" %}}
-**For TU Delft-managed computers:**
-- Project Data Storage is mounted automatically under `This PC` as `Project Data (U:)` or `\\tudelft.net\staff-umbrella`.
-
-**For personal computers:**
-- Connect to EduVPN first.
-- Install [**WebDrive**](https://webdata.tudelft.nl/) and connect to `sftp.tudelft.nl`. Click on `staff-umbrella` (this is the Project Data Storage).
-
-  {{% /tab %}}
-
-  {{% tab header="MacOS" %}}
-
-**Option 1: Using Finder**
-1. Press `⌘K` or choose **Go > Connect to Server**.
-2. Enter: `smb://tudelft.net/staff-umbrella/<your_project_name>` and click `Connect`.
-3. (Optional) Add this address to your **Favorite Servers** for easy access later.
-
-**Option 2: Using an SFTP client (e.g., Terminal, FileZilla, CyberDuck)**
-
-Connect to `sftp.tudelft.nl` with your NetID and password. From the terminal, you can use:
-
-```bash
-sftp <YourNetID>@sftp.tudelft.nl
-cd staff-umbrella/<your_project_name>
-put data.zip  # Upload a file (data.zip) to your storage
-get results.zip # Download a file (results.zip) from your storage
-```
-
-Graphical clients like [FileZilla](https://filezilla-project.org/) or [CyberDuck](https://cyberduck.io/) provide a drag-and-drop interface for the same purpose.
-
-    {{% /tab %}}
-
-    {{% tab header="Linux" %}}
-
-**For TU Delft-managed computers:**
-- For managed Ubuntu 22.04, [contact ICT](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=bb079374b047400382d67566e4b57597&from=cac22e81-a71b-4aaa-b268-da90e255e19a&openedFromService=true) for setting up the mount.
-- For Ubuntu 18.04, storage is mounted under `/tudelft.net/staff-umbrella/`:
-  - You can access it via the terminal:
-    ```bash
-    cd /tudelft.net/staff-umbrella/<your_project_name>
-    ```
-  - Or via the file manager (nautilus or dolphin): `under Other locations > Computer > tudelft.net > staff-umbrella > <your_project_name>`
-
-**For personal computers:**
-**Option 1: Mount with sshfs**
-```bash
-mkdir ~/storage_mount
-sshfs NetID@sftp.tudelft.nl:/staff-umbrella/<your_project_name> ~/storage_mount
-ls ~/storage_mount # List files in your project storage
-```
-And, after you are done with the mount:
-
-```bash
-fusermount -u ~/storage_mount
-```
-
-**Option 2: Use `sftp`**
-
-```bash
-sftp <YourNetID>@sftp.tudelft.nl
-cd staff-umbrella/<your_project_name>
-put data.zip  # Upload a file (data.zip) to your storage
-get results.zip # Download a file (results.zip) from your storage
-```
- {{% /tab %}}
-
-{{< /tabpane >}}
-
-### 2. **Download the data directly to the storage location:** 
-
-Once you have mounted or connected to your storage, you can use standard tools like `wget`, `curl`, or your web browser to download files directly into that location.
-
-For example, if you mounted your storage on Linux at `~/storage_mount`, you can download a large dataset into your project folder with wget:
-
-```bash
-wget -P ~/storage_mount/datasets/ https://www.robots.ox.ac.uk/~vgg/data/flowers/102/102flowers.tgz
-
-```
-
-The file (the [Oxford Flowers 102 Dataset](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html) in this example) downloads directly to your project folder in the `staff-umbrella` storage, using your local machine's network connection.

@@ -223,3 +223,6 @@ While you can run Ollama manually, the wrapper scripts provide several convenien
 | Build fails with `operation not permitted`  | Ensure the wrapper’s `/tmp` build cache patch is in place, or add `--disable-cache`.   |
 
 
+## Acknowledgment
+Inspirtation for this tutorial comes from the [Stanford ollama_helper] repository.  The DAIC template adapts many of the same ideas to TU Delft's Slurm environment.
+

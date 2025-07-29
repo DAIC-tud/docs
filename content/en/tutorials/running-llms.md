@@ -189,6 +189,7 @@ While you can run Ollama manually, the wrapper scripts provide several convenien
 
 
 ## Acknowledgment
+
 Inspirtation for this tutorial comes from the [Stanford ollama_helper](https://github.com/gsbdarc/ollama_helper) repository.  
 The DAIC template adapts many of the same ideas to TU Delft's Slurm environment.
 

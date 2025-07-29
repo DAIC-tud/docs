@@ -23,7 +23,7 @@ reit-ollama-serving-template/
 ├── ollama-client.sbatch       # Slurm script to run a client job
 ├── ollama-server.sbatch       # Slurm script to run a server job
 ├── start-serve-client.sh      # Convenience script to start both server and client
-└── template-ollama.sh         # Defines the `ollama` function
+└── ollama-function.sh         # Defines the `ollama` function
 ```
 
 Finally:
@@ -37,7 +37,7 @@ export PROJECT_DIR=$PWD
 ## 2. (Optional) Pull the Ollama Container
 
 
-For simplicity, we will use the Ollama container image available on Docker Hub. You can pull it using Apptainer. This step is optional, as the `template-ollama.sh` script will build the image automatically if it's not found.
+For simplicity, we will use the Ollama container image available on Docker Hub. You can pull it using Apptainer. This step is optional, as the `ollama-function.sh` script will build the image automatically if it's not found.
 
 
 ```shell-session
@@ -81,11 +81,11 @@ srun: job 11642659 has been allocated resources
  13:01:27 up 93 days, 11:16,  0 users,  load average: 2,85, 2,60, 1,46
 ```
 
-2. Once you are allocated resources on a compute node, set your project directory, source the `template-ollama.sh` script, and run the Ollama server (from the container):
+2. Once you are allocated resources on a compute node, set your project directory, source the `ollama-function.sh` script, and run the Ollama server (from the container):
 
 ```bash
 export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>          # replace with your actual project path
-source template-ollama.sh          # Define the `ollama` function
+source ollama-function.sh          # Define the `ollama` function
 ollama serve                       # The wrapper picks a free port and prints the server URL
 ```
 
@@ -96,7 +96,7 @@ ollama serve                       # The wrapper picks a free port and prints th
 
 ```bash
 export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage> # Ensure this matches the server's PROJECT_DIR
-source template-ollama.sh
+source ollama-function.sh
 
 ollama run codellama               # Forwards the command to the running server
 ```
@@ -127,94 +127,59 @@ the internet and can answer questions or provide information on a wide range of 
 ## 4.  Production batch jobs
 
 
-The template already contains working Slurm scripts.  They inherit
-`PROJECT_DIR` from the environment exported by `start-serve-client.sh`.
+The template already provides ready‐to‐run Slurm scripts. For convenience a single helper, `start-serve-client.sh` , 
+submits the _server_ and _client_ jobs in the right order and passes your `PROJECT_DIR` into both jobs.
 
-### 4.1. Submit Server and Client Jobs
-
-```bash
-bash start-serve-client.sh  -p  </path/to/your/project/in/umbrella/or/bulk/storage> # Specify your project path. Defaults to `$PWD` if omitted.
-```
-
-This script:
-
-1. sets `PROJECT_DIR` to the path you pass (or `$PWD` if omitted),
-2. submits **`ollama-server.sbatch`**,
-3. submits **`ollama-client.sbatch`** with `--dependency=after:<server‑id>`.
-
-Watch progress:
+To submit your jobs:
 
 ```bash
-squeue -j <server‑id>,<client‑id>
-```
-
-### 4.2. Understanding the Scripts
-
-`ollama-server.sbatch` requests one GPU, 8 GB RAM, four CPUs, two‑hour limit,
-then runs:
-
-```bash
-source template-ollama.sh
-ollama serve        # Starts the server and writes host.txt / port.txt
-```
-
-`ollama-client.sbatch` waits for the server, pulls a model, and runs `test.py`:
-
-```bash
-source template-ollama.sh
-ollama pull deepseek-r1:7b  # Pull the model if not already cached
+bash start-serve-client.sh \
+     -p  </path/to/your/project/in/umbrella/or/bulk/storage> # Specify your project path. Defaults to `$PWD` if omitted.
 
 ```
 
-Both scripts fall back to `$PWD` as `PROJECT_DIR` when you run them manually.
+What happens:
 
-## 5. (Optional) Python Client Environment
+1. Sets `PROJECT_DIR` to the path you pass (or defaults to `$PWD` if `PROJECT_DIR` omitted),
+2. Submits **`ollama-server.sbatch`** requesting GPU resources for serving your model
+3. Submits **`ollama-client.sbatch`** with `--dependency=after:<server‑id>` so it starts as soon as the server begins running.
 
-The repository includes `test.py` for quick health checks. To set up a Python environment for client scripts, create a lightweight Conda environment once:
-
-```bash
-$ module use /opt/insy/modulefiles
-module load miniconda/3.11
-conda create -n ollama-client python=3.11 -y
-conda activate ollama-client
-pip install -r requirements.txt     
-```
-
-Now, you can run Python scripts that interact with the Ollama server. For example, you can run `test.py` to check if the server is running and responding correctly:
+To check progress of these jobs:
 
 ```bash
-# Read the host and port from the files created by the server
-HOST=$(cat "${PROJECT_DIR}/ollama/host.txt")
-PORT=$(cat "${PROJECT_DIR}/ollama/port.txt")
-
-python3 test.py --host "$HOST" --port "$PORT" # Run a Python client script
+squeue -j <server‑job-id>,<client‑job-id>
 ```
 
-{{% alert title="Tip" color="info" %}}
-Include `conda activate ollama-client` near the top of `ollama-client.sbatch` if you plan to run Python code there.
+Once the jobs have run, the typical logs are:
+- `log-ollama-server-<server-job-id>.out`: showing the server has started and where it is running. 
+- `log-ollama-client-<client-job-id>.log`: Showing example workflow of pulling a model (`deepseek-r1:7b`), 
+sending a prompt to the model and printing the response.
+
+{{% alert title="Client jobs" color="tip" %}}
+- As long as the server job is running you can submit additional client jobs that point to the same `PROJECT_DIR`
+- You can inspect the `ollama-client.sbatch` file for examples of how to interact with the server 
+(from the command line or within scripts)
 {{% /alert %}}
 
 
-Alternatively, you can use [`uv`](https://docs.astral.sh/uv/) or [`pixi`](https://pixi.sh/latest/) if you prefer.
 
-
-
-## 6. Best Practices
+## 5. Best Practices
 
 While you can run Ollama manually, the wrapper scripts provide several conveniences:
 * **Always serve on a GPU node.** The wrapper prints an error if you try to
   serve from a login node.
 * **Client jobs don’t need `--nv`.** The wrapper omits it automatically when
   no GPU is detected, eliminating noisy warnings.
-* **Model cache is project‑scoped.**  All blobs land in
+* **Model cache is project‑scoped.**  All model blobs land in
   `$PROJECT_DIR/ollama/models`, so they don’t consume `$HOME` quota.
 * **Image builds use `/tmp`.**  The wrapper builds via a local cache to avoid
-  NFS root‑squash errors.
-* **Automatic cleanup.** The wrapper cleans up `host.txt` and `port.txt` files after the server stops, so you can tell if you have a server up and running.
+  premission errors.
+* **Automatic cleanup.** The wrapper cleans up `host.txt` and `port.txt` files after 
+  the server stops, so you can tell if you have a server up and running.
 
 
 
-## 7. Troubleshooting
+## 6. Troubleshooting
 
 | Symptom                                     | Fix                                                                                    |
 | ------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -224,5 +189,6 @@ While you can run Ollama manually, the wrapper scripts provide several convenien
 
 
 ## Acknowledgment
-Inspirtation for this tutorial comes from the [Stanford ollama_helper] repository.  The DAIC template adapts many of the same ideas to TU Delft's Slurm environment.
+Inspirtation for this tutorial comes from the [Stanford ollama_helper](https://github.com/gsbdarc/ollama_helper) repository.  
+The DAIC template adapts many of the same ideas to TU Delft's Slurm environment.
 

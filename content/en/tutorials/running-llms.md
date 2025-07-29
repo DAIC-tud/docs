@@ -4,12 +4,15 @@ weight: 4
 description: "Guide to serving and running Ollama models on DAIC."
 ---
 
-This guide shows you how to serve and use Large Language Models (LLMs) on DAIC using [Ollama](https://ollama.com/), a tool that lets you run models like [Meta's Llama models](https://ai.meta.com/llama/), [Mistral models](https://mistral.ai/models), or [HuggingFace's models](https://huggingface.co/models) for inference.
+This guide shows you how to serve and use Large Language Models (LLMs) on DAIC using [Ollama](https://ollama.com/), a tool that lets 
+you run models like [Meta's Llama models](https://ai.meta.com/llama/), [Mistral models](https://mistral.ai/models), or 
+[HuggingFace's models](https://huggingface.co/models) for inference.
 
 ## 1. Clone the Template Repository
 
-First, navigate to your project storage space. Then, clone the public [REIT Ollama Serving repository](https://gitlab.ewi.tudelft.nl/reit/reit-ollama-serving-template). This ensures that all generated files, models, and containers are stored in the correct location, not in your home directory.
-
+First, navigate to your project storage space. Then, clone the public 
+[REIT Ollama Serving repository](https://gitlab.ewi.tudelft.nl/reit/reit-ollama-serving-template). This ensures that all generated
+ files, models, and containers are stored in the correct location, not in your home directory.
 
 ```bash
 cd /tudelft.net/staff-umbrella/<your_project_name> # Replace with your actual project path
@@ -36,9 +39,8 @@ export PROJECT_DIR=$PWD
 
 ## 2. (Optional) Pull the Ollama Container
 
-
-For simplicity, we will use the Ollama container image available on Docker Hub. You can pull it using Apptainer. This step is optional, as the `ollama-function.sh` script will build the image automatically if it's not found.
-
+For simplicity, we will use the Ollama container image available on Docker Hub. You can pull it using Apptainer. 
+This step is optional, as the `ollama-function.sh` script will build the image automatically if it's not found.
 
 ```shell-session
 $ PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>
@@ -65,7 +67,8 @@ For more on using Apptainer, see the [Apptainer tutorial](/tutorials/apptainer/)
 {{% /alert %}}
 
 {{% alert title="Tip" color="info" %}}
-The wrapper script in the template will build the image automatically if you skip this step, but running it yourself lets you watch progress and reuse a shared cache.
+The wrapper script in the template will build the image automatically if you skip this step, but running it yourself
+ lets you watch progress and reuse a shared cache.
 {{% /alert %}}
 
 
@@ -81,7 +84,8 @@ srun: job 11642659 has been allocated resources
  13:01:27 up 93 days, 11:16,  0 users,  load average: 2,85, 2,60, 1,46
 ```
 
-2. Once you are allocated resources on a compute node, set your project directory, source the `ollama-function.sh` script, and run the Ollama server (from the container):
+2. Once you are allocated resources on a compute node, set your project directory, source the `ollama-function.sh` script, and run the
+ Ollama server (from the container):
 
 ```bash
 export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>          # replace with your actual project path
@@ -92,7 +96,8 @@ ollama serve                       # The wrapper picks a free port and prints th
 
 3. Keep this terminal open to monitor logs and keep the Ollama server running.
 
-4. Open a second terminal, login to DAIC, and interact with the server (e.g., from the login node). In the example below, we run the `codellama` model
+4. Open a second terminal, login to DAIC, and interact with the server (e.g., from the login node). In the example below, we run the 
+`codellama` model
 
 ```bash
 export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage> # Ensure this matches the server's PROJECT_DIR
@@ -188,7 +193,9 @@ While you can run Ollama manually, the wrapper scripts provide several convenien
 | Build fails with `operation not permitted`  | Ensure the wrapper’s `/tmp` build cache patch is in place, or add `--disable-cache`.   |
 
 
+
 ## Acknowledgment
+
 
 Inspirtation for this tutorial comes from the [Stanford ollama_helper](https://github.com/gsbdarc/ollama_helper) repository.  
 The DAIC template adapts many of the same ideas to TU Delft's Slurm environment.

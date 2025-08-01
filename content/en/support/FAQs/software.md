@@ -27,3 +27,12 @@ There are a few options:
 
 - This comes with an error `Failed to set marker file for job started ([Errno 1] Operation not permitted. Please ensure write permissions for the directory {self.workflow.persistence.path}`. This makes it so that it's only able to run a single rule before it can't keep track of the metadata anymore. 
 - The known solution is to edit the source code. In Snakemake's `jobs.py` file, you can search the error message and simply change `raise WorkflowError` to `logger.warning`
+
+### python & conda segmentation fault error
+
+**Issue:** Sometimes, running python within a conda environment causes an unexplainable `segmentation fault` in the prompt,
+while submitting job scripts seem to work fine.
+
+**Solution:** pin down `libgcc-ng` dependencies explicitly in the environment, eg, 
+`conda create --prefix <your umbrella or bulk path> python=3.10 libgcc-ng=9.3.0`
+

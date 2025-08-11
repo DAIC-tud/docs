@@ -1,29 +1,59 @@
 {{/* layouts/partials/hooks/body-end.html */}}
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
- 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+
 <script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.colVis.js"></script>
 
-
 <script>
-$(document).ready(function() {
-    // Check if the table exists on the current page before trying to initialize DataTables
-    if ($('#nodes-table').length) {
-        $('#nodes-table').DataTable({
-            dom: 'Bfrtip', // Add Buttons (B) to the DOM, f=filtering, r=processing, t=table, i=info, p=pagination
-            "paging": false, // Enable pagination           
-            scrollY: "400px", // Set the height of the table
-            scrollCollapse: true, // Allow the table to collapse if there are fewer rows
-            scrollX: true, // Enable horizontal scrolling
-            // "pageLength": 5, // Show 5 entries per page by default
-            "lengthMenu": [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ], // Options for number of entries per page
-            buttons: [
-                'colvis' // Add the column visibility button
-            ]
-        });
-    }
-});
-</script>
+(function($){
+  $(function(){
+    console.log('[hooks] body-end loaded');
 
-  
+    // nodes-table
+    if ($('#nodes-table').length) {
+      console.log('[hooks] init nodes-table');
+      if (!$.fn.dataTable.isDataTable('#nodes-table')) {
+        $('#nodes-table').DataTable({
+          dom: 'Bfrtip',
+          paging: false,
+          scrollY: '400px',
+          scrollCollapse: true,
+          scrollX: true,
+          lengthMenu: [[5,10,25,50,-1],[5,10,25,50,'All']],
+          buttons: ['colvis']
+        });
+      }
+    } else {
+      console.log('[hooks] nodes-table not found on this page');
+    }
+
+    // clusters-table
+    if ($('#clusters-table').length) {
+      console.log('[hooks] init clusters-table');
+      if (!$.fn.dataTable.isDataTable('#clusters-table')) {
+        $('#clusters-table').DataTable({
+          dom: 'Bfrtip',
+          paging: false,
+          info: false,
+          order: [],
+        //   scrollY: '500px',
+        //   scrollCollapse: true,
+          scrollX: true,
+          lengthMenu: [[5,10,25,50,-1],[5,10,25,50,'All']],
+        //   buttons: ['colvis'],
+          columnDefs: [
+            { targets: [2,3], className: 'text-wrap' },
+            { targets: 0, responsivePriority: 1 },
+            { targets: 1, responsivePriority: 2 }
+          ]
+        });
+      }
+    } else {
+      console.log('[hooks] clusters-table not found on this page');
+    }
+  });
+})(jQuery);
+</script>

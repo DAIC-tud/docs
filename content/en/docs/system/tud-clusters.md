@@ -2,7 +2,7 @@
 title: "Cluster comparison"
 weight: 6
 description: >
-  Overview of the clusters available to TU Delft researchers
+  Overview of the clusters available to TU Delft (CS) researchers
 ---
 
 ## Cluster comparison

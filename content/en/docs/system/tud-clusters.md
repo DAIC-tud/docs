@@ -97,14 +97,23 @@ DAIC is one of several clusters accessible to TU Delft CS researchers (and their
 </table>
 
 
+{{% alert title="Other EuroHPC resources" color="info" %}}
+In addition to LUMI, TU Delft researchers can also apply for access to other EuroHPC Tier-0/1 systems through [EuroHPC Joint Undertaking calls](https://access.eurohpc-ju.europa.eu/). Examples include:
 
+- [**Jupiter** (Germany)](https://www.fz-juelich.de/en/ias/jsc/jupiter): Europe's first **exascale** supercomputer, targeting the most demanding HPC and AI workloads.  
+- [**Leonardo** (Italy)](https://leonardo-supercomputer.cineca.eu/): **Pre-exascale** system with hybrid architecture: a large GPU partition (Nvidia) for AI and a CPU partition for HPC simulations.  
+- [**MareNostrum 5** (Spain)](https://www.bsc.es/marenostrum/marenostrum-5): **Pre-exascale** general-purpose system, with Nvidia GPUs.  
+- [**MeluXina** (Luxembourg)](https://luxembourg.public.lu/en/invest/innovation/meluxina-superordinateur.html): **Petascale** modular system, suitable for AI, digital twins, quantum simulation, and traditional computational workloads.  
+- [**Karolina** (Czech Republic)](https://www.it4i.cz/en/infrastructure/karolina): **Petascale** system for HPC, AI, and Big Data applications.  
+- [**Discoverer** (Bulgaria)](https://discoverer.bg/): **Petascale** system focused on simulations and modelling.  
 
-
+These systems complement LUMI and broaden the options for AI, simulation, and large-scale scientific workflows at the European level.
+{{% /alert %}}
 
 
 ### TU Delft cloud resources
 For both education and research activities, TU Delft has established the [Cloud4Research program](https://tu-delft-ict-innovation.github.io/Cloud4Research/). Cloud4Research aims to facilite the use of public cloud resources, primarily Amazon AWS. At the administrative level, Cloud4Research provides AWS accounts with an initial budget. Subsequent billing can be incurred via a project code, instead of a personal credit card. At the technical level, the ICT innovation teams provides intake meetings to facilitate getting started. Please refer to the [Policies](https://tu-delft-ict-innovation.github.io/Cloud4Research/policy/) and [FAQ](https://tu-delft-ict-innovation.github.io/Cloud4Research/faq/) pages for more details.
 
-{{% alert title="!" color=success %}}
-Are you planning infrastructure proposals or strategic partnerships? Contact us to discuss collaborative opportunities and view alignment materials
+{{% alert title="Strategic opportunities" color=success %}}
+Are you planning infrastructure proposals or strategic partnerships? Contact us to discuss collaborative opportunities via this [TopDesk DAIC Contact Us form](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=889f49ca2fe440539cbd713918432046&openedFromService=true)
 {{% /alert %}} 

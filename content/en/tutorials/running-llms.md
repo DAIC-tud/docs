@@ -20,21 +20,30 @@ git clone https://gitlab.ewi.tudelft.nl/reit/reit-ollama-serving-template.git
 tree  reit-ollama-serving-template
 ```
 
-The repository tree now looks like:
-``` bash
-reit-ollama-serving-template/
-├── ollama-client.sbatch       # Slurm script to run a client job
-├── ollama-server.sbatch       # Slurm script to run a server job
-├── start-serve-client.sh      # Convenience script to start both server and client
-└── ollama-function.sh         # Defines the `ollama` function
-```
+Next, define and export the following environment variables. Note that all are optional, and that default values will be assumed if not set.
 
-Finally:
+| Variable | Value | Default |
+|----------|-------|---------|
+| `PROJECT_DIR` | Path where you like to store models/data for your project | `$PWD` |
+| `CONTAINER_DIR` | Directory where ollama container will be stored | `${PROJECT_DIR}/containers` |
+| `OLLAMA_DEBUG` | Enable debug logging by setting to 1 | 0 |
+
+{{< alert title="Tip" color="success" >}}
+- `PROJECT_DIR` is the main directory for your project. To avoid `$HOME` quota issues, it is recommended to use a path in your `bulk` or `umbrella` storage.
+- `CONTAINER_DIR` is where the Ollama container image will be stored. The default is a `containers` subdirectory within your `PROJECT_DIR`. If you want to change this location, make sure to update the `CONTAINER_DIR` variable accordingly. Alternatively, if you have a pre-built `ollama.sif` image, you can set `OLLAMA_IMG` to its path.
+- Setting `OLLAMA_DEBUG` to 1 can help you troubleshoot issues by providing more detailed logs.
+{{% /alert %}}
+
 
 ```bash
 # Set the PROJECT_DIR environment variable for this session.
 # The helper scripts will use this path to store models and other data.
-export PROJECT_DIR=$PWD
+export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>  # replace with your actual project path
+export CONTAINER_DIR=${PROJECT_DIR}/containers # Directory for container images. 
+export OLLAMA_IMG=${CONTAINER_DIR}/ollama.sif  # Path to the Ollama container image
+
+export OLLAMA_DEBUG=1 # If you want to enable debug logging
+
 ```
 
 ## 2. (Optional) Pull the Ollama Container

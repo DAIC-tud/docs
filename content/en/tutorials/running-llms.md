@@ -49,7 +49,8 @@ export OLLAMA_DEBUG=1 # If you want to enable debug logging
 ## 2. (Optional) Pull the Ollama Container
 
 For simplicity, we will use the Ollama container image available on Docker Hub. You can pull it using Apptainer. 
-This step is optional, as the `ollama-function.sh` script will build the image automatically if it's not found.
+This step is optional, as the `ollama-function.sh` script will build the image automatically if it's not found 
+in the `${CONTAINER_DIR}` folder or as `${OLLAMA_IMG}` file.
 
 ```shell-session
 $ PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>
@@ -75,12 +76,6 @@ INFO:    Build complete: /tudelft.net/staff-bulk/ewi/insy/PRLab/Staff/aeahmed/ol
 For more on using Apptainer, see the [Apptainer tutorial](/tutorials/apptainer/).
 {{% /alert %}}
 
-{{% alert title="Tip" color="info" %}}
-The wrapper script in the template will build the image automatically if you skip this step, but running it yourself
- lets you watch progress and reuse a shared cache.
-{{% /alert %}}
-
-
 ## 3. Quick Interactive Test
 
 1. Start an interactive GPU session:
@@ -101,7 +96,6 @@ export PROJECT_DIR=</path/to/your/project/in/umbrella/or/bulk/storage>          
 source ollama-function.sh          # Define the `ollama` function
 ollama serve                       # The wrapper picks a free port and prints the server URL
 ```
-
 
 3. Keep this terminal open to monitor logs and keep the Ollama server running.
 

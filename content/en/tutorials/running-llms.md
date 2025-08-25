@@ -20,11 +20,11 @@ git clone https://gitlab.ewi.tudelft.nl/reit/reit-ollama-serving-template.git
 tree  reit-ollama-serving-template
 ```
 
-Next, define and export the following environment variables. Note that all are optional, and that default values will be assumed if not set.
+Next, define and export the following environment variables:
 
 | Variable | Value | Default |
 |----------|-------|---------|
-| `PROJECT_DIR` | Path where you like to store models/data for your project | `$PWD` |
+| `PROJECT_DIR` | Path where you like to store models/data for your project |  |
 | `CONTAINER_DIR` | Directory where ollama container will be stored | `${PROJECT_DIR}/containers` |
 | `OLLAMA_DEBUG` | Enable debug logging by setting to `1` | `0` |
 

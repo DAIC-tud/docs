@@ -1,4 +1,4 @@
-[![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20OpenCost%20Guru-006BFF)](https://gurubase.io/g/opencost)
+[![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20DAIC%20Guru-006BFF)](https://gurubase.io/g/daic)
 
 ## Docsy based documentation
 

@@ -97,3 +97,36 @@ When you change your NetID password, your Kerberos keytab becomes invalid, so yo
 * If you experience a real problem because of this (not being able to efficiently develop code because of the waiting, or not going to make an upcoming deadline), you should contact [cluster support](/support/#support--contact) to see if they can provide support for that specific problem.
 * It’s not desirable to reserve resources for certain types of jobs only. Since other types of jobs wouldn’t be able to use those resources even when they would be idle, this would reduce the overall cluster throughput (and recreate the exact same problem that you experience for those other jobs).
 * No type of research can make special claims regarding resources. All research that uses the cluster is equally dependent on the cluster resources: 50+ CPU jobs or jobs requiring 50GB memory can’t be run on a laptop any more than a GPU job requiring 5GB of GPU memory. When one type of resource is completely used, that is because it is required to do the same kind of research that you need the cluster for.
+
+### How can I request only GPUs with ≥30 GB memory?
+
+On DAIC, some nodes provide GPUs with large memory (≥32 GB).  
+These nodes are tagged with the feature **`gpumem32`**.
+
+Run the following command to check which nodes provide this feature:
+
+```bash
+sinfo -N -o "%N %G %f" | grep gpumem32
+```
+
+To ensure your job only runs on such nodes, add this to your batch script:
+
+```shell
+#SBATCH --gres=gpu:1            # Request 1 GPU of any type
+#SBATCH --constraint=gpumem32   # Restrict to GPUs with ≥32 GB VRAM
+```
+
+And, for interactive use:
+
+```shell
+sinteractive --gres=gpu:1 --constraint=gpumem32
+```
+
+
+{{% alert title="Conservative GPU Requests" color="warning" %}}
+- Use `--constraint=gpumem32` only if your job needs _≥32 GB VRAM_.
+- Use `--gres=gpu:<type>:<n>` only if your code must run on a specific GPU model. Be cautious: the more specific the request, the longer your wait time may be.
+
+See also: [Compute nodes & GPU types]({{< relref "/docs/system/compute-nodes/#gpus" >}}).
+
+{{% /alert %}}

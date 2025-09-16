@@ -17,7 +17,11 @@ This page explains the best methods for transferring data to and from these stor
 
 ## Recommended Workflow: Direct Data Download
 
-The most efficient way to download large datasets from external sources (e.g. collaborators or public repositories) is to transfer them directly from your local computer to your TU Delft project storage. This avoids using the DAIC login and compute nodes, which are optimized for computation, not large data transfers, and preduces unnecessary load on the internal network.
+The most efficient way to download large datasets from external sources (e.g. collaborators or public repositories) is to transfer them directly from your **local computer** to your TU Delft project storage. This avoids using the DAIC login and compute nodes, which are optimized for computation, not large data transfers, and avoids unnecessary load on the internal network.
+
+{{% alert title="Note" color="warning" %}}
+Do not connect to DAIC using sshfs! That would only (over)load the network connection to the login nodes, which would affect  the interactive work of other users. Instead, download data directly to your project storage as described below.
+{{% /alert %}}
 
 
 Follow these steps to download data directly to your project storage (and access it from DAIC):

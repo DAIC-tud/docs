@@ -11,8 +11,9 @@ description: >
 - Most AI training → DAIC.
 - Many CPUs / high-memory or MPI jobs → DelftBlue.
 - Distributed/experimental systems work → DAS-6.
-- Bigger than local capacity or cross-institutional projects → Snellius (SURF).
+- Bigger than local capacity or cross-institutional projects → Snellius (via SURF).
 - Euro-scale GPU runs → LUMI (EuroHPC via SURF).
+- Exascale runs → Jupiter ([EuroHPC](https://www.eurohpc-ju.europa.eu/supercomputers/supercomputers-access-calls_en))
 {{< /alert >}}
 
 

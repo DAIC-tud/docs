@@ -402,7 +402,9 @@ Using reservations is in line with the [General cluster usage clauses](/docs/pol
 {{% /alert %}}
 
 ### Requesting a Reservation
-To request a reservation for nodes, please use to the [Request Reservation form](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507). You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
+To request a reservation for nodes, please use to the 
+[Request Reservation form](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=283fc21f802945f8a9a36a13274ff655). 
+You can request a reservation for an entire compute node (or a group of nodes)  **if you have contributed this (or these) nodes to the cluster and you have special needs that needs to be accommodated**.
 
 General guidelines for reservations' requests:
 * You can be granted a reservation *only* on nodes from a partition that is contributed by your group (See [Computing nodes](/docs/system/compute-nodes) for a listing of available nodes, their features, and which paritions they belong to).

@@ -13,9 +13,9 @@ Login nodes act as the gateway to the DAIC cluster. They are intended for lightw
 
 | Hostname  | CPU (Sockets x Model)                               | Total Cores | Total RAM  | Operating System      | GPU Type     | GPU Count | Usage Notes                                                   |
 |-----------|-----------------------------------------------------|-------------|------------|-----------------------|--------------|-----------|---------------------------------------------------------------|
-| `login1`  | 1 x Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz       | 8           | 15.39 GB   | OpenShift Enterprise   | Quadro K2200 | 1         | For file transfers, job submission, and lightweight tasks.   |
-| `login2`  | 1 x Intel(R) Xeon(R) CPU E5-2683 v3 @ 2.00GHz       | 1           | 3.70 GB    | OpenShift Enterprise   | N/A          | N/A       | Virtual server, for non-intensive tasks. **No compilation.** |
-| `login3`  | 2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz       | 32          | 503.60 GB  | RHEV                  | Quadro K2200 | 1         | For large compilation and interactive sessions.              |
+| `login1.daic.tudelft.nl`  | 1 x Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz       | 8           | 15.39 GB   | OpenShift Enterprise   | Quadro K2200 | 1         | For file transfers, job submission, and lightweight tasks.   |
+| `login2.daic.tudelft.nl`  | 1 x Intel(R) Xeon(R) CPU E5-2683 v3 @ 2.00GHz       | 1           | 3.70 GB    | OpenShift Enterprise   | N/A          | N/A       | Virtual server, for non-intensive tasks. **No compilation.** |
+| `login3.daic.tudelft.nl`  | 2 x Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz       | 32          | 503.60 GB  | RHEV                  | Quadro K2200 | 1         | For large compilation and interactive sessions.              |
 
 {{% alert title="Login1 resource limits (effective immediately)" color="warning" %}}
 

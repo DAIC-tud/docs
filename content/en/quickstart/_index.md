@@ -92,8 +92,8 @@ flowchart TB
             p1@{ shape: hex, label: "User Account and Credentials"}
             p2@{ shape: hex, label: "Data Storage on University Network" }
 
-            click p1 "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938&from=d75e860b-7825-4711-8225-8754895b3507" "Request an account"
-            click p2 "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=f359caaa60264f99b0084941736786ae" "Request storage"
+            click p1 "https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=89811f26713645a89a5ca1cdef263ac5" "Request an account"
+            click p2 "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=846ebb16181c43b5836c063a917dd199" "Request storage"
         end
     end
 ```

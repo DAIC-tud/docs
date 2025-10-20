@@ -6,46 +6,99 @@ description: >
 ---
 
 
-## What is containerization?
-Imagine you want to move your belongings from one place to another. You could just pile everything into a truck, but things might shift around, break, or get mixed up along the way. Instead, you might pack your stuff into separate boxes: one box for clothes, one for kitchen items, one for books, and so on. This way, everything is organized and protected, and you can easily move the boxes around.
+## What and Why containerization?
 
-Containerization in computing works similarly. When you want to run software or applications, you can pack them into "containers" rather than just running them directly on your computer. These containers are like those boxes—they contain everything the application needs to run, such as code, libraries, and settings. This makes the application portable and consistent.
+Containerization packages your software, libraries, and dependencies into a single portable unit: a *container*. This makes your application behave the same way everywhere: on your laptop, in the cloud, or on DAIC. This means:
+- **Consistency:** The application runs the same way regardless of where it's executed. You can develop on one machine, test on another, and deploy on a cluster without worrying about dependency differences.  
+- **Isolation:** Each container is independent from others, preventing conflicts and enhancing security and reliability.  
+- **Portability:** Containers can run on different systems without modification, simplifying movement between servers, clusters, or clouds.  
+- **Efficiency:** Containers share the host system's resources like the operating system, making them lightweight and fast to start compared to virtual machines.
 
-### Why it's helpful?
+On DAIC specifically, users often encounter issues with limited home directory space or Windows-based `/tudelft.net` mounts (see [Storage](/docs/system/storage)), which can complicate the use of `conda/mamba` and/or `pip`. Containers offer a solution by encapsulating all software and dependencies in a self-contained environment. You can, for instance, store containers on `staff-umbrella` with all required dependencies, including those installed via `pip`, and run them reliably and reproducibly without being limited by home directory size or mount compatibility.
 
-- **Consistency**: Because the application runs inside a container, it behaves the same way regardless of where it's running. This means you can develop on one computer, test on another, and deploy on a server without worrying about differences between environments.
-- **Isolation**: Each container is independent from others. This keeps applications from interfering with each other or with the host system, enhancing security and reliability.
-- **Portability**: Containers can run on different machines without modification, making it easier to move applications from one server to another, or even from a local computer to the cloud.
-- **Efficiency**: Containers share the host system's resources like the operating system, which makes them lightweight and fast to start up compared to virtual machines.
+## Containerization on DAIC: Apptainer
+DAIC supports [Apptainer](https://apptainer.org/docs/user/main/introduction.html)  (previously Apptainer), an open-source container platform, designed to run on High-performance computing environments. Apptainer runs container images securely on shared clusters and allows you to use Docker images directly, without needing Docker itself.
 
-On DAIC specifically, many users encounter issues with limited home directory sizes and Windows-based `/tudelft.net` mounts (See [Storage](/docs/system#storage)), which can hinder the use of `conda/mamba` and/or `pip` due to compatibility challenges. Containers offer a solution by enabling users to encapsulate their software and dependencies in a portable, self-contained environment. This means users can store a container e.g. on the `staff-umbrella` storage with all necessary dependencies, including those installed with `pip`. This enables users to create and use multiple large environments and run applications reliably and reproducibly, without running into limitations from Windows-based mounts or small home directories.
+A typical Apptainer workflow revolves around three key components:
 
-## Containerization technology (Apptainer)
-_Containerization_ is a convenient means to deploy libraries and applications to different environments in a reproducible manner. DAIC supports [Apptainer](https://apptainer.org/docs/user/main/introduction.html)  (previously Apptainer), an open-source container platform, designed to run complex applications on HPC clusters. Apptainer makes it possible to use docker images natively  at a higher level of security and isolation. A _container image_, typically a `*.sif` file, is a self-contained file with all necessary components to run an application, including code, runtime libraries, and dependencies. 
+| Component | Description |
+|------------|--------------|
+| *Definition file* (`*.def`) | A recipe describing how to build the container: which base image to use and which packages to install. |
+| *Image* (`*.sif`) | A single portable file containing the full environment: operating system, libraries, and applications. |
+| *Container* | A running instance of an image, with its own writable workspace for temporary files or intermediate data. |
 
-- The **definition file** (`*.def`) contains the recipe to build an image.
-- An **image** (`*.sif`) is a complete package that includes everything needed to run an application, such as code, libraries, and settings. It only needs `Apptainer` to be run.
-- A **container** is a running instance of an image with its own working space, so it can hold changes and temporary data such as ongoing calculations as you interact with the application. This could mean training a machine learning model for example.
+Because Apptainer integrates well with Slurm, containers can be launched directly within batch jobs or interactive sessions on DAIC.  
+The following sections show how to obtain, build, and run images.
+
+## Workflow overview
+
+The typical lifecycle for containers on DAIC is:
+
+1. **Build** the image locally from a `.def` file.  
+2. **Transfer or pull** the resulting `.sif` file onto DAIC.  
+3. **Test** interactively using `sinteractive` on a compute node.  
+4. **Run** in a batch job with `sbatch` or `srun` using `apptainer exec` or `apptainer run`.  
+5. **Provision** bind mounts, GPU flags, and cache locations as needed.  
+6. **Clean up** and manage storage (e.g., `APPTAINER_CACHEDIR`).
+
+{{< figure src="images/apptainer-daic-workflow.png" alt="Apptainer workflow on DAIC: build → transfer → test → run" width="70%" >}}
+
+<!-- Build locally → Transfer to DAIC → Test in `sinteractive` → Run with `sbatch`/`srun` → Maintain (cache/storage)
+
+```mermaid
+#flowchart TB
+#  A["Build container locally (`apptainer build image.sif recipe.def`)"] -- B{Get image onto DAIC}
+#  B --|scp image.sif| C[staff-umbrella / project dir]
+#  B --|"pull from registry (DockerHub/NGC/...etc)"| C
+#  C -- D["sinteractive (test on a compute node)"]
+#  D -- E["Run batch job: sbatch/srun with apptainer exec/run"]
+#  E -- F["Data access --bind/--mount"]
+#  E -- G["GPU access --nv"]
+#  E -- H["Isolation --C / -c"]
+#  Z["Maintenance\nAPPTAINER_CACHEDIR → non-$HOME\nclean cache / manage storage"] -.-> A
+```
+-->
 
 ## How to run commands/programs inside a container?
 
-Generally, to launch a container image, your commands look as follows:
+Once you have a container image (e.g., `myimage.sif`), you can launch it in different ways depending on how you want to interact with it:
 
-```bash
-$ apptainer shell <container> # OR
-$ apptainer exec  <container> <command>
-$ apptainer run   <container>
-```
+| Command | Description | Example |
+|----------|--------------|----------|
+| `apptainer shell <image>` | Start an interactive shell inside the container. | `apptainer shell myimage.sif` |
+| `apptainer exec <image> <command>` | Run the `<command>` inside the container, then exit. | `apptainer exec myimage.sif python --version` |
+| `apptainer run <image>` | Execute the container's default entrypoint (defined in its recipe). | `apptainer run myimage.sif` |
+
 
 where: 
-* `<container>` is the path to a container image, typically, a `*.sif` file
-* `<command>` is the command you like to run from inside the container, eg, `hostname`
-*  Both `shell` and `exec` can be used to launch container images. The difference is that `shell` allows you to work inside the container image interactively; while `exec` executes the `<command>` inside the image and exits. Of course, by using something like `/bin/bash` as the `<command>`, `exec` behaves exactly like `shell`. 
-* `run` also launches a container image, but runs the default action defined in the container image. See an example use case in [Building images ](#building-images)
+* `<image>` is the path to a container image, typically, a `*.sif` file.
 
-The question is now: where to get the `<container>` file from? You can either: 
-1) use a pre-built image by pulling from a repository (see [Pulling images](#pulling-images)), or, 
-2) build your own container image and use it accordingly (see [Building images](#building-images)). 
+**Tips:**
+- Use `shell` for exploration or debugging inside the container.
+- Use `exec` or `run` for automation, workflows, or Slurm batch jobs.  
+- Add `-C` or `-c` to isolate the container filesystem (see [Exposing host directories](#exposing-host-directories)).
+
+
+{{% alert title="Tip: Test interactively before submitting jobs" color="info" %}}
+For containers that need GPUs or large memory, start an interactive session first:
+```shell-session
+$ hostname  # To check this is DAIC. login[1-3] are the login nodes
+login1.daic.tudelft.nl 
+
+$ sinteractive --gres=gpu:1 --mem=8G --time=01:00:00  # Request an interactive session with 1 GPU, 8GB memory, 1 hour time
+Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
+srun: job 8543393 queued and waiting for resources
+srun: job 8543393 has been allocated resources
+ 13:35:30 up 5 days,  3:41,  0 users,  load average: 8,79, 7,60, 7,11
+
+$ hostname # To check we are on a compute node
+grs3.daic.tudelft.nl 
+
+$ apptainer exec --nv myimage.sif python script.py
+```
+This helps verify everything works before submitting a batch job with `sbatch` or `srun`.
+
+{{% /alert %}} 
 
 <!-- 
 Add workflow for how to work with containers:
@@ -54,31 +107,26 @@ Add workflow for how to work with containers:
 - building
 -->
 
-{{% alert title="Note" color="info" %}}
-If you intend to extensively work/test your image interactively, it is best to first submit an interactive SLURM job with the needed resources, eg, memory, gpus, ... etc:
-```bash
-$ hostname  # To check this is DAIC. login[1-3] are the login nodes
-login1.daic.tudelft.nl 
-$ sinteractive # Default resources: --time=01:00:00 --cpus-per-task = 2 --mem=1024 
-Note: interactive sessions are automatically terminated when they reach their time limit (1 hour)!
-srun: job 8543393 queued and waiting for resources
-srun: job 8543393 has been allocated resources
- 13:35:30 up 5 days,  3:41,  0 users,  load average: 8,79, 7,60, 7,11
-$ hostname # To check we are on a compute node
-grs3.daic.tudelft.nl 
-```
-{{% /alert %}} 
 ## How to get container files?
-### Pulling images
-Many repositories exist where container images are hosted. Apptainer allows pulling and using images from repositories like [DockerHub](https://hub.docker.com/), [BioContainers](https://biocontainers.pro/registry) and [NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/catalog/containers). 
 
-### Pulling from DockerHub
-For example, to obtain the latest Ubuntu image from DockerHub:
+You can obtain container images in two main ways:
 
-```bash
+1. **Pull prebuilt images** by pulling from a container registry/repository (see [Using prebuilt images](#1-using-prebuilt-images)).
+2. **Build your own** image locally using a definition file (`*.def`), then transfer the resulting `.sif` file to DAIC (see [Building images](#2-building-images)).
+
+
+### 1. Using prebuilt images
+
+Apptainer allows pulling and using images directly from repositories like [DockerHub](https://hub.docker.com/), [BioContainers](https://biocontainers.pro/registry), [NVIDIA GPU Cloud (NGC)](https://ngc.nvidia.com/catalog/containers), and others.
+
+#### Example: Pulling from DockerHub
+
+```shell-session
 $ hostname # check this is DAIC
 login1.daic.tudelft.nl
-$ cd && mkdir containers && cd containers # as convenience, use this directory
+
+$ mkdir ~/containers && cd ~/containers # as convenience, use this directory
+
 $ apptainer pull docker://ubuntu:latest # actually pull the image
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
@@ -93,9 +141,10 @@ INFO:    Creating SIF file...
 
 Now, to check the obtained image file:
 
-```bash
+```shell-session
 $ ls  
 ubuntu_latest.sif
+
 $ apptainer exec ubuntu_latest.sif cat /etc/os-release # execute cat command and exit
 PRETTY_NAME="Ubuntu 22.04.2 LTS"
 NAME="Ubuntu"
@@ -124,52 +173,78 @@ Apptainer  actions  env  labels.json  libs  runscript  startscript
 Apptainer> exit
 ```
 
-In the above snippet, note:
-* The command prompt changes within the container to `Apptainer>`
-* The container seamlessly interacts with the host system. For example, it inherits its `hostname` (the DAIC login node in this case). The container also inherits the `$HOME` variable, and is able to edit/delete files from there.
-* The container has its own file system, which is distinct from the host. The presence of a directory like `/.apptainer.d` is another feature of the specific to the container.
+Notes:
+* Inside the container, the command prompt changes to `Apptainer>`
+* The container inherits your environment (e.g., `$HOME`, `hostname`) but has its own internal filesystem (e.g. `/.apptainer.d`)
 
-{{% alert title="Warning" color="warning"%}}
-To isolate files in your system (ie, your local machine or DAIC) from the files inside the container (and thus, avoid possible erroneous deletes/edits), it is recommended to add a `-c` or `-C` flags to your apptainer commands
+{{% alert title="Tip: Isolate your host filesystem" color="warning"%}}
+To prevent accidental deletes/edits, add a `-c` or `-C` flags to your apptainer commands to isolate filesystems. For example:
 ```bash
 $ apptainer shell -C ubuntu_latest.sif
 ```
 {{% /alert %}}
 
-### Pulling from NVIDIA GPU cloud (NGC)
-This is a specialized registry provided by NVIDIA for GPU accelerated applications or GPU software development tools. These images are large, and one is recommended to download them locally in your machine, and only send the downloaded image to DAIC. _For this, you need to have Apptainer locally installed first_. To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). Apptainer needs a Linux kernel to run, if you create your container on a MacBook, or a computer with a different CPU architecture than the target system, there is a good chance that the container will not run.
+#### Example: Pulling from NVIDIA GPU cloud (NGC)
 
-{{% alert title="Warning" color="warning" %}}
- By default, Apptainer images are saved to `~/.apptainer`. Ideally, to avoid quota issues, you'd set the environment variable `APPTAINER_CACHEDIR` to a different location. At present, both the `bulk` and `umbrella` filesystems do not support pulling images, so you are advised to pull these to your local machine and then copy over the image file to DAIC.
-{{% /alert %}} 
+NGC provides pre-built images for GPU accelerated applications. These images are large, and one is recommended to download them locally (in your machine), and then transfer to DAIC.
+To install Apptainer in your machine, follow the official [Installing Apptainer instructions](https://apptainer.org/docs/admin/main/installation.html). 
+
+{{% alert title="Important: Cache and filesystem limits" color="warning" %}}
+By default, Apptainer images are saved to `~/.apptainer`. To avoid quota issues, set the environment variable `APPTAINER_CACHEDIR` to a different location.
 
 ```bash
+export APPTAINER_CACHEDIR=/tudelft.net/staff-umbrella/<YourDirectory>/apptainer/cache
+```
+
+Pulling directly to `bulk` or `umbrella` is not supported, so pull large images locally, then copy the `*.sif` file to DAIC.
+{{% /alert %}} 
+
+```shell-session
 $ hostname #check this is your own PC/laptop
 $ apptainer pull docker://nvcr.io/nvidia/pytorch:23.05-py3
 $ scp pytorch_23.05-py3.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer
 ```
 
-Now, to check this particular image on DAIC:
+Test the image on DAIC:
 
-```bash
+```shell-session
 $ hostname # check this is DAIC not your own PC/laptop
 login1.daic.tudelft.nl
+
 $ cd /tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # path where you put images
+
+$ sinteractive --gres=gpu:1 --time=00:05:00 # request a gpu node
+
 $ apptainer shell -C --nv pytorch_23.05-py3.sif  #--nv to use NVIDIA GPU and have CUDA support
-Apptainer>
-Apptainer> hostname
-login1.daic.tudelft.nl # hostname inherited
-Apptainer> ls /.apptainer.d/ # verify this is the image
-Apptainer  actions  env  labels.json  libs  runscript  startscript
+Apptainer> python -c "import torch; print(torch.cuda.is_available())"
+True
 ```
 
-### Building images
-If you prefer (or need) to have a custom container image, then you can build your own container image from a _definition_ file, typically `*.def` file, that sets up the image with your custom dependencies. __The only requirement for building is to be in a machine (eg, your local laptop/pc) where you have sudo/root privileges. In other words, you can **not** build images on DAIC directly: First, you should build the image locally, and then send it to DAIC to run there.__  
+### 2. Building images
+
+If you prefer (or need) a custom container image, you can build one from a _definition_ file (`*.def`), that specifies your dependencies and setup steps.
+
+On DAIC, you can build images directly if your current directory allows writes and sufficient quota (e.g., under `staff-umbrella`).  
+For large or complex builds, it can be more convenient to build locally on your workstation and then transfer the resulting `.sif` file to DAIC.
+
+{{% alert title="Tip: Root privileges not always required" color="info" %}}
+Apptainer supports *rootless builds*.  
+You only need `sudo` when:
+- building from base images that require root setup (e.g., `Bootstrap: docker` on older systems), or  
+- writing the resulting image to a protected location.
+
+Otherwise, you can directly build using:
+```shell-session
+$ apptainer build myimage.sif myimage.def
+
+```
+{{% /alert %}}
+
+#### Example: CUDA-enabled container
 
 An example definion file, `cuda_based.def`, for a cuda-enabled container may look as follows:
 
-```bash
-$ cat cuda_based.def
+{{< card code=true header="cuda_based.def" lang="bash" >}}
 # Header
 Bootstrap: docker
 From: nvidia/cuda:12.1.1-devel-ubuntu22.04
@@ -185,21 +260,20 @@ From: nvidia/cuda:12.1.1-devel-ubuntu22.04
 
 %runscript
     /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery  
-```
+{{< /card >}}
 
 where:
-* The _header_, the first 2 lines of this example, specify the source of a base image, (eg, `Bootstrap: docker`), and the base image (`From: nvidia/cuda:12.1.1-devel-ubuntu22.04`) 
- to be pulled from this source. The container image will be built on top of this base image. In this example, the base image will be built from Ubuntu 22.04 OS with the CUDA toolkit 12.1 pre-installed. 
+* The _header_, specifies the source (eg, `Bootstrap: docker`) and the base image (`From: nvidia/cuda:12.1.1-devel-ubuntu22.04`). Here, the container builds on _Ubuntu 22.04 with CUDA 12.1_ pre-installed. 
 * The rest of the file are optional _data blobs_ or _sections_. In this example, the following blobs are used:
-  * `%post` blob: the steps to download, configure and install needed custom software and libraries on the base image. In this example, the steps install git, clone a repo, and install a package via `make`
-  * `%runscript` blob: the scripts or commands to execute when the container image is run. That is, this code is the entry point to the container with the `run` command. In this example, the `deviceQuery` is executed once the container is run.
+  * `%post`: the steps to download, configure and install needed custom software and libraries on the base image. In this example, the steps install `git`, clone a repo, and install a package via `make`
+  * `%runscript`: the entry point to the container with the `apptainer run` command. In this example, the `deviceQuery` is executed once the container is run.
   * Other blobs may be present in the `def` file. See [Definition files documentation](https://apptainer.org/docs/user/main/definition_files.html#definition-files) for more details and examples.
 
 And now, build this image and send it over to DAIC:
 
-```bash
+```shell-session
 $ hostname #check this is your machine
-$ sudo apptainer build cuda_based_image.sif cuda_based.def # building may take ~ 2-5 min, depending on your internet
+$ apptainer build cuda_based_image.sif cuda_based.def # building may take ~ 2-5 min, depending on your internet
 INFO:    Starting build...
 Getting image source signatures
 Copying blob d5d706ce7b29 [=>------------------------------------] 29.2MiB / 702.5MiB
@@ -208,12 +282,12 @@ INFO:    Adding runscript
 INFO:    Creating SIF file...
 INFO:    Build complete: cuda_based_image.sif  
 $
-$ scp cuda_based_image.sif  hpc-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # send to DAIC
+$ scp cuda_based_image.sif  daic-login:/tudelft.net/staff-umbrella/...<YourDirectory>/apptainer # send to DAIC
 ```
 
 On DAIC, check the image:
 
-```bash
+```shell-session
 $ hostname # check you are on DAIC
 login1.daic.tudelft.nl 
 $ sinteractive --cpus-per-task=2 --mem=1024 --gres=gpu --time=00:05:00 # request a gpu node
@@ -269,8 +343,11 @@ deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 12.1, CUDA Runtime Vers
 Result = PASS
 ```
 
-{{% alert title="Warning" color="warning"%}}
-Always pass `--nv` to apptainer to run GPU-accelerated applications or libraries inside the container. Note that you also need **1)** your host system must have NVIDIA GPU drivers installed and compatible with the version of Apptainer you are using, and **2)** the container you are running should have the necessary dependencies and configurations to support GPU acceleration.
+{{% alert title="Tip: Enable GPU access" color="warning"%}}
+Always pass `--nv` to apptainer to run GPU-accelerated applications or libraries inside the container. Requirements:
+
+ 1) your host system must have NVIDIA GPU drivers installed and compatible with your Apptainer version, and 
+ 2) the container must have the necessary dependencies and configurations to support GPU acceleration.
 
 ```bash
 $ apptainer shell --nv -C cuda_based_image.sif
@@ -278,22 +355,21 @@ $ apptainer shell --nv -C cuda_based_image.sif
 {{% /alert %}}
 
 
-{{% alert title="Note" color="info"%}}
-Building container images from a definition file is recommended to ensure the reproducibility of the resulting container image. However, there can be cases of complex dependencies where it is not clear upfront how the software installations and dependencies should be set up. In such cases, it is possible to interactively develop the image by building it in `writable sandbox` mode first. In such cases, take note of all installation commands used in the sandbox, so you can include them in a recipe file. See [Apptainer Sandbox Directories](https://apptainer.org/docs/user/main/quick_start.html#sandbox-directories) for more details.
+{{% alert title="Note on reproducibility" color="info"%}}
+Definition-file builds are the most reproducible approach.
+However, in cases of complex dependencies, you can first prototype interactively in `writable sandbox` mode first. In such cases, take note of all installation commands used in the sandbox, so you can include them in a recipe file. See [Apptainer Sandbox Directories](https://apptainer.org/docs/user/main/quick_start.html#sandbox-directories) for more details.
 {{% /alert %}}
 
 
-### Extending existing images
-During software development, it is common to incrementally build code and go through many iterations of debugging and testing. A development container may be used in this process. 
-In such scenarios, re-building the container from the base image with each debugging or testing iteration becomes taxing very quickly, due to dependencies and installations involved. 
-Instead, the `Bootstrap: localimage` and `From:<path/to/local/image>` header can be used to base the development container on some local image.
+#### Example: Extending existing images
 
-As an example, assume it is desirable to develop some code on the basis of the `cuda_based.sif` image created in the [Building images](#building-images) section.  Building from the original `cuda_based.def` file can take ~ 4 minutes. 
-However, if the `*.sif` file is already available, building on top of it, via a `dev_on_cuda_based.def` file as below, takes ~ 2 minutes. This is already a time saving  factor of 2 in this case.
+During software development, it is common to incrementally build code and go through many iterations of debugging and testing.
+To save time, you can base a new image on an existing one using the `Bootstrap: localimage` and `From:<path/to/local/image>` header.
+This avoids re-installing the same dependencies with every iteration.
 
-```bash
-$ hostname # check this is your machine
-$ cat dev_on_cuda_based.def # def file for an image based on localimage
+As an example, assume it is desirable to develop some code on the basis of the `cuda_based.sif` image created in the [Example: CUDA-enabled container](#example-cuda-enabled-container).  Building from the original `cuda_based.def` file can take ~ 4 minutes. However, if the `*.sif` file is already available, building on top of it, via a `dev_on_cuda_based.def` file as below, takes ~ 2 minutes. This is already a time saving  factor of 2.
+
+{{< card code=true header="dev_on_cuda_based.def" lang="bash" >}}
 # Header
 Bootstrap: localimage
 From: cuda_based.sif
@@ -302,9 +378,11 @@ From: cuda_based.sif
 %runscript
     echo "Arguments received: $*"
     exec echo "$@"
+{{< /card >}}
 
-$
-$ sudo apptainer build dev_image.sif # build the image
+Now, build and test:
+```shell-session
+$ apptainer build dev_image.sif # build the image
 INFO:    Starting build...
 INFO:    Verifying bootstrap image cuda_based.sif
 WARNING: integrity: signature not found for object group 1
@@ -312,13 +390,13 @@ WARNING: Bootstrap image could not be verified, but build will continue.
 INFO:    Adding runscript
 INFO:    Creating SIF file...
 INFO:    Build complete: dev_image.sif
-$
+
 $ apptainer run  dev_image.sif "hello world" # check runscript of the new def file is executed
 INFO:    gocryptfs not found, will not be able to use gocryptfs
 Arguments received: hello world
 hello world
-$
-$ apptainer shell  dev_image.sif # further look inside the image
+
+$ apptainer shell dev_image.sif # further look inside the image
 Apptainer> 
 Apptainer> ls /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery # commands installed in the original image are available
 /cuda-samples/Samples/1_Utilities/deviceQuery/deviceQuery
@@ -343,8 +421,8 @@ from: nvidia/cuda:12.1.1-devel-ubuntu22.04
 
 As can be seen in this example, the new def file not only preserves the dependencies of the original image, but it also preserves a complete history of all build processes while giving flexible environment that can be customized as need arises.
 
+#### Example: Deploying conda and pip in a container
 
-## Deploying conda and pip in a container 
 There might be situations where you have a certain conda environment in your local machine that you need to set up in DAIC to commence your analysis. In such cases, deploying your conda environment in a container and sending this container to DAIC does the job for you. 
 
 As an example, let's create a simple demo environment, `environment.yml` in our local machine, 

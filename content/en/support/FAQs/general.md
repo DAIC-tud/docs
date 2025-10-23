@@ -62,3 +62,8 @@ Your home folder is for storing settings and installing small software packages,
     mv /tmp/${USER}/<foldername> <foldername>
     rmdir /tmp/${USER}
     ```
+
+### I can't access DAIC resources using vscode remote-ssh
+
+1. _Make sure you can access the DAIC cluster using a terminal_ (e.g. `ssh <YourNetID>@login.daic.tudelft.nl`- replacing `<YourNetID>` with your own NetID). If you can't, then please request access first by [submitting this request](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=89811f26713645a89a5ca1cdef263ac5).
+2. _Downgrade your vscode to version `1.98.2` or lower._ Newer versions do not support the current DAIC OS environment (CentOS 7). The VS code default setting updates the version automatically so don’t forget to switch it off too. This is a known issue with vscode remote-ssh and CentOS 7 based systems. You can find more information about this [here](https://github.com/microsoft/vscode/issues/203375) and [here](https://www.reddit.com/r/vscode/comments/1aqj3eh/the_recent_update_is_not_able_to_connect_to_a/)

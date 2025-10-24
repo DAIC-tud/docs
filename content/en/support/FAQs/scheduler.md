@@ -68,7 +68,7 @@ Either:
     3. Too many jobs are failing or being cancelled.
     4. Generally, failing to follow the [Cluster workflow](/tutorials/quickstart).
 
-You need to figure out the problem(s), fix them, and then send an email to the [cluster administrators](mailto:beheer-o-linux-ictfm@tudelft.nl) to explain the problem(s) and the way you fixed them.
+In the later case, you need to figure out the problem(s), fix them, and then reach out to the cluster team to explain the problem(s) and the way you fixed them.
 
 ### `srun: error: Unable to allocate resources: Invalid qos specification`
 * You can’t directly execute a jobscript, you need to submit the jobscript using `sbatch`:

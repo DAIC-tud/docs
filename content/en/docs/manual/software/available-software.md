@@ -31,7 +31,7 @@ $ whereis python
 python: /usr/bin/python3.4m-config /usr/bin/python3.6m-x86_64-config /usr/bin/python2.7 /usr/bin/python3.6-config /usr/bin/python3.4m-x86_64-config /usr/bin/python3.6m-config /usr/bin/python3.4 /usr/bin/python3.4m /usr/bin/python2.7-config /usr/bin/python3.6 /usr/bin/python3.4-config /usr/bin/python /usr/bin/python3.6m /usr/lib/python2.7 /usr/lib/python3.4 /usr/lib/python3.6 /usr/lib64/python2.7 /usr/lib64/python3.4 /usr/lib64/python3.6 /etc/python /usr/include/python2.7 /usr/include/python3.4m /usr/include/python3.6m /usr/share/man/man1/python.1.gz
 ```
 
- Or, you can check if the package is installed using the `rpm -qa` command as follows: 
+ Or, you can check if the package is installed using the `rpm -q` command as follows: 
 
  ```bash
 $ rpm -q python

@@ -15,5 +15,7 @@ If the answer to your question is not found in any of the [Group-specific resour
 {{% /alert %}}
 
 {{% alert title="Stop!" color="warning" %}}
-Do *not* send email directly to the personal email address of a DAIC system administrator, as that person may not always be able to respond immediately (i.e. outside office hours or when away or ill) and the other HPC support team members will not be able to see and respond to your question.
+Do *not* send email directly to the personal email address of a DAIC system administrator, as that person may not always be able to 
+respond immediately (i.e. outside office hours or when away or ill) and the other HPC support team members will not be able to see 
+and respond to your question. Priortize using the Self-Service portal/TopDesk for prompt response.
 {{% /alert %}}

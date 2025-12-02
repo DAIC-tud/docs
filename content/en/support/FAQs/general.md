@@ -67,3 +67,18 @@ Your home folder is for storing settings and installing small software packages,
 
 1. _Make sure you can access the DAIC cluster using a terminal_ (e.g. `ssh <YourNetID>@login.daic.tudelft.nl`- replacing `<YourNetID>` with your own NetID). If you can't, then please request access first by [submitting this request](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=89811f26713645a89a5ca1cdef263ac5).
 2. _Downgrade your vscode to version `1.98.2` or lower._ Newer versions do not support the current DAIC OS environment (CentOS 7). The VS code default setting updates the version automatically so don’t forget to switch it off too. This is a known issue with vscode remote-ssh and CentOS 7 based systems. You can find more information about this [here](https://github.com/microsoft/vscode/issues/203375) and [here](https://www.reddit.com/r/vscode/comments/1aqj3eh/the_recent_update_is_not_able_to_connect_to_a/)
+
+### I'm getting `Connection closed` and `Connection timed out` when connecting via one of the bastion
+
+The `Connection closed` message is usually an indication of too many failed authentication attempts. 
+That can be either because of using the wrong authentication method (only password authentication is supported, 
+try `ssh -o PreferredAuthentications=password`) or because of an incorrect password.
+
+The `Connection timed out` message is usually an indication of a ban of your connection due to too many failed 
+login attempts. The ban will be lifted automatically after a cooldown period. However, the ban will become permanent 
+when your connection was banned multiple times already. So do not keep retrying the failing attempts. (There is no 
+point, when it doesn't work the first time, it certainly won't work the second time.)
+
+If you still get connection timeout, you can file a request through the Self-Service portal (via the "I have a general question form"). 
+> Note: do not mention DAIC. The `student-linux` bastion is a campus wide facility for everybody, it's not linked to DAIC and 
+not supported by DAIC's admins.

@@ -21,6 +21,9 @@ If you join the DAIC community channel on [Mattermost](https://mattermost.tudelf
 
 The interactive diagram below outlines the general workflow when working with the Delft AI Cluster (DAIC) cluster. Each step links to detailed documentation.
 
+{{< alert color="info" >}}
+_Click any light-grey, dashed box with a 🔗 in the diagram to go directly to the relevant resource page._
+{{< /alert >}}
 
 ```mermaid
 ---
@@ -34,6 +37,9 @@ flowchart TB
     classDef green fill:#6CC24A,stroke:#3F6F21,stroke-width:2px;
     classDef darkgreen fill:#009B77,stroke:#006644,stroke-width:2px;
 
+    %% Emphasise clickable nodes
+    classDef linkNode fill:#f7f7f7,stroke:#007acc,stroke-width:3px,stroke-dasharray:5 3;
+
     Prerequisites:::yellow
     Quickstart:::green
     Resources:::darkgreen
@@ -45,14 +51,13 @@ flowchart TB
 
         subgraph Workflow[" "]
             direction TB    
-            C[Set up software & dependencies in DAIC]
+            C[Set up software & dependencies in DAIC 🔗]
 
-            D[Transfer data to DAIC]
+            D[Transfer data to DAIC 🔗]
 
-            E["Test interactively"]
-
-            F[Submit jobs & Monitor progress]
-            H[Download results & clean up ]
+            E["Test interactively 🔗"]
+            F[Submit jobs & Monitor progress 🔗]
+            H[Download results & clean up 🔗]
 
             D --> E
             C --> E
@@ -71,9 +76,9 @@ flowchart TB
     subgraph Reminder[" "]
         subgraph Resources
             direction LR
-            r0@{ shape: hex, label: "DAIC support resources"}
-            r1@{ shape: hex, label: "Handy commands on DAIC"}
-            r2@{ shape: hex, label: "Command line basics" }
+            r0@{ shape: hex, label: "DAIC support resources 🔗"}
+            r1@{ shape: hex, label: "Handy commands on DAIC 🔗"}
+            r2@{ shape: hex, label: "Command line basics 🔗" }
 
             click r0 "/support/" "DAIC support resources"
             click r1 "/docs/manual/commands" "List of handy commands"
@@ -82,20 +87,21 @@ flowchart TB
 
         subgraph Quickstart
             direction LR
-            q1@{ shape: hex, label: "Login via SSH"}
+            q1@{ shape: hex, label: "Log in via SSH 🔗"}
             %%q2@{ shape: hex, label: "Submit a job to SLURM"}
             click q1 "/docs/manual/connecting/" "Login via SSH"
         end
 
         subgraph Prerequisites
             direction LR
-            p1@{ shape: hex, label: "User Account and Credentials"}
-            p2@{ shape: hex, label: "Data Storage on University Network" }
+            p1@{ shape: hex, label: "Apply for Access 🔗"}
+            p2@{ shape: hex, label: "Get Storage on University Network 🔗" }
 
-            click p1 "https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=89811f26713645a89a5ca1cdef263ac5" "Request an account"
-            click p2 "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=846ebb16181c43b5836c063a917dd199" "Request storage"
+            click p1 "https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=89811f26713645a89a5ca1cdef263ac5" "Request an account 🔗"
+            click p2 "https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=846ebb16181c43b5836c063a917dd199" "Request storage 🔗"
         end
     end
+    class C,D,E,F,H,p1,p2,q1,r0,r1,r2 linkNode;
 ```
 
 

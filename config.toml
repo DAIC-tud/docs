@@ -178,7 +178,7 @@ desc = "Development takes place here!"
 [[params.links.user]]
 name = "Mattermost"
 url = "https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su"
-icon = "fa fa-question"
+icon = "fa fa-comments"
 #[[params.links.developer]]
 #  name = "Mailing list"
 #  url = "https://example.org/mail"

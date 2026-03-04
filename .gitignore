@@ -6,3 +6,8 @@ resources
 node_modules/*
 
 *.hugo_build.lock
+
+split_by_h2.sh
+layouts/shortcodes/expand.html
+layouts/shortcodes/prompt.html
+layouts/shortcodes/terminal.html

@@ -89,26 +89,28 @@ github_repo = "https://gitlab.ewi.tudelft.nl/daic/docs"
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
 
-# Menu title if your navbar has a versions selector to access old versions of your site.
-# This menu appears only if you have at least one [params.versions] set.
-version_menu = "Releases"
-
-# Flag used in the "version-banner" partial to decide whether to display a
-# banner on every page indicating that this is an archived version of the docs.
-# Set this flag to "true" if you want to display the banner.
-archived_version = false
-
-# The version number for the version of the docs represented in this doc set.
-# Used in the "version-banner" partial to display a version number for the
-# current doc set.
-version = "0.0"
-
-# A link to latest version of the docs. Used in the "version-banner" partial to
-# point people to the main doc site.
-url_latest_version = "https://daic.tudelft.nl/"
+docs_env = "DAIC (stable)"
+docs_env_style = "info"
+docs_env_text = "Stable documentation."
 
 #gcs_engine_id = "62a7c518ab0cb42dc"
 offlineSearch = true
+
+version_menu = "Environments"
+version = "stable"
+url_latest_version = "https://daic.tudelft.nl/"
+
+[[params.versions]]
+version = "DAIC (stable)"
+# archived_version = true
+# version_banner_text = "Documentation for the stable environment"
+url = "https://daic.tudelft.nl/"
+
+[[params.versions]]
+version = "DAIC Experimental"
+# archived_version = false
+# version_banner_text = "Documentation for the experimental environment; behavior may change."
+url = "https://doc.daic.tudelft.nl/"
 
 
 [sitemap]

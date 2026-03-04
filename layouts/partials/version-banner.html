@@ -1,0 +1,14 @@
+{{/* DAIC: always-visible environment banner */}}
+{{ $env := site.Params.docs_env | default "DAIC" }}
+{{ $style := site.Params.docs_env_style | default "info" }}
+{{ $text := site.Params.docs_env_text | default "" }}
+{{ $link := site.Params.docs_env_link | default "" }}
+{{ $linkText := site.Params.docs_env_link_text | default "Go to stable docs" }}
+
+<div class="alert alert-{{ $style }} mb-0" role="alert" style="border-radius:0;">
+  <strong>{{ $env }}</strong>
+  {{ if $text }} — {{ $text }}{{ end }}
+  {{ if $link }}
+    <span class="ms-2">(<a href="{{ $link }}">{{ $linkText }}</a>)</span>
+  {{ end }}
+</div>

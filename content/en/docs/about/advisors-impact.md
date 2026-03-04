@@ -39,7 +39,7 @@ Delft AI Cluster (DAIC). (2024). The Delft AI Cluster (DAIC), RRID:SCR_025091. h
   title = {The Delft AI Cluster (DAIC), RRID:SCR_025091},
   year = {2024},
   doi = {10.4233/rrid:scr_025091},
-  url = {https://doc.daic.tudelft.nl/}
+  url = {https://daic.tudelft.nl/}
 }
 {{< /tab >}}
 

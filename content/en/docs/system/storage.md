@@ -38,7 +38,7 @@ You have two (separate) home folders: one for Linux and one for Windows (because
   <tr>
     <td></td>
     <td>Windows </td>
-    <td>only accessible using an scp/sftp client (see <a href="https://doc.daic.tudelft.nl/docs/manual/connecting#ssh-access">SSH access</a>)</td>
+    <td>only accessible using an scp/sftp client (see <a href="https://daic.tudelft.nl/docs/manual/connecting#ssh-access">SSH access</a>)</td>
   </tr>
   <tr>
     <td></td>

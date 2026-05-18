@@ -6,7 +6,7 @@ weight: 6
 
 ## DAIC support & contact:
 If the answer to your question is not found in any of the [Group-specific resources](../help#group-specific-resources), or the [Frequently Asked Questions](../faqs) consult with:
-* DAIC support via the Self [Service Portal](https://tudelft.topdesk.net/tas/public/ssp/content/detail/service?unid=c6d0e44564b946eaa049898ffd4e6938).
+* DAIC support via the Self [Service Portal](https://tudelft.topdesk.net/tas/public/ssp/content/serviceflow?unid=20918bf3b24541c0b25ee4a29be9d01c).
 
 * DAIC community on:  [Mattermost](https://mattermost.tudelft.nl/signup_user_complete/?id=cb1k3t6ytpfjbf7r397395axyc&md=link&sbr=su) 
 

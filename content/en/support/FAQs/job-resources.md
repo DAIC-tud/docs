@@ -185,4 +185,9 @@ Please make sure (through explicit arguments to your program) that your data is 
     #SBATCH --tmp=<size>G
     ```
 
+{{% alert title="success" %}}
+
+The use of `/tmp` should be proportional to the resource use of you job (i.e. when your jobs request 2 CPUs (3% of a node), they can't use more than 3% of the available space in `/tmp`). Since the space in `/tmp` differs between nodes, you should either assume the smallest space, or specifically request a certain size of `/tmp` if your job also has constraints on possible node types. In all cases, reduce the usage of `/tmp`, and clean up data in `/tmp` immediately when it's no longer needed.
+
+{{% /alert %}}
 

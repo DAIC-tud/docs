@@ -84,15 +84,6 @@ Many nodes in DAIC include one or more NVIDIA GPUs.GPU types differ in architect
     <td>46068 MiB</td>
   </tr>
   <tr>
-    <td>turing</td>
-    <td>24</td>
-    <td>NVIDIA GeForce RTX 2080 Ti</td>
-    <td>Turing</td>
-    <td>7.5</td>
-    <td>4352</td>
-    <td>11264 MiB</td>
-  </tr>
-  <tr>
     <td>v100</td>
     <td>11</td>
     <td>Tesla V100-SXM2-32GB</td>
@@ -623,15 +614,15 @@ For more information, see the [Partitions](/docs/manual/job-submission/prioritie
 </tbody>
 <tfoot>
   <tr>
-    <td><strong>Total (66 nodes)</strong></td>
+    <td><strong>Total (35 nodes)</strong></td>
     <td></td> <!-- CPU (Sockets x Model) -->
     <td></td> <!-- Cores per Socket -->
-    <td><strong>3016 cores</strong></td> <!-- Total Cores -->
+    <td><strong>2016 cores</strong></td> <!-- Total Cores -->
     <td></td> <!-- CPU Speed (MHz) -->
-    <td><strong>35.02 TiB</strong></td> <!-- Total RAM -->
-    <td><strong>76.79 TiB</strong></td> <!-- Local Disk (/tmp) -->
+    <td><strong>23.10 TiB</strong></td> <!-- Total RAM -->
+    <td><strong>30.25 TiB</strong></td> <!-- Local Disk (/tmp) -->
     <td></td> <!-- GPU Type -->
-    <td><strong>137 GPU</strong></td> <!-- GPU Count -->
+    <td><strong>110 GPU</strong></td> <!-- GPU Count -->
     <td></td> <!-- SlurmPartitions -->
     <td></td> <!-- SlurmActiveFeatures -->
   </tr>

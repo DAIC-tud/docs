@@ -11,8 +11,8 @@ As part of the ongoing renewal of DAIC, several older compute nodes were phased 
 
 The retired hardware includes:
 
-- 5 CPU-only nodes with AMD EPYC processors;
-- 4 GPU nodes with NVIDIA RTX 2080 Ti GPUs; and
-- 1 GPU node with 8 × NVIDIA V100-SXM2 GPUs.
+- 5 CPU-only nodes with AMD EPYC processors (`influ4-6`, `3dgi1-2`);
+- 4 GPU nodes with NVIDIA RTX 2080 Ti GPUs (`influ2-3`, `insy15-16`); and
+- 1 GPU node with 8 × NVIDIA V100-SXM2 GPUs (`cor1`).
 
 These systems were installed between 2020 and 2021 and had reached approximately 5.5–6.5 years of service.

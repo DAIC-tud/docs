@@ -1,6 +1,6 @@
 ---
-title: 2026-9-01
-date: 2026-9-01
+title: 2026-09-01
+date: 2026-09-01
 description: "Several older DAIC compute and GPU nodes were phased out over the summer as part of the ongoing infrastructure renewal."
 tags: ["hardware", "infrastructure"]
 ---

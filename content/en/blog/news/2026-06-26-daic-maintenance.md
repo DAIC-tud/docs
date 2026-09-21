@@ -1,7 +1,9 @@
 ---
-title: "DAIC maintenance: 3-11 October 2026"
+title: 2026-06-26
 date: 2026-06-26
-description: "Scheduled DAIC downtime due to TU Delft data centre maintenance."
+description: >-
+    "DAIC maintenance: 3-11 October 2026"
+    "Scheduled DAIC downtime due to TU Delft data centre maintenance."
 tags: ["maintenance", "announcement", "downtime"]
 ---
 

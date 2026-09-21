@@ -1,5 +1,5 @@
 ---
-title: "2026-07-06 DAIC migration: the new environment is now available"
+title: 2026-07-06
 date: 2026-07-06
 description: "The new DAIC environment is now available for testing and gradual migration."
 tags: ["migration", "documentation"]

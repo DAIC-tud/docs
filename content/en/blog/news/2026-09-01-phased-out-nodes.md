@@ -1,5 +1,5 @@
 ---
-title: "2026-9-01 DAIC hardware phased out over the summer"
+title: 2026-9-01
 date: 2026-9-01
 description: "Several older DAIC compute and GPU nodes were phased out over the summer as part of the ongoing infrastructure renewal."
 tags: ["hardware", "infrastructure"]

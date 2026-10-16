@@ -13,6 +13,14 @@ menu:
 
 This guide provides the basic steps to get you started with the Delft AI Cluster (DAIC). You’ll learn how to log in and submit your first SLURM job.
 
+{{% alert title="New to DAIC? Start with the new environment" color="warning" %}}
+DAIC is transitioning to a new environment, which will become the default in November 2026.
+
+**New users are encouraged to start with the [new DAIC Quickstart guide](https://doc.daic.tudelft.nl/quickstart/).**
+
+The instructions below apply to the current (stable) DAIC environment, which remains available during the transition.
+{{% /alert %}}
+
 {{< alert "info" "Join the Community!" >}}
 If you join the DAIC community channel on [Mattermost](https://mattermost.tudelft.nl/daic/channels/town-square), you'll have access to exclusive resources and support.
 {{< /alert >}}
